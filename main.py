@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from fastapi import FastAPI, Response
 from fastapi import FastAPI
 import json
 import os
@@ -20,6 +21,13 @@ def load_json(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
         return json.load(f)
 
+@app.get("/")
+def start():
+    return {"status": "GPT-plugin backend is actief"}
+
+@app.head("/")
+def head_root():
+    return Response(status_code=200)
 
 def ask_question(question):
     nummer = question["nummer"]
