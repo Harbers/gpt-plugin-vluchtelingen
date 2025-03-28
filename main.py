@@ -655,7 +655,6 @@ def start_mb_instrument():
         start_mb_instrument()
 
 def start_juridisch_begeleider():
-    main
 from fastapi import FastAPI
 
 app = FastAPI()
