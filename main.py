@@ -117,6 +117,8 @@ def search_plugin_updates(subject, max_items=10, section="Externe zoekresultaten
             print(f"  {item['summary']}")
             print(f"  Lees meer: {item['link']}")
 
+from duckduckgo_search.ddg import DDGS  # Zorg dat deze import ook bovenin het bestand staat
+
 def search_duckduckgo_free(subject, max_items=10, section="Externe zoekresultaten (DuckDuckGo)"):
     """
     Voert een gratis zoekopdracht uit met behulp van de module duckduckgo_search.
@@ -127,26 +129,37 @@ def search_duckduckgo_free(subject, max_items=10, section="Externe zoekresultate
     if not zoekTermen:
         print("Geen zoektermen beschikbaar voor externe zoekacties.")
         return
+
     results = []
-    for term in zoekTermen:
-        try:
-            for result in ddg(term, max_results=max_items):
-                title = result.get("title", "Geen titel")
-                link = result.get("href", "")
-                summary = result.get("body", "Samenvatting niet beschikbaar.")
-                published = datetime.now().strftime("%Y-%m-%d")
-                results.append({"title": title, "published": published, "link": link, "summary": summary})
+    try:
+        with DDGS() as ddgs:
+            for term in zoekTermen:
+                for r in ddgs.text(term, max_results=max_items):
+                    title = r.get("title", "Geen titel")
+                    link = r.get("href", "")
+                    summary = r.get("body", "Samenvatting niet beschikbaar.")
+                    published = datetime.now().strftime("%Y-%m-%d")
+                    results.append({
+                        "title": title,
+                        "published": published,
+                        "link": link,
+                        "summary": summary
+                    })
+                    if len(results) >= max_items:
+                        break
                 if len(results) >= max_items:
                     break
-            if len(results) >= max_items:
-                break
-        except Exception as e:
-            print(f"Fout bij DuckDuckGo zoekactie voor term '{term}': {str(e)}")
-        if len(results) >= max_items:
-            break
+    except Exception as e:
+        print(f"Fout bij DuckDuckGo zoekactie: {str(e)}")
+
     if not results:
         print("Geen externe zoekresultaten gevonden via DuckDuckGo.")
     else:
+        for item in results:
+            print(f"- {item['title']} ({item['published']})")
+            print(f"  {item['summary']}")
+            print(f"  Lees meer: {item['link']}")
+       
         for item in results:
             print(f"- {item['title']} ({item['published']})")
             print(f"  {item['summary']}")
