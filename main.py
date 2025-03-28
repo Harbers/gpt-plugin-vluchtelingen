@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 import feedparser  # pip install feedparser
 from datetime import datetime, timedelta
 from urllib.parse import quote
-from duckduckgo_search import ddg  # pip install duckduckgo_search
+from duckduckgo_search.ddg import DDGS
 
 app = FastAPI()
 
