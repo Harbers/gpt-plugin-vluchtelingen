@@ -1,3 +1,4 @@
+requests
 fastapi
 uvicorn
 duckduckgo_search
