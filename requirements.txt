@@ -1,4 +1,7 @@
 requests
+beautifulsoup4
+feedparser
+duckduckgo_search
 fastapi
 uvicorn
 duckduckgo_search
