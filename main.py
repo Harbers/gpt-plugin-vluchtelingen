@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from fastapi import FastAPI
 import json
 import os
 import requests
@@ -10,14 +11,15 @@ from datetime import datetime, timedelta
 from urllib.parse import quote
 from duckduckgo_search import ddg  # pip install duckduckgo_search
 
-def load_json(file_path):
-    from duckduckgo_search import ddg  # pip install duckduckgo_search
-from fastapi import FastAPI  # ✅ voeg deze regel toe
+app = FastAPI()
 
+
+def load_json(file_path):
     if not os.path.isfile(file_path):
         raise FileNotFoundError(f"Bestand niet gevonden: {file_path}")
     with open(file_path, "r", encoding="utf-8") as f:
         return json.load(f)
+
 
 def ask_question(question):
     nummer = question["nummer"]
