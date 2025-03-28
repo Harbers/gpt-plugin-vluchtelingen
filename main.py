@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 import feedparser  # pip install feedparser
 from datetime import datetime, timedelta
 from urllib.parse import quote
-from duckduckgo_search.ddg import DDGS
+from duckduckgo_search import DDGS
 
 app = FastAPI()
 
@@ -115,7 +115,7 @@ def search_plugin_updates(subject, max_items=10, section="Externe zoekresultaten
         for item in all_results:
             print(f"- {item['title']} ({item['published']})")
             print(f"  {item['summary']}")
-            print(f"  Lees meer: {item['link']}")
+            from duckduckgo_search import DDGS
 
 from duckduckgo_search.ddg import DDGS  # Zorg dat deze import ook bovenin het bestand staat
 
