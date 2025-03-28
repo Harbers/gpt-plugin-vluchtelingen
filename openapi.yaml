@@ -1,0 +1,21 @@
+openapi: 3.0.1
+info:
+  title: GPT Plugin Vluchtelingenzoeker
+  description: Zoek juridische info over vreemdelingenzaken
+  version: '1.0'
+servers:
+  - url: https://your-domain.onrender.com
+paths:
+  /search:
+    get:
+      summary: Zoek juridische informatie
+      parameters:
+        - in: query
+          name: onderwerp
+          schema:
+            type: string
+          required: true
+          description: Het onderwerp om op te zoeken
+      responses:
+        '200':
+          description: Resultaten gevonden
