@@ -655,6 +655,8 @@ def start_mb_instrument():
         start_mb_instrument()
 
 def start_juridisch_begeleider():
+    main_data = load_json("main.json")
+    print("Welkom juridisch begeleider!")
 from fastapi import FastAPI
 
 app = FastAPI()
