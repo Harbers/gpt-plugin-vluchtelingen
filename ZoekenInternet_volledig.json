@@ -1,0 +1,10 @@
+{
+  "Asielbeleid en Wetgeving": [
+    "site:rijksoverheid.nl asielbeleid",
+    "site:ind.nl asielprocedure"
+  ],
+  "Jurisprudentie en Rechtspraak": [
+    "site:rechtspraak.nl asiel",
+    "site:hudoc.echr.coe.int migration"
+  ]
+}

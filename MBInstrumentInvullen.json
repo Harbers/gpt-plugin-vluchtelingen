@@ -1,0 +1,196 @@
+{
+  "mb_instrument": {
+    "title": "MB‑Instrument (Januari 2025)",
+    "introductie": "Welkom bij het MB‑Instrument. Na deze introductie start vraag 1.1 direct.",
+    "instructions": "Kies per vraag uit de volgende opties: '1. Ik weet er niks van', '2. Ik kan het samen', '3. Ik kan het zelf', 'NVT – Niet van toepassing'.",
+    "questions": [
+      {
+        "nummer": "1.1",
+        "tekst": "Rechten en Plichten: Ik ken de regels en mijn rechten als huurder.",
+        "antwoordOpties": [
+          "1. Ik weet er niks van",
+          "2. Ik kan het samen",
+          "3. Ik kan het zelf",
+          "NVT – Niet van toepassing"
+        ],
+        "linksVoorlichting": [
+          "https://www.refugeehelp.nl/nl/status-holder/article/100005-je-verhuist-vanuit-de-opvang-naar-je-huis",
+          "https://wonen.steffie.nl/nl/"
+        ]
+      },
+      {
+        "nummer": "1.2",
+        "tekst": "Nutsbedrijven: Ik weet hoe ik mijn verwarming, water en cv-ketel in huis kan gebruiken. Ook weet ik hoe ik een geschikt contract kan kiezen.",
+        "antwoordOpties": [
+          "1. Ik weet er niks van",
+          "2. Ik kan het samen",
+          "3. Ik kan het zelf",
+          "NVT – Niet van toepassing"
+        ],
+        "linksVoorlichting": [
+          "https://www.refugeehelp.nl/nl/status-holder/video/10008-uitleg-over-je-energierekening",
+          "https://energie.steffie.nl/nl/"
+        ]
+      },
+      {
+        "nummer": "1.3",
+        "tekst": "Verzekeringen: Ik weet hoe ik een goede verzekering kan vinden en afsluiten.",
+        "antwoordOpties": [
+          "1. Ik weet er niks van",
+          "2. Ik kan het samen",
+          "3. Ik kan het zelf",
+          "NVT – Niet van toepassing"
+        ],
+        "linksVoorlichting": [
+          "https://www.refugeehelp.nl/nl/status-holder/article/100307-verschillende-soorten-verzekeringen",
+          "https://verzekeringen.steffie.nl/nl/"
+        ]
+      },
+      {
+        "nummer": "1.4",
+        "tekst": "Internet en telefonie: Ik weet hoe ik een goed telefoon-, internet- en televisie-abonnement kan vinden en afsluiten.",
+        "antwoordOpties": [
+          "1. Ik weet er niks van",
+          "2. Ik kan het samen",
+          "3. Ik kan het zelf",
+          "NVT – Niet van toepassing"
+        ],
+        "linksVoorlichting": []
+      },
+      {
+        "nummer": "1.5",
+        "tekst": "Inrichting: Ik heb een ingerichte woning en weet welke veiligheidsmaatregelen ik zelf kan treffen (rookalarm, koolmonoxidemelder).",
+        "antwoordOpties": [
+          "1. Ik weet er niks van",
+          "2. Ik kan het samen",
+          "3. Ik kan het zelf",
+          "NVT – Niet van toepassing"
+        ],
+        "linksVoorlichting": [
+          "https://www.refugeehelp.nl/nl/status-holder/article/100105-veiligheid-in-nederland",
+          "https://brandweer.steffie.nl/nl/",
+          "https://brandweer.steffie.nl/nl/modules/112-bellen/#!/371/stap-01.html"
+        ]
+      }
+    ]
+  },
+  "procedure": {
+    "procedureTitle": "Maatschappelijke Begeleiding Procedure",
+    "source": "MB‑Instrument januari 2025",
+    "inleiding": "Deze procedure beschrijft de werkwijze voor maatschappelijke begeleiding volgens het MB‑Instrument januari 2025. De methode is gericht op het vergroten van de zelfredzaamheid van de cliënt door een planmatige aanpak waarin de cliënt centraal staat.",
+    "fasen": [
+      {
+        "fase": "Intake",
+        "beschrijving": "Het intakegesprek vindt plaats in de eerste weken na huisvesting. Tijdens dit gesprek wordt het MB‑Instrument ingevuld en wordt in overleg met de cliënt de eerste niveaubepaling vastgesteld.",
+        "voorlichting": {
+          "punten": [
+            {
+              "id": "1.1.1",
+              "tekst": "Verhuizing opvang naar eigen woning.",
+              "relevantFor": []
+            },
+            {
+              "id": "1.1.2",
+              "tekst": "Huurcontract doornemen (opzegtermijn, inwoning, onderverhuur, aanpassingen).",
+              "relevantFor": ["1.1"]
+            },
+            {
+              "id": "1.1.3",
+              "tekst": "Omgangsnormen voor een prettige woonomgeving (overlast, tuin bijhouden).",
+              "relevantFor": ["1.1"]
+            },
+            {
+              "id": "1.1.4",
+              "tekst": "Het zoeken van een andere woning.",
+              "relevantFor": []
+            }
+          ]
+        },
+        "acties": {
+          "punten": [
+            {
+              "id": "1.1.a",
+              "tekst": "Reparaties doorgeven / serviceabonnement.",
+              "relevantFor": []
+            },
+            {
+              "id": "1.1.b",
+              "tekst": "Voorbeeld casussen bespreken en telefoongesprek oefenen (geen warm water, huurachterstand).",
+              "relevantFor": ["1.1"]
+            },
+            {
+              "id": "1.1.c",
+              "tekst": "Oefenen met het telefonisch keuzemenu van de woningcoöperatie.",
+              "relevantFor": ["1.1"]
+            },
+            {
+              "id": "1.1.d",
+              "tekst": "De website van de woningcoöperatie bekijken.",
+              "relevantFor": ["1.1"]
+            },
+            {
+              "id": "1.1.e",
+              "tekst": "Afvalapp installeren en lokale afvaldata opzoeken.",
+              "relevantFor": []
+            }
+          ]
+        }
+      },
+      {
+        "fase": "Voortgangsgesprek",
+        "beschrijving": "Tijdens het voortgangsgesprek wordt het MB‑Instrument opnieuw ingevuld om de voortgang te evalueren. Samen worden de behaalde subdoelen en acties besproken en bijgesteld.",
+        "acties": {
+          "punten": [
+            {
+              "id": "2.1.a",
+              "tekst": "Evalueren van de voortgang op basis van de niveaubepaling.",
+              "relevantFor": []
+            },
+            {
+              "id": "2.1.b",
+              "tekst": "Bijstellen van het begeleidingsplan op basis van de besproken hiaten.",
+              "relevantFor": []
+            },
+            {
+              "id": "2.1.c",
+              "tekst": "Toevoegen van nieuwe acties indien extra ondersteuning nodig is.",
+              "relevantFor": []
+            }
+          ]
+        }
+      },
+      {
+        "fase": "Eindgesprek",
+        "beschrijving": "Een maand voor het einde van het traject wordt het MB‑Instrument voor de laatste keer ingevuld. Samen worden de behaalde resultaten geëvalueerd en eventuele resterende hiaten besproken.",
+        "acties": {
+          "punten": [
+            {
+              "id": "3.1.a",
+              "tekst": "Bespreken van de behaalde resultaten en de openstaande hiaten.",
+              "relevantFor": []
+            },
+            {
+              "id": "3.1.b",
+              "tekst": "Definitief begeleidingsplan opstellen en eventueel extra ondersteuning of verlenging aanvragen.",
+              "relevantFor": []
+            }
+          ]
+        }
+      }
+    ],
+    "doelstellingen": {
+      "hoofddoelen": [
+        "Versterken van het gevoel van eigenwaarde.",
+        "Vergroten van de zelfredzaamheid van de cliënt."
+      ],
+      "subdoelen": "Per domein worden de subdoelen verder uitgewerkt in het begeleidingsplan."
+    },
+    "benodigdeVaardigheden": [
+      "Cultuursensitief werken",
+      "Stress-sensitief en coachend werken",
+      "Knelpunten signaleren",
+      "Kennis van lokale regelgeving"
+    ],
+    "vervolgplanning": "Plan vervolgafspraken (sessies van 1 uur) om voortgang te evalueren en eventueel openstaande doelen te bespreken."
+  }
+}

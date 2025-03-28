@@ -1,0 +1,95 @@
+{
+  "PROC001": {
+    "title": "MVV-aanvraag Procedure",
+    "description": "Procedure voor het aanvragen van een MVV (Machtiging tot Voorlopig Verblijf).",
+    "steps": [
+      {
+        "step": 1,
+        "description": "Dien de MVV-aanvraag in met een geldig paspoort, volledig ingevuld aanvraagformulier en alle vereiste documenten. Zorg voor anonimisatie."
+      },
+      {
+        "step": 2,
+        "description": "Na goedkeuring haalt de cliënt het MVV-visum persoonlijk op binnen 90 dagen."
+      },
+      {
+        "step": 3,
+        "description": "Reis met het afgehaalde MVV-visum naar Nederland, waarbij alle reisdocumenten geanonimiseerd zijn."
+      },
+      {
+        "step": 4,
+        "description": "Meld de cliënt zich binnen 3 dagen na aankomst bij het Nareisloket van de IND."
+      }
+    ]
+  },
+  "PROC002": {
+    "title": "Gezinshereniging Procedure",
+    "description": "Procedure voor het begeleiden van gezinshereniging bij asielzoekers en statushouders.",
+    "steps": [
+      {
+        "step": 1,
+        "description": "Voer een intake en vooronderzoek uit om de gezinssamenstelling en behoeften vast te stellen."
+      },
+      {
+        "step": 2,
+        "description": "Geef advies en voorlichting over de wettelijke kaders en benodigde documenten."
+      },
+      {
+        "step": 3,
+        "description": "Verzamel alle vereiste documenten en stel een dossier op (anonimiseren)."
+      },
+      {
+        "step": 4,
+        "description": "Dien het dossier in bij de bevoegde instantie."
+      },
+      {
+        "step": 5,
+        "description": "Volg de voortgang op en ondersteun bij bezwaar- of beroepsprocedures indien nodig."
+      },
+      {
+        "step": 6,
+        "description": "Bied nazorg en ondersteuning bij de integratie na gezinshereniging."
+      }
+    ]
+  },
+  "PROC003": {
+    "title": "Integratie en Inburgering Procedure",
+    "description": "Procedure voor de maatschappelijke begeleiding bij integratie en inburgering van vluchtelingen en statushouders.",
+    "steps": [
+      {
+        "step": 1,
+        "description": "Stel prioriteiten en voer een intake uit met het MB‑Instrument."
+      },
+      {
+        "step": 2,
+        "description": "Stel een begeleidingsplan op met concrete doelen per domein."
+      },
+      {
+        "step": 3,
+        "description": "Voer praktische ondersteuning en uitvoering van acties uit."
+      },
+      {
+        "step": 4,
+        "description": "Plan evaluaties en vervolgafspraken (sessies van 1 uur) om voortgang te bespreken."
+      }
+    ]
+  },
+  "PROC004": {
+    "title": "Juridische Zaken Procedure",
+    "description": "Procedure voor juridische medewerkers om actuele juridische informatie op te zoeken met betrekking tot vluchtelingenzaken, inclusief casusanalyse met volledige bronvermelding.",
+    "steps": [
+      {
+        "step": 1,
+        "description": "Start met de vraag 'Ik ben juridisch medewerker' en toon een lijst van 20 onderwerpen."
+      },
+      {
+        "step": 2,
+        "description": "Vraag de gebruiker om een keuze en haal de relevante informatie op uit de gekoppelde URL's."
+      },
+      {
+        "step": 3,
+        "description": "Voer, indien van toepassing, een casusanalyse uit en geef alle bronnen met publicatiedata weer volgens APA-standaard."
+      }
+    ]
+  },
+  "stappen": []
+}

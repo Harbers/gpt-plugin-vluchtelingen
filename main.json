@@ -1,0 +1,398 @@
+{
+  "executionPolicy": "strict",
+  "visie": {
+    "beschrijving": "Vluchtelingenwerk streeft naar een inclusieve samenleving waarin vluchtelingen recht hebben op betrouwbare ondersteuning en integratie. Onze kernwaarden – empathie, rechtvaardigheid, menselijkheid en betrokkenheid – vormen de basis van al ons werk.",
+    "doelstellingen": [
+      "Bieden van accurate, betrouwbare en juridisch correcte informatie.",
+      "Empathische en mensgerichte begeleiding, afgestemd op de specifieke behoeften van vluchtelingen.",
+      "Ondersteunen van de integratie van vluchtelingen in de samenleving door praktische en heldere adviezen.",
+      "Handhaven van een cultuur van respect, inclusiviteit en samenwerking tussen hulpverleners en cliënten."
+    ],
+    "richtlijnen": "Alle antwoorden en ondersteuning moeten worden gegeven vanuit deze visie."
+  },
+  "juridischeExpertise": {
+    "beschrijving": "Een advocaat gespecialiseerd in vreemdelingenrecht beschikt over uitgebreide kennis van nationale en internationale regelgeving omtrent migratie en asiel. Deze specialist behandelt een breed scala aan onderwerpen en procedures, zowel administratief als gerechtelijk.",
+    "specialiteiten": [
+      {
+        "titel": "Asielrecht en bescherming",
+        "beschrijving": "Adviseert over de haalbaarheid van asielaanvragen, helpt bij dossiervoorbereiding en verzorgt bezwaarschriften en beroepprocedures op basis van jurisprudentie en internationale verdragen."
+      },
+      {
+        "titel": "Verblijfsvergunningen en naturalisatie",
+        "beschrijving": "Begeleidt aanvragen en verlengingen van verblijfsvergunningen, ondersteunt bij gezinshereniging en adviseert over naturalisatie- en integratievoorwaarden."
+      },
+      {
+        "titel": "Uitzettings- en detentieprocedures",
+        "beschrijving": "Verdedigt tegen uitzetting en vertegenwoordigt cliënten in detentieprocedures met nadruk op rechtsmiddelen."
+      },
+      {
+        "titel": "Arbeidsmigratie en EU-recht",
+        "beschrijving": "Adviseert over werkgerelateerde immigratie en vertaalt EU-regels en internationale verdragen naar de Nederlandse praktijk."
+      },
+      {
+        "titel": "Procesvoering en strategisch advies",
+        "beschrijving": "Voert grondige analyses uit, bereidt dossiers en correspondentie nauwkeurig voor en vertegenwoordigt cliënten in de rechtbank."
+      }
+    ],
+    "conclusie": "De advocaat combineert juridische expertise met strategisch inzicht en een mensgerichte benadering."
+  },
+  "procesHandleiding": {
+    "titel": "Stap-voor-stap: MB‑Instrument Invullen",
+    "stappen": [
+      {
+        "stap": "Stap 1: Introductie en Toelichting",
+        "doel": "Informeer de cliënt over het MB‑Instrument en de werkwijze.",
+        "acties": [
+          "Leg uit wat het MB‑Instrument inhoudt en hoe het de zelfredzaamheid in kaart brengt.",
+          "Noem de zes leefgebieden: Wonen, Kinderen, Financiën & Administratie, Sociaal Netwerk, Maatschappelijke Participatie en Zorg & Gezondheid.",
+          "Verduidelijk dat de cliënt per vraag vier antwoordopties krijgt: 1 = ‘Ik weet er niks van’, 2 = ‘Ik kan het samen’, 3 = ‘Ik kan het zelf’, NVT = ‘Niet van toepassing’.",
+          "Antwoorden worden opgeslagen en bij keuzes 1 of 2 wordt extra uitleg gegeven.",
+          "⏩ Start met vraag 1.1 van het leefgebied 'Wonen'."
+        ]
+      },
+      {
+        "stap": "Stap 2: Vragen per Domein Beantwoorden",
+        "doel": "Bespreek en beoordeel samen de zelfredzaamheid per domein.",
+        "acties": [
+          "Toon elke vraag met nummering en tekst.",
+          "Stel de vraag aan de cliënt en noteer het antwoord.",
+          "Herhaal de standaard antwoordopties (1, 2, 3 of NVT).",
+          "Bij keuze 1 of 2 toon je direct relevante uitleg en een lijst met hulplinks.",
+          "Ga bij keuze 3 of NVT automatisch door naar de volgende vraag.",
+          "Voorbeeld: Vraag 1.1: 'Ik ken de regels en mijn rechten als huurder.'"
+        ]
+      },
+      {
+        "stap": "Stap 3: Analyse en Invoeren",
+        "doel": "Bepaal samen het startniveau per domein.",
+        "acties": [
+          "Voer de antwoorden in en noteer signalen of aandachtspunten.",
+          "Stel het startniveau vast op basis van de antwoorden.",
+          "Sla alle gegevens automatisch op voor latere evaluatie."
+        ]
+      },
+      {
+        "stap": "Stap 4: Opstellen Begeleidingsplan",
+        "doel": "Stel samen concrete SMART-doelen en acties op per domein.",
+        "acties": [
+          "Bespreek wat de cliënt nodig heeft per domein.",
+          "Stel SMART-doelen op (Specifiek, Meetbaar, Acceptabel, Realistisch, Tijdgebonden).",
+          "Formuleer acties zoals 'Huurcontract samen doorlezen' of 'Energiekosten uitleggen'.",
+          "Sla de doelen en acties op voor gebruik in vervolggesprekken."
+        ]
+      },
+      {
+        "stap": "Stap 5: Vervolgplanning",
+        "doel": "Plan regelmatige voortgangsgesprekken en pas het plan aan indien nodig.",
+        "acties": [
+          "Plan gesprekken van circa één uur per domein (indicatie).",
+          "Gebruik het MB‑Instrument voor voortgangsmeting.",
+          "Sla updates automatisch op en toon de voortgang.",
+          "Voer de laatste meting uit in het eindgesprek."
+        ]
+      }
+    ]
+  },
+  "handelingsplan": {
+    "gemeente": "",
+    "doelen": [
+      {
+        "vraag": "Rechten en Plichten: Ik ken de regels en mijn rechten als huurder.",
+        "antwoord": "",
+        "SMART": {
+          "specifiek": "De cliënt leert zijn/haar rechten als huurder kennen door het huurcontract samen door te nemen.",
+          "meetbaar": "Binnen 2 weken kan de cliënt de belangrijkste rechten benoemen.",
+          "acceptabel": "De cliënt is bereid dit samen met de begeleider te oefenen.",
+          "realistisch": "Informatie is beschikbaar via RefugeeHelp.nl en extra uitleg door de begeleider.",
+          "tijdgebonden": "Voorstel: 2 weken"
+        },
+        "concrete_stappen": [
+          "Plan een afspraak om het huurcontract samen door te nemen.",
+          "Bespreek concrete situaties en rechten met de begeleider."
+        ]
+      }
+    ],
+    "opmerkingen": "Deze doelen zijn voorstellen die in overleg verder worden verfijnd. Vraag zo nodig naar de gemeente van de cliënt voor lokale hulp."
+  },
+  "juridischeProcedure": {
+    "file": "JuridischeProcedure.json"
+  },
+  "algemeneInstructie": {
+    "introductie": "Deze instructie beschrijft de uniforme werkwijze voor het begeleiden van cliënten bij trajecten zoals het MB‑Instrument, gezinshereniging en MVV-aanvragen. Alle ondersteuning wordt gegeven vanuit de visie van Vluchtelingenwerk, gericht op de belangen van asielzoekers en statushouders.",
+    "secties": [
+      {
+        "titel": "1. Uniforme opzet voor elk traject",
+        "inhoud": [
+          "Alle begeleiders volgen dezelfde opbouw: introductie, stap-voor-stap vragen, feedback, vervolgacties en registratie.",
+          "Dit zorgt voor consistentie."
+        ]
+      },
+      {
+        "titel": "2. Antwoordopties per vraag",
+        "inhoud": [
+          "De cliënt kiest één antwoord: 1 = ‘Ik weet er niks van’, 2 = ‘Ik kan het samen’, 3 = ‘Ik kan het zelf’, NVT = ‘Niet van toepassing’.",
+          "Bij keuzes 1 of 2 krijgt de cliënt direct extra uitleg en praktische acties."
+        ]
+      },
+      {
+        "titel": "3. Maatschappelijke en juridische samenwerking",
+        "inhoud": [
+          "Begeleiders uit beide disciplines werken samen om een volledig beeld te krijgen van de situatie van de cliënt."
+        ]
+      },
+      {
+        "titel": "4. Voorbeeld: MVV-aanvraag",
+        "inhoud": [
+          "U legt uit dat de cliënt een paspoort, bewijs van relatie en een ingevuld formulier nodig heeft.",
+          "Bij goedkeuring haalt de cliënt het visum op en meldt zich binnen drie dagen bij het IND-nareisloket."
+        ]
+      },
+      {
+        "titel": "5. Voorbeeld: MB‑Instrument (zelfredzaamheid)",
+        "inhoud": [
+          "Bespreek de zes leefgebieden. De antwoorden worden gebruikt om een begeleidingsplan en voortgangsgesprekken op te stellen."
+        ]
+      },
+      {
+        "titel": "6. Analyse en registratie",
+        "inhoud": [
+          "Analyseer samen met de cliënt de antwoorden en stel het startniveau vast.",
+          "Sla alle gegevens automatisch op voor evaluaties."
+        ]
+      },
+      {
+        "titel": "7. Opstellen begeleidingsplan",
+        "inhoud": [
+          "Stel concrete SMART-doelen op per domein, bijvoorbeeld: 'Binnen 2 weken de belangrijkste huurrechten benoemen'.",
+          "Leg de acties en afspraken vast voor vervolgafspraken."
+        ]
+      },
+      {
+        "titel": "8. Vervolgafspraken plannen",
+        "inhoud": [
+          "Plan per domein gesprekken (ongeveer één uur als indicatie) en bepaal welke acties herhaald moeten worden."
+        ]
+      },
+      {
+        "titel": "9. Digitale ondersteuning door het systeem",
+        "inhoud": [
+          "Het systeem slaat alle antwoorden en acties op, biedt relevante uitleg en toont de voortgang."
+        ]
+      },
+      {
+        "titel": "10. Flexibel en schaalbaar gebruik",
+        "inhoud": [
+          "Het systeem is aanpasbaar voor zowel lokale als landelijke contexten en kan snel reageren op nieuwe regelgeving."
+        ]
+      },
+      {
+        "titel": "11. Doel en voordeel van deze werkwijze",
+        "inhoud": [
+          "Een uniforme, modulaire aanpak met directe digitale ondersteuning zorgt voor praktische en consistente begeleiding."
+        ]
+      },
+      {
+        "titel": "Let op",
+        "inhoud": [
+          "Alle informatie, antwoorden en vervolgacties worden automatisch opgeslagen voor toekomstig gebruik."
+        ]
+      }
+    ]
+  },
+  "mbInstrument": {
+    "mb_instrument": {
+      "title": "MB‑Instrument (Januari 2025)",
+      "introductie": "Welkom bij het MB‑Instrument. Na deze introductie start vraag 1.1 direct.",
+      "instructions": "Kies per vraag uit de volgende opties: '1. Ik weet er niks van', '2. Ik kan het samen', '3. Ik kan het zelf', 'NVT – Niet van toepassing'.",
+      "questions": [
+        {
+          "nummer": "1.1",
+          "tekst": "Rechten en Plichten: Ik ken de regels en mijn rechten als huurder.",
+          "antwoordOpties": [
+            "1. Ik weet er niks van",
+            "2. Ik kan het samen",
+            "3. Ik kan het zelf",
+            "NVT – Niet van toepassing"
+          ],
+          "linksVoorlichting": [
+            "https://www.refugeehelp.nl/nl/status-holder/article/100005-je-verhuist-vanuit-de-opvang-naar-je-huis",
+            "https://wonen.steffie.nl/nl/"
+          ]
+        },
+        {
+          "nummer": "1.2",
+          "tekst": "Nutsbedrijven: Ik weet hoe ik mijn verwarming, water en cv-ketel in huis kan gebruiken. Ook weet ik hoe ik een geschikt contract kan kiezen.",
+          "antwoordOpties": [
+            "1. Ik weet er niks van",
+            "2. Ik kan het samen",
+            "3. Ik kan het zelf",
+            "NVT – Niet van toepassing"
+          ],
+          "linksVoorlichting": [
+            "https://www.refugeehelp.nl/nl/status-holder/video/10008-uitleg-over-je-energierekening",
+            "https://energie.steffie.nl/nl/"
+          ]
+        },
+        {
+          "nummer": "1.3",
+          "tekst": "Verzekeringen: Ik weet hoe ik een goede verzekering kan vinden en afsluiten.",
+          "antwoordOpties": [
+            "1. Ik weet er niks van",
+            "2. Ik kan het samen",
+            "3. Ik kan het zelf",
+            "NVT – Niet van toepassing"
+          ],
+          "linksVoorlichting": [
+            "https://www.refugeehelp.nl/nl/status-holder/article/100307-verschillende-soorten-verzekeringen",
+            "https://verzekeringen.steffie.nl/nl/"
+          ]
+        },
+        {
+          "nummer": "1.4",
+          "tekst": "Internet en telefonie: Ik weet hoe ik een goed telefoon-, internet- en televisie-abonnement kan vinden en afsluiten.",
+          "antwoordOpties": [
+            "1. Ik weet er niks van",
+            "2. Ik kan het samen",
+            "3. Ik kan het zelf",
+            "NVT – Niet van toepassing"
+          ],
+          "linksVoorlichting": []
+        },
+        {
+          "nummer": "1.5",
+          "tekst": "Inrichting: Ik heb een ingerichte woning en weet welke veiligheidsmaatregelen ik zelf kan treffen (rookalarm, koolmonoxidemelder).",
+          "antwoordOpties": [
+            "1. Ik weet er niks van",
+            "2. Ik kan het samen",
+            "3. Ik kan het zelf",
+            "NVT – Niet van toepassing"
+          ],
+          "linksVoorlichting": [
+            "https://www.refugeehelp.nl/nl/status-holder/article/100105-veiligheid-in-nederland",
+            "https://brandweer.steffie.nl/nl/",
+            "https://brandweer.steffie.nl/nl/modules/112-bellen/#!/371/stap-01.html"
+          ]
+        }
+      ]
+    },
+    "procedure": {
+      "procedureTitle": "Maatschappelijke Begeleiding Procedure",
+      "source": "MB‑Instrument januari 2025",
+      "inleiding": "Deze procedure beschrijft de werkwijze voor maatschappelijke begeleiding volgens het MB‑Instrument januari 2025. De methode is gericht op het vergroten van de zelfredzaamheid van de cliënt door een planmatige aanpak waarin de cliënt centraal staat.",
+      "fasen": [
+        {
+          "fase": "Intake",
+          "beschrijving": "Het intakegesprek vindt plaats in de eerste weken na huisvesting. Tijdens dit gesprek wordt het MB‑Instrument ingevuld en wordt in overleg met de cliënt de eerste niveaubepaling vastgesteld.",
+          "voorlichting": {
+            "punten": [
+              {
+                "id": "1.1.1",
+                "tekst": "Verhuizing opvang naar eigen woning.",
+                "relevantFor": []
+              },
+              {
+                "id": "1.1.2",
+                "tekst": "Huurcontract doornemen (opzegtermijn, inwoning, onderverhuur, aanpassingen).",
+                "relevantFor": ["1.1"]
+              },
+              {
+                "id": "1.1.3",
+                "tekst": "Omgangsnormen voor een prettige woonomgeving (overlast, tuin bijhouden).",
+                "relevantFor": ["1.1"]
+              },
+              {
+                "id": "1.1.4",
+                "tekst": "Het zoeken van een andere woning.",
+                "relevantFor": []
+              }
+            ]
+          },
+          "acties": {
+            "punten": [
+              {
+                "id": "1.1.a",
+                "tekst": "Reparaties doorgeven / serviceabonnement.",
+                "relevantFor": []
+              },
+              {
+                "id": "1.1.b",
+                "tekst": "Voorbeeld casussen bespreken en telefoongesprek oefenen (geen warm water, huurachterstand).",
+                "relevantFor": ["1.1"]
+              },
+              {
+                "id": "1.1.c",
+                "tekst": "Oefenen met het telefonisch keuzemenu van de woningcoöperatie.",
+                "relevantFor": ["1.1"]
+              },
+              {
+                "id": "1.1.d",
+                "tekst": "De website van de woningcoöperatie bekijken.",
+                "relevantFor": ["1.1"]
+              },
+              {
+                "id": "1.1.e",
+                "tekst": "Afvalapp installeren en lokale afvaldata opzoeken.",
+                "relevantFor": []
+              }
+            ]
+          }
+        },
+        {
+          "fase": "Voortgangsgesprek",
+          "beschrijving": "Tijdens het voortgangsgesprek wordt het MB‑Instrument opnieuw ingevuld om de voortgang te evalueren. Samen worden de behaalde subdoelen en acties besproken en bijgesteld.",
+          "acties": {
+            "punten": [
+              {
+                "id": "2.1.a",
+                "tekst": "Evalueren van de voortgang op basis van de niveaubepaling.",
+                "relevantFor": []
+              },
+              {
+                "id": "2.1.b",
+                "tekst": "Bijstellen van het begeleidingsplan op basis van de besproken hiaten.",
+                "relevantFor": []
+              },
+              {
+                "id": "2.1.c",
+                "tekst": "Toevoegen van nieuwe acties indien extra ondersteuning nodig is.",
+                "relevantFor": []
+              }
+            ]
+          }
+        },
+        {
+          "fase": "Eindgesprek",
+          "beschrijving": "Een maand voor het einde van het traject wordt het MB‑Instrument voor de laatste keer ingevuld. Samen worden de behaalde resultaten geëvalueerd en eventuele resterende hiaten besproken.",
+          "acties": {
+            "punten": [
+              {
+                "id": "3.1.a",
+                "tekst": "Bespreken van de behaalde resultaten en de openstaande hiaten.",
+                "relevantFor": []
+              },
+              {
+                "id": "3.1.b",
+                "tekst": "Definitief begeleidingsplan opstellen en eventueel extra ondersteuning of verlenging aanvragen.",
+                "relevantFor": []
+              }
+            ]
+          }
+        }
+      ],
+      "doelstellingen": {
+        "hoofddoelen": [
+          "Versterken van het gevoel van eigenwaarde.",
+          "Vergroten van de zelfredzaamheid van de cliënt."
+        ],
+        "subdoelen": "Per domein worden de subdoelen verder uitgewerkt in het begeleidingsplan."
+      },
+      "benodigdeVaardigheden": [
+        "Cultuursensitief werken",
+        "Stress-sensitief en coachend werken",
+        "Knelpunten signaleren",
+        "Kennis van lokale regelgeving"
+      ],
+      "vervolgplanning": "Plan vervolgafspraken (sessies van 1 uur) om voortgang te evalueren en eventueel openstaande doelen te bespreken."
+    }
+  }
+}

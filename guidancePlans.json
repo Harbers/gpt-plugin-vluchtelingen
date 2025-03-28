@@ -1,0 +1,48 @@
+{
+  "Wonen": {
+    "description": "Verbeter de zelfredzaamheid en kennis van de cliënt op het gebied van wonen.",
+    "goals": [
+      "1. De cliënt kent zijn/haar rechten als huurder en begrijpt het huurcontract.",
+      "2. De cliënt monitort actief de staat van de woning en geeft reparatieverzoeken tijdig door.",
+      "3. De cliënt weet hoe hij/zij op zoek kan gaan naar een alternatieve woning indien nodig."
+    ]
+  },
+  "Kinderen": {
+    "description": "Zorg voor een veilige en stimulerende omgeving voor de kinderen.",
+    "goals": [
+      "1. De cliënt begrijpt het onderwijssysteem en weet hoe scholen en kinderopvang geregeld kunnen worden.",
+      "2. De cliënt onderhoudt contact met school en consultatiebureaus voor de ontwikkeling van de kinderen.",
+      "3. De cliënt stimuleert de deelname van de kinderen aan sport- en vrijetijdsactiviteiten."
+    ]
+  },
+  "FinanciënEnAdministratie": {
+    "description": "Verbeter het financieel beheer en de administratieve vaardigheden van de cliënt.",
+    "goals": [
+      "1. De cliënt heeft een duidelijk overzicht van inkomsten en uitgaven.",
+      "2. De cliënt maakt effectief gebruik van digitale tools zoals internetbankieren.",
+      "3. De cliënt weet welke toeslagen beschikbaar zijn en hoe deze aangevraagd kunnen worden."
+    ]
+  },
+  "SociaalNetwerk": {
+    "description": "Versterk het sociale netwerk van de cliënt zodat ondersteuning gewaarborgd is.",
+    "goals": [
+      "1. De cliënt is op de hoogte van lokale voorzieningen en instanties voor sociale ondersteuning.",
+      "2. De cliënt breidt actief het sociale netwerk uit via buurtinitiatieven en verenigingen."
+    ]
+  },
+  "MaatschappelijkeParticipatie": {
+    "description": "Verhoog de maatschappelijke participatie van de cliënt.",
+    "goals": [
+      "1. De cliënt is geïnformeerd over sport- en vrijetijdsactiviteiten in de buurt.",
+      "2. De cliënt begrijpt de mogelijkheden van openbaar vervoer en mobiliteitsdiensten."
+    ]
+  },
+  "ZorgEnGezondheid": {
+    "description": "Verbeter de kennis en het gebruik van zorgvoorzieningen.",
+    "goals": [
+      "1. De cliënt weet waar en hoe zorgdiensten te vinden zijn.",
+      "2. De cliënt begrijpt de verschillende zorgverzekeringsopties.",
+      "3. De cliënt weet hoe te handelen bij gezondheidsklachten en spoedeisende situaties."
+    ]
+  }
+}

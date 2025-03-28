@@ -1,0 +1,79 @@
+{
+  "PROC001": {
+    "title": "MVV-aanvraag Procedure",
+    "description": "Procedure voor het aanvragen van een MVV (Machtiging tot Voorlopig Verblijf).",
+    "steps": [
+      {
+        "step": 1,
+        "description": "Dien de MVV-aanvraag in met een geldig paspoort, volledig ingevuld aanvraagformulier en alle vereiste documenten. Zorg voor anonimisatie."
+      },
+      {
+        "step": 2,
+        "description": "Na goedkeuring haalt de cliënt het MVV-visum persoonlijk op binnen 90 dagen."
+      },
+      {
+        "step": 3,
+        "description": "Reis met het afgehaalde MVV-visum naar Nederland, waarbij alle reisdocumenten geanonimiseerd zijn."
+      },
+      {
+        "step": 4,
+        "description": "Meld de cliënt zich binnen 3 dagen na aankomst bij het Nareisloket van de IND."
+      }
+    ]
+  },
+  "PROC002": {
+    "title": "Gezinshereniging Procedure",
+    "description": "Procedure voor het begeleiden van gezinshereniging bij asielzoekers en statushouders.",
+    "steps": [
+      { "step": 1, "description": "Voer een intake en vooronderzoek uit om de gezinssamenstelling en behoeften vast te stellen." },
+      { "step": 2, "description": "Geef advies en voorlichting over de wettelijke kaders en benodigde documenten." },
+      { "step": 3, "description": "Verzamel alle vereiste documenten en stel een dossier op (anonimiseren)." },
+      { "step": 4, "description": "Dien het dossier in bij de bevoegde instantie." },
+      { "step": 5, "description": "Volg de voortgang op en ondersteun bij bezwaar- of beroepsprocedures indien nodig." },
+      { "step": 6, "description": "Bied nazorg en ondersteuning bij de integratie na gezinshereniging." }
+    ]
+  },
+  "PROC003": {
+    "title": "Integratie en Inburgering Procedure",
+    "description": "Procedure voor de maatschappelijke begeleiding bij integratie en inburgering van vluchtelingen en statushouders.",
+    "steps": [
+      { "step": 1, "description": "Stel prioriteiten en voer een intake uit met het MB‑Instrument." },
+      { "step": 2, "description": "Stel een begeleidingsplan op met concrete doelen per domein." },
+      { "step": 3, "description": "Voer praktische ondersteuning en uitvoering van acties uit." },
+      { "step": 4, "description": "Plan evaluaties en vervolgafspraken (sessies van 1 uur) om voortgang te bespreken." }
+    ]
+  },
+  "PROC004": {
+    "title": "Juridische Zaken Procedure",
+    "description": "Procedure voor juridische medewerkers om actuele juridische informatie op te zoeken met betrekking tot vluchtelingenzaken, inclusief casusanalyse met volledige bronvermelding.",
+    "steps": [
+      { "step": 1, "description": "Start met de vraag 'Ik ben juridisch medewerker' en toon een lijst van 20 onderwerpen." },
+      { "step": 2, "description": "Vraag de gebruiker om een keuze en haal de relevante informatie op uit de gekoppelde URL's." },
+      { "step": 3, "description": "Voer, indien van toepassing, een casusanalyse uit en geef alle bronnen met publicatiedata weer volgens APA-standaard." }
+    ]
+  },
+  "PROC005": {
+    "title": "Juridische Documenten en Brieven Opstellen",
+    "description": "Procedure voor het opstellen van juridische documenten en brieven volgens strikte juridische richtlijnen.",
+    "steps": [
+      { "step": 1, "description": "Begin met een formele inleiding waarin het doel en de context van het document duidelijk worden omschreven." },
+      { "step": 2, "description": "Gebruik uitsluitend strikt juridische terminologie en definieer alle termen eenduidig." },
+      { "step": 3, "description": "Structureer het document met duidelijke kopjes en onderverdelingen." },
+      { "step": 4, "description": "Vermeld alle juridische verwijzingen en bronnen nauwkeurig, inclusief publicatiedata." },
+      { "step": 5, "description": "Sluit het document af met een formele conclusie en eventuele aanbevelingen." }
+    ]
+  },
+  "PROC006": {
+    "title": "Casusanalyse en Juridisch Advies",
+    "description": "Procedure voor juridisch begeleiders om samen met de cliënt een juridische casus te analyseren en een helder juridisch advies op te stellen.",
+    "steps": [
+      { "step": 1, "description": "Vraag de cliënt of er een specifieke casus is waarvoor juridische ondersteuning gewenst is." },
+      { "step": 2, "description": "Stel gerichte juridische vragen over de aanleiding, documenten, belang en termijnen." },
+      { "step": 3, "description": "Blijf doorvragen totdat alle relevante feiten en juridische kaders duidelijk zijn." },
+      { "step": 4, "description": "Analyseer de casus en koppel terug naar relevante wetgeving, jurisprudentie en officiële bronnen met volledige APA-bronvermelding." },
+      { "step": 5, "description": "Stel een concreet juridisch advies op met een stappenplan en concrete acties." },
+      { "step": 6, "description": "Vraag of de casus in een verslag moet worden vastgelegd; zo ja, genereer en sla het verslag op." },
+      { "step": 7, "description": "Indien nodig, stel een juridische brief op volgens de geldende normen." }
+    ]
+  }
+}

@@ -1,0 +1,622 @@
+{
+  "startVraag": "Ik ben juridisch medewerker",
+  "context": "Alle informatie is gericht op de belangen van asielzoekers, statushouders en andere doelgroepen van Vluchtelingenwerk Nederland, met focus op actuele juridische ontwikkelingen.",
+  "menu": {
+    "instructie": "Kies de gewenste optie door het nummer in te voeren:",
+    "opties": [
+      {
+        "nummer": 1,
+        "omschrijving": "Kies een juridisch onderwerp (20 thema’s) – Toegang tot actuele juridische informatie inclusief APA-bronvermelding en 'Laatste ontwikkelingen'."
+      },
+      {
+        "nummer": 2,
+        "omschrijving": "Start een specifieke juridische procedure (bijv. MVV-aanvraag, Gezinshereniging, Integratie en Inburgering)."
+      },
+      {
+        "nummer": 3,
+        "omschrijving": "Voer een casusanalyse uit – Analyseer individuele casussen en stel juridisch advies op."
+      }
+    ]
+  },
+  "onderwerpen": [
+    {
+      "title": "Asielbeleid en Wetgeving",
+      "sources": [
+        {
+          "sourceTitle": "Rijksoverheid – Asielbeleid",
+          "url": "https://www.rijksoverheid.nl/onderwerpen/asielbeleid",
+          "description": "Informatie over het Nederlandse asielbeleid en relevante wet- en regelgeving."
+        },
+        {
+          "sourceTitle": "Immigratie- en Naturalisatiedienst (IND)",
+          "url": "https://ind.nl/nl/asielprocedures-in-nederland",
+          "description": "Details over de asielprocedures in Nederland."
+        },
+        {
+          "sourceTitle": "Rijksoverheid Nieuws (RSS Asielbeleid)",
+          "url": "https://www.rijksoverheid.nl/service/rss/asielbeleid",
+          "description": "Actuele nieuwsberichten over asielbeleid en migratie."
+        }
+      ],
+      "laatsteOntwikkelingen": {
+        "rss": "https://www.rijksoverheid.nl/service/rss/asielbeleid"
+      },
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar aanvullende informatie over wetgeving en regelgeving rondom asielbeleid.",
+        "zoekTermen": [
+          "wetgeving asiel",
+          "Vreemdelingenwet",
+          "immigratiewetgeving Nederland",
+          "Europese asielregelgeving",
+          "juridische kaders asielbeleid",
+          "asielprocedures Nederland",
+          "beslistermijn moratoria",
+          "dwangsommen asiel",
+          "asielbeleid juridische ontwikkelingen",
+          "asielprocedure updates"
+        ],
+        "resultaatToon": "Toon een overzicht met titels, publicatiedata, samenvattingen en links.",
+        "doorvragen": true
+      },
+      "documenten": {
+        "externeZoekactie": {
+          "beschrijving": "Zoek naar documenten over wetgeving en regelgeving met betrekking tot asielbeleid.",
+          "zoekTermen": [
+            "asiel wetgeving documenten",
+            "Vreemdelingenwet documenten",
+            "immigratiewet documenten",
+            "asielprocedure documenten",
+            "beslistermijn documenten",
+            "dwangsommen documenten",
+            "overheid asiel documenten",
+            "asielregelgeving rapport"
+          ],
+          "resultaatToon": "Toon een overzicht met titels, publicatiedata, korte samenvattingen en links naar de documenten.",
+          "doorvragen": true
+        },
+        "laatsteDocumenten": {
+          "rss": "https://www.rijksoverheid.nl/service/rss/asieldocumenten"
+        }
+      }
+    },
+    {
+      "title": "Jurisprudentie en Rechtspraak",
+      "sources": [
+        {
+          "sourceTitle": "Rechtspraak.nl – Uitspraken Asielzaken",
+          "url": "https://www.rechtspraak.nl/Uitspraken/Jurisprudentie-Asiel",
+          "description": "Recente jurisprudentie op het gebied van asiel en migratie."
+        },
+        {
+          "sourceTitle": "Europese Rechtspraak (CEDO)",
+          "url": "https://hudoc.echr.coe.int",
+          "description": "Uitspraken van het Europees Hof voor de Rechten van de Mens (EHRM) inzake asiel."
+        }
+      ],
+      "laatsteOntwikkelingen": {
+        "rss": "https://www.rechtspraak.nl/Uitspraken/rss"
+      },
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar recente jurisprudentie en rechtspraak rondom vluchtelingenrecht.",
+        "zoekTermen": [
+          "asiel jurisprudentie nieuw",
+          "uitspraak vreemdelingenrecht",
+          "EHRM asielcases"
+        ],
+        "resultaatToon": "Toon de relevante uitspraken met datum en samenvatting.",
+        "doorvragen": true
+      },
+      "documenten": {
+        "externeZoekactie": {
+          "beschrijving": "Zoek naar samenvattingen en analyses van belangrijke asieljurisprudentie.",
+          "zoekTermen": [
+            "analyse asiel jurisprudentie",
+            "juridische analyse vluchtelingenuitspraak"
+          ],
+          "resultaatToon": "Geef een overzicht van gevonden documenten met samenvatting en herkomst.",
+          "doorvragen": true
+        }
+      }
+    },
+    {
+      "title": "Internationale Verdragen en Landeninformatie",
+      "sources": [
+        {
+          "sourceTitle": "UNHCR – Country of Origin Information",
+          "url": "https://www.unhcr.org/refugee-statistics/",
+          "description": "Informatie en verdragen per land van herkomst."
+        },
+        {
+          "sourceTitle": "European Country of Origin Information Network (ECOI)",
+          "url": "https://www.ecoi.net",
+          "description": "Actuele landeninformatie voor asielprocedures."
+        }
+      ],
+      "laatsteOntwikkelingen": {
+        "rss": "https://www.unhcr.org/rss-news"
+      },
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar wijzigingen in internationale verdragen en landenrapporten.",
+        "zoekTermen": [
+          "nieuw verdrag asiel",
+          "landenrapport update asiel"
+        ],
+        "resultaatToon": "Som wijzigingen op in verdragen en landeninfo met bron.",
+        "doorvragen": true
+      },
+      "documenten": {
+        "externeZoekactie": {
+          "beschrijving": "Zoek naar documenten (rapporten, verdragen) voor asiel per land.",
+          "zoekTermen": [
+            "UNHCR land rapport",
+            "nieuw asielverdrag document"
+          ],
+          "resultaatToon": "Toon gevonden documenten met titel en link.",
+          "doorvragen": true
+        }
+      }
+    },
+    {
+      "title": "Juridische Ondersteuning en Begeleiding",
+      "sources": [
+        {
+          "sourceTitle": "Vluchtelingenwerk Nederland – Juridische begeleiding",
+          "url": "https://www.vluchtelingenwerk.nl/juridische-begeleiding",
+          "description": "Werkwijze en rol van juridisch begeleiders bij Vluchtelingenwerk."
+        },
+        {
+          "sourceTitle": "Asiel & Migrantenrecht (Tijdschrift)",
+          "url": "https://www.uitgeverij-std.nl/asiel-migrantenrecht",
+          "description": "Vakblad over ontwikkelingen in het vreemdelingenrecht."
+        }
+      ],
+      "laatsteOntwikkelingen": {
+        "rss": "https://www.vluchtelingenwerk.nl/rss-juridische-begeleiding"
+      },
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar best practices in juridische begeleiding.",
+        "zoekTermen": [
+          "juridische begeleiding vluchtelingen best practice",
+          "rol juridisch medewerker asiel"
+        ],
+        "resultaatToon": "Beschrijf kort gevonden goede voorbeelden.",
+        "doorvragen": true
+      },
+      "documenten": {
+        "externeZoekactie": {
+          "beschrijving": "Zoek naar interne handleidingen of protocollen juridische begeleiding.",
+          "zoekTermen": [
+            "protocol juridische begeleiding vluchtelingenwerk",
+            "handleiding juridisch medewerker asiel"
+          ],
+          "resultaatToon": "Overzicht van interne documenten met samenvatting.",
+          "doorvragen": true
+        }
+      }
+    },
+    {
+      "title": "Tijdschriften en Publicaties",
+      "sources": [
+        {
+          "sourceTitle": "Journaal Vreemdelingenrecht",
+          "url": "https://www.juvenaat.nl",
+          "description": "Periodieke uitgave over vreemdelingenrecht."
+        },
+        {
+          "sourceTitle": "Stichting Migratierecht Nederland – Nieuwsbrief",
+          "url": "https://migratierecht.nl/nieuwsbrief",
+          "description": "Updates en artikelen over migratierecht."
+        }
+      ],
+      "laatsteOntwikkelingen": {
+        "rss": "https://migratierecht.nl/rss"
+      },
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar relevante artikelen in vakbladen.",
+        "zoekTermen": [
+          "migratierecht artikel recent",
+          "tijdschrift vreemdelingenrecht laatste"
+        ],
+        "resultaatToon": "Noem recente relevante publicaties met bron.",
+        "doorvragen": true
+      }
+    },
+    {
+      "title": "Procedures in Asielzaken",
+      "sources": [
+        {
+          "sourceTitle": "IND – Asielprocedure stap voor stap",
+          "url": "https://ind.nl/nl/asiel-stappenplan",
+          "description": "Uitleg van de verschillende stappen in de asielprocedure."
+        },
+        {
+          "sourceTitle": "Vluchtelingenwerk – Procedures",
+          "url": "https://www.vluchtelingenwerk.nl/procedures",
+          "description": "Overzicht van asielprocedures en begeleiding daarbij."
+        }
+      ],
+      "laatsteOntwikkelingen": {
+        "rss": "https://ind.nl/nl/rss-asiel-updates"
+      },
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar wijzigingen in asielproces (bijv. nieuwe wet).",
+        "zoekTermen": [
+          "asielprocedure wijziging",
+          "nieuwe wet asiel"
+        ],
+        "resultaatToon": "Toon als er nieuwe stappen of regels zijn.",
+        "doorvragen": true
+      }
+    },
+    {
+      "title": "Specifieke Groepen en Culturele Achtergrond",
+      "sources": [
+        {
+          "sourceTitle": "COA – Kwetsbare Groepen",
+          "url": "https://www.coa.nl/nl/kwetsbare-groepen",
+          "description": "Beleid voor LHBTI, minderjarigen en andere kwetsbare groepen."
+        },
+        {
+          "sourceTitle": "UNHCR – Culturele Profielen",
+          "url": "https://www.unhcr.org/cultural-profiles",
+          "description": "Informatie over culturele achtergrond voor asielinstanties."
+        }
+      ],
+      "laatsteOntwikkelingen": {
+        "rss": "https://www.coa.nl/rss-kwetsbare-groepen"
+      },
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar recente ontwikkelingen voor specifieke groepen (LHBTI, minderjarigen).",
+        "zoekTermen": [
+          "LHBTI asiel nieuws",
+          "amv asiel update"
+        ],
+        "resultaatToon": "Noem eventuele nieuwe beschermingsmaatregelen.",
+        "doorvragen": true
+      }
+    },
+    {
+      "title": "Geografische Informatie en Herkomstbepaling",
+      "sources": [
+        {
+          "sourceTitle": "European Asylum Support Office (EASO)",
+          "url": "https://easo.europa.eu/country-guidance",
+          "description": "Landgebonden richtsnoeren voor asiel."
+        },
+        {
+          "sourceTitle": "Koninklijke Bibliotheek – Vluchtelingen",
+          "url": "https://www.kb.nl/themas/migratie-vluchtelingen",
+          "description": "Bibliotheekcollectie over migratie en vluchtelingen."
+        }
+      ],
+      "laatsteOntwikkelingen": {
+        "rss": "https://easo.europa.eu/rss-country-guidance"
+      },
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar updates in landeninformatie systemen.",
+        "zoekTermen": [
+          "EASO nieuwe landeninfo",
+          "herkomstbepaling update"
+        ],
+        "resultaatToon": "Som wijzigingen op in landengegevens.",
+        "doorvragen": true
+      }
+    },
+    {
+      "title": "Gezondheidszorg",
+      "sources": [
+        {
+          "sourceTitle": "Pharos – Zorg voor Vluchtelingen",
+          "url": "https://www.pharos.nl/vluchtelingen",
+          "description": "Gezondheidszorginformatie specifiek voor vluchtelingen."
+        },
+        {
+          "sourceTitle": "Zorginstituut Nederland",
+          "url": "https://www.zorginstituutnederland.nl",
+          "description": "Beleid en verzekeringen in de zorg ook voor asielzoekers."
+        }
+      ],
+      "laatsteOntwikkelingen": {
+        "rss": "https://www.zorginstituutnederland.nl/rss"
+      },
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar nieuwe regelingen in zorg voor asielzoekers.",
+        "zoekTermen": [
+          "zorg asielzoekers regeling",
+          "verzekering vluchteling wijziging"
+        ],
+        "resultaatToon": "Beschrijf nieuwe zorginitiatieven of regels.",
+        "doorvragen": true
+      }
+    },
+    {
+      "title": "Inburgering en Integratie",
+      "sources": [
+        {
+          "sourceTitle": "Ministerie SZW – Inburgeren.nl",
+          "url": "https://www.inburgeren.nl",
+          "description": "Officiële informatie over inburgeringstrajecten."
+        },
+        {
+          "sourceTitle": "Integratiefonds",
+          "url": "https://www.integratiefonds.nl",
+          "description": "Projecten en subsidies gericht op integratie."
+        }
+      ],
+      "laatsteOntwikkelingen": {
+        "rss": "https://www.inburgeren.nl/rss"
+      },
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar nieuws over inburgeringsbeleid.",
+        "zoekTermen": [
+          "nieuwe inburgeringswet",
+          "integratie programma update"
+        ],
+        "resultaatToon": "Toon recente wijzigingen in inburgeringsbeleid.",
+        "doorvragen": true
+      }
+    },
+    {
+      "title": "Anti-Racisme en Discriminatie",
+      "sources": [
+        {
+          "sourceTitle": "Meld Punt Discriminatie",
+          "url": "https://meldpuntdiscriminatie.nl",
+          "description": "Platform voor het melden van discriminatie."
+        },
+        {
+          "sourceTitle": "Amnesty International – Racisme",
+          "url": "https://www.amnesty.nl/thema/racisme",
+          "description": "Campagnes en standpunten rond racisme en vluchtelingen."
+        }
+      ],
+      "laatsteOntwikkelingen": {
+        "rss": "https://www.amnesty.nl/rss-racisme"
+      },
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar incidenten of beleid tegen discriminatie van vluchtelingen.",
+        "zoekTermen": [
+          "discriminatie asielzoekers nieuws",
+          "beleid racisme vluchtelingen"
+        ],
+        "resultaatToon": "Som beleid of incidenten op met bronnen.",
+        "doorvragen": true
+      }
+    },
+    {
+      "title": "Bibliotheekcatalogi",
+      "sources": [
+        {
+          "sourceTitle": "Koninklijke Bibliotheek Catalogus",
+          "url": "https://opc-kb.oclc.org",
+          "description": "Catalogus van de Koninklijke Bibliotheek voor literatuur over asiel."
+        },
+        {
+          "sourceTitle": "Bibliotheek.nl – Vluchtelingen",
+          "url": "https://www.bibliotheek.nl/catalogus/vluchtelingen",
+          "description": "Overzicht van beschikbare boeken en publicaties over vluchtelingen."
+        }
+      ],
+      "laatsteOntwikkelingen": {},
+      "externeZoekactie": {
+        "beschrijving": "Zoek in bibliotheekdatabases naar nieuwste boeken over migratie.",
+        "zoekTermen": [
+          "nieuw boek asiel 2024",
+          "bibliotheek vluchtelingenwerk"
+        ],
+        "resultaatToon": "Toon titels van nieuwe publicaties en auteurs.",
+        "doorvragen": true
+      }
+    },
+    {
+      "title": "Kranten en Pers",
+      "sources": [
+        {
+          "sourceTitle": "NRC – Dossiers Migratie",
+          "url": "https://www.nrc.nl/dossier/migratie",
+          "description": "Nieuwsartikelen en dossiers over migratie en asiel."
+        },
+        {
+          "sourceTitle": "de Volkskrant – Asielzoeker Nieuws",
+          "url": "https://www.volkskrant.nl/tag/asielzoekers",
+          "description": "Actueel nieuws over asielzoekers in Nederland."
+        }
+      ],
+      "laatsteOntwikkelingen": {
+        "rss": "https://www.nrc.nl/rss"
+      },
+      "externeZoekactie": {
+        "beschrijving": "Zoek in recente nieuwsartikelen naar asielgerelateerd nieuws.",
+        "zoekTermen": [
+          "krantenbericht asiel",
+          "nieuws asielzoekers vandaag"
+        ],
+        "resultaatToon": "Noem de belangrijkste krantenkoppen van recente artikelen.",
+        "doorvragen": true
+      }
+    },
+    {
+      "title": "Politieke Partijen en Beleid",
+      "sources": [
+        {
+          "sourceTitle": "Tweede Kamer – Kamerstukken Asiel",
+          "url": "https://zoek.officielebekendmakingen.nl/kv-tk-onderwerp-asiel",
+          "description": "Parlementaire stukken over asielbeleid."
+        },
+        {
+          "sourceTitle": "Kiesraad – Standpunten immigratie",
+          "url": "https://www.kiesraad.nl/immigratie",
+          "description": "Overzicht standpunten politieke partijen m.b.t. immigratie."
+        }
+      ],
+      "laatsteOntwikkelingen": {
+        "rss": "https://parlement.com/rss/asielbeleid"
+      },
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar recente Kamerdebatten of partijstandpunten over asiel.",
+        "zoekTermen": [
+          "nieuw asielplan kabinet",
+          "partijstandpunt vluchtelingen 2025"
+        ],
+        "resultaatToon": "Toon nieuwe beleidsvoorstellen of partijstandpunten.",
+        "doorvragen": true
+      }
+    },
+    {
+      "title": "Statistieken",
+      "sources": [
+        {
+          "sourceTitle": "CBS – Asielinstroom Cijfers",
+          "url": "https://opendata.cbs.nl/statline/#/CBS/nl/dataset/Asielzoekers",
+          "description": "Cijfers over aantallen asielzoekers en statushouders."
+        },
+        {
+          "sourceTitle": "Eurostat – Asylum Statistics",
+          "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Asylum_statistics",
+          "description": "Europese statistieken over asielaanvragen."
+        }
+      ],
+      "laatsteOntwikkelingen": {
+        "rss": "https://opendata.cbs.nl/rss/Asielzoekers"
+      },
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar trends in de nieuwste asielstatistieken.",
+        "zoekTermen": [
+          "asielinstroom kwartaal cijfers",
+          "statistiek vluchtelingen 2024"
+        ],
+        "resultaatToon": "Geef recente cijfers en trends weer.",
+        "doorvragen": true
+      }
+    },
+    {
+      "title": "Terugkeer en Opvang van Uitgeprocedeerden",
+      "sources": [
+        {
+          "sourceTitle": "DT&V – Terugkeerbeleid",
+          "url": "https://www.dtenv.nl/terugkeerbeleid",
+          "description": "Overheidsbeleid inzake terugkeer van afgewezen asielzoekers."
+        },
+        {
+          "sourceTitle": "COA – Opvanglocaties",
+          "url": "https://www.coa.nl/opvang-uitgeprocedeerden",
+          "description": "Informatie over opvang voor uitgeprocedeerde asielzoekers."
+        }
+      ],
+      "laatsteOntwikkelingen": {
+        "rss": "https://www.dtenv.nl/rss-terugkeer"
+      },
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar ontwikkelingen rondom terugkeerbeleid.",
+        "zoekTermen": [
+          "nieuw terugkeerakkoord",
+          "opvang uitgeprocedeerden nieuws"
+        ],
+        "resultaatToon": "Som eventuele nieuwe afspraken of knelpunten op.",
+        "doorvragen": true
+      }
+    },
+    {
+      "title": "Verdragen en Internationale Rechtspraak",
+      "sources": [
+        {
+          "sourceTitle": "Verenigde Naties – Treaty Collection",
+          "url": "https://treaties.un.org",
+          "description": "Verdragen relevant voor vluchtelingen (VN)."
+        },
+        {
+          "sourceTitle": "Stichting Migratierecht Nederland – Case Law",
+          "url": "https://migratierecht.nl/caselaw",
+          "description": "Internationale uitspraken inzake migratierecht."
+        }
+      ],
+      "laatsteOntwikkelingen": {
+        "rss": "https://migratierecht.nl/rss-caselaw"
+      },
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar nieuwe uitspraken internationaal inzake asiel.",
+        "zoekTermen": [
+          "Europees Hof uitspraak asiel",
+          "nieuw VN-verdrag migranten"
+        ],
+        "resultaatToon": "Geef voorbeeld van een recente uitspraak of verdrag.",
+        "doorvragen": true
+      }
+    },
+    {
+      "title": "Vrouwenorganisaties",
+      "sources": [
+        {
+          "sourceTitle": "Vrouwenrechten.nl",
+          "url": "https://vrouwenrechten.nl",
+          "description": "Informatie over vrouwenrechten en asielzoekers."
+        },
+        {
+          "sourceTitle": "Women’s Refugee Commission",
+          "url": "https://www.womensrefugeecommission.org",
+          "description": "Onderzoek en steun voor vrouwelijke vluchtelingen."
+        }
+      ],
+      "laatsteOntwikkelingen": {},
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar projecten van vrouwenorganisaties voor vluchtelingen.",
+        "zoekTermen": [
+          "project vrouwen vluchtelingen 2025",
+          "gender asiel ondersteuning"
+        ],
+        "resultaatToon": "Noem initiatieven en betrokken organisaties.",
+        "doorvragen": true
+      }
+    },
+    {
+      "title": "Vrijwilligerswerk",
+      "sources": [
+        {
+          "sourceTitle": "NLvoorelkaar",
+          "url": "https://www.nlvoorelkaar.nl/vluchtelingen",
+          "description": "Platform voor vrijwilligerswerk met vluchtelingen."
+        },
+        {
+          "sourceTitle": "Vrijwilligerswerk.nl – Vluchtelingen",
+          "url": "https://vrijwilligerswerk.nl/vluchtelingen",
+          "description": "Mogelijkheden voor vrijwilligers om vluchtelingen te ondersteunen."
+        }
+      ],
+      "laatsteOntwikkelingen": {},
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar nieuwe vrijwilligersinitiatieven voor asielzoekers.",
+        "zoekTermen": [
+          "vrijwilligersproject asielzoekers",
+          "nieuw vrijwilligerswerk vluchtelingen"
+        ],
+        "resultaatToon": "Licht nieuwe initiatieven kort toe.",
+        "doorvragen": true
+      }
+    },
+    {
+      "title": "Wetenschappelijke Instituten",
+      "sources": [
+        {
+          "sourceTitle": "WODC – Onderzoek Migratie",
+          "url": "https://www.wodc.nl/onderzoeksdatabase/migratie",
+          "description": "Wetenschappelijk onderzoek naar migratie en asiel."
+        },
+        {
+          "sourceTitle": "NARCIS",
+          "url": "https://www.narcis.nl",
+          "description": "Portaal voor Nederlandse wetenschappelijke output over migratie."
+        }
+      ],
+      "laatsteOntwikkelingen": {},
+      "externeZoekactie": {
+        "beschrijving": "Zoek naar recente studies over vluchtelingen.",
+        "zoekTermen": [
+          "onderzoek asielzoekers 2024",
+          "universiteit studie migratie"
+        ],
+        "resultaatToon": "Som één recent onderzoek met bevinding.",
+        "doorvragen": true
+      }
+    }
+  ]
+}
