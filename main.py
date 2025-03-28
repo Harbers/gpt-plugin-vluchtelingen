@@ -117,7 +117,7 @@ def search_plugin_updates(subject, max_items=10, section="Externe zoekresultaten
             print(f"  {item['summary']}")
             from duckduckgo_search import DDGS
 
-from duckduckgo_search.ddg import DDGS  # Zorg dat deze import ook bovenin het bestand staat
+from duckduckgo_search import DDGS  # GOED  # Zorg dat deze import ook bovenin het bestand staat
 
 def search_duckduckgo_free(subject, max_items=10, section="Externe zoekresultaten (DuckDuckGo)"):
     """
