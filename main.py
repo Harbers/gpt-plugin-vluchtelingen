@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from fastapi import FastAPI, Response
-from fastapi import FastAPI
+from fastapi import FastAPI, Response, HTTPException, Query
 import json
 import os
 import requests
@@ -11,9 +10,9 @@ import feedparser  # pip install feedparser
 from datetime import datetime, timedelta
 from urllib.parse import quote
 from duckduckgo_search import DDGS
+from zoekfilters import filter_resultaten  # Nieuwe import voor filtering
 
 app = FastAPI()
-
 
 def load_json(file_path):
     if not os.path.isfile(file_path):
@@ -28,6 +27,41 @@ def start():
 @app.head("/")
 def head_root():
     return Response(status_code=200)
+
+# Nieuwe /search endpoint met filtering
+@app.get("/search")
+def search_endpoint(onderwerp: str = Query(..., description="Het onderwerp om op te zoeken")):
+    # Laad de zoektermen uit het JSON-bestand
+    try:
+        with open("ZoekenInternet.json", encoding="utf-8") as f:
+            bronnen = json.load(f)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="ZoekenInternet.json bestand niet gevonden.")
+    
+    zoektermen = bronnen.get(onderwerp, [])
+    if not zoektermen:
+        raise HTTPException(status_code=404, detail=f"Geen zoektermen gevonden voor onderwerp: {onderwerp}")
+
+    resultaten = []
+    with DDGS() as ddgs:
+        for term in zoektermen:
+            for r in ddgs.text(term, max_results=3):
+                resultaat = {
+                    "titel": r.get("title"),
+                    "link": r.get("href"),
+                    "samenvatting": r.get("body")
+                }
+                resultaten.append(resultaat)
+    
+    # Pas de filter toe op de opgehaalde resultaten
+    gefilterde_resultaten = filter_resultaten(resultaten)
+    if not gefilterde_resultaten:
+        raise HTTPException(status_code=404, detail="Geen relevante updates gevonden die voldoen aan de criteria.")
+    return gefilterde_resultaten[:10]
+
+# -----------------------------
+# Interactieve functies en overige logica
+# -----------------------------
 
 def ask_question(question):
     nummer = question["nummer"]
@@ -123,9 +157,6 @@ def search_plugin_updates(subject, max_items=10, section="Externe zoekresultaten
         for item in all_results:
             print(f"- {item['title']} ({item['published']})")
             print(f"  {item['summary']}")
-            from duckduckgo_search import DDGS
-
-from duckduckgo_search import DDGS  # GOED  # Zorg dat deze import ook bovenin het bestand staat
 
 def search_duckduckgo_free(subject, max_items=10, section="Externe zoekresultaten (DuckDuckGo)"):
     """
@@ -163,11 +194,6 @@ def search_duckduckgo_free(subject, max_items=10, section="Externe zoekresultate
     if not results:
         print("Geen externe zoekresultaten gevonden via DuckDuckGo.")
     else:
-        for item in results:
-            print(f"- {item['title']} ({item['published']})")
-            print(f"  {item['summary']}")
-            print(f"  Lees meer: {item['link']}")
-       
         for item in results:
             print(f"- {item['title']} ({item['published']})")
             print(f"  {item['summary']}")
@@ -459,13 +485,11 @@ def start_mb_instrument():
 
 def start_juridisch_begeleider():
     main_data = load_json("main.json")
-    print("\nWelkom! Omdat u hebt aangegeven dat u juridisch begeleider bent, kunt u kiezen uit de volgende modules:")
+    print("\nWelkom juridisch begeleider!")
+    print("Kies uit de volgende modules:")
     print("1. Juridisch Onderwerp Kiezen")
-    print("   (Krijg toegang tot actuele juridische informatie met externe zoekacties en fetch-resultaten.)")
-    print("2. Starten van een specifieke juridische procedure")
-    print("   (Bijvoorbeeld een MVV-aanvraag, gezinshereniging of inburgeringsprocedure begeleiden.)")
-    print("3. Bespreken van een Juridische Casus")
-    print("   (Stap-voor-stap begeleiding bij het analyseren van een individuele casus, inclusief advies en verslaglegging.)")
+    print("2. Start een specifieke juridische procedure")
+    print("3. Bespreek een Juridische Casus")
     keuze = input("\nTyp 1, 2 of 3 om uw keuze te maken: ").strip().lower()
     if keuze == "1":
         process_juridische_procedure(main_data)
@@ -506,187 +530,3 @@ def choose_procedure():
                 break
         if not found:
             print("Geen geldige keuze gemaakt.")
-
-def start_casusanalyse(main_data):
-    print("\nWilt u een juridische casus bespreken? (ja/nee)")
-    antwoord = input().strip().lower()
-    if antwoord != "ja":
-        print("Oké, geen casusanalyse uitgevoerd.")
-        return
-    print("\nLaten we beginnen met de casusanalyse. Beantwoord alstublieft de volgende juridische vragen.")
-    casus_data = {}
-    casus_data["aanleiding"] = input("Wat is de juridische aanleiding van de casus? ")
-    casus_data["rechtsbelang"] = input("Wat is het juridische belang voor de cliënt? ")
-    casus_data["documenten"] = input("Beschrijf kort de relevante documenten of besluiten: ")
-    casus_data["termijn"] = input("Is er een specifieke termijn of deadline? ")
-    while True:
-        extra = input("Zijn er nog andere relevante feiten of juridische aspecten? (typ 'nee' als alles duidelijk is) ")
-        if extra.strip().lower() == "nee":
-            break
-        casus_data.setdefault("andere_feiten", []).append(extra)
-    print("\n=== VERZAMELDE CASUSINFORMATIE ===")
-    for key, value in casus_data.items():
-        print(f"{key}: {value}")
-    juridisch_advies = (
-        "Op basis van de verstrekte informatie adviseren wij: Controleer het besluit grondig, verzamel alle relevante documenten en overweeg een formeel bezwaar. "
-        "Neem contact op met een gespecialiseerde advocaat voor verdere begeleiding."
-    )
-    print("\n=== JURIDISCH ADVIES ===")
-    print(juridisch_advies)
-    verslag_keuze = input("\nWilt u deze casus en het juridisch advies in een verslag vastleggen? (ja/nee) ").strip().lower()
-    if verslag_keuze == "ja":
-        verslag = {
-            "casus_data": casus_data,
-            "juridisch_advies": juridisch_advies,
-            "bronvermelding": "Gebruik de relevante officiële en erkende bronnen (zie juridischeProcedure in main.json)"
-        }
-        with open("JuridischVerslag.txt", "w", encoding="utf-8") as f:
-            f.write("Juridisch Verslag\n")
-            f.write("================\n")
-            for key, value in verslag["casus_data"].items():
-                f.write(f"{key}: {value}\n")
-            f.write("\nJuridisch Advies:\n")
-            f.write(juridisch_advies + "\n")
-            f.write("\nBronvermelding:\n")
-            f.write(verslag["bronvermelding"] + "\n")
-        print("\nHet verslag is gegenereerd en opgeslagen als 'JuridischVerslag.txt'.")
-    else:
-        print("Casus en advies worden niet vastgelegd als verslag.")
-
-def start_nareizigers():
-    procedures = load_json("procedures.json")
-    print("\nWelkom! U heeft gekozen voor de rol 'nareizigers'.")
-    print("U kunt de volgende procedures raadplegen:\n")
-    for key, proc in procedures.items():
-        print(f"{key}: {proc['title']}")
-        print(f"   {proc['description']}\n")
-    keuze = input("Geef het procodenummer of de titel in (bijv. PROC001 of MVV-aanvraag): ").strip()
-    if keuze.upper() in procedures:
-        selected_proc = procedures[keuze.upper()]
-        print("\n=== PROCEDURE DETAILS ===")
-        print(f"Titel: {selected_proc['title']}")
-        print(f"Beschrijving: {selected_proc['description']}")
-        print("Stappen:")
-        for step in selected_proc["steps"]:
-            print(f" - Stap {step['step']}: {step['description']}")
-    else:
-        found = False
-        for key, proc in procedures.items():
-            if keuze.lower() in proc["title"].lower():
-                selected_proc = proc
-                found = True
-                print("\n=== PROCEDURE DETAILS ===")
-                print(f"Titel: {selected_proc['title']}")
-                print(f"Beschrijving: {selected_proc['description']}")
-                print("Stappen:")
-                for step in selected_proc["steps"]:
-                    print(f" - Stap {step['step']}: {step['description']}")
-                break
-        if not found:
-            print("Geen geldige keuze gemaakt.")
-
-def start_mb_instrument():
-    """
-    Start het traject voor Maatschappelijk Begeleider met betrekking tot het invullen van het MB‑Instrument.
-    De gebruiker kan kiezen tussen:
-      1. Het invullen van het MB‑Instrument (vragen uit de module 'mb_instrument').
-      2. Het bekijken van de begeleidende procedure (stapsgewijze instructies).
-    """
-    main_data = load_json("main.json")
-    mb_data = main_data.get("mbInstrument", {})
-    print("\nStarten maar...\n")
-    print("Selecteer uw rol:")
-    print("1. Ik ben juridisch begeleider")
-    print("2. Ik ben maatschappelijk begeleider")
-    print("3. Ik ben begeleider voor nareizigers")
-    rol_keuze = input("Voer het nummer van uw rol in: ").strip()
-    if rol_keuze == "1":
-        start_juridisch_begeleider()
-    elif rol_keuze == "2":
-        print("\nKies een optie voor het MB‑Instrument:")
-        print("1. MB‑Instrument invullen")
-        print("2. Bekijk begeleidende procedure")
-        keuze = input("Maak uw keuze (1 of 2): ").strip()
-        if keuze == "1":
-            instrument = mb_data.get("mb_instrument", {})
-            if not instrument:
-                print("MB‑Instrument module niet gevonden in main.json.")
-                return
-            print(f"\n=== {instrument.get('title', 'MB‑Instrument')} ===")
-            print(instrument.get("introductie", ""))
-            print("\nOpmerking:")
-            print(instrument.get("instructions", ""))
-            all_questions = instrument.get("questions", [])
-            answers = {}
-            for question in all_questions:
-                answer = ask_question(question)
-                answers[question["nummer"]] = answer
-            print("\n=== ALLE VRAGEN ZIJN BEANTWOORD ===")
-            print("Hieronder een beknopt overzicht van uw antwoorden:")
-            for q_num, ans in answers.items():
-                print(f" - Vraag {q_num}: {ans}")
-            print("\nEinde van het programma.")
-        elif keuze == "2":
-            procedure = mb_data.get("procedure", {})
-            if not procedure:
-                print("Procedure-module voor het MB‑Instrument niet gevonden in main.json.")
-                return
-            print(f"\n=== {procedure.get('procedureTitle', 'Maatschappelijke Begeleiding Procedure')} ===")
-            print(procedure.get("inleiding", ""))
-            print("\nFasen:")
-            for fase in procedure.get("fasen", []):
-                print(f"\nFase: {fase.get('fase', '')}")
-                print(f"Beschrijving: {fase.get('beschrijving', '')}")
-                if "voorlichting" in fase and fase["voorlichting"]:
-                    print("Voorlichting:")
-                    for punt in fase["voorlichting"].get("punten", []):
-                        print(f" - {punt.get('id', '')}: {punt.get('tekst', '')}")
-                if "acties" in fase and fase["acties"]:
-                    print("Acties:")
-                    for punt in fase["acties"].get("punten", []):
-                        print(f" - {punt.get('id', '')}: {punt.get('tekst', '')}")
-            print("\nDoelstellingen:")
-            doelstellingen = procedure.get("doelstellingen", {})
-            if isinstance(doelstellingen.get("hoofddoelen", []), list):
-                for doel in doelstellingen.get("hoofddoelen", []):
-                    print(f" - {doel}")
-            else:
-                print(doelstellingen.get("hoofddoelen", ""))
-            print("\nBenodigde Vaardigheden:")
-            for vaardigheid in procedure.get("benodigdeVaardigheden", []):
-                print(f" - {vaardigheid}")
-            print("\nVervolgplanning:")
-            print(procedure.get("vervolgplanning", ""))
-        else:
-            print("Ongeldige keuze, standaard MB‑Instrument invullen wordt gestart.")
-            instrument = mb_data.get("mb_instrument", {})
-            print(f"\n=== {instrument.get('title', 'MB‑Instrument')} ===")
-            print(instrument.get("introductie", ""))
-            print("\nOpmerking:")
-            print(instrument.get("instructions", ""))
-            all_questions = instrument.get("questions", [])
-            answers = {}
-            for question in all_questions:
-                answer = ask_question(question)
-                answers[question["nummer"]] = answer
-            print("\n=== ALLE VRAGEN ZIJN BEANTWOORD ===")
-            print("Hieronder een beknopt overzicht van uw antwoorden:")
-            for q_num, ans in answers.items():
-                print(f" - Vraag {q_num}: {ans}")
-            print("\nEinde van het programma.")
-    elif rol_keuze == "3":
-        start_nareizigers()
-    else:
-        print("Onbekende rol, standaard MB‑Instrument wordt gestart.")
-        start_mb_instrument()
-
-def start_juridisch_begeleider():
-    main_data = load_json("main.json")
-    print("Welkom juridisch begeleider!")
-from fastapi import FastAPI
-
-app = FastAPI()
-
-@app.get("/")
-def start():
-    return {"status": "GPT-plugin backend is actief"}
