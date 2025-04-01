@@ -61,3 +61,27 @@ def startmenu():
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="JuridischeProcedure.json bestand niet gevonden.")
     return menu
+
+# Nieuwe endpoints voor het beschikbaar stellen van de JSON-bestanden
+
+@app.get("/AllProcedures.json")
+def get_all_procedures():
+    """
+    Retourneert het AllProcedures.json-bestand.
+    """
+    try:
+        data = load_json("AllProcedures.json")
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="AllProcedures.json bestand niet gevonden.")
+    return data
+
+@app.get("/MBInstrumentInvullen.json")
+def get_mb_instrument():
+    """
+    Retourneert het MBInstrumentInvullen.json-bestand.
+    """
+    try:
+        data = load_json("MBInstrumentInvullen.json")
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="MBInstrumentInvullen.json bestand niet gevonden.")
+    return data
