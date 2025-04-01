@@ -6,25 +6,36 @@ import json
 import os
 from duckduckgo_search import DDGS
 
-app = FastAPI()
+app = FastAPI(
+    title="GPT Plugin Vluchtelingenwerk API",
+    description="API voor het digitale begeleidings- en juridische informatie-instrument",
+    version="1.0"
+)
 
-def load_json(file_path):
+def load_json(file_path: str):
+    """Laadt een JSON-bestand en retourneert de inhoud."""
     if not os.path.isfile(file_path):
         raise FileNotFoundError(f"Bestand niet gevonden: {file_path}")
     with open(file_path, "r", encoding="utf-8") as f:
         return json.load(f)
 
-@app.get("/")
-def start():
+# Basis endpoints
+
+@app.get("/", summary="API Status", response_description="API is actief")
+def root():
     return {"status": "API is actief"}
 
 @app.head("/")
 def head_root():
     return Response(status_code=200)
 
-@app.get("/search")
+# Zoekfunctionaliteit
+
+@app.get("/search", summary="Zoek op onderwerp")
 def search_endpoint(onderwerp: str = Query(..., description="Het onderwerp om op te zoeken")):
-    # Laad de zoektermen uit het JSON-bestand
+    """
+    Haalt zoektermen op uit ZoekenInternet.json en voert een DuckDuckGo-zoekopdracht uit.
+    """
     try:
         with open("ZoekenInternet.json", encoding="utf-8") as f:
             bronnen = json.load(f)
@@ -34,7 +45,7 @@ def search_endpoint(onderwerp: str = Query(..., description="Het onderwerp om op
     zoektermen = bronnen.get(onderwerp, [])
     if not zoektermen:
         raise HTTPException(status_code=404, detail=f"Geen zoektermen gevonden voor onderwerp: {onderwerp}")
-
+    
     resultaten = []
     with DDGS() as ddgs:
         for term in zoektermen:
@@ -45,16 +56,16 @@ def search_endpoint(onderwerp: str = Query(..., description="Het onderwerp om op
                     "samenvatting": r.get("body")
                 }
                 resultaten.append(resultaat)
-    
     if not resultaten:
         raise HTTPException(status_code=404, detail="Geen relevante updates gevonden.")
     return resultaten[:10]
 
-@app.get("/startmenu")
+# Configuratie endpoints
+
+@app.get("/startmenu", summary="Laad startmenu configuratie")
 def startmenu():
     """
-    Dit endpoint laadt en retourneert de configuratie uit JuridischeProcedure.json,
-    zodat de nieuwe menu-opties gecontroleerd kunnen worden.
+    Laadt de configuratie uit JuridischeProcedure.json voor het starten van het menu.
     """
     try:
         menu = load_json("JuridischeProcedure.json")
@@ -62,9 +73,9 @@ def startmenu():
         raise HTTPException(status_code=404, detail="JuridischeProcedure.json bestand niet gevonden.")
     return menu
 
-# Nieuwe endpoints voor het beschikbaar stellen van de JSON-bestanden
+# Endpoints voor het beschikbaar stellen van de JSON-bestanden
 
-@app.get("/AllProcedures.json")
+@app.get("/AllProcedures.json", summary="Laad alle procedures")
 def get_all_procedures():
     """
     Retourneert het AllProcedures.json-bestand.
@@ -75,7 +86,18 @@ def get_all_procedures():
         raise HTTPException(status_code=404, detail="AllProcedures.json bestand niet gevonden.")
     return data
 
-@app.get("/MBInstrumentInvullen.json")
+@app.get("/UIFlow.json", summary="Laad de UI-flow")
+def get_ui_flow():
+    """
+    Retourneert het UIFlow.json-bestand.
+    """
+    try:
+        data = load_json("UIFlow.json")
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="UIFlow.json bestand niet gevonden.")
+    return data
+
+@app.get("/MBInstrumentInvullen.json", summary="Laad MB Instrument data")
 def get_mb_instrument():
     """
     Retourneert het MBInstrumentInvullen.json-bestand.
