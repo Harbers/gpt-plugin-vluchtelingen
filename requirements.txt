@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+duckduckgo_search>=2.8
+requests
+beautifulsoup4
+feedparser
