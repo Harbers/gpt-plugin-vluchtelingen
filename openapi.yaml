@@ -40,11 +40,13 @@ paths:
       parameters:
         - in: query
           name: onderwerp
-          required: true
+          required: false
           schema:
             type: string
             default: "Asielprocedure"
-          description: "Het onderwerp om op te zoeken (bijv. 'Asielprocedure', 'Dublin', etc.). Als er geen onderwerp wordt meegegeven, wordt standaard 'Asielprocedure' gebruikt."
+          description: >
+            Het onderwerp om op te zoeken (bijv. 'Asielprocedure', 'Dublin', etc.). 
+            Laat deze parameter weg of geef niets op om standaard 'Asielprocedure' te gebruiken.
       responses:
         "200":
           description: "Succesvolle zoekresultaten"
