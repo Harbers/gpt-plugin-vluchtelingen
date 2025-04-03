@@ -6,7 +6,7 @@ main.py - Backend voor DuckDuckGo-zoekfunctionaliteit
 
 Deze FastAPI-applicatie verzorgt uitsluitend de zoekfunctie. Op basis van een meegegeven onderwerp
 wordt in het bestand 'ZoekenInternet.json' gezocht naar relevante zoektermen.
-Voor iedere zoekterm wordt met behulp van de DuckDuckGo-search module actuele informatie opgehaald.
+Voor iedere zoekterm wordt met behulp van de duckduckgo_search module actuele informatie opgehaald.
 De resultaten worden, na filtering en anonimisering, als JSON teruggegeven.
 
 Deze backend is gehost op:
@@ -18,11 +18,10 @@ De backend fungeert uitsluitend als zoekmachine-brug.
 De API-documentatie is beschikbaar via Redoc op: /redoc
 """
 
-from typing import Optional
 from fastapi import FastAPI, HTTPException, Query, Response
 import json
 import os
-from duckduckgo_search import DDGS
+from duckduckgo_search import ddg  # Aangepast: import de functie ddg
 from zoekfilters import filter_resultaten  # Filter- en anonimisatiefuncties importeren
 
 app = FastAPI(
@@ -57,9 +56,10 @@ def head_root():
     return Response(status_code=200)
 
 @app.get("/search", summary="Zoek actuele informatie via DuckDuckGo")
-def search_endpoint(onderwerp: Optional[str] = Query(
-    default="Asielprocedure",
-    description="Het onderwerp om op te zoeken (bijv. 'Asielprocedure', 'Dublin', etc.). Laat deze parameter weg om standaard 'Asielprocedure' te gebruiken."
+def search_endpoint(onderwerp: str = Query(
+    default="Asielprocedure", 
+    description="Het onderwerp om op te zoeken (bijv. 'Asielprocedure', 'Dublin', etc.). Laat deze parameter weg of geef niets op om standaard 'Asielprocedure' te gebruiken.",
+    required=False
 )):
     """
     Endpoint voor het ophalen van actuele zoekresultaten via DuckDuckGo.
@@ -70,7 +70,7 @@ def search_endpoint(onderwerp: Optional[str] = Query(
     3. De verzamelde resultaten worden vervolgens gefilterd en geanonimiseerd.
     4. De uiteindelijke, veilige resultaten worden als JSON teruggegeven.
 
-    :param onderwerp: De naam van het onderwerp (optioneel, standaard 'Asielprocedure').
+    :param onderwerp: De naam van het onderwerp.
     :return: Een lijst met zoekresultaten met titel, link en samenvatting.
     """
     try:
@@ -84,15 +84,15 @@ def search_endpoint(onderwerp: Optional[str] = Query(
 
     resultaten = []
     try:
-        with DDGS() as ddgs:
-            for term in zoektermen:
-                for result in ddgs.text(term, max_results=3):
-                    resultaat = {
-                        "titel": result.get("title"),
-                        "link": result.get("href"),
-                        "samenvatting": result.get("body")
-                    }
-                    resultaten.append(resultaat)
+        # Gebruik de ddg-functie direct om de zoekresultaten op te halen
+        for term in zoektermen:
+            for result in ddg(term, max_results=3):
+                resultaat = {
+                    "titel": result.get("title"),
+                    "link": result.get("href"),
+                    "samenvatting": result.get("body")
+                }
+                resultaten.append(resultaat)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Fout bij het ophalen van zoekresultaten: {e}")
 
