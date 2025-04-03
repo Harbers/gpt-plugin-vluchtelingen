@@ -2,17 +2,17 @@
   "schema_version": "v1",
   "name_for_human": "Vluchtelingen Zoekplugin",
   "name_for_model": "vluchtelingen_zoekplugin",
-  "description_for_human": "Zoek juridische en actuele informatie voor statushouders",
-  "description_for_model": "Gebruik deze plugin om recente juridische info te vinden over asiel en migratie in Nederland.",
+  "description_for_human": "Deze plugin haalt actuele informatie op over asiel, vluchtelingen, statushouders en migratie in Nederland.",
+  "description_for_model": "Een API-plugin voor het ophalen van actuele zoekresultaten via DuckDuckGo, specifiek gericht op Nederlandse asiel-, vluchtelingen- en migratiekwesties.",
   "auth": {
     "type": "none"
   },
   "api": {
     "type": "openapi",
-    "url": "https://your-domain.onrender.com/openapi.yaml",
+    "url": "https://gpt-plugin-vluchtelingen.onrender.com/openapi.yaml",
     "is_user_authenticated": false
   },
-  "logo_url": "https://your-domain.onrender.com/logo.png",
-  "contact_email": "support@vluchtelingenplugin.nl",
-  "legal_info_url": "https://vluchtelingenwerk.nl/voorwaarden"
+  "logo_url": "https://example.com/logo.png",
+  "contact_email": "support@voorbeeld.nl",
+  "legal_info_url": "https://voorbeeld.nl/legal"
 }
