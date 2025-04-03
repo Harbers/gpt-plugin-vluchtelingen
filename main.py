@@ -14,17 +14,22 @@ Deze backend is gehost op:
 
 Alle procedurele stappen (menu’s, vragen, handelingsplannen, etc.) worden volledig door de frontend afgehandeld.
 De backend fungeert uitsluitend als zoekmachine-brug.
+
+De API-documentatie is beschikbaar via Redoc op: /redoc
 """
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Response
 import json
 import os
 from duckduckgo_search import DDGS
 
+# Wijziging: Gebruik Redoc voor de API-documentatie en schakel Swagger UI uit.
 app = FastAPI(
-    title="Vluchtelingen Zoekplugin Backend",
+    title="Vluchtelingen Zoekplugin API",
     description="Backend voor het ophalen van actuele informatie via DuckDuckGo. Gehost op https://gpt-plugin-vluchtelingen.onrender.com",
-    version="1.0.0"
+    version="1.0.0",
+    docs_url=None,       # Swagger UI uitschakelen
+    redoc_url="/redoc"   # Redoc-documentatie beschikbaar op /redoc
 )
 
 def load_json(file_path: str) -> dict:
@@ -43,6 +48,13 @@ def root():
     Basis-endpoint om te controleren of de API actief is.
     """
     return {"status": "API is actief"}
+
+@app.head("/", summary="HEAD-request voor health-check")
+def head_root():
+    """
+    Eenvoudige HEAD-endpoint om een 200 OK response terug te geven.
+    """
+    return Response(status_code=200)
 
 @app.get("/search", summary="Zoek actuele informatie via DuckDuckGo")
 def search_endpoint(onderwerp: str = Query(..., description="Het onderwerp om op te zoeken")):
@@ -88,5 +100,4 @@ def search_endpoint(onderwerp: str = Query(..., description="Het onderwerp om op
 
 if __name__ == "__main__":
     import uvicorn
-    # Let op: bij deployment op onrender.com wordt uvicorn vaak automatisch gestart.
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
