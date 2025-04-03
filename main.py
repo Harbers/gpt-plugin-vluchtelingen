@@ -22,8 +22,8 @@ from typing import Optional
 from fastapi import FastAPI, HTTPException, Query, Response
 import json
 import os
-from duckduckgo_search import ddg  # Gebruik de ddg functie voor zoeken
-from zoekfilters import filter_resultaten  # Filter- en anonimisatiefuncties importeren
+from duckduckgo_search import ddg  # Gebruik de ddg-functie
+from zoekfilters import filter_resultaten  # Import filtering- en anonimisatiefuncties
 
 app = FastAPI(
     title="Vluchtelingen Zoekplugin API",
@@ -46,7 +46,7 @@ def load_json(file_path: str) -> dict:
 SUBJECT_MAPPING = {
     "Asielprocedure": "Asielbeleid en Wetgeving",
     "Dublin": "Jurisprudentie en Rechtspraak"
-    # Voeg hier meer mappings toe indien gewenst
+    # Voeg hier extra mappings toe indien gewenst
 }
 
 @app.get("/", summary="Controleer of de API actief is")
@@ -67,7 +67,7 @@ def head_root():
 def search_endpoint(
     onderwerp: Optional[str] = Query(
         default="Asielprocedure", 
-        description="Het onderwerp om op te zoeken (bijv. 'Asielprocedure', 'Dublin', etc.). Laat deze parameter weg of geef niets op om standaard 'Asielprocedure' te gebruiken.",
+        description="Het onderwerp om op te zoeken (bijv. 'Asielprocedure', 'Dublin', etc.). Laat deze parameter weg om standaard 'Asielprocedure' te gebruiken.",
         required=False
     )
 ):
@@ -77,7 +77,7 @@ def search_endpoint(
     Werking:
     1. Laad de zoektermen voor het gegeven onderwerp uit 'ZoekenInternet.json'.
     2. Gebruik een mapping om gebruikersvriendelijke termen te vertalen naar de juiste sleutel in het JSON-bestand.
-    3. Voor iedere zoekterm worden maximaal 3 resultaten opgehaald via DuckDuckGo.
+    3. Voor iedere zoekterm worden maximaal 3 resultaten opgehaald via de ddg-functie.
     4. Indien de ddg-functie None retourneert, wordt dit genegeerd.
     5. De verzamelde resultaten worden vervolgens gefilterd en geanonimiseerd.
     6. De uiteindelijke, veilige resultaten worden als JSON teruggegeven.
@@ -98,7 +98,6 @@ def search_endpoint(
 
     resultaten = []
     try:
-        # Gebruik de ddg-functie om per zoekterm maximaal 3 resultaten op te halen
         for term in zoektermen:
             ddg_results = ddg(term, max_results=3)
             if ddg_results:
@@ -119,6 +118,28 @@ def search_endpoint(
         raise HTTPException(status_code=404, detail="Geen relevante resultaten gevonden.")
     
     return resultaten
+
+# Custom OpenAPI-schema om de 422-respons te verwijderen uit de documentatie voor het /search-endpoint
+from fastapi.openapi.utils import get_openapi
+
+def custom_openapi():
+    if app.openapi_schema:
+        return app.openapi_schema
+    openapi_schema = get_openapi(
+        title=app.title,
+        version=app.version,
+        description=app.description,
+        routes=app.routes,
+    )
+    try:
+        # Verwijder de 422-respons voor de GET /search endpoint
+        del openapi_schema["paths"]["/search"]["get"]["responses"]["422"]
+    except KeyError:
+        pass
+    app.openapi_schema = openapi_schema
+    return app.openapi_schema
+
+app.openapi = custom_openapi
 
 if __name__ == "__main__":
     import uvicorn
