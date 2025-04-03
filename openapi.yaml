@@ -43,7 +43,8 @@ paths:
           required: true
           schema:
             type: string
-          description: "Het onderwerp om op te zoeken (bijv. 'Asielprocedure', 'Dublin', etc.)"
+            default: "Asielprocedure"
+          description: "Het onderwerp om op te zoeken (bijv. 'Asielprocedure', 'Dublin', etc.). Als er geen onderwerp wordt meegegeven, wordt standaard 'Asielprocedure' gebruikt."
       responses:
         "200":
           description: "Succesvolle zoekresultaten"
