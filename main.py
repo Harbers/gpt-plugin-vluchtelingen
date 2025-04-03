@@ -18,11 +18,12 @@ De backend fungeert uitsluitend als zoekmachine-brug.
 De API-documentatie is beschikbaar via Redoc op: /redoc
 """
 
+from typing import Optional
 from fastapi import FastAPI, HTTPException, Query, Response
 import json
 import os
-from duckduckgo_search import ddg  # Aangepast: import de functie ddg
-from zoekfilters import filter_resultaten  # Filter- en anonimisatiefuncties importeren
+from duckduckgo_search import ddg  # Gebruik de ddg functie voor zoeken
+from zoekfilters import filter_resultaten  # Import filtering en anonimisatiefuncties
 
 app = FastAPI(
     title="Vluchtelingen Zoekplugin API",
@@ -41,6 +42,13 @@ def load_json(file_path: str) -> dict:
     with open(file_path, "r", encoding="utf-8") as f:
         return json.load(f)
 
+# Mapping van gebruikersvriendelijke termen naar de sleutels in ZoekenInternet.json
+SUBJECT_MAPPING = {
+    "Asielprocedure": "Asielbeleid en Wetgeving",
+    "Dublin": "Jurisprudentie en Rechtspraak"
+    # Voeg hier meer mappings toe indien gewenst
+}
+
 @app.get("/", summary="Controleer of de API actief is")
 def root():
     """
@@ -56,19 +64,22 @@ def head_root():
     return Response(status_code=200)
 
 @app.get("/search", summary="Zoek actuele informatie via DuckDuckGo")
-def search_endpoint(onderwerp: str = Query(
-    default="Asielprocedure", 
-    description="Het onderwerp om op te zoeken (bijv. 'Asielprocedure', 'Dublin', etc.). Laat deze parameter weg of geef niets op om standaard 'Asielprocedure' te gebruiken.",
-    required=False
-)):
+def search_endpoint(
+    onderwerp: Optional[str] = Query(
+        default="Asielprocedure", 
+        description="Het onderwerp om op te zoeken (bijv. 'Asielprocedure', 'Dublin', etc.). Laat deze parameter weg of geef niets op om standaard 'Asielprocedure' te gebruiken.",
+        required=False
+    )
+):
     """
     Endpoint voor het ophalen van actuele zoekresultaten via DuckDuckGo.
 
     Werking:
     1. Laad de zoektermen voor het gegeven onderwerp uit 'ZoekenInternet.json'.
-    2. Voor iedere zoekterm worden maximaal 3 resultaten opgehaald via DuckDuckGo.
-    3. De verzamelde resultaten worden vervolgens gefilterd en geanonimiseerd.
-    4. De uiteindelijke, veilige resultaten worden als JSON teruggegeven.
+    2. Gebruik een mapping om gebruikersvriendelijke termen te vertalen naar de juiste sleutel in het JSON-bestand.
+    3. Voor iedere zoekterm worden maximaal 3 resultaten opgehaald via DuckDuckGo.
+    4. De verzamelde resultaten worden vervolgens gefilterd en geanonimiseerd.
+    5. De uiteindelijke, veilige resultaten worden als JSON teruggegeven.
 
     :param onderwerp: De naam van het onderwerp.
     :return: Een lijst met zoekresultaten met titel, link en samenvatting.
@@ -78,13 +89,15 @@ def search_endpoint(onderwerp: str = Query(
     except FileNotFoundError as e:
         raise HTTPException(status_code=404, detail=str(e))
     
-    zoektermen = zoekdata.get(onderwerp, [])
+    # Gebruik de mapping om de juiste sleutel te vinden
+    sleutel = SUBJECT_MAPPING.get(onderwerp, onderwerp)
+    zoektermen = zoekdata.get(sleutel, [])
     if not zoektermen:
         raise HTTPException(status_code=404, detail=f"Geen zoektermen gevonden voor onderwerp: {onderwerp}")
 
     resultaten = []
     try:
-        # Gebruik de ddg-functie direct om de zoekresultaten op te halen
+        # Gebruik de ddg-functie om per zoekterm maximaal 3 resultaten op te halen
         for term in zoektermen:
             for result in ddg(term, max_results=3):
                 resultaat = {
