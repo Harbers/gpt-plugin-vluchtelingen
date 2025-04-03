@@ -18,6 +18,7 @@ De backend fungeert uitsluitend als zoekmachine-brug.
 De API-documentatie is beschikbaar via Redoc op: /redoc
 """
 
+from typing import Optional
 from fastapi import FastAPI, HTTPException, Query, Response
 import json
 import os
@@ -56,7 +57,10 @@ def head_root():
     return Response(status_code=200)
 
 @app.get("/search", summary="Zoek actuele informatie via DuckDuckGo")
-def search_endpoint(onderwerp: str = Query(..., description="Het onderwerp om op te zoeken (bijv. 'Asielprocedure', 'Dublin', etc.)")):
+def search_endpoint(onderwerp: Optional[str] = Query(
+    default="Asielprocedure",
+    description="Het onderwerp om op te zoeken (bijv. 'Asielprocedure', 'Dublin', etc.). Laat deze parameter weg om standaard 'Asielprocedure' te gebruiken."
+)):
     """
     Endpoint voor het ophalen van actuele zoekresultaten via DuckDuckGo.
 
@@ -66,7 +70,7 @@ def search_endpoint(onderwerp: str = Query(..., description="Het onderwerp om op
     3. De verzamelde resultaten worden vervolgens gefilterd en geanonimiseerd.
     4. De uiteindelijke, veilige resultaten worden als JSON teruggegeven.
 
-    :param onderwerp: De naam van het onderwerp.
+    :param onderwerp: De naam van het onderwerp (optioneel, standaard 'Asielprocedure').
     :return: Een lijst met zoekresultaten met titel, link en samenvatting.
     """
     try:
