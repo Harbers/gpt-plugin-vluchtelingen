@@ -4,14 +4,16 @@
 """
 main.py - Backend voor DuckDuckGo-zoekfunctionaliteit
 
-Deze FastAPI-applicatie verzorgt enkel de zoekfunctie. Op basis van een meegegeven onderwerp
+Deze FastAPI-applicatie verzorgt uitsluitend de zoekfunctie. Op basis van een meegegeven onderwerp
 wordt in het bestand 'ZoekenInternet.json' gezocht naar relevante zoektermen.
 Voor iedere zoekterm wordt met behulp van de DuckDuckGo-search module actuele informatie opgehaald.
 De resultaten worden als JSON teruggegeven.
 
-Let op:
-- Alle procedurele stappen (menu’s, vragen, handelingsplannen, etc.) worden volledig door de frontend afgehandeld.
-- De backend fungeert uitsluitend als zoekmachine-brug.
+Deze backend is gehost op:
+    https://gpt-plugin-vluchtelingen.onrender.com
+
+Alle procedurele stappen (menu’s, vragen, handelingsplannen, etc.) worden volledig door de frontend afgehandeld.
+De backend fungeert uitsluitend als zoekmachine-brug.
 """
 
 from fastapi import FastAPI, HTTPException, Query
@@ -19,9 +21,11 @@ import json
 import os
 from duckduckgo_search import DDGS
 
-app = FastAPI(title="Vluchtelingen Zoekplugin Backend",
-              description="Backend voor het ophalen van actuele informatie via DuckDuckGo.",
-              version="1.0.0")
+app = FastAPI(
+    title="Vluchtelingen Zoekplugin Backend",
+    description="Backend voor het ophalen van actuele informatie via DuckDuckGo. Gehost op https://gpt-plugin-vluchtelingen.onrender.com",
+    version="1.0.0"
+)
 
 def load_json(file_path: str) -> dict:
     """
@@ -84,4 +88,5 @@ def search_endpoint(onderwerp: str = Query(..., description="Het onderwerp om op
 
 if __name__ == "__main__":
     import uvicorn
+    # Let op: bij deployment op onrender.com wordt uvicorn vaak automatisch gestart.
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
