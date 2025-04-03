@@ -7,4 +7,76 @@ info:
     uit het bestand ZoekenInternet.json en haalt via DuckDuckGo actuele resultaten op.
   version: "1.0.0"
 servers:
-  - url
+  - url: "https://gpt-plugin-vluchtelingen.onrender.com"
+paths:
+  /:
+    get:
+      summary: "Controleer of de API actief is"
+      responses:
+        "200":
+          description: "De API is actief"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "API is actief"
+    head:
+      summary: "HEAD-request voor health-check"
+      responses:
+        "200":
+          description: "De API is actief (HEAD)"
+  /search:
+    get:
+      summary: "Zoek actuele informatie via DuckDuckGo"
+      description: >
+        Dit endpoint haalt op basis van een meegegeven onderwerp (query-parameter `onderwerp`) 
+        de relevante zoektermen uit het bestand ZoekenInternet.json op en voert een zoekopdracht uit via DuckDuckGo.
+      parameters:
+        - in: query
+          name: onderwerp
+          required: true
+          schema:
+            type: string
+          description: "Het onderwerp om op te zoeken (bijv. 'Asielprocedure', 'Dublin', etc.)"
+      responses:
+        "200":
+          description: "Succesvolle zoekresultaten"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    titel:
+                      type: string
+                      example: "Voorbeeld Titel"
+                    link:
+                      type: string
+                      example: "https://voorbeeld.nl/artikel"
+                    samenvatting:
+                      type: string
+                      example: "Voorbeeld samenvatting van de zoekresultaten."
+        "404":
+          description: "Zoektermen niet gevonden of geen resultaten"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: "Geen zoektermen gevonden voor onderwerp: [onderwerp]"
+        "500":
+          description: "Interne serverfout bij het ophalen van zoekresultaten"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: "Fout bij het ophalen van zoekresultaten: [error message]"
