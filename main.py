@@ -23,7 +23,7 @@ from fastapi import FastAPI, HTTPException, Query, Response
 import json
 import os
 from duckduckgo_search import ddg  # Gebruik de ddg functie voor zoeken
-from zoekfilters import filter_resultaten  # Import filtering en anonimisatiefuncties
+from zoekfilters import filter_resultaten  # Filter- en anonimisatiefuncties importeren
 
 app = FastAPI(
     title="Vluchtelingen Zoekplugin API",
@@ -78,8 +78,9 @@ def search_endpoint(
     1. Laad de zoektermen voor het gegeven onderwerp uit 'ZoekenInternet.json'.
     2. Gebruik een mapping om gebruikersvriendelijke termen te vertalen naar de juiste sleutel in het JSON-bestand.
     3. Voor iedere zoekterm worden maximaal 3 resultaten opgehaald via DuckDuckGo.
-    4. De verzamelde resultaten worden vervolgens gefilterd en geanonimiseerd.
-    5. De uiteindelijke, veilige resultaten worden als JSON teruggegeven.
+    4. Indien de ddg-functie None retourneert, wordt dit genegeerd.
+    5. De verzamelde resultaten worden vervolgens gefilterd en geanonimiseerd.
+    6. De uiteindelijke, veilige resultaten worden als JSON teruggegeven.
 
     :param onderwerp: De naam van het onderwerp.
     :return: Een lijst met zoekresultaten met titel, link en samenvatting.
@@ -99,13 +100,15 @@ def search_endpoint(
     try:
         # Gebruik de ddg-functie om per zoekterm maximaal 3 resultaten op te halen
         for term in zoektermen:
-            for result in ddg(term, max_results=3):
-                resultaat = {
-                    "titel": result.get("title"),
-                    "link": result.get("href"),
-                    "samenvatting": result.get("body")
-                }
-                resultaten.append(resultaat)
+            ddg_results = ddg(term, max_results=3)
+            if ddg_results:
+                for result in ddg_results:
+                    resultaat = {
+                        "titel": result.get("title"),
+                        "link": result.get("href"),
+                        "samenvatting": result.get("body")
+                    }
+                    resultaten.append(resultaat)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Fout bij het ophalen van zoekresultaten: {e}")
 
