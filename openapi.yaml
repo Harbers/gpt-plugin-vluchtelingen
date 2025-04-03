@@ -11,6 +11,7 @@ servers:
 paths:
   /:
     get:
+      operationId: getRoot
       summary: "Controleer of de API actief is"
       responses:
         "200":
@@ -24,12 +25,14 @@ paths:
                     type: string
                     example: "API is actief"
     head:
+      operationId: headRoot
       summary: "HEAD-request voor health-check"
       responses:
         "200":
           description: "De API is actief (HEAD)"
   /search:
     get:
+      operationId: searchDuckDuckGo
       summary: "Zoek actuele informatie via DuckDuckGo"
       description: >
         Dit endpoint haalt op basis van een meegegeven onderwerp (query-parameter `onderwerp`) 
