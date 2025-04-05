@@ -1,145 +1,83 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-"""
-main.py - Backend voor DuckDuckGo-zoekfunctionaliteit
-
-Deze FastAPI-applicatie verzorgt uitsluitend de zoekfunctie. Op basis van een meegegeven onderwerp
-wordt in het bestand 'ZoekenInternet.json' gezocht naar relevante zoektermen.
-Voor iedere zoekterm wordt met behulp van de duckduckgo_search module actuele informatie opgehaald.
-De resultaten worden, na filtering en anonimisering, als JSON teruggegeven.
-
-Deze backend is gehost op:
-    https://gpt-plugin-vluchtelingen.onrender.com
-
-Alle procedurele stappen (menu’s, vragen, handelingsplannen, etc.) worden volledig door de frontend afgehandeld.
-De backend fungeert uitsluitend als zoekmachine-brug.
-
-De API-documentatie is beschikbaar via Redoc op: /redoc
-"""
-
-from typing import Optional
-from fastapi import FastAPI, HTTPException, Query, Response
+from fastapi import FastAPI, Response, HTTPException, Query
 import json
 import os
-from duckduckgo_search import ddg  # Gebruik de ddg-functie
-from zoekfilters import filter_resultaten  # Import filtering- en anonimisatiefuncties
+from duckduckgo_search import DDGS
 
-app = FastAPI(
-    title="Vluchtelingen Zoekplugin API",
-    description="Backend voor het ophalen van actuele informatie via DuckDuckGo. Gehost op https://gpt-plugin-vluchtelingen.onrender.com",
-    version="1.0.0",
-    docs_url=None,       # Swagger UI uitschakelen
-    redoc_url="/redoc"   # Redoc-documentatie beschikbaar op /redoc
-)
+app = FastAPI()
 
-def load_json(file_path: str) -> dict:
-    """
-    Laadt een JSON-bestand met de gegeven file path en retourneert een dictionary.
-    """
+def load_json(file_path):
     if not os.path.isfile(file_path):
         raise FileNotFoundError(f"Bestand niet gevonden: {file_path}")
     with open(file_path, "r", encoding="utf-8") as f:
         return json.load(f)
 
-# Mapping van gebruikersvriendelijke termen naar de sleutels in ZoekenInternet.json
-SUBJECT_MAPPING = {
-    "Asielprocedure": "Asielbeleid en Wetgeving",
-    "Dublin": "Jurisprudentie en Rechtspraak"
-    # Voeg hier extra mappings toe indien gewenst
-}
-
-@app.get("/", summary="Controleer of de API actief is")
-def root():
-    """
-    Basis-endpoint om te controleren of de API actief is.
-    """
+@app.get("/")
+def start():
     return {"status": "API is actief"}
 
-@app.head("/", summary="HEAD-request voor health-check")
+@app.head("/")
 def head_root():
-    """
-    Eenvoudige HEAD-endpoint om een 200 OK response terug te geven.
-    """
     return Response(status_code=200)
 
-@app.get("/search", summary="Zoek actuele informatie via DuckDuckGo")
-def search_endpoint(
-    onderwerp: Optional[str] = Query(
-        default="Asielprocedure", 
-        description="Het onderwerp om op te zoeken (bijv. 'Asielprocedure', 'Dublin', etc.). Laat deze parameter weg om standaard 'Asielprocedure' te gebruiken.",
-        required=False
-    )
-):
-    """
-    Endpoint voor het ophalen van actuele zoekresultaten via DuckDuckGo.
-
-    Werking:
-    1. Laad de zoektermen voor het gegeven onderwerp uit 'ZoekenInternet.json'.
-    2. Gebruik een mapping om gebruikersvriendelijke termen te vertalen naar de juiste sleutel in het JSON-bestand.
-    3. Voor iedere zoekterm worden maximaal 3 resultaten opgehaald via de ddg-functie.
-    4. Indien de ddg-functie None retourneert, wordt dit genegeerd.
-    5. De verzamelde resultaten worden vervolgens gefilterd en geanonimiseerd.
-    6. De uiteindelijke, veilige resultaten worden als JSON teruggegeven.
-
-    :param onderwerp: De naam van het onderwerp.
-    :return: Een lijst met zoekresultaten met titel, link en samenvatting.
-    """
+@app.get("/search")
+def search_endpoint(onderwerp: str = Query(..., description="Het onderwerp om op te zoeken")):
+    # Laad de zoekresultaten-configuratie uit ZoekenInternet.json
     try:
-        zoekdata = load_json("ZoekenInternet.json")
-    except FileNotFoundError as e:
-        raise HTTPException(status_code=404, detail=str(e))
+        with open("ZoekenInternet.json", encoding="utf-8") as f:
+            bronnen = json.load(f)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="ZoekenInternet.json bestand niet gevonden.")
     
-    # Gebruik de mapping om de juiste sleutel te vinden
-    sleutel = SUBJECT_MAPPING.get(onderwerp, onderwerp)
-    zoektermen = zoekdata.get(sleutel, [])
-    if not zoektermen:
-        raise HTTPException(status_code=404, detail=f"Geen zoektermen gevonden voor onderwerp: {onderwerp}")
+    zoekresultaten = bronnen.get(onderwerp, [])
+    if not zoekresultaten:
+        raise HTTPException(status_code=404, detail=f"Geen zoekresultaten gevonden voor onderwerp: {onderwerp}")
 
     resultaten = []
-    try:
-        for term in zoektermen:
-            ddg_results = ddg(term, max_results=3)
-            if ddg_results:
-                for result in ddg_results:
-                    resultaat = {
-                        "titel": result.get("title"),
-                        "link": result.get("href"),
-                        "samenvatting": result.get("body")
-                    }
-                    resultaten.append(resultaat)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Fout bij het ophalen van zoekresultaten: {e}")
-
-    # Filter de zoekresultaten voor relevante, veilige output
-    resultaten = filter_resultaten(resultaten)
-
+    with DDGS() as ddgs:
+        for item in zoekresultaten:
+            term = item.get("sourceTitle", "") + " " + item.get("description", "")
+            for r in ddgs.text(term, max_results=3):
+                resultaat = {
+                    "titel": r.get("title"),
+                    "link": r.get("href"),
+                    "samenvatting": r.get("body")
+                }
+                resultaten.append(resultaat)
     if not resultaten:
-        raise HTTPException(status_code=404, detail="Geen relevante resultaten gevonden.")
+        raise HTTPException(status_code=404, detail="Geen relevante updates gevonden.")
     
-    return resultaten
+    # Filter resultaten op geldigheid
+    from zoekfilters import filter_resultaten
+    gefilterde_resultaten = filter_resultaten(resultaten)
+    
+    return gefilterde_resultaten[:10]
 
-# Custom OpenAPI-schema om de 422-respons te verwijderen uit de documentatie voor het /search-endpoint
-from fastapi.openapi.utils import get_openapi
-
-def custom_openapi():
-    if app.openapi_schema:
-        return app.openapi_schema
-    openapi_schema = get_openapi(
-        title=app.title,
-        version=app.version,
-        description=app.description,
-        routes=app.routes,
-    )
+@app.get("/startmenu")
+def startmenu():
     try:
-        # Verwijder de 422-respons voor de GET /search endpoint
-        del openapi_schema["paths"]["/search"]["get"]["responses"]["422"]
-    except KeyError:
-        pass
-    app.openapi_schema = openapi_schema
-    return app.openapi_schema
+        menu = load_json("JuridischeProcedure.json")
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="JuridischeProcedure.json bestand niet gevonden.")
+    return menu
 
-app.openapi = custom_openapi
+@app.get("/AllProcedures.json")
+def get_all_procedures():
+    try:
+        data = load_json("AllProcedures.json")
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="AllProcedures.json bestand niet gevonden.")
+    return data
+
+@app.get("/MBInstrumentInvullen.json")
+def get_mb_instrument():
+    try:
+        data = load_json("MBInstrumentInvullen.json")
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="MBInstrumentInvullen.json bestand niet gevonden.")
+    return data
 
 if __name__ == "__main__":
     import uvicorn
