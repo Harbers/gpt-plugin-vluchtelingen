@@ -1,0 +1,173 @@
+{
+  "version": "1.0",
+  "startVraag": "Starten maar...",
+  "menu": {
+    "instructie": "Kies de gewenste optie door het nummer in te voeren:",
+    "opties": [
+      {
+        "nummer": 1,
+        "omschrijving": "Ik ben juridisch begeleider."
+      },
+      {
+        "nummer": 2,
+        "omschrijving": "Juridische casus behandelen."
+      },
+      {
+        "nummer": 3,
+        "omschrijving": "Ik ben maatschappelijk begeleider."
+      },
+      {
+        "nummer": 4,
+        "omschrijving": "Maatschappelijke casus behandelen."
+      }
+    ]
+  },
+  "procedures": [
+    {
+      "id": "PROC001",
+      "title": "MVV-aanvraag Procedure",
+      "description": "Procedure voor het aanvragen van een MVV (Machtiging tot Voorlopig Verblijf).",
+      "steps": [
+        {
+          "step": 1,
+          "description": "Dien de MVV-aanvraag in met een geldig paspoort, volledig ingevuld aanvraagformulier en alle vereiste documenten. Zorg voor anonimisatie."
+        },
+        {
+          "step": 2,
+          "description": "Na goedkeuring haalt de cliënt het MVV-visum persoonlijk op binnen 90 dagen."
+        },
+        {
+          "step": 3,
+          "description": "Reis met het afgehaalde MVV-visum naar Nederland, waarbij alle reisdocumenten geanonimiseerd zijn."
+        },
+        {
+          "step": 4,
+          "description": "Meld de cliënt zich binnen 3 dagen na aankomst bij het Nareisloket van de IND."
+        }
+      ]
+    },
+    {
+      "id": "PROC002",
+      "title": "Gezinshereniging Procedure",
+      "description": "Procedure voor het begeleiden van gezinshereniging bij asielzoekers en statushouders.",
+      "steps": [
+        {
+          "step": 1,
+          "description": "Voer een intake en vooronderzoek uit om de gezinssamenstelling en behoeften vast te stellen."
+        },
+        {
+          "step": 2,
+          "description": "Geef advies en voorlichting over de wettelijke kaders en benodigde documenten."
+        },
+        {
+          "step": 3,
+          "description": "Verzamel alle vereiste documenten en stel een dossier op (anonimiseren)."
+        },
+        {
+          "step": 4,
+          "description": "Dien het dossier in bij de bevoegde instantie."
+        },
+        {
+          "step": 5,
+          "description": "Volg de voortgang op en ondersteun bij bezwaar- of beroepsprocedures indien nodig."
+        },
+        {
+          "step": 6,
+          "description": "Bied nazorg en ondersteuning bij de integratie na gezinshereniging."
+        }
+      ]
+    },
+    {
+      "id": "PROC003",
+      "title": "Maatschappelijke Begeleiding (MB‑Instrument)",
+      "description": "Procedure voor het invullen van het MB‑Instrument (Wonen, Kinderen, Financiën & Administratie, Sociaal Netwerk, Maatschappelijke Participatie, Zorg & Gezondheid).",
+      "steps": [
+        {
+          "step": 1,
+          "description": "Leg kort uit wat het MB‑Instrument is. Benoem de zes leefgebieden en de antwoordopties (1,2,3,NVT)."
+        },
+        {
+          "step": 2,
+          "description": "Laad en doorloop MBInstrumentInvullen.json met alle vragen (1.1 t/m 6.2). Bij antwoord 1 of 2 toon hulplinks, voorlichting en acties."
+        },
+        {
+          "step": 3,
+          "description": "Na het invullen: stel een begeleidingsplan op en plan vervolgafspraken (voortgangsgesprek, eindgesprek)."
+        }
+      ]
+    },
+    {
+      "id": "PROC004",
+      "title": "Juridische Zaken Procedure",
+      "description": "Procedure voor juridische medewerkers om actuele juridische informatie op te zoeken met betrekking tot vluchtelingenzaken, inclusief casusanalyse met volledige bronvermelding.",
+      "steps": [
+        {
+          "step": 1,
+          "description": "Start met de vraag 'Ik ben juridisch begeleider' en toon een lijst van 20 juridische onderwerpen (indien aanwezig)."
+        },
+        {
+          "step": 2,
+          "description": "Vraag de gebruiker om een keuze en haal relevante informatie op uit de gekoppelde URL's. Toon APA-bronvermelding."
+        },
+        {
+          "step": 3,
+          "description": "Indien van toepassing: voer een casusanalyse uit. Toets feiten, termijnen, rechtsmiddelen en verwijs door."
+        }
+      ]
+    },
+    {
+      "id": "PROC005",
+      "title": "Juridische Documenten en Brieven Opstellen",
+      "description": "Procedure voor het opstellen van juridische documenten en brieven volgens strikte richtlijnen.",
+      "steps": [
+        {
+          "step": 1,
+          "description": "Begin met een formele inleiding: doel en context van het document."
+        },
+        {
+          "step": 2,
+          "description": "Gebruik uitsluitend strikt juridische terminologie, definieer alle termen eenduidig."
+        },
+        {
+          "step": 3,
+          "description": "Structureer het document met duidelijke kopjes en onderverdelingen."
+        },
+        {
+          "step": 4,
+          "description": "Vermeld alle juridische verwijzingen en bronnen nauwkeurig, volgens APA."
+        },
+        {
+          "step": 5,
+          "description": "Sluit af met een formele conclusie en evt. aanbevelingen. Zorg voor anonimisatie."
+        }
+      ]
+    },
+    {
+      "id": "PROC006",
+      "title": "Casusanalyse en Juridisch Advies",
+      "description": "Procedure voor juridisch begeleiders om samen met de cliënt een juridische casus te analyseren en een helder juridisch advies op te stellen.",
+      "steps": [
+        {
+          "step": 1,
+          "description": "Vraag of er een specifieke casus is waarvoor juridische ondersteuning gewenst is."
+        },
+        {
+          "step": 2,
+          "description": "Stel gerichte juridische vragen over aanleiding, relevante documenten, belang en termijnen."
+        },
+        {
+          "step": 3,
+          "description": "Analyseer de feiten en pas relevante regelgeving toe (nationaal en internationaal)."
+        },
+        {
+          "step": 4,
+          "description": "Stel een beknopt en professioneel juridisch advies op. Gebruik APA-bronvermelding."
+        },
+        {
+          "step": 5,
+          "description": "Bespreek eventuele vervolgstappen (bezwaar, beroep, aanvullende documenten)."
+        }
+      ]
+    }
+  ]
+}
