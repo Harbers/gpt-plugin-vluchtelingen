@@ -8,7 +8,6 @@ from typing import List, Dict, Any
 # Configuratie en Constanten
 # ============================================================
 
-# Uitgebreide lijst met betrouwbare domeinen voor het filteren van zoekresultaten.
 BETROUWBARE_DOMAINS = [
     "rijksoverheid.nl", "ind.nl", "ministerievanbuitenlandsezaken.nl", "ministerievanjustitie.nl", 
     "ministerievanfinancien.nl", "ministerievanonderwijs.nl", "regering.nl", "nederlandwereldwijd.nl", 
@@ -34,13 +33,11 @@ BETROUWBARE_DOMAINS = [
     "migrantadvies.org", "integratiewetgeving.nl", "europeanpolicycentre.eu"
 ]
 
-# Sleutelwoorden die relevant zijn voor asiel, vluchtelingen, etc.
 SLEUTELWOORDEN = [
     "asiel", "statushouder", "vluchteling", "vreemdeling", "opvang",
     "procedure", "verblijf", "migratie", "migrant", "indiening", "inburgering"
 ]
 
-# Termen die wijzen op een Nederlandse context
 DOELGROEP_NL = [
     "nederland", "nederlandse", "rijksoverheid", "gemeente", "wetgeving"
 ]
@@ -51,7 +48,7 @@ DOELGROEP_NL = [
 
 def is_relevante_bron(url: str) -> bool:
     """
-    Controleer of de URL afkomstig is van een van de betrouwbare domeinen.
+    Controleer of de URL afkomstig is van een betrouwbare bron.
     """
     url = url.lower()
     for domein in BETROUWBARE_DOMAINS:
@@ -61,24 +58,21 @@ def is_relevante_bron(url: str) -> bool:
 
 def bevat_relevante_term(tekst: str) -> bool:
     """
-    Controleer of de gegeven tekst één of meer van de relevante sleutelwoorden bevat.
+    Controleer of de tekst één of meer relevante sleutelwoorden bevat.
     """
     tekst = tekst.lower()
     return any(kw in tekst for kw in SLEUTELWOORDEN)
 
 def is_gericht_op_nederland(tekst: str) -> bool:
     """
-    Controleer of de tekst termen bevat die wijzen op een Nederlandse context.
+    Controleer of de tekst Nederlandse context bevat.
     """
     tekst = tekst.lower()
     return any(nl in tekst for nl in DOELGROEP_NL)
 
 def filter_resultaten(resultaten: List[Dict]) -> List[Dict]:
     """
-    Filtert de zoekresultaten op basis van:
-      1. De URL moet afkomstig zijn van een betrouwbare bron.
-      2. De titel of samenvatting moet relevante trefwoorden bevatten.
-      3. De inhoud moet gericht zijn op de Nederlandse context.
+    Filter de zoekresultaten op betrouwbare bron, relevante trefwoorden en Nederlandse context.
     """
     gefilterd = []
     for resultaat in resultaten:
@@ -99,9 +93,6 @@ def filter_resultaten(resultaten: List[Dict]) -> List[Dict]:
 # ============================================================
 
 def is_valid_bsn(bsn: str) -> bool:
-    """
-    Controleer of een 9-cijferig BSN voldoet aan de 11-proef.
-    """
     if len(bsn) != 9 or not bsn.isdigit():
         return False
     try:
@@ -111,9 +102,6 @@ def is_valid_bsn(bsn: str) -> bool:
         return False
 
 def controleer_gevoelige_data(invoer: str) -> (str, List[str]):
-    """
-    Vervang privacygevoelige informatie (zoals BSN, V-nummers, namen) door een placeholder.
-    """
     meldingen = []
     patroon_vnummer = re.compile(r'\bV\d{6,9}\b', re.IGNORECASE)
     if patroon_vnummer.search(invoer):
@@ -134,9 +122,6 @@ def controleer_gevoelige_data(invoer: str) -> (str, List[str]):
     return invoer, meldingen
 
 def verwerk_invoer(invoer: str) -> Dict[str, Any]:
-    """
-    Verwerkt de invoer door privacygevoelige gegevens te anonimiseren.
-    """
     anonieme_invoer, meldingen = controleer_gevoelige_data(invoer)
     return {
         "geanonimiseerde_invoer": anonieme_invoer,
@@ -148,9 +133,6 @@ def verwerk_invoer(invoer: str) -> Dict[str, Any]:
 # Overige Helper-functies
 # ============================================================
 def combineer_filters(data: str) -> str:
-    """
-    Combineert filters op basis van de data.
-    """
     return data.lower()
 
 # ============================================================
