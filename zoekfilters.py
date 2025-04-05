@@ -1,121 +1,46 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-"""
-Module: zoekfilters.py
-Deze module implementeert uitgebreide zoekresultaat filtering voor de juridische zoekfunctie.
-Het combineert de controle op betrouwbare bronnen, relevante sleutelwoorden en een Nederlandse context,
-en anonimiseert privacygevoelige gegevens.
-"""
-
 import re
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Any
 
 # ============================================================
 # Configuratie en Constanten
 # ============================================================
 
+# Uitgebreide lijst met betrouwbare domeinen voor het filteren van zoekresultaten.
 BETROUWBARE_DOMAINS = [
-    r"\.overheid\.nl",
-    r"\.rijksoverheid\.nl",
-    r"\.minszw\.nl",
-    r"\.minjenv\.nl",
-    r"\.nederlandwereldwijd\.nl",
-    r"\.europa\.eu",
-    r"\.ec\.europa\.eu",
-    r"\.europarl\.europa\.eu",
-    r"\.eur-lex\.europa\.eu",
-    r"\.hudoc\.echr\.coe\.int",
-    r"\.un\.org",
-    r"\.unhcr\.org",
-    r"\.unicef\.org",
-    r"\.icrc\.org",
-    r"\.redcross\.org",
-    r"\.amnesty\.nl",
-    r"\.amnesty\.org",
-    r"\.vluchtelingenwerk\.nl",
-    r"\.juridischloket\.nl",
-    r"\.migratierecht\.nl",
-    r"\.integratiefonds\.nl",
-    r"\.inburgeren\.nl",
-    r"\.kiesraad\.nl",
-    r"\.nrc\.nl",
-    r"\.volkskrant\.nl",
-    r"\.parlement\.com",
-    r"\.oecd\.org",
-    r"\.narcis\.nl",
-    r"\.wodc\.nl",
-    r"\.unicef\.nl",
-    r"\.inspectiegezondheidszorg\.nl",
-    r"\.zorginstituutnederland\.nl",
-    r"\.pharos\.nl",
-    r"\.ministerievangezondheid\.nl",
-    r"\.europalegal\.eu",
-    r"\.ecrea\.org",
-    r"\.officialeuropeannews\.eu",
-    r"\.rechtsinformatie\.nl",
-    r"\.brp\.nl",
-    r"\.omroepbrabant\.nl",
-    r"\.europeanpolicycentre\.eu",
-    r"\.europaneconomic\.org",
-    r"\.ministerievanarbeid\.nl",
-    r"\.arbeidsinspectie\.nl",
-    r"\.politieke-partijen\.nl",
-    r"\.cpb\.nl",
-    r"\.scp\.nl",
-    r"\.inspectieonderwijs\.nl",
-    r"\.regeerders\.nl",
-    r"\.ministerievancultureel-erfgoed\.nl",
-    r"\.overheidspublicaties\.nl",
-    r"\.ambtenarenbond\.nl",
-    r"\.bijdl\.nl",
-    r"\.volksgezondheid\.nl",
-    r"\.sociaalzaken\.nl",
-    r"\.integratieadvies\.nl",
-    r"\.migrantinstitute\.nl",
-    r"\.immigratieadvies\.nl",
-    r"\.internationalmigration\.org",
-    r"\.fhi\.no",
-    r"\.ukri\.org",
-    r"\.europamigration\.eu",
-    r"\.migratieforum\.nl",
-    r"\.verhuisadvies\.nl",
-    r"\.logistiek\.nl",
-    r"\.socialezekerheid\.eu",
-    r"\.multicultureelcentrum\.nl",
-    r"\.cultureelplatform\.nl",
-    r"\.jongerenwerk\.nl",
-    r"\.arbeidsmarktinformatie\.nl",
-    r"\.krantenvanhetnoorden\.nl",
-    r"\.parlementairdocument\.nl",
-    r"\.europapress\.eu",
-    r"\.documentenbank\.nl",
-    r"\.advocatenorde\.nl",
-    r"\.rechtspraakvooriedereen\.nl",
-    r"\.sociaalekennisbank\.nl",
-    r"\.overheidstransparant\.nl",
-    r"\.ministerievanmilieu\.nl",
-    r"\.gemeentelijkezorg\.nl",
-    r"\.gezondheidsmonitor\.nl",
-    r"\.europainnovatie\.eu",
-    r"\.dutchinnovation\.nl",
-    r"\.integratieplatform\.nl",
-    r"\.migratieanalyse\.nl",
-    r"\.sociaalbeleid\.nl",
-    r"\.europabureau\.nl",
-    r"\.internationaalrecht\.nl",
-    r"\.legalinfo\.nl",
-    r"\.rechtdata\.nl",
-    r"\.verblijfsvergunninginfo\.nl",
-    r"\.migrantadvies\.org",
-    r"\.integratiewetgeving\.nl"
+    "rijksoverheid.nl", "ind.nl", "ministerievanbuitenlandsezaken.nl", "ministerievanjustitie.nl", 
+    "ministerievanfinancien.nl", "ministerievanonderwijs.nl", "regering.nl", "nederlandwereldwijd.nl", 
+    "europa.eu", "ec.europa.eu", "europarl.europa.eu", "eurojust.europa.eu", "eur-lex.europa.eu", 
+    "hudoc.echr.coe.int", "un.org", "unhcr.org", "unicef.org", "icrc.org", "redcross.org", 
+    "amnesty.nl", "amnesty.org", "vluchtelingenwerk.nl", "juridischloket.nl", "migratierecht.nl", 
+    "integratiefonds.nl", "inburgeren.nl", "kiesraad.nl", "nrc.nl", "volkskrant.nl", 
+    "parlement.com", "oecd.org", "narcis.nl", "wodc.nl", "unicef.nl", "inspectiegezondheidszorg.nl", 
+    "zorginstituutnederland.nl", "pharos.nl", "ministerievangezondheid.nl", "europalegal.eu", 
+    "ecrea.org", "officialeuropeannews.eu", "rechtsinformatie.nl", "brp.nl", "omroepbrabant.nl", 
+    "europeanpolicycentre.eu", "europaneconomic.org", "ministerievanarbeid.nl", "arbeidsinspectie.nl", 
+    "politieke-partijen.nl", "cpb.nl", "scp.nl", "inspectieonderwijs.nl", "regeerders.nl", 
+    "ministerievancultureel-erfgoed.nl", "overheidspublicaties.nl", "ambtenarenbond.nl", "bijdl.nl", 
+    "volksgezondheid.nl", "sociaalzaken.nl", "integratieadvies.nl", "migrantinstitute.nl", 
+    "immigratieadvies.nl", "internationalmigration.org", "fhi.no", "ukri.org", "europamigration.eu", 
+    "migratieforum.nl", "verhuisadvies.nl", "logistiek.nl", "socialezekerheid.eu", "multicultureelcentrum.nl", 
+    "cultureelplatform.nl", "jongerenwerk.nl", "arbeidsmarktinformatie.nl", "krantenvanhetnoorden.nl", 
+    "parlementairdocument.nl", "europapress.eu", "documentenbank.nl", "advocatenorde.nl", 
+    "rechtspraakvooriedereen.nl", "sociaalekennisbank.nl", "overheidstransparant.nl", "ministerievanmilieu.nl", 
+    "gemeentelijkezorg.nl", "gezondheidsmonitor.nl", "europainnovatie.eu", "dutchinnovation.nl", 
+    "integratieplatform.nl", "migratieanalyse.nl", "sociaalbeleid.nl", "europabureau.nl", 
+    "internationaalrecht.nl", "legalinfo.nl", "rechtdata.nl", "verblijfsvergunninginfo.nl", 
+    "migrantadvies.org", "integratiewetgeving.nl", "europeanpolicycentre.eu"
 ]
 
+# Sleutelwoorden die relevant zijn voor asiel, vluchtelingen, etc.
 SLEUTELWOORDEN = [
     "asiel", "statushouder", "vluchteling", "vreemdeling", "opvang",
     "procedure", "verblijf", "migratie", "migrant", "indiening", "inburgering"
 ]
 
+# Termen die wijzen op een Nederlandse context
 DOELGROEP_NL = [
     "nederland", "nederlandse", "rijksoverheid", "gemeente", "wetgeving"
 ]
@@ -129,8 +54,8 @@ def is_relevante_bron(url: str) -> bool:
     Controleer of de URL afkomstig is van een van de betrouwbare domeinen.
     """
     url = url.lower()
-    for pattern in BETROUWBARE_DOMAINS:
-        if re.search(pattern, url):
+    for domein in BETROUWBARE_DOMAINS:
+        if domein in url:
             return True
     return False
 
@@ -154,7 +79,6 @@ def filter_resultaten(resultaten: List[Dict]) -> List[Dict]:
       1. De URL moet afkomstig zijn van een betrouwbare bron.
       2. De titel of samenvatting moet relevante trefwoorden bevatten.
       3. De inhoud moet gericht zijn op de Nederlandse context.
-    Alleen resultaten die aan alle voorwaarden voldoen worden behouden.
     """
     gefilterd = []
     for resultaat in resultaten:
@@ -186,17 +110,15 @@ def is_valid_bsn(bsn: str) -> bool:
     except Exception:
         return False
 
-def controleer_gevoelige_data(invoer: str) -> Tuple[str, List[str]]:
+def controleer_gevoelige_data(invoer: str) -> (str, List[str]):
     """
     Vervang privacygevoelige informatie (zoals BSN, V-nummers, namen) door een placeholder.
     """
     meldingen = []
-    # V‑nummer controle: detecteer 'V' gevolgd door 6 tot 9 cijfers (case-insensitive)
     patroon_vnummer = re.compile(r'\bV\d{6,9}\b', re.IGNORECASE)
     if patroon_vnummer.search(invoer):
         meldingen.append("Gebruik van een V‑nummer is niet toegestaan.")
         invoer = patroon_vnummer.sub("[ANONIEM]", invoer)
-    # BSN controle: zoek naar 8 of 9 cijferige getallen
     patroon_bsn = re.compile(r'\b\d{8,9}\b')
     for match in patroon_bsn.findall(invoer):
         if len(match) == 9 and is_valid_bsn(match):
@@ -205,7 +127,6 @@ def controleer_gevoelige_data(invoer: str) -> Tuple[str, List[str]]:
         elif len(match) == 8:
             meldingen.append("Gebruik van een BSN-nummer is niet toegestaan.")
             invoer = invoer.replace(match, "[ANONIEM]")
-    # Naamcontrole: detecteer twee opeenvolgende woorden met hoofdletters
     patroon_naam = re.compile(r'\b[A-Z][a-z]+\s+[A-Z][a-z]+\b')
     if patroon_naam.search(invoer):
         meldingen.append("Gebruik van een naam is niet toegestaan.")
