@@ -1,5 +1,5 @@
 {
-  "version": "1.5",
+  "version": "1.4",
   "startVraag": "Rolkeuze – Juridische Medewerker",
   "mainMenu": {
     "title": "Juridische Medewerker",
@@ -27,35 +27,35 @@
       "steps": [
         {
           "step": 1,
-          "action": "Informeer de cliënt (met inachtneming van de meest recente politieke en beleidsveranderingen) over de vereiste formulieren en documenten: • Formulier MVV-aanvraag (Controleer de actuele versie op: https://ind.nl/MVV-aanvraagformulier) • Kopie paspoort • Indien nodig: bewijsstukken voor gezinshereniging of studie, afhankelijk van de actuele richtlijnen. Verifieer altijd of het formulier up-to-date is.",
+          "action": "Informeer de cliënt (met inachtneming van de meest recente politieke en beleidsveranderingen) over de vereiste formulieren en documenten: • Formulier MVV-aanvraag (Controleer de laatste versie op: https://ind.nl/MVV-aanvraagformulier) • Kopie paspoort • Indien nodig: bewijsstukken voor gezinshereniging of studie, afhankelijk van de actuele richtlijnen.",
           "question": "Kunt u bevestigen dat, op basis van de laatste voorschriften, alle documenten compleet zijn en in anonieme vorm worden aangeleverd?",
-          "helpQuestion": "Heeft u hulp nodig bij het invullen van de formulieren of extra toelichting over de actuele vereisten?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. invullen van formulieren of extra toelichting)?",
           "online_support": "Raadpleeg actuele instructies op betrouwbare overheidswebsites (bijv. Rijksoverheid, IND).",
-          "verification": "Verifieer de URL en check of de getoonde formulieren de nieuwste beleidswijzigingen reflecteren."
+          "verification": "Voer een HTTP GET-request uit op de URL en bevestig dat deze actief is en de meest recente versie van het formulier toont."
         },
         {
           "step": 2,
-          "action": "Leg uit hoe en waar de aanvraag moet worden ingediend, conform de meest recente regelgeving (online of papieren route). Controleer of de indieningsmethode en lokale IND-kantoorprocedures recent zijn aangepast.",
+          "action": "Leg uit hoe en waar de aanvraag, conform de meest actuele regelgeving, moet worden ingediend (online of papieren route). Controleer of de lokale IND-kantoorprocedures recentelijk zijn aangepast.",
           "question": "Heeft u het dossier compleet en klaar voor indiening op basis van de nieuwste procedure-eisen?",
-          "helpQuestion": "Heeft u hulp nodig bij het indienen van het formulier of extra toelichting over de procedure?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. indienen van het formulier, extra toelichting)?",
           "example_communication": "Voorbeeld e-mail of brief voor de indiening.",
-          "verification": "Controleer de indieningsprocedures en URL’s van relevante instanties voor de laatste updates."
+          "verification": "Controleer via een HTTP-request of de indieningspagina actief is en de juiste procedure-informatie toont."
         },
         {
           "step": 3,
-          "action": "Bespreek de goedkeuringsfase en plan de afspraak voor het ophalen van het MVV-visum, rekening houdend met eventuele recente aanpassingen in doorlooptijden of protocollen.",
+          "action": "Bespreek de goedkeuringsfase en de planning van de afspraak voor het ophalen van het MVV-visum, met inachtneming van eventuele recente aanpassingen in doorlooptijden of protocollen.",
           "question": "Weet u of er, conform de laatste updates, al een afspraak gepland staat?",
-          "helpQuestion": "Heeft u hulp nodig bij het inplannen van de afspraak of verdere uitleg over de actuele tijdslijnen?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. afspraak inplannen, verdere uitleg)?",
           "online_support": "Link naar de IND-website met actuele afspraken en instructies.",
-          "verification": "Verifieer of de aangegeven URL en tijdslijnen overeenkomen met de laatste beleidsupdates."
+          "verification": "Verifieer de actuele afspraken via een HTTP-request naar de IND-website."
         },
         {
           "step": 4,
-          "action": "Leg uit dat na goedkeuring de cliënt, volgens de meest recente regels, binnen 3 dagen contact moet opnemen met het Nareisloket bij aankomst in Nederland. Controleer de actuele meldingsplicht en de meest recente contactgegevens (bijv. via https://ind.nl/Nareisloket).",
+          "action": "Leg uit dat na goedkeuring de cliënt volgens de meest recente regels binnen 3 dagen contact moet opnemen met het Nareisloket bij aankomst in Nederland. Controleer de meest recente contactgegevens op de officiële site (bijv. https://ind.nl/Nareisloket).",
           "question": "Is uw cliënt, gezien de huidige richtlijnen, op de hoogte van deze meldingsplicht?",
-          "helpQuestion": "Heeft u hulp nodig bij het verkrijgen van de juiste contactgegevens of extra uitleg over de meldingsplicht?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. contact opnemen, formulieren)?",
           "online_support": "Raadpleeg de IND-website voor de laatste contactinformatie.",
-          "verification": "Controleer de URL en verifieer of de informatie actueel is."
+          "verification": "Voer een HTTP-request uit op de Nareisloket-pagina om te controleren of de contactgegevens up-to-date zijn."
         }
       ]
     },
@@ -66,35 +66,35 @@
       "steps": [
         {
           "step": 1,
-          "action": "Voer een intakegesprek en verzamel de vereiste formulieren volgens de nieuwste gezinsherenigingsrichtlijnen: • Aanvraagformulier Gezinshereniging (Controleer de actuele versie op: https://ind.nl/Gezinshereniging-formulier) • Overzicht gezinsleden en identiteitsdocumenten. Verifieer altijd of het formulier up-to-date is.",
+          "action": "Voer een intakegesprek en verzamel de vereiste formulieren volgens de nieuwste gezinsherenigingsrichtlijnen: • Aanvraagformulier Gezinshereniging (Controleer de nieuwste versie op: https://ind.nl/Gezinshereniging-formulier) • Overzicht gezinsleden en identiteitsdocumenten.",
           "question": "Kunt u, met inachtneming van de huidige situatie, de gezinssituatie en behoeften van uw cliënt beschrijven?",
-          "helpQuestion": "Heeft u hulp nodig bij het invullen van het intakeformulier of extra toelichting over de actuele eisen?",
-          "online_support": "Raadpleeg de websites van Vluchtelingenwerk of Rijksoverheid voor actuele richtlijnen.",
-          "verification": "Verifieer de URL en controleer of het formulier de nieuwste versie betreft."
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. invullen formulieren, extra toelichting)?",
+          "online_support": "Raadpleeg richtlijnen op de website van Vluchtelingenwerk of Rijksoverheid.",
+          "verification": "Verifieer via een HTTP-request of het formulier actueel is."
         },
         {
           "step": 2,
-          "action": "Informeer welke documenten nodig zijn (zoals geboorteakten, huwelijksakten) en zorg dat deze, volgens de recentste beleidsregels, in anonieme vorm worden aangeleverd.",
+          "action": "Informeer welke documenten nodig zijn (zoals geboorteakten, huwelijksakten) en zorg dat deze, volgens de nieuwste beleidsregels, in anonieme vorm worden aangeleverd.",
           "question": "Zijn alle benodigde documenten, volgens de meest actuele eisen, verzameld?",
-          "helpQuestion": "Heeft u hulp nodig bij het verzamelen of vertalen van documenten?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. extra bewijsstukken, vertaaldocumenten)?",
           "example_communication": "Voorbeeld e-mail voor het aanvragen van aanvullende documenten.",
-          "verification": "Controleer of de actuele eisen en URL’s van de documentvereisten correct zijn."
+          "verification": "Controleer via een HTTP-request of de vereiste documenten voldoen aan de nieuwste eisen."
         },
         {
           "step": 3,
-          "action": "Leg uit hoe het dossier moet worden ingediend bij de bevoegde instantie (online of fysiek), rekening houdend met de nieuwste procedures en termijnen.",
-          "question": "Is het dossier, in lijn met de nieuwste richtlijnen, compleet voor indiening?",
-          "helpQuestion": "Heeft u hulp nodig bij de indiening of extra uitleg over de procedure?",
-          "online_support": "Link naar de relevante indieningsprocedures.",
-          "verification": "Verifieer de indieningsmethodes en URL’s."
+          "action": "Leg uit hoe het dossier moet worden ingediend bij de bevoegde instantie (online of fysiek), rekening houdend met de laatste procedures en termijnen.",
+          "question": "Is het dossier, conform de meest recente richtlijnen, compleet voor indiening?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. elektronische indiening, extra uitleg)?",
+          "online_support": "Raadpleeg de relevante indieningsprocedures op de officiële websites.",
+          "verification": "Verifieer de indieningsmethodes via een HTTP-request."
         },
         {
           "step": 4,
-          "action": "Bespreek het vervolgtraject (bezwaar- of beroepsprocedures) en de nazorg, met aandacht voor recente wijzigingen in beslistermijnen of richtlijnen.",
+          "action": "Bespreek het vervolgtraject en de nazorg, met nadruk op recente wijzigingen in bezwaartermijnen of nazorgprocedures.",
           "question": "Welke vervolgstappen zijn, op basis van de actuele situatie, reeds gepland?",
-          "helpQuestion": "Heeft u hulp nodig bij het opstellen van een actieplan of het inplannen van nazorg?",
-          "online_support": "Link naar juridische richtlijnen voor bezwaar en beroep.",
-          "verification": "Controleer of de beleidsinformatie actueel is."
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. indienen van bezwaar, planning nazorg)?",
+          "online_support": "Raadpleeg juridische richtlijnen voor bezwaar en beroep.",
+          "verification": "Controleer of de beleidsinformatie en URL's actueel zijn via HTTP-verificatie."
         }
       ]
     },
@@ -105,27 +105,27 @@
       "steps": [
         {
           "step": 1,
-          "action": "Informeer de cliënt over de vereiste formulieren voor verlenging/wijziging (Controleer de actuele versie op: https://ind.nl/Verlenging-formulier) zoals identiteitspapieren en bewijs van inkomen.",
-          "question": "Heeft u, op basis van de meest actuele eisen, alle benodigde formulieren en bewijsstukken verzameld?",
-          "helpQuestion": "Heeft u hulp nodig bij het invullen van de formulieren of extra toelichting over de actuele eisen?",
+          "action": "Informeer de cliënt over de vereiste formulieren voor verlenging/wijziging (Controleer de nieuwste versie op: https://ind.nl/Verlenging-formulier), zoals identiteitspapieren en bewijs van inkomen.",
+          "question": "Heeft u, gelet op de meest actuele eisen, alle benodigde formulieren en bewijsstukken verzameld?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. invullen formulieren, verificatie)?",
           "online_support": "Raadpleeg de IND-website voor actuele instructies.",
-          "verification": "Verifieer de URL en controleer of de documenten up-to-date zijn."
+          "verification": "Voer een HTTP-request uit op de Verlenging-formulier pagina om te verifiëren dat deze up-to-date is."
         },
         {
           "step": 2,
-          "action": "Stel een bijgewerkt dossier samen en informeer hoe dit, conform de nieuwste procedure-eisen, ingediend moet worden (online of per post).",
-          "question": "Is uw dossier volledig en in anonieme vorm samengesteld volgens de meest recente richtlijnen?",
-          "helpQuestion": "Heeft u hulp nodig bij het controleren of het dossier compleet is?",
+          "action": "Stel een bijgewerkt dossier samen en informeer hoe dit, volgens de nieuwste procedure-eisen, ingediend moet worden (online of per post).",
+          "question": "Is uw dossier volledig en in anonieme vorm samengesteld, volgens de meest recente richtlijnen?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. controle of het dossier volledig is)?",
           "example_communication": "Voorbeeldbrief voor het indienen van een verlengingsaanvraag.",
-          "verification": "Controleer de indieningsvereisten en URL’s."
+          "verification": "Controleer via HTTP of de indieningsvereisten actueel zijn."
         },
         {
           "step": 3,
-          "action": "Plan opvolgafspraken voor monitoring van de aanvraag en evalueer de voortgang, rekening houdend met recente beleidswijzigingen in doorlooptijden.",
+          "action": "Plan opvolgafspraken voor monitoring van de aanvraag en evalueer de voortgang, met aandacht voor eventuele recente beleidswijzigingen in doorlooptijden.",
           "question": "Wilt u, gezien de actuele situatie, extra afspraken inplannen of heeft u een bevestiging ontvangen?",
-          "helpQuestion": "Heeft u hulp nodig bij de planning van opvolgafspraken of extra uitleg?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. planning van opvolgafspraak, extra uitleg)?",
           "online_support": "Bied contactgegevens van de betreffende instantie.",
-          "verification": "Verifieer de actuele contactinformatie."
+          "verification": "Verifieer de actuele contactinformatie via HTTP."
         }
       ]
     },
@@ -136,33 +136,33 @@
       "steps": [
         {
           "step": 1,
-          "action": "Informeer de cliënt over eventuele afwijzing of intrekking. Noteer het actuele bezwaarformulier (Controleer: https://ind.nl/Bezwaar-formulier) en relevante uitspraken.",
-          "question": "Kunt u aangeven wat de reden van de afwijzing is, rekening houdend met recente veranderingen in beslispraktijk?",
-          "helpQuestion": "Heeft u hulp nodig bij het invullen van het bezwaarformulier of extra toelichting?",
+          "action": "Informeer de cliënt over eventuele afwijzing of intrekking. Noteer het actuele bezwaarformulier (Controleer de nieuwste versie op: https://ind.nl/Bezwaar-formulier) en relevante uitspraken.",
+          "question": "Kunt u aangeven wat de reden van de afwijzing is, rekening houdend met recente veranderingen in de beslispraktijk?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. invullen van het bezwaarformulier, extra toelichting)?",
           "online_support": "Raadpleeg overheidswebsites voor actuele procedures.",
-          "verification": "Controleer de URL en verifieer of het bezwaarformulier de nieuwste versie betreft."
+          "verification": "Voer een HTTP-request uit op de Bezwaar-formulier pagina om de actualiteit te verifiëren."
         },
         {
           "step": 2,
-          "action": "Verzamel alle relevante documenten en bewijsstukken, inclusief eventuele nieuwe jurisprudentie, die de beslissing kunnen weerleggen.",
-          "question": "Heeft u, volgens de laatste updates, alle benodigde bewijzen en documenten verzameld voor een bezwaar?",
-          "helpQuestion": "Heeft u hulp nodig bij het verzamelen van extra bewijsmateriaal?",
-          "verification": "Verifieer de actuele documentvereisten."
+          "action": "Verzamel alle relevante documenten en bewijsstukken, inclusief recente jurisprudentie, die de beslissing kunnen weerleggen.",
+          "question": "Heeft u, volgens de laatste updates, alle benodigde documenten verzameld?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. verzamelen van extra bewijsmateriaal)?",
+          "verification": "Verifieer de documentvereisten via een HTTP-check."
         },
         {
           "step": 3,
-          "action": "Stel een bezwaarschrift of beroepsprocedure op met heldere argumentatie en volledige bronvermelding, gebaseerd op de meest recente juridische situatie.",
+          "action": "Stel een bezwaarschrift of beroepsprocedure op met heldere argumentatie en volledige bronvermelding, op basis van de meest actuele juridische situatie.",
           "question": "Heeft u, gezien de nieuwste rechtspraak, alle relevante argumenten en bronnen verwerkt?",
-          "helpQuestion": "Heeft u hulp nodig bij het opstellen van uw argumentatie of het zoeken naar actuele jurisprudentie?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. opstellen van de argumentatie, zoeken naar actuele jurisprudentie)?",
           "online_support": "Bied links naar juridische templates en richtlijnen.",
-          "verification": "Controleer de nieuwste juridische bronnen."
+          "verification": "Controleer de nieuwste juridische bronnen via HTTP."
         },
         {
           "step": 4,
-          "action": "Dien het bezwaar of beroep in en volg de procedure nauwgezet op, rekening houdend met eventuele recente aanpassingen in termijnen of formulieren.",
+          "action": "Dien het bezwaar of beroep in en volg de procedure nauwgezet op, met aandacht voor recente aanpassingen in termijnen of formulieren.",
           "question": "Is het bezwaar of beroep, volgens de meest recente procedure, ingediend en heeft u een bevestiging ontvangen?",
-          "helpQuestion": "Heeft u hulp nodig bij de digitale indiening of bij het contacteren van de instantie?",
-          "verification": "Verifieer de indiening en controleer de laatste termijnen."
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. digitale indiening, contact met de instantie)?",
+          "verification": "Verifieer de indiening en controleer de actuele termijnen via HTTP."
         }
       ]
     },
@@ -173,26 +173,26 @@
       "steps": [
         {
           "step": 1,
-          "action": "Controleer welke formulieren nodig zijn voor de inburgering (Controleer de actuele versie op: https://duo.nl/Inburgering-formulier) en welke integratievereisten gelden volgens de nieuwste wetgeving.",
+          "action": "Controleer welke formulieren nodig zijn voor inburgering (Controleer de nieuwste versie op: https://duo.nl/Inburgering-formulier) en welke integratievereisten gelden volgens de actuele wetgeving.",
           "question": "Welke integratie- of inburgeringsaspecten spelen, op basis van de actuele situatie, een rol voor uw cliënt?",
-          "helpQuestion": "Heeft u hulp nodig bij het invullen van het inburgeringsformulier of extra uitleg?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. invullen van het inburgeringsformulier, extra uitleg)?",
           "online_support": "Raadpleeg de nieuwste richtlijnen over inburgeringsvereisten.",
-          "verification": "Verifieer de URL en controleer of het formulier up-to-date is."
+          "verification": "Voer een HTTP-request uit op de Inburgering-formulier URL om te verifiëren dat deze up-to-date is."
         },
         {
           "step": 2,
-          "action": "Verzamel alle benodigde documenten en stel een dossier samen, waarbij u nagaat of er recentelijk wijzigingen zijn (bijv. vrijstellingen, taalvereisten).",
-          "question": "Is uw dossier conform de nieuwste regels compleet?",
-          "helpQuestion": "Heeft u hulp nodig bij het controleren of verzamelen van documenten?",
+          "action": "Verzamel alle benodigde documenten en stel een dossier samen, waarbij u controleert of er recent wijzigingen zijn (bijv. vrijstellingen, taalvereisten).",
+          "question": "Is uw dossier conform de nieuwste regels samengesteld?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. controleren van documenten, extra bewijs)?",
           "example_communication": "Voorbeeldbrief voor het aanvragen van ondersteuning.",
-          "verification": "Controleer of alle documenten voldoen aan de nieuwste eisen."
+          "verification": "Verifieer de documentvereisten via HTTP-check."
         },
         {
           "step": 3,
-          "action": "Dien de aanvraag in bij de bevoegde instantie en plan een evaluatiemoment, rekening houdend met de laatste richtlijnen over inburgeringstrajecten.",
+          "action": "Dien de aanvraag in bij de bevoegde instantie en plan een evaluatiemoment, rekening houdend met de actuele richtlijnen over inburgeringstrajecten.",
           "question": "Wilt u, gezien de actuele regelgeving, nu een afspraak maken of aanvullende informatie ontvangen?",
-          "helpQuestion": "Heeft u hulp nodig bij de indiening van de aanvraag of contact met de instantie?",
-          "verification": "Verifieer de indieningsprocedures en de actuele contactgegevens."
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. indiening van de aanvraag, contact met de instantie)?",
+          "verification": "Verifieer de indieningsprocedures via HTTP."
         }
       ]
     },
@@ -203,25 +203,25 @@
       "steps": [
         {
           "step": 1,
-          "action": "Inventariseer de voorwaarden en documenten voor naturalisatie (Controleer de actuele versie op: https://ind.nl/Naturalisatie-formulier), rekening houdend met de meest recente wijzigingen in wet- en regelgeving.",
+          "action": "Inventariseer de voorwaarden en documenten voor naturalisatie (Controleer de nieuwste versie op: https://ind.nl/Naturalisatie-formulier), met aandacht voor recente wijzigingen in wet- en regelgeving.",
           "question": "Zijn alle vereiste documenten voor naturalisatie, volgens de actuele voorschriften, verzameld?",
-          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. invullen van formulieren of extra toelichting over de vereisten)?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. formulieren invullen, extra toelichting)?",
           "online_support": "Raadpleeg de officiële IND-website voor de meest recente voorwaarden.",
-          "verification": "Verifieer de URL en controleer of het formulier de nieuwste versie betreft."
+          "verification": "Voer een HTTP-request uit op de Naturalisatie-formulier URL om de actualiteit te verifiëren."
         },
         {
           "step": 2,
-          "action": "Stel een volledig dossier samen, waarbij u rekening houdt met eventuele nieuwe taaleisen, afstandsverplichtingen of andere recente aanpassingen.",
+          "action": "Stel een volledig dossier samen, rekening houdend met eventuele nieuwe taaleisen of andere recente aanpassingen.",
           "question": "Is uw dossier, conform de meest recente richtlijnen, compleet?",
-          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. ontbreken documenten of extra uitleg)?",
-          "verification": "Controleer de documentvereisten en update deze indien nodig."
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. ontbrekende documenten, extra uitleg)?",
+          "verification": "Verifieer de documentvereisten via HTTP."
         },
         {
           "step": 3,
-          "action": "Dien het verzoek in en plan evaluatiemomenten indien nodig, rekening houdend met de actuele beslistermijnen en veranderende procedures.",
+          "action": "Dien het verzoek in en plan evaluatiemomenten indien nodig, met aandacht voor de actuele beslistermijnen en veranderende procedures.",
           "question": "Wilt u, gezien de actuele situatie, direct een evaluatiemoment inplannen?",
-          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. contact met de gemeente of planning)?",
-          "verification": "Verifieer de actuele termijnen en indieningsprocedures."
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. contact met de gemeente, planning)?",
+          "verification": "Controleer de actuele termijnen via HTTP."
         }
       ]
     },
@@ -232,25 +232,25 @@
       "steps": [
         {
           "step": 1,
-          "action": "Onderzoek of internationale bescherming nodig is; raadpleeg de nieuwste uitspraken (EHRM, HvJEU) en gebruik het actuele Aanvraagformulier Internationale Bescherming (Controleer: https://ind.nl/Internationale-Bescherming-formulier).",
+          "action": "Onderzoek of internationale bescherming nodig is; raadpleeg de nieuwste uitspraken (bijv. EHRM, HvJEU) en gebruik het actuele Aanvraagformulier Internationale Bescherming (Controleer: https://ind.nl/Internationale-Bescherming-formulier).",
           "question": "Heeft uw cliënt, op basis van de meest actuele situatie, internationale bescherming nodig? Geef de relevante details.",
-          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. check van relevante jurisprudentie of formulieren)?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. check van relevante jurisprudentie, formulieren)?",
           "online_support": "Zoek naar richtlijnen en contactgegevens van internationale instanties.",
-          "verification": "Verifieer de URL en controleer of het formulier up-to-date is."
+          "verification": "Voer een HTTP-request uit op de URL voor het Aanvraagformulier Internationale Bescherming om de actualiteit te verifiëren."
         },
         {
           "step": 2,
           "action": "Verzamel de relevante documenten en bewijsstukken volgens de nieuwste internationale en nationale richtlijnen (bijv. taalanalyse, medische rapporten).",
           "question": "Zijn de benodigde documenten, conform de recentste voorschriften, verzameld?",
-          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. verzamelen van documenten of extra uitleg)?",
-          "verification": "Controleer of alle vereisten actueel zijn."
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. documenten verzamelen, extra uitleg)?",
+          "verification": "Verifieer de documentvereisten via HTTP."
         },
         {
           "step": 3,
-          "action": "Stel een dossier samen en dien het in bij de bevoegde instantie, rekening houdend met eventuele recente beleidswijzigingen.",
+          "action": "Stel een dossier samen en dien het in, rekening houdend met eventuele recente beleidswijzigingen.",
           "question": "Heeft u dit dossier, afgestemd op de actuele procedures, volledig kunnen indienen?",
-          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. indiening of het plannen van een afspraak)?",
-          "verification": "Verifieer de indieningsprocedures en de laatste updates."
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. indiening, planning afspraak)?",
+          "verification": "Controleer de indieningsprocedures via HTTP."
         }
       ]
     },
@@ -261,33 +261,33 @@
       "steps": [
         {
           "step": 1,
-          "action": "Voer een grondige analyse uit van de conflictsituatie, gebaseerd op de meest recente regels en mogelijkheden voor mediation (Controleer: https://www.rijksoverheid.nl/Mediation-info).",
+          "action": "Voer een grondige analyse uit van de conflictsituatie, gebaseerd op de meest recente mediatieregels (Controleer: https://www.rijksoverheid.nl/Mediation-info).",
           "question": "Kunt u de conflictsituatie, met inachtneming van de nieuwste mediatieregelingen, in detail beschrijven?",
-          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. formuleren van het conflict of extra toelichting)?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. formuleren van het conflict, extra toelichting)?",
           "online_support": "Zoek naar informatie over mediation en voorbeelden van succesvolle conflictoplossing.",
-          "verification": "Verifieer de URL en controleer of de mediatie-informatie actueel is."
+          "verification": "Verifieer de mediatieregels via HTTP op de aangegeven URL."
         },
         {
           "step": 2,
-          "action": "Verzamel alle relevante documenten en stel, volgens de laatste richtlijnen voor mediation, een verslag op.",
+          "action": "Verzamel alle relevante documenten en stel een verslag op volgens de laatste richtlijnen voor mediation.",
           "question": "Heeft u, gezien de actuele situatie, alle documenten en verslagen voorbereid?",
-          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. documenten ordenen of extra uitleg)?",
-          "verification": "Controleer de documentvereisten en update indien nodig."
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. documenten ordenen, extra uitleg)?",
+          "verification": "Controleer via HTTP of de richtlijnen voor mediation recent zijn."
         },
         {
           "step": 3,
-          "action": "Bepaal samen met de cliënt of mediation, gelet op de nieuwste ontwikkelingen in bemiddelingskaders, een geschikte oplossing kan bieden.",
+          "action": "Bepaal samen met de cliënt of mediation, op basis van de nieuwste ontwikkelingen in bemiddelingskaders, een geschikte oplossing kan bieden.",
           "question": "Denkt u, gebaseerd op de actuele mediatieprocedures, dat mediation passend is?",
-          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. aanvraag mediation of voorbeeldovereenkomsten)?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. aanvraag mediation, voorbeeldovereenkomsten)?",
           "example_communication": "Voorbeeld e-mail voor het aanvragen van mediation.",
-          "verification": "Verifieer of de mediatie-informatie en voorbeelden up-to-date zijn."
+          "verification": "Verifieer de actuele mediatieregels via HTTP."
         },
         {
           "step": 4,
           "action": "Stel een concreet mediationplan op en plan vervolgsessies, rekening houdend met eventuele recente wijzigingen in mediationtrajecten.",
           "question": "Is het mediationplan volgens de huidige richtlijnen opgesteld en klaar voor uitvoering?",
-          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. definitief opstellen plan of contact met mediator)?",
-          "verification": "Controleer of het plan en de planning voldoen aan de nieuwste standaarden."
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. definitief opstellen plan, contact met mediator)?",
+          "verification": "Controleer via HTTP of de mediatieregels actueel zijn."
         }
       ]
     }
