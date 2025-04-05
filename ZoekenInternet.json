@@ -1,5 +1,23 @@
 {
   "Asielbeleid en Wetgeving": [
+    {
+      "sourceTitle": "Rijksoverheid – Asielbeleid",
+      "url": "https://www.rijksoverheid.nl/onderwerpen/asielbeleid",
+      "description": "Informatie over het Nederlandse asielbeleid en relevante wet- en regelgeving."
+    },
+    {
+      "sourceTitle": "Immigratie- en Naturalisatiedienst (IND)",
+      "url": "https://ind.nl/nl/asielprocedures-in-nederland",
+      "description": "Details over de asielprocedures in Nederland."
+    },
+    {
+      "sourceTitle": "Rijksoverheid Nieuws (RSS Asielbeleid)",
+      "url": "https://www.rijksoverheid.nl/service/rss/asielbeleid",
+      "description": "Actuele nieuwsberichten over asielbeleid en migratie."
+    }
+  ]
+}
+  "Asielbeleid en Wetgeving": [
     "Actuele ontwikkelingen asielbeleid Nederland",
     "Nieuwe asielwetgeving 2025",
     "Rijksoverheid asielbeleid update"
