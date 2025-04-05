@@ -1,0 +1,123 @@
+{
+  "startVraag": "Ik ben juridisch medewerker",
+  "context": "Alle informatie is gericht op de belangen van asielzoekers, statushouders en andere doelgroepen van Vluchtelingenwerk Nederland. U voert uitsluitend anonieme informatie in over uw cliënt (geen namen, BSN-nummers of V‑nummers).",
+  "basisgegevens": {
+    "gemeente": "",
+    "procedureKoppelenAanThuisland": false,
+    "thuisland": "",
+    "moedertaal": ""
+  },
+  "menu": {
+    "instructie": "Kies de gewenste optie door het nummer in te voeren:",
+    "opties": [
+      { "nummer": "1.1", "omschrijving": "Juridische informatie opvragen (20 onderwerpen)" },
+      { "nummer": "1.2", "omschrijving": "Juridische procedures uitvoeren (8 procedures)" },
+      { "nummer": "1.3", "omschrijving": "Voer een casusanalyse uit – Analyseer individuele casussen en stel juridisch advies op" }
+    ]
+  },
+  "onderwerpen": [
+    {
+      "title": "Asielbeleid en Wetgeving",
+      "items": [
+        {
+          "hoofdthema": "Procedureel Asiel",
+          "subthema": "Aanvraag VOTA",
+          "uitleg": "Aanvraag verblijfsvergunning onbepaalde tijd asiel. Raadpleeg actuele formulieren via de IND.",
+          "zoektermen": [
+            "Aanvraag VOTA", "aanvraag verblijfsvergunning onbepaalde tijd asiel"
+          ]
+        },
+        {
+          "hoofdthema": "Procedureel Asiel",
+          "subthema": "Asielprocedure",
+          "uitleg": "Details over de aanmeldfase, het (ge)horen en sporenbeleid.",
+          "zoektermen": [
+            "Asielprocedure", "aanmeldfase", "horen", "sporenbeleid"
+          ]
+        }
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "id": "PROC001",
+      "title": "MVV-aanvraag Procedure",
+      "steps": [
+        {
+          "step": 1,
+          "instruction": "Controleer de actualiteit van het MVV-aanvraagformulier door de URL te verifiëren (zie AllProcedures.json, PROC001, stap 1)."
+        }
+      ]
+    },
+    {
+      "id": "PROC002",
+      "title": "Gezinshereniging Procedure",
+      "steps": [
+        {
+          "step": 1,
+          "instruction": "Verifieer de actuele versie van het Gezinshereniging-formulier via een HEAD-request (zie AllProcedures.json, PROC002, stap 1)."
+        }
+      ]
+    },
+    {
+      "id": "PROC003",
+      "title": "Verlenging of Wijziging van Verblijfsvergunning",
+      "steps": [
+        {
+          "step": 1,
+          "instruction": "Controleer het verlengingsformulier op actualiteit (zie AllProcedures.json, PROC003, stap 1)."
+        }
+      ]
+    },
+    {
+      "id": "PROC004",
+      "title": "Bezwaar- en Beroepsprocedures",
+      "steps": [
+        {
+          "step": 1,
+          "instruction": "Verifieer het bezwaarformulier (zie AllProcedures.json, PROC004, stap 1)."
+        }
+      ]
+    },
+    {
+      "id": "PROC005",
+      "title": "Integratie- en Inburgeringsprocedures",
+      "steps": [
+        {
+          "step": 1,
+          "instruction": "Controleer het Inburgeringsformulier op actualiteit (zie AllProcedures.json, PROC005, stap 1)."
+        }
+      ]
+    },
+    {
+      "id": "PROC006",
+      "title": "Naturalisatieprocedures",
+      "steps": [
+        {
+          "step": 1,
+          "instruction": "Verifieer het Naturalisatieformulier op actualiteit (zie AllProcedures.json, PROC006, stap 1)."
+        }
+      ]
+    },
+    {
+      "id": "PROC007",
+      "title": "Internationale Bescherming",
+      "steps": [
+        {
+          "step": 1,
+          "instruction": "Controleer het Aanvraagformulier Internationale Bescherming op actualiteit (zie AllProcedures.json, PROC007, stap 1)."
+        }
+      ]
+    },
+    {
+      "id": "PROC008",
+      "title": "Conflictoplossing en Mediation",
+      "steps": [
+        {
+          "step": 1,
+          "instruction": "Controleer de actuele mediatie-informatie via een HEAD-request (zie AllProcedures.json, PROC008, stap 1)."
+        }
+      ]
+    }
+  ]
+}
