@@ -3,7 +3,7 @@
   "startVraag": "Rolkeuze – Juridische Medewerker",
   "mainMenu": {
     "title": "Juridische Medewerker",
-    "description": "Kies eerst of u juridische informatie wilt opvragen (1.1) of een juridische procedure wilt uitvoeren (1.2). Registreer daarvoor uw basisgegevens (gemeente, thuisland, moedertaal) en volg de instructies.",
+    "description": "Kies eerst of u juridische informatie wilt opvragen (optie 1.1) of een juridische procedure wilt uitvoeren (optie 1.2). Registreer daarvoor uw basisgegevens (gemeente, thuisland, moedertaal) en volg de instructies.",
     "options": [
       {
         "id": "info",
@@ -14,19 +14,282 @@
       {
         "id": "proc",
         "label": "Juridische procedures uitvoeren (1.2)",
-        "description": "Doorloop één van de 8 juridische procedures met stapsgewijze begeleiding, inclusief controles op actualiteit en extra hulpvragen na iedere stap.",
+        "description": "Doorloop één van de 8 juridische procedures met stapsgewijze begeleiding en online ondersteuning. Na elke stap wordt gevraagd of extra hulp nodig is en wordt gecontroleerd of de informatie actueel is.",
         "parameters": ["gemeente", "thuisland", "moedertaal"]
       }
     ]
   },
   "procedures": [
-    { "id": "PROC001", "title": "MVV-aanvraag Procedure", "description": "Zie JuridischeProcedure.json", "steps": [] },
-    { "id": "PROC002", "title": "Gezinshereniging Procedure", "description": "Zie JuridischeProcedure.json", "steps": [] },
-    { "id": "PROC003", "title": "Verlenging of Wijziging van Verblijfsvergunning", "description": "Zie JuridischeProcedure.json", "steps": [] },
-    { "id": "PROC004", "title": "Bezwaar- en Beroepsprocedures", "description": "Zie JuridischeProcedure.json", "steps": [] },
-    { "id": "PROC005", "title": "Integratie- en Inburgeringsprocedures", "description": "Zie JuridischeProcedure.json", "steps": [] },
-    { "id": "PROC006", "title": "Naturalisatieprocedures", "description": "Zie JuridischeProcedure.json", "steps": [] },
-    { "id": "PROC007", "title": "Internationale Bescherming", "description": "Zie JuridischeProcedure.json", "steps": [] },
-    { "id": "PROC008", "title": "Conflictoplossing en Mediation", "description": "Zie JuridischeProcedure.json", "steps": [] }
+    {
+      "id": "PROC001",
+      "title": "MVV-aanvraag Procedure",
+      "description": "Procedure voor het aanvragen van een MVV (Machtiging tot Voorlopig Verblijf).",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Informeer de cliënt (met inachtneming van de meest recente politieke en beleidsveranderingen) over de vereiste formulieren en documenten: \n• Formulier MVV-aanvraag. Zoek actief naar het actuele formulier door termen als 'MVV aanvraagformulier' en 'download MVV formulier' te gebruiken. Controleer de URL (bijv. via de IND-website). \n• Kopie paspoort. \n• Indien nodig: bewijsstukken voor gezinshereniging of studie, afhankelijk van de actuele richtlijnen.",
+          "question": "Kunt u bevestigen dat, op basis van de laatste voorschriften, alle documenten compleet en correct (en in anonieme vorm) zijn aangeleverd?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. het invullen van formulieren of extra toelichting over de actuele vereisten)?",
+          "online_support": "Raadpleeg betrouwbare overheidswebsites zoals Rijksoverheid en IND voor de laatste instructies.",
+          "verification": "Verifieer de gevonden URL's op actualiteit door te controleren of ze relevante termen als 'download', 'formulier', 'aanvraagformulier' bevatten."
+        },
+        {
+          "step": 2,
+          "action": "Leg uit hoe en waar de aanvraag moet worden ingediend, conform de meest actuele regelgeving (online of papieren indiening) en controleer of de lokale IND-kantoorprocedures recentelijk zijn aangepast.",
+          "question": "Heeft u het dossier compleet en klaar voor indiening volgens de nieuwste procedure-eisen?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. indienen van het formulier of extra toelichting over de procedure)?",
+          "example_communication": "Voorbeeld e-mail of brief voor de indiening.",
+          "verification": "Controleer de indieningsprocedures en relevante URL's op recente updates."
+        },
+        {
+          "step": 3,
+          "action": "Bespreek de goedkeuringsfase en plan de afspraak voor het ophalen van het MVV-visum, waarbij u recente aanpassingen in doorlooptijden of protocollen meeneemt.",
+          "question": "Weet u, conform de laatste updates, of er al een afspraak gepland staat?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. het inplannen van de afspraak of verdere uitleg over de actuele tijdslijnen)?",
+          "online_support": "Bezoek de IND-website voor actuele afspraken en instructies.",
+          "verification": "Verifieer of de aangegeven URL's en tijdslijnen overeenkomen met de laatste beleidsupdates."
+        },
+        {
+          "step": 4,
+          "action": "Leg uit dat na goedkeuring de cliënt binnen 3 dagen na aankomst in Nederland contact moet opnemen met het Nareisloket. Zoek actief naar de meest recente contactinformatie en meldingsplicht (bijv. 'Nareisloket IND actueel').",
+          "question": "Is uw cliënt, gezien de huidige richtlijnen, op de hoogte van deze meldingsplicht?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. het verkrijgen van de juiste contactgegevens of extra uitleg over de meldingsplicht)?",
+          "online_support": "Raadpleeg de IND-website voor de laatste contactinformatie.",
+          "verification": "Controleer de URL's en actualiseer de informatie indien nodig."
+        }
+      ]
+    },
+    {
+      "id": "PROC002",
+      "title": "Gezinshereniging Procedure",
+      "description": "Procedure voor het begeleiden van gezinshereniging bij asielzoekers en statushouders.",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Voer een intakegesprek en verzamel de vereiste formulieren volgens de nieuwste gezinsherenigingsrichtlijnen: \n• Aanvraagformulier Gezinshereniging. Zoek actief naar de actuele versie (bijv. 'download gezinshereniging formulier IND'). \n• Overzicht gezinsleden en identiteitsdocumenten. Controleer de actualiteit van het formulier.",
+          "question": "Kunt u, met inachtneming van de huidige situatie, de gezinssituatie en behoeften van uw cliënt beschrijven?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. het invullen van het intakeformulier of extra toelichting)?",
+          "online_support": "Raadpleeg de websites van Vluchtelingenwerk en Rijksoverheid voor de meest recente richtlijnen.",
+          "verification": "Verifieer de gevonden URL's om te controleren of het de nieuwste versie betreft."
+        },
+        {
+          "step": 2,
+          "action": "Informeer welke documenten nodig zijn (bijv. geboorteakten, huwelijksakten) en zorg dat deze, volgens de recentste beleidsregels, in anonieme vorm worden aangeleverd.",
+          "question": "Zijn alle benodigde documenten, volgens de meest actuele eisen, verzameld?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. vertalen van documenten of extra bewijsstukken)?",
+          "example_communication": "Voorbeeld e-mail voor het aanvragen van aanvullende documenten.",
+          "verification": "Controleer of de documentvereisten en URL's up-to-date zijn."
+        },
+        {
+          "step": 3,
+          "action": "Leg uit hoe het dossier moet worden ingediend bij de bevoegde instantie, rekening houdend met de nieuwste procedures en termijnen (zoek naar 'gezinshereniging indieningsprocedure IND').",
+          "question": "Is het dossier, in lijn met de nieuwste richtlijnen, compleet voor indiening?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. elektronische indiening of extra uitleg)?",
+          "online_support": "Link naar de relevante indieningsprocedures.",
+          "verification": "Verifieer de indieningsmethoden en URL's op actualiteit."
+        },
+        {
+          "step": 4,
+          "action": "Bespreek het vervolgtraject en de nazorg, met aandacht voor recente wijzigingen in bezwaartermijnen of nazorgprocedures.",
+          "question": "Welke vervolgstappen zijn, op basis van de actuele situatie, reeds gepland?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. het opstellen van een actieplan of nazorg)?",
+          "online_support": "Link naar de nieuwste juridische richtlijnen voor bezwaar en beroep.",
+          "verification": "Controleer of de beleidsinformatie actueel is."
+        }
+      ]
+    },
+    {
+      "id": "PROC003",
+      "title": "Verlenging of Wijziging van Verblijfsvergunning",
+      "description": "Procedure voor het verlengen of wijzigen van een verblijfsvergunning.",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Informeer de cliënt over de vereiste formulieren voor verlenging/wijziging (zoek actief naar 'Verlenging formulier IND' en controleer de URL, bijvoorbeeld https://ind.nl/Verlenging-formulier) en verzamel alle benodigde bewijsstukken (bijv. identiteitsdocumenten, inkomensbewijzen).",
+          "question": "Heeft u, gelet op de meest actuele eisen, alle benodigde formulieren en bewijsstukken verzameld?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. invullen of verificatie van formulieren)?",
+          "online_support": "Raadpleeg de IND-website voor actuele instructies.",
+          "verification": "Verifieer de URL's en controleer of de documenten up-to-date zijn."
+        },
+        {
+          "step": 2,
+          "action": "Stel een bijgewerkt dossier samen en informeer hoe dit, conform de nieuwste procedure-eisen, ingediend moet worden (zoek naar 'indienen verlengingsaanvraag IND').",
+          "question": "Is uw dossier volledig en in anonieme vorm samengesteld volgens de meest recente richtlijnen?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. controleren of het dossier compleet is)?",
+          "example_communication": "Voorbeeldbrief voor het indienen van een verlengingsaanvraag.",
+          "verification": "Controleer de indieningsvereisten en URL's."
+        },
+        {
+          "step": 3,
+          "action": "Plan opvolgafspraken voor monitoring van de aanvraag en evalueer de voortgang, rekening houdend met eventuele recente beleidswijzigingen in doorlooptijden.",
+          "question": "Wilt u, gezien de actuele situatie, extra afspraken inplannen of heeft u een bevestiging ontvangen?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. planning van opvolgafspraken of extra uitleg)?",
+          "online_support": "Bied contactgegevens van de betreffende instantie.",
+          "verification": "Verifieer de actuele contactinformatie."
+        }
+      ]
+    },
+    {
+      "id": "PROC004",
+      "title": "Bezwaar- en Beroepsprocedures",
+      "description": "Procedure voor het indienen van bezwaar of beroep.",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Informeer de cliënt over eventuele afwijzing of intrekking en zoek actief naar het actuele bezwaarformulier (zoek op 'Bezwaar formulier IND download' en verifieer de URL, bijvoorbeeld via https://ind.nl/Bezwaar-formulier).",
+          "question": "Kunt u aangeven wat de reden van de afwijzing is, rekening houdend met recente veranderingen in de beslispraktijk?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. invullen van het bezwaarformulier of extra toelichting)?",
+          "online_support": "Raadpleeg overheidswebsites voor actuele procedures.",
+          "verification": "Controleer de URL en verifieer of het formulier de nieuwste versie betreft."
+        },
+        {
+          "step": 2,
+          "action": "Verzamel alle relevante documenten en bewijsstukken, inclusief recente jurisprudentie, die de beslissing kunnen weerleggen.",
+          "question": "Heeft u, volgens de laatste updates, alle benodigde bewijzen en documenten verzameld voor een bezwaar?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. extra bewijsmateriaal verzamelen)?",
+          "verification": "Verifieer de actuele documentvereisten."
+        },
+        {
+          "step": 3,
+          "action": "Stel een bezwaarschrift of beroepsprocedure op met heldere argumentatie en volledige bronvermelding, gebaseerd op de meest recente juridische situatie.",
+          "question": "Heeft u, gezien de nieuwste rechtspraak, alle relevante argumenten en bronnen verwerkt?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. bij het opstellen van de argumentatie of zoeken naar actuele jurisprudentie)?",
+          "online_support": "Bied links naar actuele juridische templates en richtlijnen.",
+          "verification": "Controleer de nieuwste juridische bronnen."
+        },
+        {
+          "step": 4,
+          "action": "Dien het bezwaar of beroep in en volg de procedure nauwgezet op, met aandacht voor recente wijzigingen in termijnen of formulieren.",
+          "question": "Is het bezwaar of beroep, volgens de meest recente procedure, ingediend en heeft u een bevestiging ontvangen?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. digitale indiening of contact met de instantie)?",
+          "verification": "Verifieer de indiening en controleer de laatste termijnen."
+        }
+      ]
+    },
+    {
+      "id": "PROC005",
+      "title": "Integratie- en Inburgeringsprocedures",
+      "description": "Procedure voor integratie- en inburgeringsaanvragen.",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Controleer welke formulieren nodig zijn voor inburgering (zoek op 'Inburgering formulier DUO download' en verifieer de URL, bijvoorbeeld https://duo.nl/Inburgering-formulier) en welke integratievereisten gelden volgens de meest recente wetgeving.",
+          "question": "Welke integratie- of inburgeringsaspecten spelen, op basis van de actuele situatie, een rol voor uw cliënt?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. bij het invullen van het inburgeringsformulier of extra toelichting)?",
+          "online_support": "Raadpleeg de laatste richtlijnen over inburgeringsvereisten.",
+          "verification": "Verifieer de URL en controleer of het formulier up-to-date is."
+        },
+        {
+          "step": 2,
+          "action": "Verzamel alle benodigde documenten en stel een dossier samen, waarbij u controleert of er recentelijk wijzigingen zijn (bijv. vrijstellingen of taalvereisten).",
+          "question": "Is uw dossier, conform de nieuwste regels, volledig samengesteld?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. bij het controleren of documenten compleet zijn)?",
+          "example_communication": "Voorbeeldbrief voor het aanvragen van ondersteuning.",
+          "verification": "Controleer of alle documenten voldoen aan de nieuwste eisen."
+        },
+        {
+          "step": 3,
+          "action": "Dien de aanvraag in bij de bevoegde instantie en plan een evaluatiemoment, rekening houdend met de laatste richtlijnen over inburgeringstrajecten.",
+          "question": "Wilt u, gezien de actuele regelgeving, nu een afspraak maken of aanvullende informatie ontvangen?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. indiening van de aanvraag of contact met de instantie)?",
+          "verification": "Verifieer de indieningsprocedures en de actuele contactgegevens."
+        }
+      ]
+    },
+    {
+      "id": "PROC006",
+      "title": "Naturalisatieprocedures",
+      "description": "Procedure voor naturalisatieaanvragen.",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Inventariseer de voorwaarden en documenten voor naturalisatie (zoek op 'Naturalisatie formulier IND download' en verifieer de URL, bijvoorbeeld via https://ind.nl/Naturalisatie-formulier) en houd rekening met recente wijzigingen in wet- en regelgeving.",
+          "question": "Zijn alle vereiste documenten voor naturalisatie, volgens de actuele voorschriften, verzameld?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. bij het invullen van formulieren of extra toelichting)?",
+          "online_support": "Raadpleeg de officiële IND-website voor de meest recente voorwaarden.",
+          "verification": "Verifieer de URL en controleer of het formulier de nieuwste versie betreft."
+        },
+        {
+          "step": 2,
+          "action": "Stel een volledig dossier samen, rekening houdend met eventuele nieuwe taaleisen, afstandsverplichtingen of andere recente aanpassingen.",
+          "question": "Is uw dossier volgens de meest recente richtlijnen compleet?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. ontbrekende documenten, extra uitleg)?",
+          "verification": "Controleer en update de documentvereisten indien nodig."
+        },
+        {
+          "step": 3,
+          "action": "Dien het verzoek in en plan evaluatiemomenten indien nodig, rekening houdend met de actuele beslistermijnen en veranderende procedures.",
+          "question": "Wilt u, gezien de actuele situatie, direct een evaluatiemoment inplannen?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. contact met de gemeente of planning)?",
+          "verification": "Verifieer de actuele termijnen en procedures."
+        }
+      ]
+    },
+    {
+      "id": "PROC007",
+      "title": "Internationale Bescherming",
+      "description": "Procedure voor het aanvragen van internationale bescherming.",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Onderzoek of internationale bescherming nodig is; raadpleeg de nieuwste uitspraken (EHRM, HvJEU) en zoek naar het actuele Aanvraagformulier Internationale Bescherming (bijv. via een zoekopdracht op 'Internationale Bescherming formulier IND download').",
+          "question": "Heeft uw cliënt, op basis van de meest actuele situatie, internationale bescherming nodig? Geef de relevante details.",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. bij het checken van relevante jurisprudentie of formulieren)?",
+          "online_support": "Zoek naar richtlijnen en contactgegevens van internationale instanties.",
+          "verification": "Verifieer de gevonden URL's en controleer of deze overeenkomen met de nieuwste beleidsinformatie."
+        },
+        {
+          "step": 2,
+          "action": "Verzamel de relevante documenten en bewijsstukken volgens de nieuwste internationale en nationale richtlijnen (bijv. taalanalyse, medische rapporten).",
+          "question": "Zijn de benodigde documenten, conform de recentste voorschriften, verzameld?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. documenten verzamelen of extra uitleg)?",
+          "verification": "Controleer de actuele documentvereisten."
+        },
+        {
+          "step": 3,
+          "action": "Stel een dossier samen en dien het in, rekening houdend met eventuele recente beleidswijzigingen.",
+          "question": "Heeft u dit dossier, afgestemd op de actuele procedures, volledig kunnen indienen?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. bij de indiening of het plannen van een afspraak)?",
+          "verification": "Verifieer de actuele indieningsprocedures."
+        }
+      ]
+    },
+    {
+      "id": "PROC008",
+      "title": "Conflictoplossing en Mediation",
+      "description": "Procedure voor conflictoplossing en mediation.",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Voer een grondige analyse uit van de conflictsituatie, gebaseerd op de meest recente regels en mogelijkheden voor mediation. Zoek naar actuele informatie over 'Mediation formulier' via betrouwbare bronnen (bijv. https://www.rijksoverheid.nl/Mediation-info).",
+          "question": "Kunt u de conflictsituatie, met inachtneming van de nieuwste mediatieregelingen, in detail beschrijven?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. het formuleren van het conflict of extra toelichting)?",
+          "online_support": "Zoek naar informatie over mediation en voorbeelden van succesvolle conflictoplossing.",
+          "verification": "Controleer of de gevonden URL's en informatie overeenkomen met de laatste mediatieregelingen."
+        },
+        {
+          "step": 2,
+          "action": "Verzamel alle relevante documenten en stel een verslag op volgens de nieuwste richtlijnen voor mediation.",
+          "question": "Heeft u, gezien de actuele situatie, alle documenten en verslagen voorbereid?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. documenten ordenen of extra uitleg)?",
+          "verification": "Controleer de richtlijnen voor mediation en de documentvereisten."
+        },
+        {
+          "step": 3,
+          "action": "Bepaal samen met de cliënt of mediation, gelet op de nieuwste ontwikkelingen in bemiddelingskaders, een geschikte oplossing kan bieden.",
+          "question": "Denkt u, gebaseerd op de actuele mediatieprocedures, dat mediation passend is?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. bij het aanvragen van mediation of het opstellen van een conceptovereenkomst)?",
+          "example_communication": "Voorbeeld e-mail voor het aanvragen van mediation.",
+          "verification": "Verifieer de informatie over mediatie en controleer de URL's op actualiteit."
+        },
+        {
+          "step": 4,
+          "action": "Stel een concreet mediationplan op en plan vervolgsessies, rekening houdend met eventuele recente wijzigingen in mediationtrajecten.",
+          "question": "Is het mediationplan, volgens de huidige richtlijnen, opgesteld en klaar voor uitvoering?",
+          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. bij het definitief opstellen van het plan of het contacteren van een mediator)?",
+          "verification": "Controleer of de laatste beleidsinformatie over mediation is toegepast."
+        }
+      ]
+    }
   ]
 }
