@@ -24,21 +24,19 @@ def head_root():
 
 @app.get("/search")
 def search_endpoint(onderwerp: str = Query(..., description="Het onderwerp om op te zoeken")):
-    # Laad de zoekresultaten-configuratie uit ZoekenInternet.json
     try:
         with open("ZoekenInternet.json", encoding="utf-8") as f:
             bronnen = json.load(f)
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="ZoekenInternet.json bestand niet gevonden.")
     
-    zoekresultaten = bronnen.get(onderwerp, [])
-    if not zoekresultaten:
-        raise HTTPException(status_code=404, detail=f"Geen zoekresultaten gevonden voor onderwerp: {onderwerp}")
+    zoektermen = bronnen.get(onderwerp, [])
+    if not zoektermen:
+        raise HTTPException(status_code=404, detail=f"Geen zoektermen gevonden voor onderwerp: {onderwerp}")
 
     resultaten = []
     with DDGS() as ddgs:
-        for item in zoekresultaten:
-            term = item.get("sourceTitle", "") + " " + item.get("description", "")
+        for term in zoektermen:
             for r in ddgs.text(term, max_results=3):
                 resultaat = {
                     "titel": r.get("title"),
@@ -48,12 +46,7 @@ def search_endpoint(onderwerp: str = Query(..., description="Het onderwerp om op
                 resultaten.append(resultaat)
     if not resultaten:
         raise HTTPException(status_code=404, detail="Geen relevante updates gevonden.")
-    
-    # Filter resultaten op geldigheid
-    from zoekfilters import filter_resultaten
-    gefilterde_resultaten = filter_resultaten(resultaten)
-    
-    return gefilterde_resultaten[:10]
+    return resultaten[:10]
 
 @app.get("/startmenu")
 def startmenu():
@@ -81,4 +74,4 @@ def get_mb_instrument():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
