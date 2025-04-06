@@ -5,7 +5,6 @@ from fastapi import FastAPI, Response, HTTPException, Query
 import json
 import os
 from duckduckgo_search import DDGS
-from zoekfilters import filter_resultaten  # Zorg dat deze functie beschikbaar is
 
 app = FastAPI()
 
@@ -15,39 +14,46 @@ def load_json(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
         return json.load(f)
 
-def internet_check_procedure(query: str) -> dict:
-    """
-    Voert als eerste stap een internetzoekopdracht uit om de meest up-to-date informatie over de procedure te vinden.
-    Valideert de gevonden resultaten op basis van betrouwbare bronnen en relevante trefwoorden.
-    Indien geen betrouwbaar resultaat wordt gevonden, wordt er met een fallback-zoekopdracht gezocht.
-    """
-    # Eerste zoekopdracht met de oorspronkelijke query
-    with DDGS() as ddgs:
-        results = list(ddgs.text(query, max_results=5))
-    valid_results = filter_resultaten(results)
-    if valid_results:
-        return valid_results[0]
-    else:
-        # Fallback zoekopdracht: voeg "nieuwste" toe aan de query
-        fallback_query = "nieuwste " + query
-        with DDGS() as ddgs:
-            results = list(ddgs.text(fallback_query, max_results=5))
-        valid_results = filter_resultaten(results)
-        if valid_results:
-            return valid_results[0]
-        else:
-            return {"error": "Geen betrouwbare informatie gevonden."}
+@app.get("/")
+def start():
+    return {"status": "API is actief"}
+
+@app.head("/")
+def head_root():
+    return Response(status_code=200)
 
 @app.get("/search")
 def search_endpoint(onderwerp: str = Query(..., description="Het onderwerp om op te zoeken")):
-    """
-    Voert als eerste stap een gecontroleerde internetcheck uit voor de meest actuele werkwijze.
-    Als betrouwbare informatie gevonden wordt, wordt deze direct teruggegeven.
-    """
-    latest_info = internet_check_procedure(onderwerp)
-    if "error" in latest_info:
-        raise HTTPException(status_code=404, detail=latest_info["error"])
-    return [latest_info]
+    # Laad de zoekresultaten-configuratie uit ZoekenInternet.json
+    try:
+        with open("ZoekenInternet.json", encoding="utf-8") as f:
+            bronnen = json.load(f)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="ZoekenInternet.json bestand niet gevonden.")
+    
+    zoekresultaten = bronnen.get(onderwerp, [])
+    if not zoekresultaten:
+        raise HTTPException(status_code=404, detail=f"Geen zoekresultaten gevonden voor onderwerp: {onderwerp}")
+
+    resultaten = []
+    with DDGS() as ddgs:
+        for item in zoekresultaten:
+            term = item.get("sourceTitle", "") + " " + item.get("description", "")
+            for r in ddgs.text(term, max_results=3):
+                resultaat = {
+                    "titel": r.get("title"),
+                    "link": r.get("href"),
+                    "samenvatting": r.get("body")
+                }
+                resultaten.append(resultaat)
+    if not resultaten:
+        raise HTTPException(status_code=404, detail="Geen relevante updates gevonden.")
+    
+    # Filter resultaten op geldigheid
+    from zoekfilters import filter_resultaten
+    gefilterde_resultaten = filter_resultaten(resultaten)
+    
+    return gefilterde_resultaten[:10]
 
 @app.get("/startmenu")
 def startmenu():
