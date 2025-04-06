@@ -1,5 +1,5 @@
 {
-  "version": "1.4",
+  "version": "1.5",
   "startVraag": "Rolkeuze – Juridische Medewerker",
   "mainMenu": {
     "title": "Juridische Medewerker",
@@ -14,7 +14,7 @@
       {
         "id": "proc",
         "label": "Juridische procedures uitvoeren (1.2)",
-        "description": "Doorloop één van de 8 juridische procedures met stapsgewijze begeleiding en online ondersteuning. Alle procedures starten met directe instructies voor het inleveren van het dossier bij de gemeente. Na elke stap wordt gevraagd of er extra ondersteuning gewenst is en wordt geverifieerd of de informatie actueel is.",
+        "description": "Doorloop één van de 8 juridische procedures met stapsgewijze begeleiding en online ondersteuning. Bij elke procedure wordt als allereerste stap een internetzoekopdracht uitgevoerd om de meest actuele werkwijze te achterhalen. Deze informatie wordt direct aan de cliënt getoond en meegenomen in de verdere procedure.",
         "parameters": ["gemeente", "thuisland", "moedertaal"]
       }
     ]
@@ -27,31 +27,28 @@
       "steps": [
         {
           "step": 1,
-          "action": "Lever het volledige dossier direct in bij de gemeente. Dit dossier dient te bestaan uit: een geldig paspoort, het volledig ingevulde MVV-aanvraagformulier (controleer altijd of u de meest recente versie gebruikt via de IND-website), en alle vereiste aanvullende documenten (zoals bewijsstukken voor gezinshereniging of studie). Zorg ervoor dat alle documenten volledig, correct en geanonimiseerd zijn.",
-          "question": "Kunt u bevestigen dat het dossier compleet is ingeleverd bij de gemeente volgens de actuele richtlijnen?",
-          "helpQuestion": "Wilt u extra uitleg over welke documenten vereist zijn of hoe u ze anoniem kunt aanleveren?",
-          "online_support": "Raadpleeg de IND-website en de gemeentelijke inleverinstructies voor actuele informatie."
+          "action": "Voer een internetzoekopdracht uit met de term 'MVV-aanvraag procedure up-to-date' om de nieuwste werkwijze te achterhalen. Gebruik hierbij de backend-zoekfunctie (bijv. via /search) en presenteer de meest recente informatie aan de cliënt.",
+          "question": "Is de meest recente werkwijze voor de MVV-aanvraag, inclusief formulieren en vereiste documenten, door u geverifieerd?"
         },
         {
           "step": 2,
-          "action": "Na goedkeuring ontvangt de cliënt instructies om het MVV-visum persoonlijk op te halen binnen 90 dagen.",
-          "question": "Is er al een afspraak gepland voor het ophalen van het visum?",
-          "helpQuestion": "Heeft u hulp nodig bij het inplannen van de afspraak?",
-          "online_support": "Bekijk de actuele afspraken via de IND-website."
+          "action": "Dien de MVV-aanvraag in met een geldig paspoort, volledig ingevuld aanvraagformulier en alle vereiste documenten. Zorg voor anonimisatie.",
+          "question": "Kunt u bevestigen dat alle documenten compleet en correct zijn aangeleverd?"
         },
         {
           "step": 3,
-          "action": "Reis met het afgehaalde MVV-visum naar Nederland, waarbij u erop let dat alle reisdocumenten geanonimiseerd zijn.",
-          "question": "Zijn alle reisdocumenten volgens de vereisten geanonimiseerd?",
-          "helpQuestion": "Wilt u meer informatie over het anonimiseren van reisdocumenten?",
-          "online_support": "Raadpleeg de instructies op de website van de IND."
+          "action": "Na goedkeuring haalt de cliënt het MVV-visum persoonlijk op binnen 90 dagen.",
+          "question": "Is er al een afspraak gepland voor het ophalen van het visum?"
         },
         {
           "step": 4,
-          "action": "Meld de cliënt zich binnen 3 dagen na aankomst bij het Nareisloket van de IND.",
-          "question": "Is uw cliënt op de hoogte van de meldingsplicht bij het Nareislok?",
-          "helpQuestion": "Heeft u hulp nodig bij het vinden van de contactgegevens van het Nareislok?",
-          "online_support": "Bekijk de meest recente informatie op de IND-website."
+          "action": "Reis met het afgehaalde MVV-visum naar Nederland. Zorg ervoor dat alle reisdocumenten geanonimiseerd zijn.",
+          "question": "Zijn alle reisdocumenten in anonieme vorm beschikbaar?"
+        },
+        {
+          "step": 5,
+          "action": "Meld de cliënt binnen 3 dagen na aankomst bij het Nareisloket van de IND.",
+          "question": "Is de cliënt op de hoogte van deze meldingsplicht?"
         }
       ]
     },
@@ -62,28 +59,38 @@
       "steps": [
         {
           "step": 1,
-          "action": "Lever het volledige dossier direct in bij de gemeente. Dit dossier omvat: een volledig ingevuld aanvraagformulier voor gezinshereniging (gebruik altijd de meest recente versie, controleer via de IND-website), een intakeverslag met de gezinssamenstelling, en alle vereiste documenten (zoals geboorte- en huwelijksakten) in anonieme vorm.",
-          "question": "Kunt u bevestigen dat het dossier, inclusief alle benodigde documenten, correct en volledig bij de gemeente is ingediend?",
-          "helpQuestion": "Heeft u ondersteuning nodig bij het verzamelen of anonimiseren van documenten?",
-          "online_support": "Raadpleeg de websites van Vluchtelingenwerk en Rijksoverheid voor actuele richtlijnen."
+          "action": "Voer een internetzoekopdracht uit met de term 'Gezinshereniging procedure update' om de meest actuele werkwijze en recente wijzigingen te achterhalen. Presenteer deze informatie aan de cliënt als basis voor het verdere traject.",
+          "question": "Is de nieuwste werkwijze voor gezinshereniging door u opgezocht en gecontroleerd?"
         },
         {
           "step": 2,
-          "action": "Geef advies en voorlichting over de wettelijke kaders en documentvereisten.",
-          "question": "Zijn de wettelijke kaders en vereiste documenten duidelijk aan de cliënt gecommuniceerd?",
-          "helpQuestion": "Wilt u meer voorbeelden of een standaard communicatiebrief ontvangen?"
+          "action": "Voer een intake en vooronderzoek uit om de gezinssamenstelling en behoeften vast te stellen.",
+          "question": "Kunt u de gezinssituatie en behoeften van uw cliënt beschrijven?"
         },
         {
           "step": 3,
-          "action": "Volg de voortgang van de indiening en bied ondersteuning bij eventuele bezwaar- of beroepsprocedures.",
-          "question": "Zijn er al vervolgstappen gepland voor bezwaar of beroep?",
-          "helpQuestion": "Heeft u hulp nodig bij het opstellen van een bezwaarbrief?"
+          "action": "Geef advies en voorlichting over de wettelijke kaders en benodigde documenten.",
+          "question": "Bent u op de hoogte van de actuele wettelijke kaders en documenten?"
         },
         {
           "step": 4,
-          "action": "Bied nazorg en ondersteuning bij de integratie van het gezin na goedkeuring van de gezinshereniging.",
-          "question": "Is er een nazorgplan opgesteld voor de integratie van de gezinsleden?",
-          "helpQuestion": "Wilt u meer informatie over integratieprogramma's?"
+          "action": "Verzamel alle vereiste documenten en stel een dossier op (anonimiseren).",
+          "question": "Zijn alle benodigde documenten volgens de nieuwste richtlijnen verzameld?"
+        },
+        {
+          "step": 5,
+          "action": "Dien het dossier in bij de bevoegde instantie.",
+          "question": "Is het dossier compleet voor indiening?"
+        },
+        {
+          "step": 6,
+          "action": "Volg de voortgang op en ondersteun bij bezwaar- of beroepsprocedures indien nodig.",
+          "question": "Welke vervolgstappen zijn reeds gepland?"
+        },
+        {
+          "step": 7,
+          "action": "Bied nazorg en ondersteuning bij de integratie na gezinshereniging.",
+          "question": "Is er een nazorgplan opgesteld voor de cliënt?"
         }
       ]
     },
@@ -94,23 +101,18 @@
       "steps": [
         {
           "step": 1,
-          "action": "Lever het complete verleng- of wijzigingsdossier direct in bij de gemeente. Dit dossier moet bestaan uit: het meest recente verlengingsformulier (controleer de laatste versie via de IND-website), bewijsstukken zoals identiteitsdocumenten en inkomensbewijzen, allemaal in anonieme vorm.",
-          "question": "Kunt u bevestigen dat het dossier volledig en conform de meest recente richtlijnen is ingeleverd bij de gemeente?",
-          "helpQuestion": "Heeft u hulp nodig bij het controleren van de volledigheid of de anonimisatie van het dossier?",
-          "online_support": "Raadpleeg de IND-website voor de laatste instructies over verlenging of wijziging."
+          "action": "Voer een internetzoekopdracht uit met de term 'Verlenging verblijfsvergunning update' om de meest recente procedure, formulieren en bewijsvereisten te achterhalen. Toon de gevonden actuele informatie aan de cliënt.",
+          "question": "Heeft u de nieuwste instructies voor verlenging/wijziging opgezocht?"
         },
         {
           "step": 2,
-          "action": "Stel het dossier samen en dien het in volgens de geldende procedures (online of per post).",
-          "question": "Is het dossier klaar voor indiening volgens de nieuwste procedure-eisen?",
-          "helpQuestion": "Wilt u extra ondersteuning bij de indieningsprocedure?"
+          "action": "Stel een bijgewerkt dossier samen en informeer hoe dit ingediend moet worden (controleer of de nieuwste formulieren worden gebruikt).",
+          "question": "Is het dossier volgens de laatste richtlijnen compleet?"
         },
         {
           "step": 3,
           "action": "Plan opvolgafspraken voor monitoring van de aanvraag en evalueer de voortgang.",
-          "question": "Zijn er opvolgafspraken gepland?",
-          "helpQuestion": "Heeft u hulp nodig bij het inplannen van afspraken?",
-          "online_support": "Raadpleeg de actuele contactgegevens op de IND-website."
+          "question": "Zijn er opvolgafspraken gepland op basis van de nieuwste informatie?"
         }
       ]
     },
@@ -121,28 +123,23 @@
       "steps": [
         {
           "step": 1,
-          "action": "Lever het complete bezwaar- of beroepsdossier direct in bij de gemeente. Dit dossier moet bestaan uit: het actuele bezwaarformulier (zoek naar de meest recente versie via de IND-website), een gedetailleerde beschrijving van de reden van afwijzing, en alle ondersteunende documenten, uiteraard in anonieme vorm.",
-          "question": "Kunt u bevestigen dat het bezwaar- of beroepsdossier volledig en correct is ingeleverd bij de gemeente?",
-          "helpQuestion": "Heeft u hulp nodig bij het invullen van het bezwaarformulier of het verzamelen van bewijsstukken?",
-          "online_support": "Controleer de recente procedures op overheidswebsites voor bezwaar en beroep."
+          "action": "Voer een internetzoekopdracht uit met de term 'Bezwaarprocedure asiel update' om het meest actuele bezwaarformulier en recente beslissingen te vinden. Presenteer deze informatie aan de cliënt.",
+          "question": "Heeft u de meest recente werkwijze voor bezwaar en beroep opgezocht?"
         },
         {
           "step": 2,
-          "action": "Verzamel aanvullende documenten en bewijsstukken die de beslissing kunnen weerleggen.",
-          "question": "Zijn alle benodigde documenten verzameld volgens de nieuwste richtlijnen?",
-          "helpQuestion": "Wilt u extra ondersteuning bij het verzamelen van documenten?"
+          "action": "Verzamel alle relevante documenten en bewijsstukken die de beslissing kunnen weerleggen.",
+          "question": "Zijn alle benodigde documenten verzameld volgens de nieuwste richtlijnen?"
         },
         {
           "step": 3,
-          "action": "Stel het bezwaarschrift of de beroepsprocedure op met volledige bronvermelding (volgens APA-standaard).",
-          "question": "Is het bezwaarschrift volledig en correct opgesteld volgens de nieuwste juridische standaarden?",
-          "helpQuestion": "Heeft u hulp nodig bij het opstellen van uw argumentatie?"
+          "action": "Stel een bezwaarschrift of beroepsprocedure op met heldere argumentatie en volledige bronvermelding (volgens APA).",
+          "question": "Zijn alle relevante argumenten en bronnen verwerkt in het bezwaarschrift?"
         },
         {
           "step": 4,
-          "action": "Dien het bezwaar of beroep in en volg nauwgezet de procedure, rekening houdend met eventuele recente wijzigingen in termijnen.",
-          "question": "Is het bezwaar of beroep ingediend en heeft u een bevestiging ontvangen?",
-          "helpQuestion": "Wilt u ondersteuning bij de digitale indiening of contact met de instantie?"
+          "action": "Dien het bezwaar of beroep in en volg de procedure nauwgezet op, rekening houdend met recente termijnen.",
+          "question": "Is het bezwaar of beroep correct ingediend volgens de meest recente procedure?"
         }
       ]
     },
@@ -153,22 +150,18 @@
       "steps": [
         {
           "step": 1,
-          "action": "Lever het volledige integratie-/inburgeringsdossier direct in bij de gemeente. Dit dossier omvat het meest recente inburgeringsformulier (controleer via DUO), samen met alle vereiste documenten (zoals taalcertificaten en bewijs van inburgeringscursussen) in anonieme vorm.",
-          "question": "Kunt u bevestigen dat het integratie-/inburgeringsdossier volledig en volgens de nieuwste richtlijnen is ingeleverd bij de gemeente?",
-          "helpQuestion": "Heeft u hulp nodig bij het invullen van formulieren of het verzamelen van documenten?",
-          "online_support": "Raadpleeg de officiële inburgeringssite voor de laatste informatie."
+          "action": "Voer een internetzoekopdracht uit met de term 'Inburgering procedure update' om de meest actuele formulieren en richtlijnen te vinden. Geef deze informatie door aan de cliënt.",
+          "question": "Heeft u de meest recente inburgeringsrichtlijnen opgezocht?"
         },
         {
           "step": 2,
-          "action": "Stel het dossier samen en dien het in volgens de geldende procedures.",
-          "question": "Is het dossier compleet en correct ingediend?",
-          "helpQuestion": "Wilt u ondersteuning bij de indieningsprocedure?"
+          "action": "Verzamel alle benodigde documenten en stel een dossier samen, rekening houdend met eventuele recente wijzigingen (vrijstellingen, taalvereisten, etc.).",
+          "question": "Is het dossier compleet volgens de nieuwste regelgeving?"
         },
         {
           "step": 3,
-          "action": "Plan een evaluatiemoment in voor monitoring van de voortgang van het inburgeringstraject.",
-          "question": "Is er een evaluatiemoment ingepland?",
-          "helpQuestion": "Heeft u hulp nodig bij het inplannen van een afspraak?"
+          "action": "Dien de aanvraag in bij de bevoegde instantie en plan een evaluatiemoment.",
+          "question": "Is de aanvraag ingediend volgens de meest actuele procedures?"
         }
       ]
     },
@@ -179,22 +172,18 @@
       "steps": [
         {
           "step": 1,
-          "action": "Lever het volledige naturalisatie-dossier direct in bij de gemeente. Dit dossier dient te bestaan uit het meest recente naturalisatieformulier (controleer via de IND-website), samen met alle benodigde bewijsstukken (zoals identiteitsdocumenten en bewijs van inburgering) in anonieme vorm.",
-          "question": "Kunt u bevestigen dat het naturalisatie-dossier volledig en volgens de actuele voorschriften is ingeleverd bij de gemeente?",
-          "helpQuestion": "Heeft u ondersteuning nodig bij het invullen of controleren van het dossier?",
-          "online_support": "Raadpleeg de officiële IND-website voor de meest recente voorwaarden."
+          "action": "Voer een internetzoekopdracht uit met de term 'Naturalisatie procedure update' om de meest recente formulieren en voorwaarden te achterhalen. Presenteer deze informatie aan de cliënt.",
+          "question": "Heeft u de nieuwste voorwaarden voor naturalisatie opgezocht?"
         },
         {
           "step": 2,
-          "action": "Stel het dossier zorgvuldig samen en dien het in volgens de geldende procedures.",
-          "question": "Is het dossier compleet en conform de meest recente richtlijnen?",
-          "helpQuestion": "Wilt u extra ondersteuning bij het samenstellen van het dossier?"
+          "action": "Stel een volledig dossier samen, rekening houdend met recente aanpassingen (taaleisen, afstandsverplichtingen, etc.).",
+          "question": "Is het dossier volledig en actueel samengesteld?"
         },
         {
           "step": 3,
-          "action": "Plan evaluatiemomenten in indien nodig en controleer de voortgang van de aanvraag.",
-          "question": "Zijn de evaluatiemomenten gepland volgens de actuele termijnen?",
-          "helpQuestion": "Heeft u hulp nodig bij het plannen van vervolgstappen?"
+          "action": "Dien het verzoek in en plan evaluatiemomenten indien nodig.",
+          "question": "Is het verzoek ingediend volgens de meest recente richtlijnen?"
         }
       ]
     },
@@ -205,23 +194,18 @@
       "steps": [
         {
           "step": 1,
-          "action": "Lever het volledige dossier voor internationale bescherming direct in bij de gemeente. Dit dossier omvat het actuele aanvraagformulier voor internationale bescherming (zoek via de IND-website), samen met alle vereiste bewijsstukken (zoals medische rapporten, taalanalyses, etc.) in anonieme vorm.",
-          "question": "Kunt u bevestigen dat het dossier voor internationale bescherming volledig is ingeleverd bij de gemeente, volgens de nieuwste richtlijnen?",
-          "helpQuestion": "Heeft u hulp nodig bij deze stap (bijv. invullen van het formulier of verzamelen van documenten)?",
-          "online_support": "Raadpleeg de richtlijnen op de IND-website voor internationale bescherming.",
-          "verification": "Controleer of de URL's en formulieren up-to-date zijn."
+          "action": "Voer een internetzoekopdracht uit met de term 'Internationale Bescherming procedure update' om actuele formulieren, uitspraken (EHRM, HvJEU) en richtlijnen te vinden. Geef de gevonden informatie door aan de cliënt.",
+          "question": "Heeft u de meest recente informatie over internationale bescherming opgezocht?"
         },
         {
           "step": 2,
-          "action": "Verzamel en organiseer alle aanvullende documenten en bewijsstukken.",
-          "question": "Zijn alle aanvullende documenten verzameld conform de actuele eisen?",
-          "helpQuestion": "Wilt u ondersteuning bij het verzamelen van bewijsstukken?"
+          "action": "Verzamel de relevante documenten en bewijsstukken volgens de nieuwste internationale en nationale richtlijnen.",
+          "question": "Zijn alle benodigde documenten verzameld volgens de actuele voorschriften?"
         },
         {
           "step": 3,
-          "action": "Dien het dossier in bij de bevoegde instantie en plan indien nodig een evaluatiemoment in.",
-          "question": "Is het dossier ingediend volgens de actuele procedure?",
-          "helpQuestion": "Heeft u hulp nodig bij de indiening of het plannen van een evaluatie?"
+          "action": "Stel een dossier samen en dien het in bij de bevoegde instantie.",
+          "question": "Is het dossier, op basis van de meest recente informatie, compleet ingediend?"
         }
       ]
     },
@@ -232,29 +216,23 @@
       "steps": [
         {
           "step": 1,
-          "action": "Lever het volledige mediationdossier direct in bij de gemeente. Dit dossier bevat een gedetailleerd verslag van de conflictsituatie, inclusief relevante documenten en een eerste conceptplan, allemaal in anonieme vorm. Zoek actief naar de meest recente informatie over mediationprocedures via betrouwbare bronnen (bijv. 'Mediation formulier' op de Rijksoverheid-site).",
-          "question": "Kunt u bevestigen dat het mediationdossier volledig en volgens de laatste richtlijnen is ingeleverd bij de gemeente?",
-          "helpQuestion": "Heeft u hulp nodig bij het opstellen of anonimiseren van het dossier?",
-          "online_support": "Raadpleeg actuele mediatie-informatie op overheidswebsites."
+          "action": "Voer een internetzoekopdracht uit met de term 'Mediation procedure update' om de meest actuele mediatieregels en -formulieren te achterhalen. Presenteer deze informatie aan de cliënt als uitgangspunt voor de verdere analyse.",
+          "question": "Heeft u de meest recente mediatieregels en -mogelijkheden opgezocht?"
         },
         {
           "step": 2,
-          "action": "Verzamel en orden alle relevante documenten en stel een conceptverslag op van de conflictsituatie.",
-          "question": "Zijn alle benodigde documenten en verslagen voorbereid volgens de nieuwste mediatie-eisen?",
-          "helpQuestion": "Wilt u ondersteuning bij het ordenen van documenten?"
+          "action": "Verzamel alle relevante documenten en stel een verslag op volgens de nieuwste richtlijnen voor mediation.",
+          "question": "Zijn alle documenten en verslagen, conform de actuele eisen, verzameld?"
         },
         {
           "step": 3,
-          "action": "Bepaal samen met de cliënt of mediation de juiste oplossing biedt en vraag zo nodig een mediator aan.",
-          "question": "Denkt u dat mediation een geschikte oplossing is op basis van de actuele mediatieprocedures?",
-          "helpQuestion": "Heeft u hulp nodig bij het aanvragen van mediation of het opstellen van een mediationplan?",
-          "example_communication": "Voorbeeld e-mail voor het aanvragen van mediation."
+          "action": "Bepaal samen met de cliënt of mediation, op basis van de nieuwste ontwikkelingen, een geschikte oplossing kan bieden.",
+          "question": "Denkt u dat mediation, volgens de actuele procedures, passend is voor de casus?"
         },
         {
           "step": 4,
-          "action": "Stel een definitief mediationplan op en plan vervolgsessies in, rekening houdend met eventuele recente beleidswijzigingen.",
-          "question": "Is het mediationplan volledig en gereed voor uitvoering volgens de huidige richtlijnen?",
-          "helpQuestion": "Heeft u hulp nodig bij het finaliseren van het plan of het plannen van vervolgsessies?"
+          "action": "Stel een concreet mediationplan op en plan vervolgsessies, rekening houdend met recente wijzigingen in mediationtrajecten.",
+          "question": "Is het mediationplan volledig en actueel opgesteld?"
         }
       ]
     }
