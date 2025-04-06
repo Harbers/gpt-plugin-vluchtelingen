@@ -1,13 +1,22 @@
 {
-  "version": "2.0",
-  "startVraag": "Starten maar...",
-  "menu": {
-    "instructie": "Kies de gewenste optie door het nummer in te voeren:",
-    "opties": [
-      { "nummer": 1, "omschrijving": "Ik ben juridisch begeleider." },
-      { "nummer": 2, "omschrijving": "Juridische casus behandelen." },
-      { "nummer": 3, "omschrijving": "Ik ben maatschappelijk begeleider." },
-      { "nummer": 4, "omschrijving": "Maatschappelijke casus behandelen." }
+  "version": "1.5",
+  "startVraag": "Rolkeuze – Juridische Medewerker",
+  "mainMenu": {
+    "title": "Juridische Medewerker",
+    "description": "Kies eerst of u juridische informatie wilt opvragen (optie 1.1) of een juridische procedure wilt uitvoeren (optie 1.2). Registreer daarvoor uw basisgegevens (gemeente, thuisland, moedertaal) en volg de instructies.",
+    "options": [
+      {
+        "id": "info",
+        "label": "Juridische informatie opvragen (1.1)",
+        "description": "Kies één van de 20 juridische onderwerpen om actuele informatie te verkrijgen via online zoekopdrachten (lokaal en land-specifiek).",
+        "parameters": ["gemeente", "thuisland", "moedertaal"]
+      },
+      {
+        "id": "proc",
+        "label": "Juridische procedures uitvoeren (1.2)",
+        "description": "Doorloop één van de 8 juridische procedures met stapsgewijze begeleiding en online ondersteuning.",
+        "parameters": ["gemeente", "thuisland", "moedertaal"]
+      }
     ]
   },
   "procedures": [
@@ -18,250 +27,232 @@
       "steps": [
         {
           "step": 1,
-          "action": "We hebben het juiste MVV-aanvraagformulier en alle bijbehorende eisen geverifieerd. U kunt de meest recente formulieren en documenten veilig gebruiken.",
-          "question": "Kunt u bevestigen dat alle vereiste papieren (paspoort, bewijsstukken) compleet en geanonimiseerd zijn?",
-          "helpQuestion": "Wenst u hulp bij het invullen of extra toelichting over de aanvraag?"
+          "action": "Informeer de cliënt over de vereiste formulieren en documenten volgens de meest recente beleidsregels (zie officiële bronnen). Zorg dat de formulieren die u gebruikt actueel zijn.",
+          "question": "Zijn de documenten en het aanvraagformulier volledig (en anoniem) aangeleverd?",
+          "helpQuestion": "Heeft u hulp nodig bij het invullen of verduidelijking over de actuele eisen?",
+          "example_communication": "Voorbeeld e‑mail of brief voor indiening."
         },
         {
           "step": 2,
-          "action": "Leg uit hoe en waar de aanvraag moet worden ingediend, met eventuele updates over online of papieren routes.",
-          "question": "Heeft u alles klaar voor indiening volgens de nieuwste procedure?",
-          "helpQuestion": "Wilt u hulp bij het indienen of toelichting over deze stap?"
+          "action": "Leg uit waar en hoe de aanvraag wordt ingediend (online of fysiek), rekening houdend met mogelijke lokale IND-wijzigingen.",
+          "question": "Is het dossier compleet en conform de nieuwste procedure‑eisen?",
+          "helpQuestion": "Wilt u hulp bij het indienen?",
+          "online_support": "Officiële IND-website met uitleg over MVV indiening."
         },
         {
           "step": 3,
-          "action": "Bespreek de goedkeuringsfase en plan de afspraak voor het ophalen van het MVV-visum binnen de geldende termijn.",
-          "question": "Is er al informatie over de afspraak of de actuele wachttijden?",
-          "helpQuestion": "Heeft u hulp nodig bij het inplannen van de afspraak of meer uitleg?"
+          "action": "Bespreek de planning voor het ophalen van het MVV‑visum (binnen 90 dagen), en eventuele afwijkingen in doorlooptijd.",
+          "question": "Is er al een ophaalafspraak gepland?",
+          "helpQuestion": "Hulp nodig bij het plannen van deze afspraak?",
+          "online_support": "Indien nodig: link naar afspraakinformatie (IND)."
         },
         {
           "step": 4,
-          "action": "Na goedkeuring moet de cliënt zich binnen 3 dagen na aankomst in Nederland melden bij het Nareisloket, volgens de huidige richtlijnen.",
-          "question": "Is de cliënt bekend met deze meldingsplicht?",
-          "helpQuestion": "Wilt u hulp bij contact met het Nareisloket of verdere toelichting?"
+          "action": "Na goedkeuring reist de cliënt naar Nederland en meldt zich binnen 3 dagen bij het Nareisloket. Check of er lokale afwijkingen gelden.",
+          "question": "Weet uw cliënt van de meldingsplicht?",
+          "helpQuestion": "Hulp nodig bij contact opnemen met het loket?",
+          "online_support": "Contactgegevens en meldingstips."
         }
       ]
     },
     {
       "id": "PROC002",
       "title": "Gezinshereniging Procedure",
-      "description": "Procedure voor het begeleiden van gezinshereniging bij asielzoekers en statushouders.",
+      "description": "Procedure voor het begeleiden van gezinshereniging.",
       "steps": [
         {
           "step": 1,
-          "action": "De benodigde gezinsherenigingsformulieren en eisen zijn gecontroleerd. U kunt met de meest actuele versie werken.",
-          "question": "Zijn alle benodigde documenten (zoals geboorte- of huwelijksakte) compleet?",
-          "helpQuestion": "Heeft u hulp nodig bij het invullen of verzamelen van bewijsstukken?"
+          "action": "Voer een intake om de gezinssamenstelling en actuele voorwaarden te verifiëren. Gebruik altijd de meest recente formulieren (zie officiële bron).",
+          "question": "Kunt u de gezinssituatie en behoeften beschrijven?",
+          "helpQuestion": "Hulp nodig bij het invullen van intakeformulieren?",
+          "example_communication": "Voorbeeld e‑mail voor opvragen aanvullende documenten."
         },
         {
           "step": 2,
-          "action": "Leg uit welke aanvullende documenten nodig zijn en zorg dat deze in anonieme vorm worden aangeleverd.",
-          "question": "Heeft u alle relevante stukken volgens de laatste regels verzameld?",
-          "helpQuestion": "Wenst u ondersteuning bij vertalingen of aanvullende documenten?"
+          "action": "Informeer welke documenten (bijv. huwelijksakte, geboorteakten) nodig zijn en controleer of deze voldoen aan de huidige beleidsregels.",
+          "question": "Zijn alle documenten anoniem en conform de eisen verzameld?",
+          "helpQuestion": "Heeft u hulp nodig bij het verzamelen of vertalen?"
         },
         {
           "step": 3,
-          "action": "Geef aan hoe het dossier moet worden ingediend (online of fysiek), afgestemd op eventuele nieuwe richtlijnen.",
-          "question": "Is het dossier volledig en klaar voor indiening?",
-          "helpQuestion": "Wilt u hulp bij de indiening of extra uitleg over de procedure?"
+          "action": "Dien het dossier in bij de bevoegde instantie en volg de richtlijnen omtrent indiening (online/fysiek).",
+          "question": "Is het dossier compleet voor indiening?",
+          "helpQuestion": "Hulp nodig bij de indiening?",
+          "online_support": "Relevante indieningsprocedures."
         },
         {
           "step": 4,
-          "action": "Bespreek het vervolgtraject (bezwaar of beroepsprocedures) en nazorg, rekening houdend met recente aanpassingen.",
-          "question": "Zijn er al vervolgstappen gepland of vragen over nazorg?",
-          "helpQuestion": "Heeft u hulp nodig bij een eventueel bezwaar of de planning?"
-        },
-        {
-          "step": 5,
-          "action": "Volg de voortgang op en bied de cliënt updates over wachttijden of wijzigingen.",
-          "question": "Heeft u zicht op de verwachte doorlooptijd?",
-          "helpQuestion": "Wilt u hulp bij het opvolgen van de status?"
-        },
-        {
-          "step": 6,
-          "action": "Verleen nazorg en ondersteuning bij integratie, zoals huisvesting of inburgering, volgens de meest recente inzichten.",
-          "question": "Is er al zicht op huisvesting en inburgering na gezinshereniging?",
-          "helpQuestion": "Heeft u aanvullende vragen over integratie of nazorg?"
+          "action": "Volg de voortgang, en ondersteun indien bezwaar/beroep nodig is, volgens de meest recente termijnen.",
+          "question": "Welke vervolgstappen zijn reeds gepland?",
+          "helpQuestion": "Hulp nodig bij bezwaar of beroep?",
+          "online_support": "Juridische richtlijnen voor bezwaar en beroep."
         }
       ]
     },
     {
       "id": "PROC003",
-      "title": "Maatschappelijke Begeleiding (MB‑Instrument)",
-      "description": "Procedure voor het invullen van het MB‑Instrument (Wonen, Kinderen, Financiën & Administratie, Sociaal Netwerk, Maatschappelijke Participatie, Zorg & Gezondheid).",
+      "title": "Verlenging of Wijziging van Verblijfsvergunning",
+      "description": "Procedure voor verlengen of wijzigen van een verblijfsvergunning.",
       "steps": [
         {
           "step": 1,
-          "action": "Licht het MB‑Instrument toe en benoem de zes leefgebieden (1 t/m 6) en de antwoordopties (1,2,3,NVT).",
-          "question": "Is duidelijk wat de zes leefgebieden inhouden en welke antwoordopties er zijn?",
-          "helpQuestion": "Heeft u uitleg nodig over het doel of de werking van het MB‑Instrument?"
+          "action": "Controleer welke formulieren nodig zijn (nieuwe versies) en informeer de cliënt over benodigde documenten (ID, bewijs van inkomen, etc.).",
+          "question": "Heeft u alles conform de actuele eisen?",
+          "helpQuestion": "Hulp nodig bij formulieren?",
+          "example_communication": "Voorbeeldbrief verlengingsaanvraag."
         },
         {
           "step": 2,
-          "action": "Doorloop alle vragen in MBInstrumentInvullen.json. Bij antwoord 1 of 2 toont het systeem meteen hulplinks en acties.",
-          "question": "Zijn alle vragen beantwoord?",
-          "helpQuestion": "Wilt u hulp bij het interpreteren van de hulplinks of acties?"
+          "action": "Dien het dossier in (online/fysiek) en verifieer lokale of landelijke aanpassingen in de procedure.",
+          "question": "Is uw dossier volledig en anoniem samengesteld?",
+          "helpQuestion": "Hulp nodig bij het controleren?"
         },
         {
           "step": 3,
-          "action": "Na het invullen: stel een begeleidingsplan op en plan vervolgafspraken (voortgangs- en eindgesprek).",
-          "question": "Is er al een begeleidingsplan opgesteld en een vervolggesprek gepland?",
-          "helpQuestion": "Heeft u hulp nodig bij het opstellen van het plan of het inplannen van gesprekken?"
+          "action": "Plan opvolgafspraken voor monitoring; let op eventuele wijzigingen in doorlooptijden of beleidsregels.",
+          "question": "Heeft u een bevestiging of extra afspraken ingepland?",
+          "helpQuestion": "Hulp bij planning?"
         }
       ]
     },
     {
       "id": "PROC004",
-      "title": "Juridische Zaken Procedure",
-      "description": "Procedure voor juridische medewerkers om actuele juridische informatie op te zoeken m.b.t. vluchtelingenzaken, inclusief casusanalyse met bronvermelding.",
+      "title": "Bezwaar- en Beroepsprocedures",
+      "description": "Bezwaar/beroep na een afwijzing of intrekking.",
       "steps": [
         {
           "step": 1,
-          "action": "Selecteer één van de 20 juridische onderwerpen. We hebben alle bronnen en formulieren geverifieerd voor de meest actuele informatie.",
-          "question": "Welk onderwerp zoekt u?",
-          "helpQuestion": "Heeft u hulp nodig bij het kiezen van het juiste thema?"
+          "action": "Informeer of er een afwijzing/intrekking is. Verwijs naar het meest actuele bezwaar- of beroepsformulier.",
+          "question": "Kunt u de reden van afwijzing kort toelichten?",
+          "helpQuestion": "Hulp nodig bij het correct gebruiken van het formulier?",
+          "online_support": "Zoek naar procedures voor bezwaar/beroep (bijv. Rijksoverheid)."
         },
         {
           "step": 2,
-          "action": "Op basis van uw keuze ontvangt u relevante bronnen en APA-vermeldingen. Deze zijn recent gecontroleerd.",
-          "question": "Heeft u voldoende informatie ontvangen?",
-          "helpQuestion": "Wilt u een uitgebreider actieplan of meer bronnen?"
+          "action": "Verzamel alle relevante documenten en jurisprudentie, rekening houdend met recente ontwikkelingen.",
+          "question": "Heeft u alle documenten verzameld?",
+          "helpQuestion": "Hulp nodig bij nadere stukken of jurisprudentie?"
         },
         {
           "step": 3,
-          "action": "Indien nodig: voer een casusanalyse uit, toets feiten en rechtsmiddelen. Verwijs door als de situatie dat vereist.",
-          "question": "Moeten we een casusanalyse doen?",
-          "helpQuestion": "Wenst u hulp bij het analyseren van de casus of relevante termijnen?"
+          "action": "Stel een bezwaarschrift op met bronvermelding volgens de nieuwste eisen. Check of termijnen zijn gewijzigd.",
+          "question": "Heeft u de argumenten en bronnen verwerkt?",
+          "helpQuestion": "Hulp bij opstellen van de argumentatie?"
+        },
+        {
+          "step": 4,
+          "action": "Dien het bezwaar/beroep tijdig in en monitor het proces.",
+          "question": "Is het bezwaar/beroep ingediend en een bevestiging ontvangen?",
+          "helpQuestion": "Hulp nodig bij digitale indiening?"
         }
       ]
     },
     {
       "id": "PROC005",
-      "title": "Juridische Documenten en Brieven Opstellen",
-      "description": "Procedure voor het opstellen van juridische documenten en brieven volgens strikte richtlijnen.",
+      "title": "Integratie- en Inburgeringsprocedures",
+      "description": "Aanvragen voor integratie en inburgering.",
       "steps": [
         {
           "step": 1,
-          "action": "De sjablonen en richtlijnen voor juridische documenten zijn geverifieerd. U kunt direct beginnen met een formele inleiding.",
-          "question": "Wilt u starten met de formele inleiding (doel en context) en anonimisaties?",
-          "helpQuestion": "Wenst u hulp bij de opbouw van de inleiding?"
+          "action": "Verwijs naar actuele inburgeringsformulieren en integratienormen, en check of er (lokaal) nieuwe regelingen zijn.",
+          "question": "Welke onderdelen spelen voor uw cliënt?",
+          "helpQuestion": "Hulp nodig bij formulieren of uitleg?",
+          "online_support": "Inburgeren.nl of DUO."
         },
         {
           "step": 2,
-          "action": "Gebruik uitsluitend strikt juridische terminologie en definieer termen eenduidig, volgens de nieuwste handleiding.",
-          "question": "Heeft u alle juridische termen juist gedefinieerd?",
-          "helpQuestion": "Wilt u ondersteuning bij de juiste terminologie?"
+          "action": "Verzamel alle documenten en stel een dossier samen. Let op eventuele recente wijzigingen (bijv. extra taalvereisten).",
+          "question": "Is het dossier volgens de nieuwste eisen?",
+          "helpQuestion": "Hulp nodig bij check van documentatie?",
+          "example_communication": "Voorbeeldbrief voor ondersteuning."
         },
         {
           "step": 3,
-          "action": "Structureer het document met kopjes, subkopjes en anonieme gegevens.",
-          "question": "Is de documentstructuur duidelijk en geanonimiseerd?",
-          "helpQuestion": "Heeft u hulp nodig bij de onderverdeling of anonimisering?"
-        },
-        {
-          "step": 4,
-          "action": "Vermeld alle juridische verwijzingen en bronnen nauwkeurig, volgens APA. Wij hebben de nieuwste APA-regels gecheckt.",
-          "question": "Zijn alle bronnen volgens APA-stijl toegevoegd?",
-          "helpQuestion": "Wilt u hulp bij het correct noteren van de referenties?"
-        },
-        {
-          "step": 5,
-          "action": "Sluit af met een formele conclusie en evt. aanbevelingen.",
-          "question": "Is de conclusie helder en formeel afgesloten?",
-          "helpQuestion": "Heeft u hulp nodig bij de afronding of eindredactie?"
+          "action": "Dien de aanvraag in bij de bevoegde instantie en plan desgewenst een evaluatiemoment.",
+          "question": "Wilt u nu een afspraak of extra informatie opvragen?",
+          "helpQuestion": "Hulp nodig bij de indiening?"
         }
       ]
     },
     {
       "id": "PROC006",
-      "title": "Casusanalyse en Juridisch Advies",
-      "description": "Procedure voor juridisch medewerkers om samen met de cliënt een juridische casus te analyseren en een helder juridisch advies op te stellen.",
+      "title": "Naturalisatieprocedures",
+      "description": "Voor het aanvragen van naturalisatie.",
       "steps": [
         {
           "step": 1,
-          "action": "We hebben de actuele checklists voor casusanalyses gevalideerd. U kunt direct relevante vragen stellen.",
-          "question": "Is er een specifieke casus waar u hulp bij zoekt?",
-          "helpQuestion": "Wilt u hulp bij de eerste vragen voor uw cliënt?"
+          "action": "Ga na welke voorwaarden gelden (taalexamen, afstand van nationaliteit, etc.) en gebruik het meest actuele formulier (gemeente of landelijke bron).",
+          "question": "Zijn alle vereiste documenten volgens de nieuwe wetgeving verzameld?",
+          "helpQuestion": "Hulp nodig bij formulieren of voorwaarden?"
         },
         {
           "step": 2,
-          "action": "Stel gerichte juridische vragen over aanleiding, documenten, belang en termijnen. Houd rekening met beleidswijzigingen.",
-          "question": "Welke documenten en termijnen zijn van toepassing?",
-          "helpQuestion": "Wilt u hulp bij het verzamelen van bewijsmateriaal?"
+          "action": "Stel een volledig dossier samen (check op nieuwe vereisten, zoals wijzigingen in inburgeringsnorm).",
+          "question": "Is uw dossier up-to-date en compleet?",
+          "helpQuestion": "Hulp nodig bij aanlevering van bewijs?"
         },
         {
           "step": 3,
-          "action": "Analyseer de feiten en pas de nieuwste regelgeving toe (nationaal/internationaal).",
-          "question": "Bent u bekend met de actuele wetgeving die hierop van toepassing is?",
-          "helpQuestion": "Wenst u hulp bij het vinden van de relevante wetten/verdragen?"
-        },
-        {
-          "step": 4,
-          "action": "Stel een beknopt en professioneel juridisch advies op, met bronvermelding volgens APA.",
-          "question": "Is het juridisch advies opgesteld en voorzien van APA-bronnen?",
-          "helpQuestion": "Wilt u hulp bij de formulering of APA-vermelding?"
-        },
-        {
-          "step": 5,
-          "action": "Bespreek eventuele vervolgstappen (bezwaar, beroep, aanvullende documenten), rekening houdend met de actuele termijnen.",
-          "question": "Welke vervolgstappen overweegt u?",
-          "helpQuestion": "Wenst u hulp bij bezwaar- of beroepsprocedures?"
+          "action": "Dien het verzoek in bij de juiste instantie (vaak gemeente) en volg de actuele beslistermijnen.",
+          "question": "Wilt u direct een afspraak maken bij uw gemeente?",
+          "helpQuestion": "Hulp nodig bij contact met de gemeente?"
         }
       ]
     },
     {
       "id": "PROC007",
       "title": "Internationale Bescherming",
-      "description": "Procedure voor het aanvragen van internationale bescherming.",
+      "description": "Aanvraag voor internationale bescherming (EHRM/HvJEU/etc.).",
       "steps": [
         {
           "step": 1,
-          "action": "De aanvraagformulieren voor internationale bescherming zijn gecontroleerd. U kunt met de nieuwste versies aan de slag.",
-          "question": "Heeft uw cliënt internationale bescherming nodig volgens de huidige criteria?",
-          "helpQuestion": "Wilt u hulp bij de inschatting of deze procedure past?"
+          "action": "Controleer of internationale bescherming relevant is (kijk naar recente uitspraken). Gebruik het correcte formulier (soms regionaal/gemeentelijk).",
+          "question": "Heeft uw cliënt internationale bescherming nodig?",
+          "helpQuestion": "Hulp nodig bij check van jurisprudentie?"
         },
         {
           "step": 2,
-          "action": "Verzamel de benodigde documenten en bewijsstukken (medische rapporten, taalanalyses, etc.) volgens de laatste richtlijnen.",
-          "question": "Zijn alle vereiste bewijsstukken aanwezig?",
-          "helpQuestion": "Heeft u hulp nodig bij het verzamelen of opstellen van deze stukken?"
+          "action": "Verzamel relevante documenten en bewijsstukken (zoals taalanalyse, medische rapporten). Houd rekening met actuele regels.",
+          "question": "Zijn alle documenten verzameld?",
+          "helpQuestion": "Hulp bij verdere stukken?"
         },
         {
           "step": 3,
-          "action": "Stel een dossier samen en dien het in bij de bevoegde instantie. Houd rekening met recente beleidswijzigingen.",
-          "question": "Is het dossier volledig en volgens de actuele indieningsregels?",
-          "helpQuestion": "Wilt u hulp bij het indienen of het plannen van een vervolggesprek?"
+          "action": "Stel een dossier samen en dien het in, conform de nieuwste wijzigingen in de procedure.",
+          "question": "Is uw dossier volledig en correct ingediend?",
+          "helpQuestion": "Hulp nodig bij de indiening?"
         }
       ]
     },
     {
       "id": "PROC008",
       "title": "Conflictoplossing en Mediation",
-      "description": "Procedure voor conflictoplossing en mediation.",
+      "description": "Geschikt als er geschillen of conflicten zijn in asiel- of verblijfsprocedures.",
       "steps": [
         {
           "step": 1,
-          "action": "We hebben de nieuwste mediation-informatie gecheckt. U kunt starten met een grondige analyse van de conflictsituatie.",
-          "question": "Kunt u de conflictsituatie in detail beschrijven?",
-          "helpQuestion": "Heeft u hulp nodig bij het feitelijk formuleren of onderbouwen?"
+          "action": "Analyseer de conflictsituatie en gebruik, indien nodig, de actuele mediationinstructies van (gemeente/landelijk).",
+          "question": "Kunt u de conflictsituatie omschrijven?",
+          "helpQuestion": "Hulp nodig bij een goede formulering van het conflict?"
         },
         {
           "step": 2,
-          "action": "Verzamel alle relevante documenten en stel een verslag op, conform de meest recente mediationrichtlijnen.",
-          "question": "Heeft u de documenten in anonieme vorm voorbereid?",
-          "helpQuestion": "Wilt u hulp bij het ordenen van de stukken?"
+          "action": "Verzamel alle relevante documenten en maak een verslag. Let op de meest recente bemiddelingskaders.",
+          "question": "Zijn de documenten of verslagen compleet?",
+          "helpQuestion": "Hulp nodig bij documenten?"
         },
         {
           "step": 3,
-          "action": "Bepaal of mediation een geschikte oplossing is, rekening houdend met actuele bemiddelingskaders.",
-          "question": "Is mediation voor uw cliënt een passende route?",
-          "helpQuestion": "Wenst u hulp bij het aanvragen van mediation?"
+          "action": "Bepaal of mediation een optie is (eventueel gemeentelijk traject of via erkende mediator).",
+          "question": "Is mediation passend, gezien de actuele regels?",
+          "helpQuestion": "Hulp bij aanvraag mediation?",
+          "example_communication": "Voorbeeld e‑mail voor mediationaanvraag."
         },
         {
           "step": 4,
-          "action": "Stel een mediationplan op en plan vervolgsessies. Let op eventuele lokale aanpassingen.",
-          "question": "Is het mediationplan opgesteld en zijn vervolgafspraken gemaakt?",
-          "helpQuestion": "Heeft u hulp nodig bij het afronden van het plan of contact met de mediator?"
+          "action": "Stel een concreet mediationplan op en plan vervolgsessies.",
+          "question": "Is het mediationplan opgesteld?",
+          "helpQuestion": "Hulp nodig bij de uitwerking of contact mediator?"
         }
       ]
     }
