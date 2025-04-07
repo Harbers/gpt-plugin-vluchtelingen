@@ -1,25 +1,23 @@
 {
-  "version": "1.5",
-  "startVraag": "Rolkeuze – Juridische Medewerker",
+  "version": "2.0",
+  "startVraag": "Rolkeuze – Juridische en Maatschappelijke Medewerker",
   "mainMenu": {
-    "title": "Juridische Medewerker",
-    "description": "Kies eerst of u juridische informatie wilt opvragen (optie 1.1) of een juridische procedure wilt uitvoeren (optie 1.2). Registreer daarvoor uw basisgegevens (gemeente, thuisland, moedertaal) en volg de instructies.",
+    "title": "Begeleidingsassistent",
+    "description": "Kies of u juridische informatie wilt opvragen of een juridische procedure wilt uitvoeren.",
     "options": [
       {
-        "id": "info",
-        "label": "Juridische informatie opvragen (1.1)",
-        "description": "Kies één van de 20 juridische onderwerpen om actuele informatie te verkrijgen via online zoekopdrachten (lokaal en land-specifiek).",
-        "parameters": ["gemeente", "thuisland", "moedertaal"]
+        "id": "juridisch_info",
+        "label": "Juridische informatie opvragen",
+        "description": "Kies één van de 20 juridische onderwerpen om actuele informatie te verkrijgen."
       },
       {
-        "id": "proc",
-        "label": "Juridische procedures uitvoeren (1.2)",
-        "description": "Doorloop één van de 8 juridische procedures met stapsgewijze begeleiding en online ondersteuning. Bij elke procedure wordt als allereerste stap een internetzoekopdracht uitgevoerd om de meest actuele werkwijze te achterhalen. Deze informatie wordt direct aan de cliënt getoond en meegenomen in de verdere procedure.",
-        "parameters": ["gemeente", "thuisland", "moedertaal"]
+        "id": "juridisch_proc",
+        "label": "Juridische procedures uitvoeren",
+        "description": "Doorloop één van de 8 juridische procedures met stapsgewijze begeleiding en online ondersteuning."
       }
     ]
   },
-  "procedures": [
+  "juridischeProcedures": [
     {
       "id": "PROC001",
       "title": "MVV-aanvraag Procedure",
@@ -27,28 +25,24 @@
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'MVV-aanvraag procedure up-to-date' om de nieuwste werkwijze te achterhalen. Gebruik hierbij de backend-zoekfunctie (bijv. via /search) en presenteer de meest recente informatie aan de cliënt.",
-          "question": "Is de meest recente werkwijze voor de MVV-aanvraag, inclusief formulieren en vereiste documenten, door u geverifieerd?"
+          "action": "Voer een internetzoekopdracht uit met de term 'MVV-aanvraag procedure up-to-date'. Controleer de nieuwste formulieren en vereiste documenten via de backend-endpoint /get_form_link en presenteer deze informatie aan de cliënt.",
+          "followUpQuestion": "Heeft u behoefte aan aanvullende informatie of verduidelijking over de gevonden formulieren? Indien ja, geef aan welke aspecten nader toegelicht moeten worden.",
+          "question": "Is de meest recente werkwijze voor de MVV-aanvraag geverifieerd?"
         },
         {
           "step": 2,
-          "action": "Dien de MVV-aanvraag in met een geldig paspoort, volledig ingevuld aanvraagformulier en alle vereiste documenten. Zorg voor anonimisatie.",
-          "question": "Kunt u bevestigen dat alle documenten compleet en correct zijn aangeleverd?"
+          "action": "Dien de aanvraag in met een geldig paspoort, volledig ingevuld aanvraagformulier en alle vereiste documenten in anonieme vorm.",
+          "question": "Zijn alle documenten volledig en correct aangeleverd?"
         },
         {
           "step": 3,
-          "action": "Na goedkeuring haalt de cliënt het MVV-visum persoonlijk op binnen 90 dagen.",
-          "question": "Is er al een afspraak gepland voor het ophalen van het visum?"
+          "action": "Plan de afspraak voor het ophalen van het MVV-visum binnen 90 dagen na goedkeuring.",
+          "question": "Is er een afspraak gepland voor het ophalen van het visum?"
         },
         {
           "step": 4,
-          "action": "Reis met het afgehaalde MVV-visum naar Nederland. Zorg ervoor dat alle reisdocumenten geanonimiseerd zijn.",
-          "question": "Zijn alle reisdocumenten in anonieme vorm beschikbaar?"
-        },
-        {
-          "step": 5,
-          "action": "Meld de cliënt binnen 3 dagen na aankomst bij het Nareisloket van de IND.",
-          "question": "Is de cliënt op de hoogte van deze meldingsplicht?"
+          "action": "Meld de cliënt binnen 3 dagen na aankomst bij het Nareisloket.",
+          "question": "Is de cliënt op de hoogte van de meldingsplicht?"
         }
       ]
     },
@@ -59,38 +53,24 @@
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'Gezinshereniging procedure update' om de meest actuele werkwijze en recente wijzigingen te achterhalen. Presenteer deze informatie aan de cliënt als basis voor het verdere traject.",
-          "question": "Is de nieuwste werkwijze voor gezinshereniging door u opgezocht en gecontroleerd?"
+          "action": "Voer een internetzoekopdracht uit met de term 'Gezinshereniging procedure update'. Presenteer de meest recente werkwijze en eventuele wijzigingen aan de cliënt.",
+          "followUpQuestion": "Wilt u extra uitleg over specifieke wijzigingen in de procedure of over de vereiste documenten? Geef dit aan zodat verdere ondersteuning geboden kan worden.",
+          "question": "Is de nieuwste werkwijze voor gezinshereniging opgezocht en gecontroleerd?"
         },
         {
           "step": 2,
           "action": "Voer een intake en vooronderzoek uit om de gezinssamenstelling en behoeften vast te stellen.",
-          "question": "Kunt u de gezinssituatie en behoeften van uw cliënt beschrijven?"
+          "question": "Kunt u de gezinssituatie en behoeften beschrijven?"
         },
         {
           "step": 3,
-          "action": "Geef advies en voorlichting over de wettelijke kaders en benodigde documenten.",
-          "question": "Bent u op de hoogte van de actuele wettelijke kaders en documenten?"
+          "action": "Verzamel alle vereiste documenten in anonieme vorm en stel een dossier op.",
+          "question": "Zijn alle benodigde documenten volgens de laatste richtlijnen verzameld?"
         },
         {
           "step": 4,
-          "action": "Verzamel alle vereiste documenten en stel een dossier op (anonimiseren).",
-          "question": "Zijn alle benodigde documenten volgens de nieuwste richtlijnen verzameld?"
-        },
-        {
-          "step": 5,
-          "action": "Dien het dossier in bij de bevoegde instantie.",
-          "question": "Is het dossier compleet voor indiening?"
-        },
-        {
-          "step": 6,
-          "action": "Volg de voortgang op en ondersteun bij bezwaar- of beroepsprocedures indien nodig.",
-          "question": "Welke vervolgstappen zijn reeds gepland?"
-        },
-        {
-          "step": 7,
-          "action": "Bied nazorg en ondersteuning bij de integratie na gezinshereniging.",
-          "question": "Is er een nazorgplan opgesteld voor de cliënt?"
+          "action": "Dien het dossier in bij de bevoegde instantie en volg de voortgang op.",
+          "question": "Is het dossier compleet voor indiening en zijn vervolgstappen gepland?"
         }
       ]
     },
@@ -101,18 +81,19 @@
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'Verlenging verblijfsvergunning update' om de meest recente procedure, formulieren en bewijsvereisten te achterhalen. Toon de gevonden actuele informatie aan de cliënt.",
+          "action": "Voer een internetzoekopdracht uit met de term 'Verlenging verblijfsvergunning update'. Controleer de nieuwste instructies, formulieren en bewijsvereisten en toon deze aan de cliënt.",
+          "followUpQuestion": "Heeft u behoefte aan verdere uitleg over de instructies of de vereiste bewijsstukken? Geef dit aan voor extra ondersteuning.",
           "question": "Heeft u de nieuwste instructies voor verlenging/wijziging opgezocht?"
         },
         {
           "step": 2,
-          "action": "Stel een bijgewerkt dossier samen en informeer hoe dit ingediend moet worden (controleer of de nieuwste formulieren worden gebruikt).",
+          "action": "Stel een bijgewerkt dossier samen met de nieuwste formulieren en controleer de volledigheid van de documenten.",
           "question": "Is het dossier volgens de laatste richtlijnen compleet?"
         },
         {
           "step": 3,
           "action": "Plan opvolgafspraken voor monitoring van de aanvraag en evalueer de voortgang.",
-          "question": "Zijn er opvolgafspraken gepland op basis van de nieuwste informatie?"
+          "question": "Zijn er opvolgafspraken gepland op basis van de meest recente informatie?"
         }
       ]
     },
@@ -123,23 +104,24 @@
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'Bezwaarprocedure asiel update' om het meest actuele bezwaarformulier en recente beslissingen te vinden. Presenteer deze informatie aan de cliënt.",
-          "question": "Heeft u de meest recente werkwijze voor bezwaar en beroep opgezocht?"
+          "action": "Voer een internetzoekopdracht uit met de term 'Bezwaarprocedure asiel update'. Presenteer de meest actuele procedures, formulieren en recente beslissingen aan de cliënt.",
+          "followUpQuestion": "Wilt u extra toelichting over de juridische argumentatie of de recente uitspraken? Laat het weten voor meer gedetailleerde informatie.",
+          "question": "Is de meest recente werkwijze voor bezwaar en beroep opgezocht?"
         },
         {
           "step": 2,
-          "action": "Verzamel alle relevante documenten en bewijsstukken die de beslissing kunnen weerleggen.",
+          "action": "Verzamel alle relevante documenten en bewijsstukken in anonieme vorm.",
           "question": "Zijn alle benodigde documenten verzameld volgens de nieuwste richtlijnen?"
         },
         {
           "step": 3,
-          "action": "Stel een bezwaarschrift of beroepsprocedure op met heldere argumentatie en volledige bronvermelding (volgens APA).",
+          "action": "Stel een bezwaarschrift op met heldere argumentatie en volledige bronvermelding (volgens APA).",
           "question": "Zijn alle relevante argumenten en bronnen verwerkt in het bezwaarschrift?"
         },
         {
           "step": 4,
-          "action": "Dien het bezwaar of beroep in en volg de procedure nauwgezet op, rekening houdend met recente termijnen.",
-          "question": "Is het bezwaar of beroep correct ingediend volgens de meest recente procedure?"
+          "action": "Dien het bezwaar of beroep in volgens de meest recente procedure en volg de procedure nauwgezet op.",
+          "question": "Is het bezwaar of beroep correct ingediend en is er een bevestiging ontvangen?"
         }
       ]
     },
@@ -150,12 +132,13 @@
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'Inburgering procedure update' om de meest actuele formulieren en richtlijnen te vinden. Geef deze informatie door aan de cliënt.",
+          "action": "Voer een internetzoekopdracht uit met de term 'Inburgering procedure update'. Toon de meest recente formulieren en richtlijnen aan de cliënt.",
+          "followUpQuestion": "Heeft u behoefte aan verdere uitleg over de inburgeringsvoorwaarden of specifieke vrijstellingen? Geef dit aan zodat er extra informatie wordt verstrekt.",
           "question": "Heeft u de meest recente inburgeringsrichtlijnen opgezocht?"
         },
         {
           "step": 2,
-          "action": "Verzamel alle benodigde documenten en stel een dossier samen, rekening houdend met eventuele recente wijzigingen (vrijstellingen, taalvereisten, etc.).",
+          "action": "Verzamel alle benodigde documenten in anonieme vorm en stel een dossier samen.",
           "question": "Is het dossier compleet volgens de nieuwste regelgeving?"
         },
         {
@@ -172,12 +155,13 @@
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'Naturalisatie procedure update' om de meest recente formulieren en voorwaarden te achterhalen. Presenteer deze informatie aan de cliënt.",
+          "action": "Voer een internetzoekopdracht uit met de term 'Naturalisatie procedure update'. Controleer de meest recente voorwaarden en presenteer deze aan de cliënt.",
+          "followUpQuestion": "Wilt u meer details over de taaleisen of andere relevante criteria? Geef dit aan voor nadere toelichting.",
           "question": "Heeft u de nieuwste voorwaarden voor naturalisatie opgezocht?"
         },
         {
           "step": 2,
-          "action": "Stel een volledig dossier samen, rekening houdend met recente aanpassingen (taaleisen, afstandsverplichtingen, etc.).",
+          "action": "Stel een volledig dossier samen rekening houdend met recente aanpassingen zoals taaleisen en afstandsverplichtingen.",
           "question": "Is het dossier volledig en actueel samengesteld?"
         },
         {
@@ -194,18 +178,19 @@
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'Internationale Bescherming procedure update' om actuele formulieren, uitspraken (EHRM, HvJEU) en richtlijnen te vinden. Geef de gevonden informatie door aan de cliënt.",
+          "action": "Voer een internetzoekopdracht uit met de term 'Internationale Bescherming procedure update'. Presenteer actuele formulieren, uitspraken (bijvoorbeeld EHRM, HvJEU) en richtlijnen aan de cliënt.",
+          "followUpQuestion": "Heeft u behoefte aan verdere toelichting op internationale uitspraken of specifieke richtlijnen? Laat het weten voor extra informatie.",
           "question": "Heeft u de meest recente informatie over internationale bescherming opgezocht?"
         },
         {
           "step": 2,
-          "action": "Verzamel de relevante documenten en bewijsstukken volgens de nieuwste internationale en nationale richtlijnen.",
+          "action": "Verzamel de relevante documenten en bewijsstukken conform de nieuwste internationale en nationale richtlijnen in anonieme vorm.",
           "question": "Zijn alle benodigde documenten verzameld volgens de actuele voorschriften?"
         },
         {
           "step": 3,
           "action": "Stel een dossier samen en dien het in bij de bevoegde instantie.",
-          "question": "Is het dossier, op basis van de meest recente informatie, compleet ingediend?"
+          "question": "Is het dossier compleet ingediend op basis van de meest recente informatie?"
         }
       ]
     },
@@ -216,23 +201,49 @@
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'Mediation procedure update' om de meest actuele mediatieregels en -formulieren te achterhalen. Presenteer deze informatie aan de cliënt als uitgangspunt voor de verdere analyse.",
+          "action": "Voer een internetzoekopdracht uit met de term 'Mediation procedure update'. Presenteer de meest actuele mediatieregels en formulieren aan de cliënt.",
+          "followUpQuestion": "Heeft u behoefte aan extra uitleg over de mediatieregels of specifieke procedurele stappen? Geef dit aan zodat verdere verduidelijking volgt.",
           "question": "Heeft u de meest recente mediatieregels en -mogelijkheden opgezocht?"
         },
         {
           "step": 2,
           "action": "Verzamel alle relevante documenten en stel een verslag op volgens de nieuwste richtlijnen voor mediation.",
-          "question": "Zijn alle documenten en verslagen, conform de actuele eisen, verzameld?"
+          "question": "Zijn alle documenten en verslagen verzameld conform de actuele eisen?"
         },
         {
           "step": 3,
-          "action": "Bepaal samen met de cliënt of mediation, op basis van de nieuwste ontwikkelingen, een geschikte oplossing kan bieden.",
-          "question": "Denkt u dat mediation, volgens de actuele procedures, passend is voor de casus?"
+          "action": "Bepaal samen met de cliënt of mediation een geschikte oplossing kan bieden op basis van de nieuwste ontwikkelingen.",
+          "question": "Denkt u dat mediation passend is voor de casus?"
         },
         {
           "step": 4,
-          "action": "Stel een concreet mediationplan op en plan vervolgsessies, rekening houdend met recente wijzigingen in mediationtrajecten.",
+          "action": "Stel een concreet mediationplan op en plan vervolgsessies rekening houdend met recente wijzigingen.",
           "question": "Is het mediationplan volledig en actueel opgesteld?"
+        }
+      ]
+    }
+  ],
+  "maatschappelijkeProcedures": [
+    {
+      "id": "MA001",
+      "title": "Maatschappelijke Casus Behandelen",
+      "description": "Procedure voor het behandelen van maatschappelijke casussen.",
+      "steps": [
+        {
+          "step": 1,
+          "action": "Voer een intake uit en verzamel anonieme casusinformatie over de algemene situatie van de cliënt.",
+          "question": "Is de casusinformatie volledig en geanonimiseerd verzameld?"
+        },
+        {
+          "step": 2,
+          "action": "Voer een online zoekopdracht uit voor het relevante thema in combinatie met de gemeente.",
+          "followUpQuestion": "Heeft u behoefte aan meer gedetailleerde informatie over lokale voorzieningen of ondersteuning? Geef dit aan voor een vervolgactie.",
+          "question": "Is de meest actuele informatie over het thema en de lokale ondersteuning opgezocht?"
+        },
+        {
+          "step": 3,
+          "action": "Stel een handelingsplan op met SMART-doelen op basis van de verzamelde gegevens.",
+          "question": "Is er een handelingsplan opgesteld met duidelijke SMART-doelen?"
         }
       ]
     }
