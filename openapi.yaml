@@ -33,13 +33,17 @@ paths:
                       type: string
                     samenvatting:
                       type: string
-  /get_mb_instrument:
+        '404':
+          description: "Geen zoekresultaten of bestand niet gevonden."
+        '500':
+          description: "Fout bij het uitvoeren van de zoekopdracht."
+  /startmenu:
     get:
-      summary: "Haal MB‑Instrument data op"
-      operationId: get_mb_instrument
+      summary: "Haal startmenu op"
+      operationId: get_startmenu
       responses:
         '200':
-          description: "MB‑Instrument data met alle vragen, hulplinks, voorlichting en acties"
+          description: "Startmenu data"
           content:
             application/json:
               schema:
@@ -50,29 +54,18 @@ paths:
       operationId: get_all_procedures
       responses:
         '200':
-          description: "Alle procedures, startvraag en menu-opties voor juridische en maatschappelijke trajecten"
+          description: "Alle procedures en gerelateerde data"
           content:
             application/json:
               schema:
                 type: object
-  /ui_flow:
+  /mb_instrument:
     get:
-      summary: "Haal de gebruikersflow op"
-      operationId: get_ui_flow
+      summary: "Haal MB‑Instrument data op"
+      operationId: get_mb_instrument
       responses:
         '200':
-          description: "UI flow data voor navigatie door de applicatie"
-          content:
-            application/json:
-              schema:
-                type: object
-  /algemene_instructies:
-    get:
-      summary: "Haal de algemene instructies op"
-      operationId: get_algemene_instructies
-      responses:
-        '200':
-          description: "Algemene instructies voor het instrument"
+          description: "MB‑Instrument data met alle vragen, hulplinks, voorlichting en acties"
           content:
             application/json:
               schema:
