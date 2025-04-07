@@ -57,12 +57,19 @@
         },
         {
           "step": 3,
-          "action": "Plan een afspraak voor het ophalen van het MVV-visum binnen 90 dagen na goedkeuring. Vermeld hierbij de lokale contactgegevens indien beschikbaar.",
+          "action": "Plan een afspraak voor het ophalen van het MVV-visum binnen 90 dagen na goedkeuring. U kunt hiervoor online een afspraak maken via de gemeentelijke website of fysiek het gemeentehuis bezoeken.",
+          "followUpQuestion": "Heeft u behoefte aan meer informatie over het maken van een online afspraak of de locatie van het gemeentehuis?",
           "question": "Is er een afspraak gepland voor het ophalen van het visum?",
           "interactiveChecklist": [
             "Bevestig de datum en locatie van de afspraak",
             "Noteer de contactgegevens van de betrokken instantie"
           ],
+          "municipalityInstructions": {
+            "description": "Maak een afspraak via de website van het gemeentehuis of bezoek persoonlijk het gemeentehuis voor het ophalen van het visum.",
+            "address": "Gemeentehuis, <invoer_gemeente>",
+            "phone": "0800-654321",
+            "onlineOption": "Online afspraak mogelijk via www.<invoer_gemeente>.nl/afspraak"
+          },
           "localSupport": {
             "contactName": "Afspraakcoördinator",
             "address": "Visumloket, <invoer_gemeente>",
@@ -72,7 +79,8 @@
         },
         {
           "step": 4,
-          "action": "Meld de cliënt binnen 3 dagen na aankomst bij het Nareisloket. Voeg lokale hulpinformatie toe voor nazorg.",
+          "action": "Meld de cliënt binnen 3 dagen na aankomst bij het Nareisloket. Zorg dat lokale hulpinformatie wordt verstrekt.",
+          "followUpQuestion": "Wilt u extra informatie over lokale meldingsprocedures of nazorg?",
           "question": "Is de cliënt op de hoogte van de meldingsplicht?",
           "interactiveChecklist": [
             "Controleer de lokale meldingsprocedures",
@@ -123,7 +131,8 @@
         },
         {
           "step": 4,
-          "action": "Dien het dossier in bij de bevoegde instantie en plan een opvolging, met vermelding van lokale contactgegevens (bijvoorbeeld van een lokaal juridisch loket of advocaat).",
+          "action": "Dien het dossier in bij de bevoegde instantie en plan een opvolging, met vermelding van lokale contactgegevens (bijvoorbeeld van het gemeentehuis of een lokaal juridisch loket).",
+          "followUpQuestion": "Heeft u behoefte aan meer informatie over de lokale contactmogelijkheden?",
           "question": "Is het dossier compleet voor indiening en zijn de vervolgstappen gepland?",
           "interactiveChecklist": [
             "Verifieer de indiening van het dossier",
@@ -165,6 +174,7 @@
         {
           "step": 3,
           "action": "Plan opvolgafspraken voor monitoring van de aanvraag, met verwijzing naar lokale contactpunten voor ondersteuning.",
+          "followUpQuestion": "Wilt u meer informatie over de contactmogelijkheden bij het gemeentehuis?",
           "question": "Zijn er opvolgafspraken gepland?",
           "interactiveChecklist": [
             "Plan een vervolggesprek",
@@ -214,7 +224,8 @@
         },
         {
           "step": 4,
-          "action": "Dien het bezwaar of beroep in volgens de meest recente procedure en volg de procedure nauwgezet op, met lokale contactgegevens voor verdere ondersteuning (bijvoorbeeld een juridisch loket).",
+          "action": "Dien het bezwaar of beroep in volgens de meest recente procedure en volg de procedure nauwgezet op, met lokale contactgegevens voor verdere ondersteuning (bijv. een juridisch loket).",
+          "followUpQuestion": "Heeft u behoefte aan meer informatie over de lokale juridische ondersteuning?",
           "question": "Is het bezwaar of beroep correct ingediend en is er een bevestiging ontvangen?",
           "interactiveChecklist": [
             "Controleer de indieningsprocedure",
@@ -255,7 +266,8 @@
         },
         {
           "step": 3,
-          "action": "Dien de aanvraag in bij de bevoegde instantie en plan een evaluatiemoment, met lokale contactgegevens voor ondersteuning (bijvoorbeeld een lokaal inburgeringscentrum).",
+          "action": "Dien de aanvraag in bij de bevoegde instantie en plan een evaluatiemoment, met lokale contactgegevens voor ondersteuning (bijv. een lokaal inburgeringscentrum).",
+          "followUpQuestion": "Wilt u meer informatie over het lokale inburgeringscentrum?",
           "question": "Is de aanvraag ingediend volgens de meest actuele procedures?",
           "interactiveChecklist": [
             "Controleer de indieningsprocedure",
@@ -296,7 +308,8 @@
         },
         {
           "step": 3,
-          "action": "Dien het verzoek in en plan evaluatiemomenten, met verwijzing naar lokale ondersteuning (bijvoorbeeld een lokale naturalisatieadviseur).",
+          "action": "Dien het verzoek in en plan evaluatiemomenten, met verwijzing naar lokale ondersteuning (bijv. een lokale naturalisatieadviseur).",
+          "followUpQuestion": "Wilt u meer informatie over de lokale naturalisatieadviseur?",
           "question": "Is het verzoek ingediend volgens de meest recente richtlijnen?",
           "interactiveChecklist": [
             "Controleer de indieningsprocedure",
@@ -318,7 +331,7 @@
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'Internationale Bescherming procedure update' gecombineerd met de gemeente '<invoer_gemeente>'. Presenteer actuele formulieren, uitspraken (bijvoorbeeld EHRM, HvJEU) en richtlijnen aan de cliënt.",
+          "action": "Voer een internetzoekopdracht uit met de term 'Internationale Bescherming procedure update' gecombineerd met de gemeente '<invoer_gemeente>'. Presenteer actuele formulieren, uitspraken (bijv. EHRM, HvJEU) en richtlijnen aan de cliënt.",
           "followUpQuestion": "Heeft u behoefte aan verdere toelichting op internationale uitspraken of specifieke richtlijnen?",
           "question": "Heeft u de meest recente informatie over internationale bescherming opgezocht?",
           "interactiveChecklist": [
@@ -338,7 +351,8 @@
         },
         {
           "step": 3,
-          "action": "Stel een dossier samen en dien het in bij de bevoegde instantie, inclusief lokale contactgegevens voor nazorg (bijvoorbeeld een lokaal juridisch adviesbureau).",
+          "action": "Stel een dossier samen en dien het in bij de bevoegde instantie, inclusief lokale contactgegevens voor nazorg (bijv. een lokaal juridisch adviesbureau).",
+          "followUpQuestion": "Wilt u extra informatie over lokale nazorgmogelijkheden?",
           "question": "Is het dossier compleet ingediend op basis van de meest recente informatie?",
           "interactiveChecklist": [
             "Controleer de dossiervolledigheid",
@@ -388,7 +402,8 @@
         },
         {
           "step": 4,
-          "action": "Stel een concreet mediationplan op en plan vervolgsessies, met verwijzing naar lokale contactgegevens van een mediator of mediatiecentrum.",
+          "action": "Stel een concreet mediationplan op en plan vervolgsessies, met lokale contactgegevens van een mediator of mediatiecentrum.",
+          "followUpQuestion": "Heeft u behoefte aan aanvullende informatie over de lokale mediator of mediatiecentrum?",
           "question": "Is het mediationplan volledig en actueel opgesteld?",
           "interactiveChecklist": [
             "Formuleer duidelijke doelen in het plan",
