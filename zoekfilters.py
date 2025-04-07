@@ -9,8 +9,8 @@ from typing import List, Dict, Any, Tuple
 # Configuratie en Constanten
 # ============================================================
 
-# Uitgebreide lijst met betrouwbare domeinen (maximaal 100 punten) voor het filteren van zoekresultaten.
-BETROUWBARE_DOMAINS = [
+# Uitgebreide lijst met betrouwbare domeinen voor het filteren van zoekresultaten.
+BETROUWBARE_DOMAINS: List[str] = [
     "rijksoverheid.nl", "ind.nl", "ministerievanbuitenlandsezaken.nl", "ministerievanjustitie.nl", 
     "ministerievanfinancien.nl", "ministerievanonderwijs.nl", "regering.nl", "nederlandwereldwijd.nl", 
     "europa.eu", "ec.europa.eu", "europarl.europa.eu", "eurojust.europa.eu", "eur-lex.europa.eu", 
@@ -36,13 +36,13 @@ BETROUWBARE_DOMAINS = [
 ]
 
 # Relevante sleutelwoorden voor asiel, vluchtelingen, etc.
-SLEUTELWOORDEN = [
+SLEUTELWOORDEN: List[str] = [
     "asiel", "statushouder", "vluchteling", "vreemdeling", "opvang",
     "procedure", "verblijf", "migratie", "migrant", "indiening", "inburgering"
 ]
 
 # Termen die wijzen op een Nederlandse context
-DOELGROEP_NL = [
+DOELGROEP_NL: List[str] = [
     "nederland", "nederlandse", "rijksoverheid", "gemeente", "wetgeving"
 ]
 
@@ -53,6 +53,10 @@ DOELGROEP_NL = [
 def check_url(url: str, timeout: int = 5) -> bool:
     """
     Voert een HEAD-request uit om te controleren of de URL bereikbaar is en status code 200 retourneert.
+    
+    :param url: De URL die gecontroleerd dient te worden.
+    :param timeout: Tijdslimiet voor de request.
+    :return: True als de URL bereikbaar is, anders False.
     """
     try:
         response = requests.head(url, timeout=timeout)
@@ -62,8 +66,11 @@ def check_url(url: str, timeout: int = 5) -> bool:
 
 def get_valid_url(url: str, fallback_url: str = None) -> str:
     """
-    Controleert of de opgegeven URL geldig is. Indien niet, retourneer de fallback_url als deze geldig is.
-    Anders retourneer een lege string.
+    Controleert of de opgegeven URL geldig is. Indien niet, retourneert deze de fallback_url (als deze geldig is).
+    
+    :param url: De primaire URL.
+    :param fallback_url: Een alternatieve URL als fallback.
+    :return: De geldige URL of een lege string indien geen van beide geldig is.
     """
     if check_url(url):
         return url
@@ -79,16 +86,19 @@ def get_valid_url(url: str, fallback_url: str = None) -> str:
 def is_relevante_bron(url: str) -> bool:
     """
     Controleert of de URL afkomstig is van een betrouwbare bron.
+    
+    :param url: De URL die gecontroleerd dient te worden.
+    :return: True als de URL afkomstig is van een betrouwbare bron, anders False.
     """
     url = url.lower()
-    for domein in BETROUWBARE_DOMAINS:
-        if domein in url:
-            return True
-    return False
+    return any(domein in url for domein in BETROUWBARE_DOMAINS)
 
 def bevat_relevante_term(tekst: str) -> bool:
     """
-    Controleert of de tekst een of meer relevante sleutelwoorden bevat.
+    Controleert of de tekst één of meer relevante sleutelwoorden bevat.
+    
+    :param tekst: De te controleren tekst.
+    :return: True als een of meer sleutelwoorden aanwezig zijn, anders False.
     """
     tekst = tekst.lower()
     return any(kw in tekst for kw in SLEUTELWOORDEN)
@@ -96,13 +106,19 @@ def bevat_relevante_term(tekst: str) -> bool:
 def is_gericht_op_nederland(tekst: str) -> bool:
     """
     Controleert of de tekst termen bevat die wijzen op een Nederlandse context.
+    
+    :param tekst: De te controleren tekst.
+    :return: True als Nederlandse termen aanwezig zijn, anders False.
     """
     tekst = tekst.lower()
     return any(nl in tekst for nl in DOELGROEP_NL)
 
-def filter_resultaten(resultaten: List[Dict]) -> List[Dict]:
+def filter_resultaten(resultaten: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
     Filtert de zoekresultaten op basis van betrouwbare bron, relevante trefwoorden en Nederlandse context.
+    
+    :param resultaten: Lijst met zoekresultaten.
+    :return: Gefilterde lijst met relevante resultaten.
     """
     gefilterd = []
     for resultaat in resultaten:
@@ -123,6 +139,12 @@ def filter_resultaten(resultaten: List[Dict]) -> List[Dict]:
 # ============================================================
 
 def is_valid_bsn(bsn: str) -> bool:
+    """
+    Controleert of een BSN geldig is.
+    
+    :param bsn: De BSN als string.
+    :return: True als het BSN geldig is, anders False.
+    """
     if len(bsn) != 9 or not bsn.isdigit():
         return False
     try:
@@ -132,6 +154,12 @@ def is_valid_bsn(bsn: str) -> bool:
         return False
 
 def controleer_gevoelige_data(invoer: str) -> Tuple[str, List[str]]:
+    """
+    Vervangt gevoelige gegevens (zoals V-nummers, BSN's en namen) door een placeholder en geeft meldingen terug.
+    
+    :param invoer: De oorspronkelijke tekst.
+    :return: Een tuple met de geanonimiseerde tekst en een lijst met meldingen.
+    """
     meldingen = []
     patroon_vnummer = re.compile(r'\bV\d{6,9}\b', re.IGNORECASE)
     if patroon_vnummer.search(invoer):
@@ -152,6 +180,12 @@ def controleer_gevoelige_data(invoer: str) -> Tuple[str, List[str]]:
     return invoer, meldingen
 
 def verwerk_invoer(invoer: str) -> Dict[str, Any]:
+    """
+    Verwerkt de invoer door gevoelige data te anonimiseren en retourneert de geanonimiseerde tekst samen met eventuele meldingen.
+    
+    :param invoer: De oorspronkelijke invoer.
+    :return: Een dictionary met de geanonimiseerde invoer, meldingen en een statusboodschap.
+    """
     anonieme_invoer, meldingen = controleer_gevoelige_data(invoer)
     return {
         "geanonimiseerde_invoer": anonieme_invoer,
@@ -162,8 +196,13 @@ def verwerk_invoer(invoer: str) -> Dict[str, Any]:
 # ============================================================
 # Overige Helper-functies
 # ============================================================
-
 def combineer_filters(data: str) -> str:
+    """
+    Converteert de input naar lowercase voor consistente filtering.
+    
+    :param data: De te verwerken data.
+    :return: De data in lowercase.
+    """
     return data.lower()
 
 # ============================================================
