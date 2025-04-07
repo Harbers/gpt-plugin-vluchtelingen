@@ -13,7 +13,7 @@
       {
         "id": "juridisch_proc",
         "label": "Juridische procedures uitvoeren",
-        "description": "Doorloop één van de 8 juridische procedures met stapsgewijze begeleiding en online ondersteuning."
+        "description": "Doorloop één van de 8 juridische procedures met stapsgewijze begeleiding, online ondersteuning en een interactieve checklist."
       }
     ]
   },
@@ -27,22 +27,43 @@
           "step": 1,
           "action": "Voer een internetzoekopdracht uit met de term 'MVV-aanvraag procedure up-to-date'. Controleer de nieuwste formulieren en vereiste documenten via de backend-endpoint /get_form_link en presenteer deze informatie aan de cliënt.",
           "followUpQuestion": "Heeft u behoefte aan aanvullende informatie of verduidelijking over de gevonden formulieren? Indien ja, geef aan welke aspecten nader toegelicht moeten worden.",
-          "question": "Is de meest recente werkwijze voor de MVV-aanvraag geverifieerd?"
+          "question": "Is de meest recente werkwijze voor de MVV-aanvraag geverifieerd?",
+          "interactiveChecklist": [
+            "Controleer de URL van de formulieren",
+            "Verifieer of de formulieren actueel zijn",
+            "Noteer afwijkingen of onduidelijkheden",
+            "Vraag extra uitleg als dat nodig is"
+          ]
         },
         {
           "step": 2,
           "action": "Dien de aanvraag in met een geldig paspoort, volledig ingevuld aanvraagformulier en alle vereiste documenten in anonieme vorm.",
-          "question": "Zijn alle documenten volledig en correct aangeleverd?"
+          "question": "Zijn alle documenten volledig en correct aangeleverd?",
+          "interactiveChecklist": [
+            "Controleer de volledigheid van het paspoort",
+            "Verifieer de ingevulde gegevens op het formulier",
+            "Zorg voor anonieme verwerking van documenten"
+          ]
         },
         {
           "step": 3,
           "action": "Plan de afspraak voor het ophalen van het MVV-visum binnen 90 dagen na goedkeuring.",
-          "question": "Is er een afspraak gepland voor het ophalen van het visum?"
+          "question": "Is er een afspraak gepland voor het ophalen van het visum?",
+          "interactiveChecklist": [
+            "Controleer de datum van de afspraak",
+            "Bevestig de afspraak bij de betrokken instantie",
+            "Noteer eventuele wijzigingen"
+          ]
         },
         {
           "step": 4,
           "action": "Meld de cliënt binnen 3 dagen na aankomst bij het Nareisloket.",
-          "question": "Is de cliënt op de hoogte van de meldingsplicht?"
+          "question": "Is de cliënt op de hoogte van de meldingsplicht?",
+          "interactiveChecklist": [
+            "Verifieer de meldingsprocedures",
+            "Controleer de contactgegevens van het Nareisloket",
+            "Plan een herinnering voor de cliënt"
+          ]
         }
       ]
     },
@@ -55,22 +76,42 @@
           "step": 1,
           "action": "Voer een internetzoekopdracht uit met de term 'Gezinshereniging procedure update'. Presenteer de meest recente werkwijze en eventuele wijzigingen aan de cliënt.",
           "followUpQuestion": "Wilt u extra uitleg over specifieke wijzigingen in de procedure of over de vereiste documenten? Geef dit aan zodat verdere ondersteuning geboden kan worden.",
-          "question": "Is de nieuwste werkwijze voor gezinshereniging opgezocht en gecontroleerd?"
+          "question": "Is de nieuwste werkwijze voor gezinshereniging opgezocht en gecontroleerd?",
+          "interactiveChecklist": [
+            "Zoek naar recente updates in de regelgeving",
+            "Controleer de lijst van vereiste documenten",
+            "Noteer specifieke wijzigingen of aandachtspunten"
+          ]
         },
         {
           "step": 2,
           "action": "Voer een intake en vooronderzoek uit om de gezinssamenstelling en behoeften vast te stellen.",
-          "question": "Kunt u de gezinssituatie en behoeften beschrijven?"
+          "question": "Kunt u de gezinssituatie en behoeften beschrijven?",
+          "interactiveChecklist": [
+            "Verzamel alle relevante gezinsgegevens",
+            "Documenteer de behoeften van het gezin",
+            "Controleer of alle informatie anoniem is"
+          ]
         },
         {
           "step": 3,
           "action": "Verzamel alle vereiste documenten in anonieme vorm en stel een dossier op.",
-          "question": "Zijn alle benodigde documenten volgens de laatste richtlijnen verzameld?"
+          "question": "Zijn alle benodigde documenten volgens de laatste richtlijnen verzameld?",
+          "interactiveChecklist": [
+            "Controleer de volledigheid van de documenten",
+            "Anonimiseer alle persoonlijke gegevens",
+            "Bevestig dat de documenten voldoen aan de huidige eisen"
+          ]
         },
         {
           "step": 4,
           "action": "Dien het dossier in bij de bevoegde instantie en volg de voortgang op.",
-          "question": "Is het dossier compleet voor indiening en zijn vervolgstappen gepland?"
+          "question": "Is het dossier compleet voor indiening en zijn vervolgstappen gepland?",
+          "interactiveChecklist": [
+            "Controleer of alle documenten ingediend zijn",
+            "Verifieer de ontvangstbevestiging",
+            "Plan vervolgstappen indien nodig"
+          ]
         }
       ]
     },
@@ -83,17 +124,32 @@
           "step": 1,
           "action": "Voer een internetzoekopdracht uit met de term 'Verlenging verblijfsvergunning update'. Controleer de nieuwste instructies, formulieren en bewijsvereisten en toon deze aan de cliënt.",
           "followUpQuestion": "Heeft u behoefte aan verdere uitleg over de instructies of de vereiste bewijsstukken? Geef dit aan voor extra ondersteuning.",
-          "question": "Heeft u de nieuwste instructies voor verlenging/wijziging opgezocht?"
+          "question": "Heeft u de nieuwste instructies voor verlenging/wijziging opgezocht?",
+          "interactiveChecklist": [
+            "Controleer de instructies op actualiteit",
+            "Vergelijk de formulieren met eerdere versies",
+            "Noteer eventuele onduidelijkheden of afwijkingen"
+          ]
         },
         {
           "step": 2,
           "action": "Stel een bijgewerkt dossier samen met de nieuwste formulieren en controleer de volledigheid van de documenten.",
-          "question": "Is het dossier volgens de laatste richtlijnen compleet?"
+          "question": "Is het dossier volgens de laatste richtlijnen compleet?",
+          "interactiveChecklist": [
+            "Controleer de volledigheid van alle formulieren",
+            "Anonimiseer alle persoonsgegevens",
+            "Bevestig dat de vereiste bewijsstukken aanwezig zijn"
+          ]
         },
         {
           "step": 3,
           "action": "Plan opvolgafspraken voor monitoring van de aanvraag en evalueer de voortgang.",
-          "question": "Zijn er opvolgafspraken gepland op basis van de meest recente informatie?"
+          "question": "Zijn er opvolgafspraken gepland op basis van de meest recente informatie?",
+          "interactiveChecklist": [
+            "Plan een datum voor een vervolggesprek",
+            "Verifieer de voortgang met de cliënt",
+            "Documenteer eventuele wijzigingen in de procedure"
+          ]
         }
       ]
     },
@@ -106,22 +162,42 @@
           "step": 1,
           "action": "Voer een internetzoekopdracht uit met de term 'Bezwaarprocedure asiel update'. Presenteer de meest actuele procedures, formulieren en recente beslissingen aan de cliënt.",
           "followUpQuestion": "Wilt u extra toelichting over de juridische argumentatie of de recente uitspraken? Laat het weten voor meer gedetailleerde informatie.",
-          "question": "Is de meest recente werkwijze voor bezwaar en beroep opgezocht?"
+          "question": "Is de meest recente werkwijze voor bezwaar en beroep opgezocht?",
+          "interactiveChecklist": [
+            "Zoek naar recente juridische uitspraken",
+            "Controleer of de formulieren actueel zijn",
+            "Noteer belangrijke wijzigingen in de procedure"
+          ]
         },
         {
           "step": 2,
           "action": "Verzamel alle relevante documenten en bewijsstukken in anonieme vorm.",
-          "question": "Zijn alle benodigde documenten verzameld volgens de nieuwste richtlijnen?"
+          "question": "Zijn alle benodigde documenten verzameld volgens de nieuwste richtlijnen?",
+          "interactiveChecklist": [
+            "Controleer de volledigheid van de bewijsstukken",
+            "Anonimiseer persoonlijke gegevens",
+            "Verifieer of de documenten voldoen aan de huidige eisen"
+          ]
         },
         {
           "step": 3,
           "action": "Stel een bezwaarschrift op met heldere argumentatie en volledige bronvermelding (volgens APA).",
-          "question": "Zijn alle relevante argumenten en bronnen verwerkt in het bezwaarschrift?"
+          "question": "Zijn alle relevante argumenten en bronnen verwerkt in het bezwaarschrift?",
+          "interactiveChecklist": [
+            "Formuleer duidelijke argumenten",
+            "Voeg correcte bronvermeldingen toe",
+            "Controleer of de tekst voldoet aan de APA-standaarden"
+          ]
         },
         {
           "step": 4,
           "action": "Dien het bezwaar of beroep in volgens de meest recente procedure en volg de procedure nauwgezet op.",
-          "question": "Is het bezwaar of beroep correct ingediend en is er een bevestiging ontvangen?"
+          "question": "Is het bezwaar of beroep correct ingediend en is er een bevestiging ontvangen?",
+          "interactiveChecklist": [
+            "Controleer de indieningsprocedure",
+            "Verifieer de ontvangstbevestiging",
+            "Plan een vervolgafspraak indien nodig"
+          ]
         }
       ]
     },
@@ -134,17 +210,32 @@
           "step": 1,
           "action": "Voer een internetzoekopdracht uit met de term 'Inburgering procedure update'. Toon de meest recente formulieren en richtlijnen aan de cliënt.",
           "followUpQuestion": "Heeft u behoefte aan verdere uitleg over de inburgeringsvoorwaarden of specifieke vrijstellingen? Geef dit aan zodat er extra informatie wordt verstrekt.",
-          "question": "Heeft u de meest recente inburgeringsrichtlijnen opgezocht?"
+          "question": "Heeft u de meest recente inburgeringsrichtlijnen opgezocht?",
+          "interactiveChecklist": [
+            "Controleer de actualiteit van de richtlijnen",
+            "Vergelijk met eerdere versies",
+            "Noteer onduidelijkheden voor nadere toelichting"
+          ]
         },
         {
           "step": 2,
           "action": "Verzamel alle benodigde documenten in anonieme vorm en stel een dossier samen.",
-          "question": "Is het dossier compleet volgens de nieuwste regelgeving?"
+          "question": "Is het dossier compleet volgens de nieuwste regelgeving?",
+          "interactiveChecklist": [
+            "Verzamel alle relevante documenten",
+            "Anonimiseer de persoonsgegevens",
+            "Controleer of alle documenten voldoen aan de eisen"
+          ]
         },
         {
           "step": 3,
           "action": "Dien de aanvraag in bij de bevoegde instantie en plan een evaluatiemoment.",
-          "question": "Is de aanvraag ingediend volgens de meest actuele procedures?"
+          "question": "Is de aanvraag ingediend volgens de meest actuele procedures?",
+          "interactiveChecklist": [
+            "Controleer de indieningsprocedure",
+            "Verifieer de ontvangst",
+            "Plan een evaluatieafspraak"
+          ]
         }
       ]
     },
@@ -157,17 +248,32 @@
           "step": 1,
           "action": "Voer een internetzoekopdracht uit met de term 'Naturalisatie procedure update'. Controleer de meest recente voorwaarden en presenteer deze aan de cliënt.",
           "followUpQuestion": "Wilt u meer details over de taaleisen of andere relevante criteria? Geef dit aan voor nadere toelichting.",
-          "question": "Heeft u de nieuwste voorwaarden voor naturalisatie opgezocht?"
+          "question": "Heeft u de nieuwste voorwaarden voor naturalisatie opgezocht?",
+          "interactiveChecklist": [
+            "Controleer de meest recente voorwaarden",
+            "Vergelijk met eerdere versies",
+            "Noteer specifieke vereisten voor toelichting"
+          ]
         },
         {
           "step": 2,
           "action": "Stel een volledig dossier samen rekening houdend met recente aanpassingen zoals taaleisen en afstandsverplichtingen.",
-          "question": "Is het dossier volledig en actueel samengesteld?"
+          "question": "Is het dossier volledig en actueel samengesteld?",
+          "interactiveChecklist": [
+            "Verzamel alle benodigde documenten",
+            "Anonimiseer alle persoonsgegevens",
+            "Controleer of de aanpassingen correct zijn verwerkt"
+          ]
         },
         {
           "step": 3,
           "action": "Dien het verzoek in en plan evaluatiemomenten indien nodig.",
-          "question": "Is het verzoek ingediend volgens de meest recente richtlijnen?"
+          "question": "Is het verzoek ingediend volgens de meest recente richtlijnen?",
+          "interactiveChecklist": [
+            "Controleer de indieningsprocedure",
+            "Bevestig de indiening",
+            "Plan een evaluatieafspraak"
+          ]
         }
       ]
     },
@@ -180,17 +286,32 @@
           "step": 1,
           "action": "Voer een internetzoekopdracht uit met de term 'Internationale Bescherming procedure update'. Presenteer actuele formulieren, uitspraken (bijvoorbeeld EHRM, HvJEU) en richtlijnen aan de cliënt.",
           "followUpQuestion": "Heeft u behoefte aan verdere toelichting op internationale uitspraken of specifieke richtlijnen? Laat het weten voor extra informatie.",
-          "question": "Heeft u de meest recente informatie over internationale bescherming opgezocht?"
+          "question": "Heeft u de meest recente informatie over internationale bescherming opgezocht?",
+          "interactiveChecklist": [
+            "Zoek naar de nieuwste internationale richtlijnen",
+            "Controleer de actuele uitspraken",
+            "Noteer belangrijke wijzigingen voor nadere toelichting"
+          ]
         },
         {
           "step": 2,
           "action": "Verzamel de relevante documenten en bewijsstukken conform de nieuwste internationale en nationale richtlijnen in anonieme vorm.",
-          "question": "Zijn alle benodigde documenten verzameld volgens de actuele voorschriften?"
+          "question": "Zijn alle benodigde documenten verzameld volgens de actuele voorschriften?",
+          "interactiveChecklist": [
+            "Verzamel alle vereiste documenten",
+            "Anonimiseer persoonlijke gegevens",
+            "Controleer of de documenten voldoen aan de huidige richtlijnen"
+          ]
         },
         {
           "step": 3,
           "action": "Stel een dossier samen en dien het in bij de bevoegde instantie.",
-          "question": "Is het dossier compleet ingediend op basis van de meest recente informatie?"
+          "question": "Is het dossier compleet ingediend op basis van de meest recente informatie?",
+          "interactiveChecklist": [
+            "Controleer de dossiervolledigheid",
+            "Verifieer de indieningsprocedure",
+            "Bevestig de indiening"
+          ]
         }
       ]
     },
@@ -203,22 +324,42 @@
           "step": 1,
           "action": "Voer een internetzoekopdracht uit met de term 'Mediation procedure update'. Presenteer de meest actuele mediatieregels en formulieren aan de cliënt.",
           "followUpQuestion": "Heeft u behoefte aan extra uitleg over de mediatieregels of specifieke procedurele stappen? Geef dit aan zodat verdere verduidelijking volgt.",
-          "question": "Heeft u de meest recente mediatieregels en -mogelijkheden opgezocht?"
+          "question": "Heeft u de meest recente mediatieregels en -mogelijkheden opgezocht?",
+          "interactiveChecklist": [
+            "Zoek naar actuele mediatieregels",
+            "Controleer de formulieren op actualiteit",
+            "Noteer punten die verdere uitleg behoeven"
+          ]
         },
         {
           "step": 2,
           "action": "Verzamel alle relevante documenten en stel een verslag op volgens de nieuwste richtlijnen voor mediation.",
-          "question": "Zijn alle documenten en verslagen verzameld conform de actuele eisen?"
+          "question": "Zijn alle documenten en verslagen verzameld conform de actuele eisen?",
+          "interactiveChecklist": [
+            "Verzamel relevante documentatie",
+            "Anonimiseer indien nodig",
+            "Controleer de verslaglegging op volledigheid"
+          ]
         },
         {
           "step": 3,
           "action": "Bepaal samen met de cliënt of mediation een geschikte oplossing kan bieden op basis van de nieuwste ontwikkelingen.",
-          "question": "Denkt u dat mediation passend is voor de casus?"
+          "question": "Denkt u dat mediation passend is voor de casus?",
+          "interactiveChecklist": [
+            "Bespreek de voor- en nadelen van mediation",
+            "Documenteer de bevindingen",
+            "Overweeg alternatieve oplossingen"
+          ]
         },
         {
           "step": 4,
           "action": "Stel een concreet mediationplan op en plan vervolgsessies rekening houdend met recente wijzigingen.",
-          "question": "Is het mediationplan volledig en actueel opgesteld?"
+          "question": "Is het mediationplan volledig en actueel opgesteld?",
+          "interactiveChecklist": [
+            "Formuleer duidelijke doelen in het plan",
+            "Plan vervolgsessies",
+            "Controleer de implementatie van het plan"
+          ]
         }
       ]
     }
@@ -232,18 +373,33 @@
         {
           "step": 1,
           "action": "Voer een intake uit en verzamel anonieme casusinformatie over de algemene situatie van de cliënt.",
-          "question": "Is de casusinformatie volledig en geanonimiseerd verzameld?"
+          "question": "Is de casusinformatie volledig en geanonimiseerd verzameld?",
+          "interactiveChecklist": [
+            "Vraag de cliënt naar de kern van de casus",
+            "Verzamel relevante achtergrondinformatie",
+            "Zorg voor volledige anonimiteit"
+          ]
         },
         {
           "step": 2,
           "action": "Voer een online zoekopdracht uit voor het relevante thema in combinatie met de gemeente.",
           "followUpQuestion": "Heeft u behoefte aan meer gedetailleerde informatie over lokale voorzieningen of ondersteuning? Geef dit aan voor een vervolgactie.",
-          "question": "Is de meest actuele informatie over het thema en de lokale ondersteuning opgezocht?"
+          "question": "Is de meest actuele informatie over het thema en de lokale ondersteuning opgezocht?",
+          "interactiveChecklist": [
+            "Zoek naar lokale ondersteuningsinstanties",
+            "Controleer de actualiteit van de gevonden informatie",
+            "Noteer relevante contactgegevens en links"
+          ]
         },
         {
           "step": 3,
           "action": "Stel een handelingsplan op met SMART-doelen op basis van de verzamelde gegevens.",
-          "question": "Is er een handelingsplan opgesteld met duidelijke SMART-doelen?"
+          "question": "Is er een handelingsplan opgesteld met duidelijke SMART-doelen?",
+          "interactiveChecklist": [
+            "Formuleer specifieke doelen",
+            "Stel meetbare criteria op",
+            "Bepaal relevante actiepunten en deadlines"
+          ]
         }
       ]
     }
