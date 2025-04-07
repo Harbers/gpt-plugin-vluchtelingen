@@ -26,56 +26,76 @@
     {
       "id": "PROC001",
       "title": "MVV-aanvraag Procedure",
-      "description": "Procedure voor het aanvragen van een MVV (Machtiging tot Voorlopig Verblijf) in de omgeving van de cliënt.",
+      "description": "Procedure voor het aanvragen van een MVV (Machtiging tot Voorlopig Verblijf) afgestemd op de lokale situatie van de cliënt.",
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'MVV-aanvraag procedure up-to-date' gecombineerd met de gemeente '<invoer_gemeente>'. Controleer de nieuwste formulieren via /get_form_link en presenteer deze aan de cliënt.",
+          "action": "Voer een internetzoekopdracht uit met de term 'MVV-aanvraag procedure up-to-date' gecombineerd met de gemeente '<invoer_gemeente>', thuisland '<invoer_thuisland>' en moedertaal '<invoer_moedertaal>'. Controleer de nieuwste formulieren via de backend-endpoint /get_form_link en presenteer deze informatie aan de cliënt.",
           "followUpQuestion": "Heeft u behoefte aan aanvullende informatie of toelichting over de gevonden formulieren?",
           "question": "Is de meest recente werkwijze voor de MVV-aanvraag geverifieerd?",
           "interactiveChecklist": [
             "Controleer de URL en actualiteit van de formulieren",
             "Noteer eventuele afwijkingen",
             "Vraag extra toelichting indien nodig"
-          ]
+          ],
+          "localSupport": {
+            "contactName": "Contactpersoon MVV",
+            "address": "Voorbeeldstraat 1, <invoer_gemeente>",
+            "phone": "0800-123456",
+            "email": "mvv-support@<invoer_gemeente>.nl"
+          }
         },
         {
           "step": 2,
-          "action": "Dien de aanvraag in met een geldig paspoort, een volledig ingevuld formulier en alle vereiste documenten in anonieme vorm.",
+          "action": "Dien de aanvraag in met een geldig paspoort, een volledig ingevuld aanvraagformulier en alle vereiste documenten in anonieme vorm.",
           "question": "Zijn alle documenten volledig en correct aangeleverd?",
           "interactiveChecklist": [
-            "Controleer de volledigheid van het paspoort en formulier",
-            "Anonimiseer alle gegevens"
+            "Controleer de volledigheid van het paspoort",
+            "Verifieer de ingevulde gegevens op het formulier",
+            "Zorg voor anonieme verwerking van documenten"
           ]
         },
         {
           "step": 3,
-          "action": "Plan een afspraak voor het ophalen van het MVV-visum binnen 90 dagen na goedkeuring. Vermeld lokale contactgegevens indien van toepassing.",
+          "action": "Plan een afspraak voor het ophalen van het MVV-visum binnen 90 dagen na goedkeuring. Vermeld hierbij de lokale contactgegevens indien beschikbaar.",
           "question": "Is er een afspraak gepland voor het ophalen van het visum?",
           "interactiveChecklist": [
             "Bevestig de datum en locatie van de afspraak",
             "Noteer de contactgegevens van de betrokken instantie"
-          ]
+          ],
+          "localSupport": {
+            "contactName": "Afspraakcoördinator",
+            "address": "Visumloket, <invoer_gemeente>",
+            "phone": "0800-654321",
+            "email": "visum@<invoer_gemeente>.nl"
+          }
         },
         {
           "step": 4,
-          "action": "Meld de cliënt binnen 3 dagen na aankomst bij het Nareisloket. Lokale hulpinstanties worden hierbij vermeld.",
+          "action": "Meld de cliënt binnen 3 dagen na aankomst bij het Nareisloket. Voeg lokale hulpinformatie toe voor nazorg.",
           "question": "Is de cliënt op de hoogte van de meldingsplicht?",
           "interactiveChecklist": [
             "Controleer de lokale meldingsprocedures",
-            "Noteer de contactgegevens van het Nareisloket"
-          ]
+            "Noteer de contactgegevens van het Nareisloket",
+            "Plan een herinnering voor de cliënt"
+          ],
+          "localSupport": {
+            "contactName": "Nareisloket Contact",
+            "address": "Nareisloket, <invoer_gemeente>",
+            "phone": "0800-112233",
+            "email": "nareisloket@<invoer_gemeente>.nl"
+          }
         }
       ]
     },
     {
       "id": "PROC002",
       "title": "Gezinshereniging Procedure",
-      "description": "Procedure voor gezinshereniging, afgestemd op de lokale context van de cliënt.",
+      "description": "Procedure voor het begeleiden van gezinshereniging, afgestemd op de lokale context van de cliënt.",
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'Gezinshereniging procedure update' en combineer dit met de gemeente '<invoer_gemeente>'. Presenteer de meest recente werkwijze aan de cliënt.",
+          "action": "Voer een internetzoekopdracht uit met de term 'Gezinshereniging procedure update' gecombineerd met de gemeente '<invoer_gemeente>'. Presenteer de meest recente werkwijze aan de cliënt.",
           "followUpQuestion": "Wilt u extra uitleg over specifieke wijzigingen of over de vereiste documenten?",
           "question": "Is de nieuwste werkwijze voor gezinshereniging opgezocht en gecontroleerd?",
           "interactiveChecklist": [
@@ -97,18 +117,24 @@
           "action": "Verzamel alle vereiste documenten in anonieme vorm en stel een dossier op.",
           "question": "Zijn alle benodigde documenten volgens de laatste richtlijnen verzameld?",
           "interactiveChecklist": [
-            "Controleer de volledigheid",
-            "Anonimiseer de documenten"
+            "Controleer de volledigheid van de documenten",
+            "Anonimiseer alle persoonsgegevens"
           ]
         },
         {
           "step": 4,
-          "action": "Dien het dossier in bij de bevoegde instantie en plan een opvolging, met lokale contactgegevens (bijvoorbeeld van een lokale advocaat of adviescentrum).",
+          "action": "Dien het dossier in bij de bevoegde instantie en plan een opvolging, met vermelding van lokale contactgegevens (bijvoorbeeld van een lokaal juridisch loket of advocaat).",
           "question": "Is het dossier compleet voor indiening en zijn de vervolgstappen gepland?",
           "interactiveChecklist": [
-            "Verifieer de indiening",
-            "Noteer de contactgegevens van de lokale hulpinstantie"
-          ]
+            "Verifieer de indiening van het dossier",
+            "Noteer lokale contactgegevens voor verdere ondersteuning"
+          ],
+          "localSupport": {
+            "contactName": "Juridisch Loket",
+            "address": "Advocatenweg 5, <invoer_gemeente>",
+            "phone": "0800-445566",
+            "email": "juridischloket@<invoer_gemeente>.nl"
+          }
         }
       ]
     },
@@ -119,8 +145,8 @@
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'Verlenging verblijfsvergunning update' in combinatie met de gemeente '<invoer_gemeente>'. Controleer de nieuwste instructies en formulieren en toon deze aan de cliënt.",
-          "followUpQuestion": "Heeft u behoefte aan verdere uitleg over de instructies of vereiste bewijsstukken?",
+          "action": "Voer een internetzoekopdracht uit met de term 'Verlenging verblijfsvergunning update' gecombineerd met de gemeente '<invoer_gemeente>'. Controleer de nieuwste instructies, formulieren en bewijsvereisten en toon deze aan de cliënt.",
+          "followUpQuestion": "Heeft u behoefte aan verdere uitleg over de instructies of de vereiste bewijsstukken?",
           "question": "Heeft u de nieuwste instructies voor verlenging/wijziging opgezocht?",
           "interactiveChecklist": [
             "Controleer de actualiteit van de instructies",
@@ -129,7 +155,7 @@
         },
         {
           "step": 2,
-          "action": "Stel een bijgewerkt dossier samen met de nieuwste formulieren en controleer de volledigheid.",
+          "action": "Stel een bijgewerkt dossier samen met de nieuwste formulieren en controleer de volledigheid van de documenten.",
           "question": "Is het dossier volgens de laatste richtlijnen compleet?",
           "interactiveChecklist": [
             "Verifieer de documenten",
@@ -142,19 +168,25 @@
           "question": "Zijn er opvolgafspraken gepland?",
           "interactiveChecklist": [
             "Plan een vervolggesprek",
-            "Noteer de lokale contactgegevens"
-          ]
+            "Noteer lokale contactgegevens voor ondersteuning"
+          ],
+          "localSupport": {
+            "contactName": "Lokale Immigratie-Adviseur",
+            "address": "Adviescentrum, <invoer_gemeente>",
+            "phone": "0800-778899",
+            "email": "immigratie@<invoer_gemeente>.nl"
+          }
         }
       ]
     },
     {
       "id": "PROC004",
       "title": "Bezwaar- en Beroepsprocedures",
-      "description": "Procedure voor bezwaar en beroep, inclusief afstemming op lokale juridische ondersteuning.",
+      "description": "Procedure voor het indienen van bezwaar of beroep, inclusief afstemming op lokale juridische ondersteuning.",
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'Bezwaarprocedure asiel update' en combineer dit met de gemeente '<invoer_gemeente>'. Presenteer de meest actuele procedures en formulieren aan de cliënt.",
+          "action": "Voer een internetzoekopdracht uit met de term 'Bezwaarprocedure asiel update' gecombineerd met de gemeente '<invoer_gemeente>'. Presenteer de meest actuele procedures en formulieren aan de cliënt.",
           "followUpQuestion": "Wilt u extra toelichting over de juridische argumentatie of recente uitspraken?",
           "question": "Is de meest recente werkwijze voor bezwaar en beroep opgezocht?",
           "interactiveChecklist": [
@@ -167,14 +199,14 @@
           "action": "Verzamel alle relevante documenten en bewijsstukken in anonieme vorm.",
           "question": "Zijn alle benodigde documenten verzameld volgens de nieuwste richtlijnen?",
           "interactiveChecklist": [
-            "Controleer de volledigheid",
-            "Anonimiseer de gegevens"
+            "Controleer de volledigheid van de documenten",
+            "Anonimiseer persoonlijke gegevens"
           ]
         },
         {
           "step": 3,
-          "action": "Stel een bezwaarschrift op met heldere argumentatie en bronvermelding (volgens APA).",
-          "question": "Zijn alle relevante argumenten en bronnen verwerkt?",
+          "action": "Stel een bezwaarschrift op met heldere argumentatie en volledige bronvermelding (volgens APA).",
+          "question": "Zijn alle relevante argumenten en bronnen verwerkt in het bezwaarschrift?",
           "interactiveChecklist": [
             "Formuleer duidelijke argumenten",
             "Voeg correcte bronvermeldingen toe"
@@ -182,12 +214,18 @@
         },
         {
           "step": 4,
-          "action": "Dien het bezwaar of beroep in en volg de procedure nauwgezet op, met vermelding van lokale contactgegevens (bijv. een juridisch loket in de gemeente).",
-          "question": "Is het bezwaar correct ingediend?",
+          "action": "Dien het bezwaar of beroep in volgens de meest recente procedure en volg de procedure nauwgezet op, met lokale contactgegevens voor verdere ondersteuning (bijvoorbeeld een juridisch loket).",
+          "question": "Is het bezwaar of beroep correct ingediend en is er een bevestiging ontvangen?",
           "interactiveChecklist": [
             "Controleer de indieningsprocedure",
             "Verifieer de ontvangstbevestiging"
-          ]
+          ],
+          "localSupport": {
+            "contactName": "Juridisch Loket",
+            "address": "Advocatenplein 3, <invoer_gemeente>",
+            "phone": "0800-332211",
+            "email": "bezwaar@<invoer_gemeente>.nl"
+          }
         }
       ]
     },
@@ -199,7 +237,7 @@
         {
           "step": 1,
           "action": "Voer een internetzoekopdracht uit met de term 'Inburgering procedure update' gecombineerd met de gemeente '<invoer_gemeente>'. Toon de meest recente formulieren en richtlijnen aan de cliënt.",
-          "followUpQuestion": "Heeft u behoefte aan extra uitleg over de inburgeringsvoorwaarden of vrijstellingen?",
+          "followUpQuestion": "Heeft u behoefte aan extra uitleg over de inburgeringsvoorwaarden of specifieke vrijstellingen?",
           "question": "Heeft u de meest recente inburgeringsrichtlijnen opgezocht?",
           "interactiveChecklist": [
             "Controleer de actualiteit van de richtlijnen",
@@ -211,18 +249,24 @@
           "action": "Verzamel alle benodigde documenten in anonieme vorm en stel een dossier samen.",
           "question": "Is het dossier compleet volgens de nieuwste regelgeving?",
           "interactiveChecklist": [
-            "Verzamel relevante documenten",
+            "Verzamel alle relevante documenten",
             "Anonimiseer de gegevens"
           ]
         },
         {
           "step": 3,
-          "action": "Dien de aanvraag in en plan een evaluatiemoment, met lokale contactgegevens voor ondersteuning (bijv. een lokaal inburgeringscentrum).",
+          "action": "Dien de aanvraag in bij de bevoegde instantie en plan een evaluatiemoment, met lokale contactgegevens voor ondersteuning (bijvoorbeeld een lokaal inburgeringscentrum).",
           "question": "Is de aanvraag ingediend volgens de meest actuele procedures?",
           "interactiveChecklist": [
             "Controleer de indieningsprocedure",
             "Noteer de lokale contactgegevens"
-          ]
+          ],
+          "localSupport": {
+            "contactName": "Inburgeringscentrum",
+            "address": "Centrumstraat 10, <invoer_gemeente>",
+            "phone": "0800-556677",
+            "email": "inburgering@<invoer_gemeente>.nl"
+          }
         }
       ]
     },
@@ -233,12 +277,12 @@
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'Naturalisatie procedure update' en combineer dit met de gemeente '<invoer_gemeente>'. Controleer de meest recente voorwaarden en presenteer deze aan de cliënt.",
-          "followUpQuestion": "Wilt u meer details over taaleisen of andere criteria?",
+          "action": "Voer een internetzoekopdracht uit met de term 'Naturalisatie procedure update' gecombineerd met de gemeente '<invoer_gemeente>'. Controleer de meest recente voorwaarden en presenteer deze aan de cliënt.",
+          "followUpQuestion": "Wilt u meer details over taaleisen of andere relevante criteria?",
           "question": "Heeft u de nieuwste voorwaarden voor naturalisatie opgezocht?",
           "interactiveChecklist": [
             "Controleer de actuele voorwaarden",
-            "Noteer specifieke criteria"
+            "Noteer specifieke criteria voor toelichting"
           ]
         },
         {
@@ -252,12 +296,18 @@
         },
         {
           "step": 3,
-          "action": "Dien het verzoek in en plan evaluatiemomenten, met verwijzing naar lokale ondersteuning (bijv. een lokale naturalisatieadviseur).",
+          "action": "Dien het verzoek in en plan evaluatiemomenten, met verwijzing naar lokale ondersteuning (bijvoorbeeld een lokale naturalisatieadviseur).",
           "question": "Is het verzoek ingediend volgens de meest recente richtlijnen?",
           "interactiveChecklist": [
             "Controleer de indieningsprocedure",
             "Plan een evaluatieafspraak"
-          ]
+          ],
+          "localSupport": {
+            "contactName": "Naturalisatie Adviseur",
+            "address": "Adviesbureau, <invoer_gemeente>",
+            "phone": "0800-889900",
+            "email": "naturalisatie@<invoer_gemeente>.nl"
+          }
         }
       ]
     },
@@ -268,7 +318,7 @@
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'Internationale Bescherming procedure update' gecombineerd met de gemeente '<invoer_gemeente>'. Presenteer actuele formulieren, uitspraken en richtlijnen aan de cliënt.",
+          "action": "Voer een internetzoekopdracht uit met de term 'Internationale Bescherming procedure update' gecombineerd met de gemeente '<invoer_gemeente>'. Presenteer actuele formulieren, uitspraken (bijvoorbeeld EHRM, HvJEU) en richtlijnen aan de cliënt.",
           "followUpQuestion": "Heeft u behoefte aan verdere toelichting op internationale uitspraken of specifieke richtlijnen?",
           "question": "Heeft u de meest recente informatie over internationale bescherming opgezocht?",
           "interactiveChecklist": [
@@ -288,12 +338,18 @@
         },
         {
           "step": 3,
-          "action": "Stel een dossier samen en dien het in bij de bevoegde instantie, inclusief lokale contactgegevens voor eventuele nazorg (bijv. een lokaal juridisch adviesbureau).",
+          "action": "Stel een dossier samen en dien het in bij de bevoegde instantie, inclusief lokale contactgegevens voor nazorg (bijvoorbeeld een lokaal juridisch adviesbureau).",
           "question": "Is het dossier compleet ingediend op basis van de meest recente informatie?",
           "interactiveChecklist": [
             "Controleer de dossiervolledigheid",
             "Verifieer de indieningsprocedure"
-          ]
+          ],
+          "localSupport": {
+            "contactName": "Internationaal Juridisch Advies",
+            "address": "Advocatenstraat 7, <invoer_gemeente>",
+            "phone": "0800-667788",
+            "email": "internationaal@<invoer_gemeente>.nl"
+          }
         }
       ]
     },
@@ -304,7 +360,7 @@
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'Mediation procedure update' en combineer dit met de gemeente '<invoer_gemeente>'. Presenteer de meest actuele mediatieregels en formulieren aan de cliënt.",
+          "action": "Voer een internetzoekopdracht uit met de term 'Mediation procedure update' gecombineerd met de gemeente '<invoer_gemeente>'. Presenteer de meest actuele mediatieregels en formulieren aan de cliënt.",
           "followUpQuestion": "Heeft u behoefte aan extra uitleg over de mediatieregels of specifieke procedurele stappen?",
           "question": "Heeft u de meest recente mediatieregels en -mogelijkheden opgezocht?",
           "interactiveChecklist": [
@@ -337,8 +393,14 @@
           "interactiveChecklist": [
             "Formuleer duidelijke doelen in het plan",
             "Plan vervolgsessies",
-            "Controleer de implementatie"
-          ]
+            "Controleer de implementatie van het plan"
+          ],
+          "localSupport": {
+            "contactName": "Mediator",
+            "address": "Mediatiecentrum, <invoer_gemeente>",
+            "phone": "0800-554433",
+            "email": "mediator@<invoer_gemeente>.nl"
+          }
         }
       ]
     }
@@ -347,7 +409,7 @@
     {
       "id": "MA001",
       "title": "Maatschappelijke Casus Behandelen",
-      "description": "Procedure voor het behandelen van maatschappelijke casussen, met afstemming op lokale mogelijkheden.",
+      "description": "Procedure voor het behandelen van maatschappelijke casussen, afgestemd op lokale mogelijkheden.",
       "steps": [
         {
           "step": 1,
@@ -360,14 +422,20 @@
         },
         {
           "step": 2,
-          "action": "Voer een online zoekopdracht uit met de term 'lokale ondersteuning' gecombineerd met de gemeente '<invoer_gemeente>'. Presenteer de meest actuele lokale hulpmogelijkheden (bijv. advocaten, schuldhulpverlening, welzijnsinstellingen) inclusief contactgegevens.",
+          "action": "Voer een online zoekopdracht uit met de term 'lokale ondersteuning' gecombineerd met de gemeente '<invoer_gemeente>'. Presenteer de meest actuele lokale hulpmogelijkheden (bijvoorbeeld advocaten, schuldhulpverlening, welzijnsinstellingen) inclusief contactgegevens.",
           "followUpQuestion": "Heeft u behoefte aan meer gedetailleerde informatie over een specifieke lokale hulpinstantie?",
           "question": "Is de meest actuele informatie over lokale ondersteuning opgezocht?",
           "interactiveChecklist": [
             "Zoek naar lokale ondersteuningsinstanties",
             "Noteer contactgegevens en locaties",
             "Controleer de actualiteit van de informatie"
-          ]
+          ],
+          "localSupport": {
+            "contactName": "Lokale Ondersteuning",
+            "address": "Hulpmiddelenstraat 12, <invoer_gemeente>",
+            "phone": "0800-998877",
+            "email": "ondersteuning@<invoer_gemeente>.nl"
+          }
         },
         {
           "step": 3,
