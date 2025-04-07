@@ -5,8 +5,8 @@ import json
 import os
 import logging
 from fastapi import FastAPI, Response, HTTPException, Query
-from duckduckgo_search import DDGS
 from typing import Any, Dict, List
+from duckduckgo_search import ddg  # Aangepaste import: gebruik ddg() in plaats van DDGS
 from zoekfilters import filter_resultaten
 
 # Logging configuratie
@@ -46,16 +46,16 @@ def search_endpoint(onderwerp: str = Query(..., description="Het onderwerp om op
 
     resultaten: List[Dict[str, str]] = []
     try:
-        with DDGS() as ddgs:
-            for item in zoekresultaten:
-                term = f"{item.get('sourceTitle', '')} {item.get('description', '')}"
-                for r in ddgs.text(term, max_results=3):
-                    resultaat = {
-                        "titel": r.get("title", ""),
-                        "link": r.get("href", ""),
-                        "samenvatting": r.get("body", "")
-                    }
-                    resultaten.append(resultaat)
+        # Gebruik de functie ddg() voor het uitvoeren van de zoekopdracht
+        for item in zoekresultaten:
+            term = f"{item.get('sourceTitle', '')} {item.get('description', '')}"
+            for r in ddg(term, max_results=3):
+                resultaat = {
+                    "titel": r.get("title", ""),
+                    "link": r.get("href", ""),
+                    "samenvatting": r.get("body", "")
+                }
+                resultaten.append(resultaat)
     except Exception as e:
         logger.error(f"Fout bij het uitvoeren van de zoekopdracht: {e}")
         raise HTTPException(status_code=500, detail="Fout bij het uitvoeren van de zoekopdracht.")
