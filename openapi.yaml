@@ -1,42 +1,13 @@
 openapi: 3.1.0
 info:
   title: "Vluchtelingenzoeker API"
-  description: "API voor het zoeken naar juridische informatie en het ophalen van begeleidingsdata voor zowel maatschappelijke als juridische trajecten."
+  description: "API voor het zoeken naar juridische informatie en het ophalen van begeleidingsdata."
   version: "1.0.0"
+
 servers:
   - url: https://gpt-plugin-vluchtelingen.onrender.com
+
 paths:
-  /search:
-    get:
-      summary: "Zoek juridische informatie"
-      operationId: search_legal_info
-      parameters:
-        - in: query
-          name: onderwerp
-          required: true
-          schema:
-            type: string
-          description: "Het onderwerp om op te zoeken."
-      responses:
-        '200':
-          description: "Resultaten gevonden"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    titel:
-                      type: string
-                    link:
-                      type: string
-                    samenvatting:
-                      type: string
-        '404':
-          description: "Geen zoekresultaten of bestand niet gevonden."
-        '500':
-          description: "Fout bij het uitvoeren van de zoekopdracht."
   /startmenu:
     get:
       summary: "Haal startmenu op"
@@ -47,26 +18,100 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-  /all_procedures:
-    get:
-      summary: "Haal alle procedures op"
-      operationId: get_all_procedures
-      responses:
-        '200':
-          description: "Alle procedures en gerelateerde data"
-          content:
-            application/json:
-              schema:
-                type: object
+                $ref: '#/components/schemas/StartMenuResponse'
+        '404':
+          description: "Menu not found"
+
   /mb_instrument:
     get:
       summary: "Haal MB‑Instrument data op"
       operationId: get_mb_instrument
       responses:
         '200':
-          description: "MB‑Instrument data met alle vragen, hulplinks, voorlichting en acties"
+          description: "MB‑Instrument data"
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/MBInstrumentResponse'
+        '404':
+          description: "MB-instrument not found"
+
+components:
+  schemas:
+    StartMenuResponse:
+      type: object
+      properties:
+        startVraag:
+          type: string
+          description: "Vraag of titel die in het startmenu wordt getoond."
+        context:
+          type: string
+          description: "Context of toelichting voor de medewerker."
+        basisgegevens:
+          type: object
+          description: "Structuur voor basisgegevens."
+          properties:
+            gemeente:
+              type: string
+            procedureKoppelenAanThuisland:
+              type: boolean
+            thuisland:
+              type: string
+            moedertaal:
+              type: string
+        menu:
+          type: object
+          description: "Menu-object met instructies en opties."
+          properties:
+            instructie:
+              type: string
+            opties:
+              type: array
+              items:
                 type: object
+                properties:
+                  nummer:
+                    type: integer
+                  omschrijving:
+                    type: string
+
+    MBInstrumentResponse:
+      type: object
+      properties:
+        mb_instrument:
+          type: object
+          description: "Hoofdobject van het MB-instrument."
+          properties:
+            version:
+              type: string
+            title:
+              type: string
+            introductie:
+              type: string
+            instructies:
+              type: string
+            vragen:
+              type: array
+              items:
+                type: object
+                properties:
+                  nummer:
+                    type: string
+                  tekst:
+                    type: string
+                  antwoordOpties:
+                    type: array
+                    items:
+                      type: string
+                  linksVoorlichting:
+                    type: array
+                    items:
+                      type: string
+                  voorlichtingOver:
+                    type: array
+                    items:
+                      type: string
+                  acties:
+                    type: array
+                    items:
+                      type: string
