@@ -30,8 +30,8 @@
       "steps": [
         {
           "step": 1,
-          "action": "Voer een internetzoekopdracht uit met de term 'MVV-aanvraag procedure up-to-date' gecombineerd met de gemeente '<invoer_gemeente>', thuisland '<invoer_thuisland>' en moedertaal '<invoer_moedertaal>'. Controleer de nieuwste formulieren via de backend-endpoint /get_form_link en presenteer deze informatie aan de cliënt.",
-          "followUpQuestion": "Heeft u behoefte aan aanvullende informatie of toelichting over de gevonden formulieren?",
+          "action": "Voer een internetzoekopdracht uit met de term 'MVV-aanvraag procedure up-to-date' gecombineerd met de gemeente '<invoer_gemeente>', thuisland '<invoer_thuisland>' en moedertaal '<invoer_moedertaal>'. Controleer de nieuwste formulieren via de backend-endpoint /get_form_link en presenteer deze aan de cliënt.",
+          "followUpQuestion": "Op basis van de gevonden formulieren en uw invoer (gemeente: <invoer_gemeente>, thuisland: <invoer_thuisland>) – welke aanvullende informatie of verduidelijking heeft u nodig?",
           "question": "Is de meest recente werkwijze voor de MVV-aanvraag geverifieerd?",
           "interactiveChecklist": [
             "Controleer de URL en actualiteit van de formulieren",
@@ -58,7 +58,7 @@
         {
           "step": 3,
           "action": "Plan een afspraak voor het ophalen van het MVV-visum binnen 90 dagen na goedkeuring. U kunt hiervoor online een afspraak maken via de gemeentelijke website of fysiek het gemeentehuis bezoeken.",
-          "followUpQuestion": "Heeft u behoefte aan meer informatie over het maken van een online afspraak of de locatie van het gemeentehuis?",
+          "followUpQuestion": "Wilt u meer informatie over het maken van een online afspraak of over het bezoek aan het gemeentehuis in <invoer_gemeente>?",
           "question": "Is er een afspraak gepland voor het ophalen van het visum?",
           "interactiveChecklist": [
             "Bevestig de datum en locatie van de afspraak",
@@ -79,8 +79,8 @@
         },
         {
           "step": 4,
-          "action": "Meld de cliënt binnen 3 dagen na aankomst bij het Nareisloket. Zorg dat lokale hulpinformatie wordt verstrekt.",
-          "followUpQuestion": "Wilt u extra informatie over lokale meldingsprocedures of nazorg?",
+          "action": "Meld de cliënt binnen 3 dagen na aankomst bij het Nareisloket. Verstrek hierbij ook lokale hulpinformatie.",
+          "followUpQuestion": "Heeft u nog vragen over de lokale meldingsprocedures of nazorg in <invoer_gemeente>?",
           "question": "Is de cliënt op de hoogte van de meldingsplicht?",
           "interactiveChecklist": [
             "Controleer de lokale meldingsprocedures",
@@ -104,7 +104,7 @@
         {
           "step": 1,
           "action": "Voer een internetzoekopdracht uit met de term 'Gezinshereniging procedure update' gecombineerd met de gemeente '<invoer_gemeente>'. Presenteer de meest recente werkwijze aan de cliënt.",
-          "followUpQuestion": "Wilt u extra uitleg over specifieke wijzigingen of over de vereiste documenten?",
+          "followUpQuestion": "Op basis van de ingevoerde gegevens en gevonden informatie, welke specifieke onderdelen van de procedure wilt u nader toegelicht zien?",
           "question": "Is de nieuwste werkwijze voor gezinshereniging opgezocht en gecontroleerd?",
           "interactiveChecklist": [
             "Zoek naar recente updates in regelgeving",
@@ -132,7 +132,7 @@
         {
           "step": 4,
           "action": "Dien het dossier in bij de bevoegde instantie en plan een opvolging, met vermelding van lokale contactgegevens (bijvoorbeeld van het gemeentehuis of een lokaal juridisch loket).",
-          "followUpQuestion": "Heeft u behoefte aan meer informatie over de lokale contactmogelijkheden?",
+          "followUpQuestion": "Heeft u behoefte aan extra informatie over de lokale contactmogelijkheden in <invoer_gemeente>?",
           "question": "Is het dossier compleet voor indiening en zijn de vervolgstappen gepland?",
           "interactiveChecklist": [
             "Verifieer de indiening van het dossier",
@@ -155,7 +155,7 @@
         {
           "step": 1,
           "action": "Voer een internetzoekopdracht uit met de term 'Verlenging verblijfsvergunning update' gecombineerd met de gemeente '<invoer_gemeente>'. Controleer de nieuwste instructies, formulieren en bewijsvereisten en toon deze aan de cliënt.",
-          "followUpQuestion": "Heeft u behoefte aan verdere uitleg over de instructies of de vereiste bewijsstukken?",
+          "followUpQuestion": "Welke aanvullende informatie over de instructies of bewijsvereisten zou u graag ontvangen?",
           "question": "Heeft u de nieuwste instructies voor verlenging/wijziging opgezocht?",
           "interactiveChecklist": [
             "Controleer de actualiteit van de instructies",
@@ -174,7 +174,7 @@
         {
           "step": 3,
           "action": "Plan opvolgafspraken voor monitoring van de aanvraag, met verwijzing naar lokale contactpunten voor ondersteuning.",
-          "followUpQuestion": "Wilt u meer informatie over de contactmogelijkheden bij het gemeentehuis?",
+          "followUpQuestion": "Heeft u behoefte aan meer informatie over de lokale contactmogelijkheden, zoals het gemeentehuis van <invoer_gemeente>?",
           "question": "Zijn er opvolgafspraken gepland?",
           "interactiveChecklist": [
             "Plan een vervolggesprek",
@@ -197,7 +197,7 @@
         {
           "step": 1,
           "action": "Voer een internetzoekopdracht uit met de term 'Bezwaarprocedure asiel update' gecombineerd met de gemeente '<invoer_gemeente>'. Presenteer de meest actuele procedures en formulieren aan de cliënt.",
-          "followUpQuestion": "Wilt u extra toelichting over de juridische argumentatie of recente uitspraken?",
+          "followUpQuestion": "Op basis van de informatie en uw invoer, welke specifieke aspecten wilt u nader toegelicht zien?",
           "question": "Is de meest recente werkwijze voor bezwaar en beroep opgezocht?",
           "interactiveChecklist": [
             "Zoek naar recente juridische uitspraken",
@@ -225,7 +225,7 @@
         {
           "step": 4,
           "action": "Dien het bezwaar of beroep in volgens de meest recente procedure en volg de procedure nauwgezet op, met lokale contactgegevens voor verdere ondersteuning (bijv. een juridisch loket).",
-          "followUpQuestion": "Heeft u behoefte aan meer informatie over de lokale juridische ondersteuning?",
+          "followUpQuestion": "Heeft u behoefte aan meer informatie over lokale juridische ondersteuning in <invoer_gemeente>?",
           "question": "Is het bezwaar of beroep correct ingediend en is er een bevestiging ontvangen?",
           "interactiveChecklist": [
             "Controleer de indieningsprocedure",
@@ -248,7 +248,7 @@
         {
           "step": 1,
           "action": "Voer een internetzoekopdracht uit met de term 'Inburgering procedure update' gecombineerd met de gemeente '<invoer_gemeente>'. Toon de meest recente formulieren en richtlijnen aan de cliënt.",
-          "followUpQuestion": "Heeft u behoefte aan extra uitleg over de inburgeringsvoorwaarden of specifieke vrijstellingen?",
+          "followUpQuestion": "Welke aanvullende informatie over inburgeringsvoorwaarden of specifieke vrijstellingen heeft u nodig?",
           "question": "Heeft u de meest recente inburgeringsrichtlijnen opgezocht?",
           "interactiveChecklist": [
             "Controleer de actualiteit van de richtlijnen",
@@ -267,7 +267,7 @@
         {
           "step": 3,
           "action": "Dien de aanvraag in bij de bevoegde instantie en plan een evaluatiemoment, met lokale contactgegevens voor ondersteuning (bijv. een lokaal inburgeringscentrum).",
-          "followUpQuestion": "Wilt u meer informatie over het lokale inburgeringscentrum?",
+          "followUpQuestion": "Wilt u meer informatie over het lokale inburgeringscentrum in <invoer_gemeente>?",
           "question": "Is de aanvraag ingediend volgens de meest actuele procedures?",
           "interactiveChecklist": [
             "Controleer de indieningsprocedure",
@@ -290,7 +290,7 @@
         {
           "step": 1,
           "action": "Voer een internetzoekopdracht uit met de term 'Naturalisatie procedure update' gecombineerd met de gemeente '<invoer_gemeente>'. Controleer de meest recente voorwaarden en presenteer deze aan de cliënt.",
-          "followUpQuestion": "Wilt u meer details over taaleisen of andere relevante criteria?",
+          "followUpQuestion": "Welke aanvullende details over taaleisen of andere criteria heeft u nodig?",
           "question": "Heeft u de nieuwste voorwaarden voor naturalisatie opgezocht?",
           "interactiveChecklist": [
             "Controleer de actuele voorwaarden",
@@ -309,7 +309,7 @@
         {
           "step": 3,
           "action": "Dien het verzoek in en plan evaluatiemomenten, met verwijzing naar lokale ondersteuning (bijv. een lokale naturalisatieadviseur).",
-          "followUpQuestion": "Wilt u meer informatie over de lokale naturalisatieadviseur?",
+          "followUpQuestion": "Wilt u meer informatie over de lokale naturalisatieadviseur in <invoer_gemeente>?",
           "question": "Is het verzoek ingediend volgens de meest recente richtlijnen?",
           "interactiveChecklist": [
             "Controleer de indieningsprocedure",
@@ -352,7 +352,7 @@
         {
           "step": 3,
           "action": "Stel een dossier samen en dien het in bij de bevoegde instantie, inclusief lokale contactgegevens voor nazorg (bijv. een lokaal juridisch adviesbureau).",
-          "followUpQuestion": "Wilt u extra informatie over lokale nazorgmogelijkheden?",
+          "followUpQuestion": "Heeft u behoefte aan extra informatie over lokale nazorgmogelijkheden in <invoer_gemeente>?",
           "question": "Is het dossier compleet ingediend op basis van de meest recente informatie?",
           "interactiveChecklist": [
             "Controleer de dossiervolledigheid",
@@ -403,7 +403,7 @@
         {
           "step": 4,
           "action": "Stel een concreet mediationplan op en plan vervolgsessies, met lokale contactgegevens van een mediator of mediatiecentrum.",
-          "followUpQuestion": "Heeft u behoefte aan aanvullende informatie over de lokale mediator of mediatiecentrum?",
+          "followUpQuestion": "Heeft u behoefte aan aanvullende informatie over de lokale mediator of het mediatiecentrum in <invoer_gemeente>?",
           "question": "Is het mediationplan volledig en actueel opgesteld?",
           "interactiveChecklist": [
             "Formuleer duidelijke doelen in het plan",
