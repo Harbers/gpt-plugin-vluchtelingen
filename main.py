@@ -1,104 +1,108 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Vluchtelingenzoeker API – Backend
-Deze module bevat de FastAPI-applicatie met endpoints voor het uitvoeren van
-zoekopdrachten en het aanbieden van het MB‑Instrument.
-"""
 
 import json
 import os
 import logging
+import requests
 from fastapi import FastAPI, HTTPException, Query, Response
 from typing import Any, Dict, List
-from duckduckgo_search import ddg
-from zoekfilters import filter_resultaten
 
+# Logging configuratie
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="Vluchtelingenzoeker API", version="2.0.0")
+app = FastAPI(title="Vluchtelingenwerk GPT API", version="1.0.0")
 
-def load_json(file_path: str) -> Any:
+def load_json_config(file_path: str) -> Any:
+    """
+    Laadt een JSON-configuratiebestand.
+    """
     if not os.path.isfile(file_path):
-        logger.error(f"Bestand niet gevonden: {file_path}")
-        raise FileNotFoundError(f"Bestand niet gevonden: {file_path}")
-    with open(file_path, "r", encoding="utf-8") as f:
-        return json.load(f)
+        logger.error(f"Bestand {file_path} niet gevonden.")
+        raise HTTPException(status_code=404, detail=f"{file_path} niet gevonden.")
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as e:
+        logger.error(f"Fout bij het laden van {file_path}: {e}")
+        raise HTTPException(status_code=500, detail=f"Fout bij het laden van {file_path}")
 
 @app.get("/")
 def root() -> Dict[str, str]:
+    """
+    Basis endpoint om te controleren of de API actief is.
+    """
     return {"status": "API is actief"}
 
 @app.head("/")
 def head_root() -> Response:
+    """
+    HEAD-endpoint om te controleren of de API bereikbaar is.
+    """
     return Response(status_code=200)
 
-@app.get("/search")
-def search_endpoint(
-    onderwerp: str = Query(..., description="Het onderwerp om op te zoeken"),
-    gemeente: str = Query(None),
-    thuisland: str = Query(None),
-    moedertaal: str = Query(None)
-) -> List[Dict[str, str]]:
+@app.get("/all_procedures")
+def get_all_procedures() -> Any:
     """
-    Voert een zoekopdracht uit via DuckDuckGo voor het opgegeven onderwerp,
-    en filtert de resultaten met zoekfilters.py.
+    Endpoint dat het complete configuratiebestand met alle procedures retourneert.
+    Dit bestand wordt gebruikt als gemeenschappelijke configuratie voor zowel de backend als de frontend.
     """
-    # U zou hier ook ZoekenInternet.json kunnen inlezen als u daar nog iets mee doet,
-    # of direct 'onderwerp' gebruiken.
+    return load_json_config("AllProcedures.json")
+
+@app.get("/generate_image")
+def generate_image(prompt: str = Query(..., description="Prompt voor beeldgeneratie")) -> Any:
+    """
+    Endpoint voor externe beeldgeneratie.
+    Pas deze functie aan volgens de specificaties van uw gekozen externe API voor beeldgeneratie.
+    """
+    api_url = "https://externe-api-beeldgeneratie.nl/generate"  # Pas deze URL aan
     try:
-        # Voorbeeld: direct zoeken op 'onderwerp'
-        term = f"{onderwerp} {gemeente or ''} {thuisland or ''} {moedertaal or ''}".strip()
-        search_results = []
-        for r in ddg(term, max_results=5):
-            resultaat = {
-                "titel": r.get("title", ""),
-                "link": r.get("href", ""),
-                "samenvatting": r.get("body", "")
-            }
-            search_results.append(resultaat)
+        response = requests.post(api_url, json={"prompt": prompt})
+        if response.status_code != 200:
+            logger.error("Fout bij beeldgeneratie: " + response.text)
+            raise HTTPException(status_code=500, detail="Fout bij beeldgeneratie")
+        return response.json()
     except Exception as e:
-        logger.error(f"Fout bij het uitvoeren van de zoekopdracht: {e}")
-        raise HTTPException(status_code=500, detail="Fout bij het uitvoeren van de zoekopdracht.")
-    
-    gefilterde_resultaten = filter_resultaten(search_results)
-    if not gefilterde_resultaten:
-        logger.info("Geen relevante updates gevonden.")
-        raise HTTPException(status_code=404, detail="Geen relevante updates gevonden.")
-    
-    return gefilterde_resultaten
+        logger.error(f"Fout bij de API-call voor beeldgeneratie: {e}")
+        raise HTTPException(status_code=500, detail="Fout bij beeldgeneratie")
 
 @app.get("/mb_instrument")
 def get_mb_instrument() -> Any:
     """
-    Haal de data op voor het MB‑Instrument (MBInstrumentInvullen.json).
+    Endpoint om de configuratie voor het MB‑Instrument op te halen.
     """
-    try:
-        data = load_json("MBInstrumentInvullen.json")
-        return data
-    except FileNotFoundError:
-        logger.error("MBInstrumentInvullen.json bestand niet gevonden.")
-        raise HTTPException(status_code=404, detail="MBInstrumentInvullen.json bestand niet gevonden.")
+    return load_json_config("MBInstrumentInvullen.json")
 
-# De onderstaande endpoints zijn optioneel als u procedures niet meer via de backend aanbiedt.
-@app.get("/all_procedures")
-def get_all_procedures() -> Any:
-    try:
-        data = load_json("AllProcedures.json")
-        return data
-    except FileNotFoundError:
-        raise HTTPException(status_code=404, detail="AllProcedures.json bestand niet gevonden.")
+@app.get("/search")
+def search_endpoint(
+    onderwerp: str = Query(..., description="Onderwerp om op te zoeken"),
+    gemeente: str = Query(..., description="Ingevoerde gemeente"),
+    thuisland: str = Query(..., description="Ingevoerde thuisland"),
+    moedertaal: str = Query(..., description="Ingevoerde moedertaal")
+) -> List[Dict[str, Any]]:
+    """
+    Voert een internetzoekopdracht uit door het onderwerp te combineren met de ingevoerde basisgegevens (gemeente, thuisland en moedertaal).
+    Deze zoekopdracht is bedoeld om beter afgestemde resultaten te verkrijgen, inclusief regionale samenwerkingsinitiatieven binnen 10 km.
+    
+    In een echte implementatie wordt hier een call gedaan naar een zoekmachine of een externe API.
+    """
+    # Combineer de basisgegevens met het onderwerp voor een samengestelde zoekterm.
+    zoekterm = f"{onderwerp} {gemeente} {thuisland} {moedertaal} samenwerking 10km"
+    logger.info(f"Uitgevoerde zoekterm: {zoekterm}")
+    
+    # Simuleer een zoekopdracht – pas dit aan naar een echte zoekfunctie.
+    dummy_resultaten = [
+        {
+            "titel": f"Update over {onderwerp} in {gemeente}",
+            "link": "https://voorbeeld.nl/update",
+            "samenvatting": "Samenvatting van de meest recente ontwikkelingen en regionale initiatieven."
+        }
+    ]
+    return dummy_resultaten
 
-@app.get("/startmenu")
-def get_startmenu() -> Any:
-    try:
-        data = load_json("AllProcedures.json")
-        startmenu_data = {key: data.get(key) for key in ["startVraag", "basisgegevens", "menu"]}
-        return startmenu_data
-    except FileNotFoundError:
-        raise HTTPException(status_code=404, detail="AllProcedures.json bestand niet gevonden.")
+# Hier kunnen extra endpoints worden toegevoegd voor aanvullende functionaliteiten
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
