@@ -1,26 +1,27 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Vluchtelingenzoeker API – backend.
-Deze module bevat de FastAPI-applicatie met endpoints voor het ophalen
-van juridische/maatschappelijke procedures, het uitvoeren van zoekopdrachten en het ophalen van het MB‑Instrument.
+Vluchtelingenzoeker API – Backend
+Deze module bevat de FastAPI-applicatie met endpoints voor het ophalen van juridische en maatschappelijke procedures,
+het uitvoeren van zoekopdrachten en het aanbieden van het MB‑Instrument en het startmenu (AllProcedures.json).
 """
 
 import json
 import os
 import logging
-from fastapi import FastAPI, Response, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Response
 from typing import Any, Dict, List
-from duckduckgo_search import ddg  # gebruik ddg() voor zoekopdrachten
+from duckduckgo_search import ddg  # Gebruik ddg() voor zoekopdrachten
 from zoekfilters import filter_resultaten
 
 # Logging configuratie
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="Vluchtelingenzoeker API", version="1.1.0")
+app = FastAPI(title="Vluchtelingenzoeker API", version="1.2.0")
 
 def load_json(file_path: str) -> Any:
+    """Laadt een JSON-bestand en retourneert de inhoud."""
     if not os.path.isfile(file_path):
         logger.error(f"Bestand niet gevonden: {file_path}")
         raise FileNotFoundError(f"Bestand niet gevonden: {file_path}")
@@ -28,7 +29,7 @@ def load_json(file_path: str) -> Any:
         return json.load(f)
 
 @app.get("/")
-def start() -> Dict[str, str]:
+def root() -> Dict[str, str]:
     return {"status": "API is actief"}
 
 @app.head("/")
@@ -38,11 +39,17 @@ def head_root() -> Response:
 @app.get("/search")
 def search_endpoint(
     onderwerp: str = Query(..., description="Het onderwerp om op te zoeken"),
-    gemeente: str = Query(None, description="Optionele gemeentelijke input voor filtering"),
-    thuisland: str = Query(None, description="Optionele input over het thuisland"),
+    gemeente: str = Query(None, description="Optionele gemeentelijke informatie"),
+    thuisland: str = Query(None, description="Optionele informatie over het thuisland"),
     moedertaal: str = Query(None, description="Optionele invoer van de moedertaal")
 ) -> List[Dict[str, str]]:
+    """
+    Voert een zoekopdracht uit via DuckDuckGo op basis van een onderwerp, met optionele extra parameters.
+    De zoekopdracht wordt aanvullend samengesteld met informatie (bijv. gemeente, thuisland, moedertaal) en
+    vervolgens gefilterd op betrouwbaarheid.
+    """
     try:
+        # Gebruik AllProcedures.json als centrale bron voor zoekresultaten
         with open("AllProcedures.json", encoding="utf-8") as f:
             bronnen = json.load(f)
     except FileNotFoundError:
@@ -53,7 +60,7 @@ def search_endpoint(
     if not zoekresultaten:
         logger.error(f"Geen zoekresultaten gevonden voor onderwerp: {onderwerp}")
         raise HTTPException(status_code=404, detail=f"Geen zoekresultaten gevonden voor onderwerp: {onderwerp}")
-
+    
     resultaten: List[Dict[str, str]] = []
     try:
         zoekterm = f"{onderwerp} {gemeente or ''} {thuisland or ''} {moedertaal or ''}".strip()
@@ -77,33 +84,39 @@ def search_endpoint(
     
     return gefilterde_resultaten[:10]
 
-@app.get("/startmenu")
-def startmenu() -> Any:
-    try:
-        # Gebruik het master-bestand voor procedures.
-        menu = load_json("AllProcedures.json")
-    except FileNotFoundError:
-        logger.error("AllProcedures.json bestand niet gevonden.")
-        raise HTTPException(status_code=404, detail="AllProcedures.json bestand niet gevonden.")
-    return menu
-
 @app.get("/all_procedures")
 def get_all_procedures() -> Any:
+    """Haal de volledige set juridische en maatschappelijke procedures op (AllProcedures.json)."""
     try:
         data = load_json("AllProcedures.json")
+        return data
     except FileNotFoundError:
         logger.error("AllProcedures.json bestand niet gevonden.")
         raise HTTPException(status_code=404, detail="AllProcedures.json bestand niet gevonden.")
-    return data
 
 @app.get("/mb_instrument")
 def get_mb_instrument() -> Any:
+    """Haal de data op voor het MB‑Instrument (MBInstrumentInvullen.json)."""
     try:
         data = load_json("MBInstrumentInvullen.json")
+        return data
     except FileNotFoundError:
         logger.error("MBInstrumentInvullen.json bestand niet gevonden.")
         raise HTTPException(status_code=404, detail="MBInstrumentInvullen.json bestand niet gevonden.")
-    return data
+
+@app.get("/startmenu")
+def get_startmenu() -> Any:
+    """
+    Haal het startmenu op, d.w.z. de elementen 'startVraag', 'basisgegevens' en 'menu'
+    uit AllProcedures.json. Dit menu wordt bijvoorbeeld gebruikt in de frontend.
+    """
+    try:
+        data = load_json("AllProcedures.json")
+        startmenu_data = { key: data.get(key) for key in ["startVraag", "basisgegevens", "menu"] }
+        return startmenu_data
+    except FileNotFoundError:
+        logger.error("AllProcedures.json bestand niet gevonden.")
+        raise HTTPException(status_code=404, detail="AllProcedures.json bestand niet gevonden.")
 
 if __name__ == "__main__":
     import uvicorn
