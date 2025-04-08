@@ -13,7 +13,7 @@
       {
         "id": "juridisch_proc",
         "label": "Juridische procedures uitvoeren",
-        "description": "Doorloop één van de 8 juridische procedures met stapsgewijze begeleiding, interactieve checklists en regionale afstemming."
+        "description": "Doorloop één van de 8 juridische procedures met stapsgewijze begeleiding, interactieve checklists en regionale afstemming (inclusief samenwerking binnen een straal van 10 km)."
       }
     ]
   },
@@ -26,12 +26,12 @@
     {
       "id": "PROC001",
       "title": "MVV-aanvraag Procedure",
-      "description": "Procedure voor het aanvragen van een MVV (Machtiging tot Voorlopig Verblijf), met focus op lokale uitvoering en internationale context.",
+      "description": "Procedure voor het aanvragen van een MVV, met focus op zowel de lokale context als het thuisland.",
       "steps": [
         {
           "step": "1",
-          "action": "Voer een internetzoekopdracht uit met de term 'MVV-aanvraag procedure up-to-date' gecombineerd met de gemeente '<invoer_gemeente>', het thuisland '<invoer_thuisland>' en regionale initiatieven binnen een straal van 10 km. Controleer de nieuwste formulieren via de backend-endpoint /get_form_link en presenteer deze aan de cliënt.",
-          "followUpQuestion": "Op basis van de gevonden formulieren en regionale initiatieven – welke aanvullende informatie of verduidelijking heeft u nodig, rekening houdend met de context (gemeente: <invoer_gemeente>, thuisland: <invoer_thuisland>)?",
+          "action": "Voer een internetzoekopdracht uit met de term 'MVV-aanvraag procedure up-to-date' gecombineerd met de gemeente '<invoer_gemeente>', het thuisland '<invoer_thuisland>' en regionale initiatieven binnen 10 km. Controleer de nieuwste formulieren via /get_form_link en presenteer deze aan de cliënt.",
+          "followUpQuestion": "Op basis van de gevonden formulieren en regionale initiatieven – welke aanvullende informatie of verduidelijking heeft u nodig?",
           "question": "Is de meest recente werkwijze voor de MVV-aanvraag geverifieerd?",
           "interactiveChecklist": [
             "Controleer de URL en actualiteit van de formulieren",
@@ -47,19 +47,19 @@
         },
         {
           "step": "1a",
-          "action": "Analyseer de gevonden informatie: beoordeel de relevantie van de formulieren en instructies vanuit het perspectief van het thuisland (<invoer_thuisland>) en onderzoek of de vervolgstappen regionaal (binnen 10 km van <invoer_gemeente>) uitgevoerd moeten worden.",
-          "followUpQuestion": "Welke aanvullende lokale instructies of verduidelijkingen wilt u op basis van deze analyse toevoegen?",
-          "question": "Is de analyse van de zoekresultaten uitgevoerd en zijn de bevindingen duidelijk?",
+          "action": "Analyseer de gevonden informatie. Beoordeel de relevantie van de formulieren en instructies vanuit het perspectief van het thuisland (<invoer_thuisland>) en controleer of de vervolgstappen regionaal (binnen 10 km van <invoer_gemeente>) uitgevoerd moeten worden.",
+          "followUpQuestion": "Welke extra lokale instructies of verduidelijkingen wilt u op basis van deze analyse toevoegen?",
+          "question": "Is de analyse van de zoekresultaten uitgevoerd en duidelijk?",
           "interactiveChecklist": [
-            "Beoordeel de relevantie vanuit het thuisland",
-            "Bepaal of regionale uitvoering noodzakelijk is",
-            "Documenteer de bevindingen voor vervolgacties"
+            "Beoordeel de relevantie van de informatie vanuit het thuisland",
+            "Controleer of regionale uitvoering noodzakelijk is",
+            "Documenteer de bevindingen"
           ]
         },
         {
           "step": "2",
-          "action": "Dien de aanvraag in met een geldig paspoort, volledig ingevuld formulier en alle vereiste documenten in anonieme vorm.",
-          "followUpQuestion": "Heeft u aanvullende vragen over de documentverwerking in relatie tot de lokale en internationale context?",
+          "action": "Dien de aanvraag in met een geldig paspoort, een volledig ingevuld formulier en alle vereiste documenten in anonieme vorm.",
+          "followUpQuestion": "Heeft u aanvullende vragen over de verwerking van de documenten, gezien de lokale en internationale context?",
           "question": "Zijn alle documenten volledig en correct aangeleverd?",
           "interactiveChecklist": [
             "Controleer de volledigheid van het paspoort",
@@ -69,18 +69,18 @@
         },
         {
           "step": "3",
-          "action": "Plan een afspraak voor het ophalen van het MVV-visum binnen 90 dagen na goedkeuring. Maak hiervoor een online afspraak via de gemeentelijke website of bezoek persoonlijk het gemeentehuis.",
-          "followUpQuestion": "Wilt u extra informatie over de mogelijkheden voor online afspraken of de locatie van het gemeentehuis in <invoer_gemeente>?",
+          "action": "Plan een afspraak voor het ophalen van het MVV-visum binnen 90 dagen na goedkeuring. Maak hiervoor een online afspraak via de gemeentelijke website of bezoek het gemeentehuis.",
+          "followUpQuestion": "Wilt u meer informatie over het maken van een online afspraak of over de locatie van het gemeentehuis in <invoer_gemeente>?",
           "question": "Is er een afspraak gepland voor het ophalen van het visum?",
           "interactiveChecklist": [
             "Bevestig de datum en locatie van de afspraak",
             "Noteer de contactgegevens van de betrokken instantie"
           ],
           "municipalityInstructions": {
-            "description": "Maak een afspraak via de website van het gemeentehuis of bezoek persoonlijk het gemeentehuis. Zoek ook naar regionale initiatieven binnen 10 km.",
+            "description": "Maak een afspraak via de website of bezoek persoonlijk het gemeentehuis. Zoek ook regionale initiatieven binnen 10 km.",
             "address": "Gemeentehuis, <invoer_gemeente>",
             "phone": "0800-654321",
-            "onlineOption": "Online afspraak mogelijk via www.<invoer_gemeente>.nl/afspraak"
+            "onlineOption": "Online afspraak via www.<invoer_gemeente>.nl/afspraak"
           },
           "localSupport": {
             "contactName": "Afspraakcoördinator",
@@ -91,8 +91,8 @@
         },
         {
           "step": "4",
-          "action": "Meld de cliënt binnen 3 dagen na aankomst bij het Nareisloket en verstrek daarbij lokale hulpinformatie, inclusief regionale nazorginitiatieven binnen 10 km.",
-          "followUpQuestion": "Heeft u nog aanvullende vragen over de meldingsprocedures of nazorg in de regio van <invoer_gemeente>?",
+          "action": "Meld de cliënt binnen 3 dagen na aankomst bij het Nareisloket en verstrek lokale en regionale hulpinformatie.",
+          "followUpQuestion": "Heeft u nog aanvullende vragen over de lokale meldingsprocedures of nazorg in de regio van <invoer_gemeente>?",
           "question": "Is de cliënt op de hoogte van de meldingsplicht?",
           "interactiveChecklist": [
             "Controleer de lokale meldingsprocedures",
@@ -111,12 +111,12 @@
     {
       "id": "PROC002",
       "title": "Gezinshereniging Procedure",
-      "description": "Procedure voor gezinshereniging, waarbij zowel de lokale context als het thuisland expliciet worden meegenomen. Er wordt gezocht naar samenwerkingsinitiatieven binnen een straal van 10 km van <invoer_gemeente>.",
+      "description": "Procedure voor gezinshereniging, met expliciete focus op regionale samenwerkingsinitiatieven en het thuisland.",
       "steps": [
         {
           "step": "1",
-          "action": "Voer een internetzoekopdracht uit met de term 'Gezinshereniging procedure update' gecombineerd met de gemeente '<invoer_gemeente>', het thuisland '<invoer_thuisland>' en 'samenwerking binnen 10 km'. Presenteer de meest recente werkwijze aan de cliënt.",
-          "followUpQuestion": "Welke aanvullende informatie over de gezinshereniging, specifiek voor de regio en het thuisland, wilt u ontvangen?",
+          "action": "Voer een internetzoekopdracht uit met de term 'Gezinshereniging procedure update' gecombineerd met de gemeente '<invoer_gemeente>', het thuisland '<invoer_thuisland>' en regionale initiatieven binnen 10 km. Presenteer de meest recente werkwijze aan de cliënt.",
+          "followUpQuestion": "Welke aanvullende informatie over de gezinshereniging, specifiek voor uw regio en thuisland, wenst u te ontvangen?",
           "question": "Is de nieuwste werkwijze voor gezinshereniging opgezocht en gecontroleerd?",
           "interactiveChecklist": [
             "Zoek naar recente updates in regelgeving",
@@ -126,7 +126,7 @@
         },
         {
           "step": "1a",
-          "action": "Analyseer de gevonden informatie. Beoordeel of de updates aansluiten op de situatie in <invoer_thuisland> en of aanvullende lokale stappen in de regio (<invoer_gemeente> binnen 10 km) noodzakelijk zijn.",
+          "action": "Analyseer de gevonden informatie. Beoordeel de relevantie van de updates vanuit het thuisland en controleer of de vervolgstappen regionaal (binnen 10 km van <invoer_gemeente>) uitgevoerd moeten worden.",
           "followUpQuestion": "Welke extra lokale aanpassingen of verduidelijkingen wilt u op basis van deze analyse toevoegen?",
           "question": "Is de analyse van de zoekresultaten uitgevoerd en duidelijk?",
           "interactiveChecklist": [
@@ -138,7 +138,7 @@
         {
           "step": "2",
           "action": "Voer een intake en vooronderzoek uit om de gezinssamenstelling en behoeften vast te stellen.",
-          "followUpQuestion": "Heeft u aanvullende vragen over de gezinssituatie of extra ondersteuning nodig?",
+          "followUpQuestion": "Heeft u nog specifieke vragen over de gezinssituatie of extra ondersteuning nodig?",
           "question": "Kunt u de gezinssituatie en behoeften beschrijven?",
           "interactiveChecklist": [
             "Verzamel relevante gezinsgegevens",
@@ -157,8 +157,8 @@
         },
         {
           "step": "4",
-          "action": "Dien het dossier in bij de bevoegde instantie en plan een opvolging, met lokale contactgegevens (bijvoorbeeld van het gemeentehuis of een lokaal juridisch loket).",
-          "followUpQuestion": "Wilt u meer informatie over lokale contactmogelijkheden of over samenwerkingsinitiatieven in de regio?",
+          "action": "Dien het dossier in bij de bevoegde instantie en plan een opvolging, met duidelijke lokale contactgegevens (bijv. gemeentehuis of juridisch loket).",
+          "followUpQuestion": "Wilt u meer informatie over lokale contactmogelijkheden in <invoer_gemeente> of over samenwerkingsinitiatieven in de regio?",
           "question": "Is het dossier compleet voor indiening en zijn de vervolgstappen gepland?",
           "interactiveChecklist": [
             "Verifieer de indiening van het dossier",
@@ -176,11 +176,11 @@
     {
       "id": "PROC003",
       "title": "Verlenging of Wijziging van Verblijfsvergunning",
-      "description": "Procedure voor het verlengen of wijzigen van een verblijfsvergunning, waarbij de lokale context en het thuisland samen worden bekeken, inclusief regionale initiatieven.",
+      "description": "Procedure voor het verlengen of wijzigen van een verblijfsvergunning, met nadruk op zowel lokale als internationale aspecten en regionale initiatieven.",
       "steps": [
         {
           "step": "1",
-          "action": "Voer een internetzoekopdracht uit met de term 'Verlenging verblijfsvergunning update' gecombineerd met de gemeente '<invoer_gemeente>', het thuisland '<invoer_thuisland>' en 'samenwerking binnen 10 km'. Controleer de nieuwste instructies, formulieren en bewijsvereisten en toon deze aan de cliënt.",
+          "action": "Voer een internetzoekopdracht uit met de term 'Verlenging verblijfsvergunning update' gecombineerd met de gemeente '<invoer_gemeente>', het thuisland '<invoer_thuisland>' en regionale initiatieven binnen 10 km. Controleer de nieuwste instructies, formulieren en bewijsvereisten en toon deze aan de cliënt.",
           "followUpQuestion": "Welke aanvullende toelichting op de instructies of bewijsvereisten, specifiek voor uw situatie, wilt u ontvangen?",
           "question": "Heeft u de nieuwste instructies voor verlenging/wijziging opgezocht?",
           "interactiveChecklist": [
@@ -190,9 +190,9 @@
         },
         {
           "step": "1a",
-          "action": "Analyseer de gevonden informatie. Beoordeel of deze aansluit op de situatie in <invoer_thuisland> en of aanvullende lokale maatregelen in de regio (<invoer_gemeente> binnen 10 km) noodzakelijk zijn.",
-          "followUpQuestion": "Welke lokale aanpassingen of extra toelichtingen wilt u op basis van deze analyse toevoegen?",
-          "question": "Is de analyse uitgevoerd en zijn de bevindingen duidelijk?",
+          "action": "Analyseer de gevonden informatie en beoordeel of deze aansluit op de situatie in het thuisland en of aanvullende regionale maatregelen in de omgeving van <invoer_gemeente> noodzakelijk zijn.",
+          "followUpQuestion": "Welke extra lokale of regionale aanpassingen wilt u op basis van deze analyse toevoegen?",
+          "question": "Is de analyse van de zoekresultaten uitgevoerd en duidelijk?",
           "interactiveChecklist": [
             "Beoordeel de relevantie vanuit het thuisland",
             "Bepaal of regionale uitvoering noodzakelijk is",
@@ -202,7 +202,7 @@
         {
           "step": "2",
           "action": "Stel een bijgewerkt dossier samen met de nieuwste formulieren en controleer de volledigheid van de documenten.",
-          "followUpQuestion": "Zijn er extra details die u wilt verifiëren in de context van uw lokale situatie?",
+          "followUpQuestion": "Wilt u extra details verifiëren in de context van uw regionale situatie?",
           "question": "Is het dossier volgens de laatste richtlijnen compleet?",
           "interactiveChecklist": [
             "Verifieer de documenten",
@@ -212,7 +212,7 @@
         {
           "step": "3",
           "action": "Plan opvolgafspraken voor monitoring van de aanvraag, met verwijzing naar lokale contactpunten voor ondersteuning.",
-          "followUpQuestion": "Wilt u meer informatie over lokale contactmogelijkheden, zoals het gemeentehuis in <invoer_gemeente>?",
+          "followUpQuestion": "Wilt u meer informatie over lokale contactmogelijkheden, bijvoorbeeld bij het gemeentehuis in <invoer_gemeente>?",
           "question": "Zijn er opvolgafspraken gepland?",
           "interactiveChecklist": [
             "Plan een vervolggesprek",
@@ -230,12 +230,12 @@
     {
       "id": "PROC004",
       "title": "Bezwaar- en Beroepsprocedures",
-      "description": "Procedure voor het indienen van bezwaar of beroep, met expliciete lokale afstemming en analyse vanuit het thuisland.",
+      "description": "Procedure voor het indienen van bezwaar of beroep, met nadruk op zowel de lokale als internationale context en regionale samenwerkingen.",
       "steps": [
         {
           "step": "1",
-          "action": "Voer een internetzoekopdracht uit met de term 'Bezwaarprocedure asiel update' gecombineerd met de gemeente '<invoer_gemeente>', het thuisland '<invoer_thuisland>' en regionale samenwerking binnen 10 km. Presenteer de meest actuele procedures en formulieren aan de cliënt.",
-          "followUpQuestion": "Welke specifieke aspecten van de bezwaarprocedure, met betrekking tot zowel de lokale situatie als het thuisland, wilt u nader toegelicht zien?",
+          "action": "Voer een internetzoekopdracht uit met de term 'Bezwaarprocedure asiel update' gecombineerd met de gemeente '<invoer_gemeente>', het thuisland '<invoer_thuisland>' en regionale initiatieven binnen 10 km. Presenteer de meest actuele procedures en formulieren aan de cliënt.",
+          "followUpQuestion": "Welke specifieke aspecten van de bezwaarprocedure, met betrekking tot zowel uw regio als het thuisland, wilt u nader toegelicht zien?",
           "question": "Is de meest recente werkwijze voor bezwaar en beroep opgezocht?",
           "interactiveChecklist": [
             "Zoek naar recente juridische uitspraken",
@@ -244,8 +244,8 @@
         },
         {
           "step": "1a",
-          "action": "Analyseer de gevonden informatie en beoordeel of de procedures aansluiten op de situatie in zowel <invoer_gemeente> als <invoer_thuisland>. Bepaal of er lokale aanpassingen nodig zijn.",
-          "followUpQuestion": "Welke aanvullende aanpassingen of verduidelijkingen op basis van deze analyse wilt u ontvangen?",
+          "action": "Analyseer de gevonden informatie en beoordeel of deze aansluit op de situatie in zowel <invoer_gemeente> als <invoer_thuisland>. Bepaal of er aanvullende lokale of regionale aanpassingen nodig zijn.",
+          "followUpQuestion": "Welke extra lokale aanpassingen of verduidelijkingen wilt u op basis van deze analyse toevoegen?",
           "question": "Is de analyse van de zoekresultaten uitgevoerd en zijn de bevindingen duidelijk?",
           "interactiveChecklist": [
             "Beoordeel de relevantie van de informatie",
@@ -256,7 +256,7 @@
         {
           "step": "2",
           "action": "Verzamel alle relevante documenten en bewijsstukken in anonieme vorm.",
-          "followUpQuestion": "Heeft u nog aanvullende vragen over de verzamelde documenten in relatie tot de lokale context?",
+          "followUpQuestion": "Heeft u nog aanvullende vragen over de documenten in de context van uw regionale situatie?",
           "question": "Zijn alle benodigde documenten verzameld volgens de nieuwste richtlijnen?",
           "interactiveChecklist": [
             "Controleer de volledigheid van de documenten",
@@ -266,7 +266,7 @@
         {
           "step": "3",
           "action": "Stel een bezwaarschrift op met heldere argumentatie en volledige bronvermelding (volgens APA).",
-          "followUpQuestion": "Heeft u behoefte aan extra ondersteuning bij het formuleren van uw argumenten of bij de bronvermelding?",
+          "followUpQuestion": "Heeft u extra ondersteuning nodig bij het opstellen van uw bezwaarschrift of bij het toevoegen van bronvermeldingen?",
           "question": "Zijn alle relevante argumenten en bronnen verwerkt in het bezwaarschrift?",
           "interactiveChecklist": [
             "Formuleer duidelijke argumenten",
@@ -275,7 +275,7 @@
         },
         {
           "step": "4",
-          "action": "Dien het bezwaar of beroep in volgens de meest recente procedure en volg de procedure nauwgezet op, met lokale contactgegevens voor ondersteuning (bijv. een juridisch loket).",
+          "action": "Dien het bezwaar of beroep in volgens de meest recente procedure en volg deze nauwgezet op, met lokale contactgegevens voor ondersteuning (bijv. een juridisch loket).",
           "followUpQuestion": "Wilt u meer informatie over de lokale juridische ondersteuning in <invoer_gemeente>?",
           "question": "Is het bezwaar of beroep correct ingediend en is er een bevestiging ontvangen?",
           "interactiveChecklist": [
@@ -294,11 +294,11 @@
     {
       "id": "PROC005",
       "title": "Integratie- en Inburgeringsprocedures",
-      "description": "Procedure voor integratie- en inburgeringsaanvragen, met een nadruk op regionale initiatieven en afstemming op het thuisland.",
+      "description": "Procedure voor integratie- en inburgeringsaanvragen, met expliciete regionale afstemming en integratie van het thuisland.",
       "steps": [
         {
           "step": "1",
-          "action": "Voer een internetzoekopdracht uit met de term 'Inburgering procedure update' gecombineerd met de gemeente '<invoer_gemeente>', het thuisland '<invoer_thuisland>' en initiatieven binnen een straal van 10 km. Toon de meest recente formulieren en richtlijnen aan de cliënt.",
+          "action": "Voer een internetzoekopdracht uit met de term 'Inburgering procedure update' gecombineerd met de gemeente '<invoer_gemeente>', het thuisland '<invoer_thuisland>' en regionale initiatieven binnen 10 km. Toon de meest recente formulieren en richtlijnen aan de cliënt.",
           "followUpQuestion": "Welke aanvullende informatie over inburgeringsvoorwaarden of vrijstellingen, specifiek voor uw situatie, wilt u ontvangen?",
           "question": "Heeft u de meest recente inburgeringsrichtlijnen opgezocht?",
           "interactiveChecklist": [
@@ -308,7 +308,7 @@
         },
         {
           "step": "1a",
-          "action": "Analyseer de gevonden informatie. Beoordeel of de richtlijnen aansluiten op de situatie in <invoer_thuisland> en bepaal of aanvullende regionale acties binnen 10 km van <invoer_gemeente> noodzakelijk zijn.",
+          "action": "Analyseer de gevonden informatie en beoordeel of deze aansluit op de situatie in <invoer_thuisland> en of aanvullende regionale acties binnen 10 km van <invoer_gemeente> noodzakelijk zijn.",
           "followUpQuestion": "Welke extra lokale aanpassingen of verduidelijkingen wilt u op basis van deze analyse toevoegen?",
           "question": "Is de analyse van de zoekresultaten uitgevoerd en zijn de bevindingen duidelijk?",
           "interactiveChecklist": [
@@ -320,7 +320,7 @@
         {
           "step": "2",
           "action": "Verzamel alle benodigde documenten in anonieme vorm en stel een dossier samen.",
-          "followUpQuestion": "Zijn er aanvullende documenten of details die u wilt verifiëren in de context van uw lokale en regionale situatie?",
+          "followUpQuestion": "Zijn er extra documentdetails die u wilt verifiëren in de context van uw regionale situatie?",
           "question": "Is het dossier compleet volgens de nieuwste regelgeving?",
           "interactiveChecklist": [
             "Verzamel alle relevante documenten",
@@ -330,7 +330,7 @@
         {
           "step": "3",
           "action": "Dien de aanvraag in bij de bevoegde instantie en plan een evaluatiemoment, met lokale contactgegevens voor ondersteuning (bijv. een lokaal inburgeringscentrum).",
-          "followUpQuestion": "Wilt u meer informatie over het lokale inburgeringscentrum in <invoer_gemeente> of regionale samenwerkingsinitiatieven?",
+          "followUpQuestion": "Wilt u meer informatie over het lokale inburgeringscentrum in <invoer_gemeente> of over regionale samenwerkingsinitiatieven?",
           "question": "Is de aanvraag ingediend volgens de meest actuele procedures?",
           "interactiveChecklist": [
             "Controleer de indieningsprocedure",
@@ -348,12 +348,12 @@
     {
       "id": "PROC006",
       "title": "Naturalisatieprocedures",
-      "description": "Procedure voor naturalisatieaanvragen, met een nadruk op lokale voorwaarden en internationale context.",
+      "description": "Procedure voor naturalisatieaanvragen, met nadruk op regionale en lokale voorwaarden en internationale context.",
       "steps": [
         {
           "step": "1",
           "action": "Voer een internetzoekopdracht uit met de term 'Naturalisatie procedure update' gecombineerd met de gemeente '<invoer_gemeente>', het thuisland '<invoer_thuisland>' en regionale initiatieven binnen 10 km. Controleer de meest recente voorwaarden en presenteer deze aan de cliënt.",
-          "followUpQuestion": "Welke aanvullende details over taaleisen of andere criteria wilt u ontvangen?",
+          "followUpQuestion": "Welke aanvullende details over taaleisen of andere criteria wilt u graag ontvangen?",
           "question": "Heeft u de nieuwste voorwaarden voor naturalisatie opgezocht?",
           "interactiveChecklist": [
             "Controleer de actuele voorwaarden",
@@ -417,7 +417,7 @@
         },
         {
           "step": "1a",
-          "action": "Analyseer de gevonden informatie en beoordeel of deze aansluit op de situatie in het thuisland en of er aanvullende regionale maatregelen in <invoer_gemeente> noodzakelijk zijn.",
+          "action": "Analyseer de gevonden informatie en beoordeel of deze aansluit op de situatie in het thuisland en of aanvullende regionale maatregelen in <invoer_gemeente> noodzakelijk zijn.",
           "followUpQuestion": "Welke extra lokale aanpassingen of verduidelijkingen wilt u op basis van deze analyse toevoegen?",
           "question": "Is de analyse van de zoekresultaten uitgevoerd en zijn de bevindingen duidelijk?",
           "interactiveChecklist": [
@@ -429,7 +429,7 @@
         {
           "step": "2",
           "action": "Verzamel de relevante documenten en bewijsstukken conform de nieuwste internationale en nationale richtlijnen in anonieme vorm.",
-          "followUpQuestion": "Heeft u nog aanvullende vragen over de verzamelde documenten in het internationale kader?",
+          "followUpQuestion": "Heeft u nog vragen over de verzamelde documenten in het internationale kader?",
           "question": "Zijn alle benodigde documenten verzameld volgens de actuele voorschriften?",
           "interactiveChecklist": [
             "Verzamel alle vereiste documenten",
@@ -457,7 +457,7 @@
     {
       "id": "PROC008",
       "title": "Conflictoplossing en Mediation",
-      "description": "Procedure voor conflictoplossing en mediation, met nadruk op regionale en lokale afstemming.",
+      "description": "Procedure voor conflictoplossing en mediation, met een focus op regionale en lokale afstemming.",
       "steps": [
         {
           "step": "1",
@@ -524,12 +524,12 @@
     {
       "id": "MA001",
       "title": "Maatschappelijke Casus Behandelen",
-      "description": "Procedure voor het behandelen van maatschappelijke casussen, met expliciete regionale en lokale afstemming.",
+      "description": "Procedure voor het behandelen van maatschappelijke casussen, met een nadruk op regionale initiatieven en lokale ondersteuning binnen 10 km van de woonplaats.",
       "steps": [
         {
           "step": "1",
           "action": "Voer een intake uit en verzamel anonieme casusinformatie over de situatie van de cliënt.",
-          "followUpQuestion": "Zijn er nog aanvullende details die u wilt toevoegen aan de casusinformatie?",
+          "followUpQuestion": "Zijn er aanvullende details of vragen over de casusinformatie die u wilt bespreken?",
           "question": "Is de casusinformatie volledig en geanonimiseerd verzameld?",
           "interactiveChecklist": [
             "Vraag de cliënt naar de kern van de casus",
@@ -538,8 +538,8 @@
         },
         {
           "step": "2",
-          "action": "Voer een online zoekopdracht uit met de term 'lokale ondersteuning' gecombineerd met de gemeente '<invoer_gemeente>', het thuisland '<invoer_thuisland>' en 'samenwerking binnen 10 km'. Presenteer de meest actuele lokale hulpmogelijkheden (bijv. advocaten, schuldhulpverlening, welzijnsinstellingen) inclusief contactgegevens.",
-          "followUpQuestion": "Welke aanvullende informatie over specifieke lokale hulpinstanties wilt u ontvangen?",
+          "action": "Voer een online zoekopdracht uit met de term 'lokale ondersteuning' gecombineerd met de gemeente '<invoer_gemeente>', het thuisland '<invoer_thuisland>' en 'samenwerking binnen 10 km'. Presenteer de meest actuele lokale hulpmogelijkheden (zoals advocaten, schuldhulpverlening, welzijnsinstellingen) inclusief contactgegevens.",
+          "followUpQuestion": "Welke aanvullende informatie over specifieke lokale hulpinstanties in uw regio wilt u ontvangen?",
           "question": "Is de meest actuele informatie over lokale ondersteuning opgezocht?",
           "interactiveChecklist": [
             "Zoek naar lokale ondersteuningsinstanties",
@@ -555,7 +555,7 @@
         },
         {
           "step": "3",
-          "action": "Stel een handelingsplan op met SMART-doelen op basis van de verzamelde gegevens en de lokale mogelijkheden.",
+          "action": "Stel een handelingsplan op met SMART-doelen op basis van de verzamelde gegevens en lokale mogelijkheden.",
           "followUpQuestion": "Welke extra details of lokale contactgegevens wilt u toevoegen aan uw handelingsplan?",
           "question": "Is er een handelingsplan opgesteld met duidelijke SMART-doelen?",
           "interactiveChecklist": [
