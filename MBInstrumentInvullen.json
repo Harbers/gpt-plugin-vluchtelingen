@@ -1,0 +1,120 @@
+{
+  "mb_instrument": {
+    "version": "1.0",
+    "title": "MB‑Instrument (Januari 2025)",
+    "introductie": "Welkom bij het MB‑Instrument. Dit instrument ondersteunt maatschappelijke begeleiders bij het verkrijgen van inzicht in zes belangrijke leefgebieden: Wonen, Kinderen, Financiën & Administratie, Sociaal Netwerk, Maatschappelijke Participatie en Zorg & Gezondheid. Met dit instrument kunt u per onderdeel aangeven hoeveel kennis u heeft, zodat er direct hulpinformatie en concrete acties aangeboden kunnen worden.",
+    "instructies": "Voor elke vraag kiest u één van de volgende opties: '1. Ik weet er niks van', '2. Ik kan het samen', '3. Ik kan het zelf' of 'NVT – Niet van toepassing'. Afhankelijk van uw antwoord ontvangt u relevante voorlichtingslinks en acties.",
+    "vragen": [
+      {
+        "nummer": "1.1",
+        "tekst": "Ik ken de regels en mijn rechten als huurder.",
+        "antwoordOpties": [
+          "1. Ik weet er niks van",
+          "2. Ik kan het samen",
+          "3. Ik kan het zelf",
+          "NVT – Niet van toepassing"
+        ],
+        "linksVoorlichting": [
+          "https://www.refugeehelp.nl/nl/status-holder/article/100005-je-verhuist-vanuit-de-opvang-naar-je-huis",
+          "https://wonen.steffie.nl/nl/"
+        ],
+        "voorlichtingOver": [
+          "Uitleg over verhuizingen, huurcontracten en huurrecht.",
+          "Rechten en plichten als huurder, inclusief opzegtermijnen."
+        ],
+        "acties": [
+          "Reparatieverzoeken doorgeven.",
+          "Voorbeeldcasussen bespreken en oefenen met communicatie met woningcorporaties."
+        ]
+      },
+      {
+        "nummer": "1.2",
+        "tekst": "Ik weet hoe ik mijn verwarming, water en cv-ketel in gebruik neem en een geschikt energiecontract kies.",
+        "antwoordOpties": [
+          "1. Ik weet er niks van",
+          "2. Ik kan het samen",
+          "3. Ik kan het zelf",
+          "NVT – Niet van toepassing"
+        ],
+        "linksVoorlichting": [
+          "https://www.refugeehelp.nl/nl/status-holder/video/10008-uitleg-over-je-energierekening",
+          "https://energie.steffie.nl/nl/"
+        ],
+        "voorlichtingOver": [
+          "Hoe nutsvoorzieningen in Nederland werken.",
+          "Tips voor het vergelijken van energiecontracten en besparingsmogelijkheden."
+        ],
+        "acties": [
+          "Meterstanden controleren en registreren.",
+          "Energieverbruik monitoren met beschikbare apps."
+        ]
+      },
+      {
+        "nummer": "1.3",
+        "tekst": "Ik weet hoe ik een goede verzekering kan vinden en afsluiten.",
+        "antwoordOpties": [
+          "1. Ik weet er niks van",
+          "2. Ik kan het samen",
+          "3. Ik kan het zelf",
+          "NVT – Niet van toepassing"
+        ],
+        "linksVoorlichting": [
+          "https://www.refugeehelp.nl/nl/status-holder/article/100307-verschillende-soorten-verzekeringen",
+          "https://verzekeringen.steffie.nl/nl/"
+        ],
+        "voorlichtingOver": [
+          "Overzicht van verzekeringsmogelijkheden (inboedel, aansprakelijkheid, WA).",
+          "Belangrijke aandachtspunten bij het afsluiten van een verzekering."
+        ],
+        "acties": [
+          "Online verzekeringsopties vergelijken.",
+          "Advies inwinnen bij een verzekeringsadviseur."
+        ]
+      },
+      {
+        "nummer": "2.1",
+        "tekst": "Ik begrijp het Nederlandse schoolsysteem en de ondersteuning voor kinderen.",
+        "antwoordOpties": [
+          "1. Ik weet er niks van",
+          "2. Ik kan het samen",
+          "3. Ik kan het zelf",
+          "NVT – Niet van toepassing"
+        ],
+        "linksVoorlichting": [
+          "https://www.refugeehelp.nl/nl/status-holder/101-onderwijs",
+          "https://uitlegtoeslagen.nl/nl/"
+        ],
+        "voorlichtingOver": [
+          "Basisinformatie over het schoolsysteem en de kinderopvang.",
+          "Informatie over toelagen en subsidies voor gezinnen."
+        ],
+        "acties": [
+          "Plan overleg met de school of het consultatiebureau.",
+          "Verzamel informatie over beschikbare toeslagen en subsidies."
+        ]
+      },
+      {
+        "nummer": "3.1",
+        "tekst": "Ik heb inzicht in mijn inkomsten en uitgaven en kan een budget beheren.",
+        "antwoordOpties": [
+          "1. Ik weet er niks van",
+          "2. Ik kan het samen",
+          "3. Ik kan het zelf",
+          "NVT – Niet van toepassing"
+        ],
+        "linksVoorlichting": [
+          "https://www.refugeehelp.nl/nl/status-holder/video/10015-zo-bereken-je-je-kosten-per-maand",
+          "https://www.hoewerktdevoedselbank.nl/nl/"
+        ],
+        "voorlichtingOver": [
+          "Hoe maak ik een begroting en beheer ik mijn financiën.",
+          "Tips voor het reduceren van uitgaven en beheersen van schulden."
+        ],
+        "acties": [
+          "Registreer maandelijkse inkomsten en uitgaven.",
+          "Voer een budgetteringsanalyse uit met online tools."
+        ]
+      }
+    ]
+  }
+}
