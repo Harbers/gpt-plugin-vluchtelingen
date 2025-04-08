@@ -1,8 +1,8 @@
 openapi: 3.1.0
 info:
   title: "Vluchtelingenzoeker API"
-  description: "API voor het zoeken naar juridische informatie en het ophalen van begeleidingsdata."
-  version: "1.0.0"
+  description: "API voor juridische informatie en begeleidingsdata."
+  version: "1.1.0"
 
 servers:
   - url: https://gpt-plugin-vluchtelingen.onrender.com
@@ -20,7 +20,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/StartMenuResponse'
         '404':
-          description: "Menu not found"
+          description: "Menu niet gevonden"
 
   /mb_instrument:
     get:
@@ -34,7 +34,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/MBInstrumentResponse'
         '404':
-          description: "MB-instrument not found"
+          description: "MB‑Instrument niet gevonden"
 
 components:
   schemas:
@@ -43,13 +43,10 @@ components:
       properties:
         startVraag:
           type: string
-          description: "Vraag of titel die in het startmenu wordt getoond."
         context:
           type: string
-          description: "Context of toelichting voor de medewerker."
         basisgegevens:
           type: object
-          description: "Structuur voor basisgegevens."
           properties:
             gemeente:
               type: string
@@ -61,7 +58,6 @@ components:
               type: string
         menu:
           type: object
-          description: "Menu-object met instructies en opties."
           properties:
             instructie:
               type: string
@@ -80,7 +76,6 @@ components:
       properties:
         mb_instrument:
           type: object
-          description: "Hoofdobject van het MB-instrument."
           properties:
             version:
               type: string
