@@ -1,7 +1,7 @@
 {
   "mb_instrument": {
     "title": "MB‑Instrument (Januari 2025)",
-    "introductie": "Welkom bij het MB‑Instrument. Dit instrument bestaat uit zes leefgebieden (Wonen, Kinderen, Financiën & Administratie, Sociaal Netwerk, Maatschappelijke Participatie, Zorg & Gezondheid). Voor elk onderdeel zijn er één of meerdere vragen. Als je ‘1’ (Ik weet er niks van) of ‘2’ (Ik kan het samen) antwoordt, verschijnen direct de hulplinks, voorlichting en acties uit het PDF.",
+    "introductie": "Welkom bij het MB‑Instrument. Dit instrument bestaat uit zes leefgebieden (Wonen, Kinderen, Financiën & Administratie, Sociaal Netwerk, Maatschappelijke Participatie, Zorg & Gezondheid). Voor elk onderdeel zijn er één of meerdere vragen. Als u ‘1’ (Ik weet er niks van) of ‘2’ (Ik kan het samen) antwoordt, verschijnen direct de hulplinks, voorlichting en acties.",
     "instructions": "Kies per vraag: '1. Ik weet er niks van', '2. Ik kan het samen', '3. Ik kan het zelf', of 'NVT – Niet van toepassing'.",
     "questions": [
       {
@@ -18,17 +18,17 @@
           "https://wonen.steffie.nl/nl/"
         ],
         "voorlichtingOver": [
-          "Verhuizing opvang naar eigen woning.",
-          "Huurcontract doornemen op rechten en plichten, o.a.: opzegtermijn, inwoning en onderverhuur, aanpassingen woning.",
-          "Omgangsnormen voor een prettige woonomgeving doornemen (overlast, tuin bijhouden).",
-          "Het zoeken van een andere woning."
+          "Verhuizing vanuit de opvang naar een eigen woning.",
+          "Het doornemen van een huurcontract met uitleg over rechten en plichten, zoals opzegtermijn, inwoning en onderverhuur, en eventuele woningaanpassingen.",
+          "Omgangsnormen voor een prettige woonomgeving, zoals overlast en tuinonderhoud.",
+          "Informatie over het zoeken naar een alternatieve woning."
         ],
         "acties": [
-          "Reparaties doorgeven/serviceabonnement.",
-          "Voorbeeldcasussen bespreken en telefoongesprek oefenen (bijv. geen warm water, huurachterstand, schutting is omgewaaid).",
-          "Oefenen met het telefonisch keuzemenu van de woningcoöperatie.",
-          "De website van de woningcoöperatie bekijken.",
-          "Afvalapp (lokaal) installeren. Opzoeken welk afval in de gemeente gescheiden wordt ingezameld en op welke dagen het afval aangeboden dient te worden."
+          "Reparaties doorgeven of een serviceabonnement afsluiten.",
+          "Voorbeeldcasussen bespreken en een telefoongesprek oefenen (bijv. bij geen warm water, huurachterstand of een omgevallen schutting).",
+          "Oefenen met het telefonisch keuzemenu van de woningcorporatie.",
+          "De website van de woningcorporatie bezoeken.",
+          "Installeer een lokale afvalapp en controleer op welke dagen afval gescheiden wordt aangeboden."
         ]
       },
       {
@@ -47,18 +47,17 @@
           "https://wonen.steffie.nl/nl/"
         ],
         "voorlichtingOver": [
-          "Energierekening voorschotten en jaarafrekening bekijken.",
-          "Verschillende nutsvoorzieningen: gas, water, licht. Hoe werkt dat in Nederland en mogelijkheden voor besparen bespreken.",
-          "Energiecontracten vergelijken en de mogelijkheden en gevolgen van het wisselen van energiecontract bespreken.",
-          "De mogelijkheden voor besparen op energieverbruik."
+          "Inzicht in energierekening voorschotten en de jaarafrekening.",
+          "Werking van verschillende nutsvoorzieningen (gas, water, licht) en besparingstips in Nederland.",
+          "Het vergelijken van energiecontracten en de voor- en nadelen van contractwisselingen.",
+          "De mogelijkheden om energieverbruik te reduceren."
         ],
         "acties": [
-          "De meterkast bekijken en de meterstand(en) aflezen.",
-          "De watermeter bekijken en de meterstand aflezen.",
-          "De app van het energiebedrijf installeren zodat je het verbruik kunt inzien per categorie en kunt vergelijken met gemiddelde huishoudens.",
-          "Bekijken of en hoe het termijnbedrag aangepast kan worden.",
-          "Regelmatig het energieverbruik via app of e‑mail controleren.",
-          "De jaarrekening bekijken en controleren."
+          "Lees de meterstanden in bij de meterkast en watermeter.",
+          "Installeer de app van uw energiebedrijf om het verbruik per categorie te monitoren.",
+          "Controleer of het termijnbedrag aangepast kan worden.",
+          "Monitor regelmatig uw energieverbruik via de app of per e‑mail.",
+          "Bekijk en controleer de jaarafrekening."
         ]
       },
       {
@@ -75,13 +74,13 @@
           "https://verzekeringen.steffie.nl/nl/"
         ],
         "voorlichtingOver": [
-          "Verschillende verzekeringsmogelijkheden (inboedel, WA).",
-          "Polis doornemen.",
-          "Waar je op moet letten bij het afsluiten van een verzekering (eigen risico bv)."
+          "Overzicht van verschillende verzekeringsmogelijkheden (bijvoorbeeld inboedel- en aansprakelijkheidsverzekeringen).",
+          "Het doornemen van de polis en aandachtspunten zoals eigen risico.",
+          "Advies over waar u op moet letten bij het afsluiten van een verzekering."
         ],
         "acties": [
-          "Verzekeringen vergelijken met behulp van bijvoorbeeld Independer.",
-          "Oefenen met het melden van schade via de website van de verzekering."
+          "Vergelijk online verzekeringsopties, bijvoorbeeld via Independer.",
+          "Overweeg een consult met een verzekeringsadviseur."
         ]
       },
       {
@@ -95,10 +94,10 @@
         ],
         "linksVoorlichting": [],
         "voorlichtingOver": [
-          "Welke abonnementen er zijn, waar je op kan letten bij het afsluiten en eventueel overstappen in de toekomst."
+          "Overzicht van beschikbare abonnementen en belangrijke aandachtspunten bij het afsluiten ervan, inclusief mogelijkheden om over te stappen."
         ],
         "acties": [
-          "Telefoon-, televisie- en internetabonnement bekijken en vergelijken."
+          "Vergelijk abonnementen voor telefoon, internet en televisie online."
         ]
       },
       {
@@ -116,16 +115,12 @@
           "https://brandweer.steffie.nl/nl/modules/112-bellen/#!/371/stap-01.html"
         ],
         "voorlichtingOver": [
-          "Het rookalarm en koolmonoxidemelder.",
-          "Brandveiligheid.",
-          "Wanneer bel je 112.",
-          "Het maandelijkse luchtalarm.",
-          "NL Alert.",
-          "Belang van ophangen gordijnen, ingericht huis, effect op buurt."
+          "Informatie over het belang van een rookalarm en koolmonoxidemelder, brandveiligheid en noodprocedures zoals 112 bellen.",
+          "Aanvullende tips zoals het ophangen van gordijnen en andere maatregelen voor een veilige woonomgeving."
         ],
         "acties": [
-          "112 app instaleren.",
-          "Oefenen met verschillende scenario's voor het gebruik van 112 en politietelefoonnummer 0900‑8844."
+          "Installeer een 112-app.",
+          "Oefen met verschillende scenario's om te bepalen wanneer 112 gebeld moet worden."
         ]
       },
       {
@@ -145,19 +140,14 @@
           "https://uitlegtoeslagen.nl/nl/"
         ],
         "voorlichtingOver": [
-          "Het Nederlandse schoolsysteem (basisschool, middelbare school, studeren).",
-          "Onderwijs voor kinderen die nog geen Nederlands kunnen.",
-          "Mogelijke activiteiten op school (rapportgesprekken, ouderavonden, vieringen op school).",
-          "Hoe kinderopvang werkt, wanneer je er gebruik van kan maken en hoe je kinderopvangtoeslag aanvraagt.",
-          "Het consultatiebureau (vragen over opvoeding, controles, vaccinaties).",
-          "Aangifte bij geboorte.",
-          "Welke hulp het Centrum voor Jeugd en Gezin (CJG) kan bieden."
+          "Uitleg over het Nederlandse schoolsysteem, het belang van kinderopvang en beschikbare subsidies.",
+          "Ondersteuning voor kinderen die de Nederlandse taal nog niet beheersen.",
+          "Informatie over schoolactiviteiten, rapportages en ouderavonden."
         ],
         "acties": [
-          "Oefenen met contact opnemen met de school van de kinderen (bijv. ziekmelding).",
-          "Uitzoeken waar en hoe kinderopvang aangevraagd kan worden (rekening houden met wachtlijsten).",
-          "Oefenen met het aanvragen of wijzigen van kinderopvangtoeslag.",
-          "Aanvraag indienen bij Stichting Leergeld (indien beschikbaar in gemeente)."
+          "Neem contact op met de school voor extra ondersteuning.",
+          "Verzamel informatie over kinderopvangtoeslag en subsidies.",
+          "Informeer bij het consultatiebureau over opvoedkundige hulp."
         ]
       },
       {
@@ -171,16 +161,12 @@
         ],
         "linksVoorlichting": [],
         "voorlichtingOver": [
-          "Welke sport en hobbycursusmogelijkheden er zijn in de directe omgeving.",
-          "De mogelijkheden van het gemeentelijk minimabeleid voor participatie/activiteiten."
+          "Overzicht van sport- en hobbyfaciliteiten in de buurt.",
+          "Informatie over lokale verenigingen en activiteiten die participatie stimuleren."
         ],
         "acties": [
-          "Kind(eren) vragen aan welke sportactiviteit of hobby zij willen deelnemen.",
-          "Aanvraag doen bij stichting meedoen (indien bestaat).",
-          "Kinderen inschrijven bij een (sport)vereniging of voor een vrijetijdsactiviteit.",
-          "Spullen kopen om te kunnen sporten.",
-          "Kind(eren) inschrijven voor een gratis lidmaatschap van de bibliotheek.",
-          "Eventueel lid worden van de speelotheek (indien aanwezig)."
+          "Informeer naar lokale sportverenigingen of hobbyclubs.",
+          "Schrijf uzelf of uw kind(eren) in voor een activiteit."
         ]
       },
       {
@@ -194,12 +180,11 @@
         ],
         "linksVoorlichting": [],
         "voorlichtingOver": [
-          "Aanbod op het gebied van opvoedondersteuning."
+          "Informatie over beschikbare opvoedondersteuning via lokale instanties en welzijnsorganisaties."
         ],
         "acties": [
-          "Aanmelden voor een workshop over opvoeden (indien beschikbaar).",
-          "Deelnemen aan bijeenkomsten (preventieve) ouderschapsondersteuning van VWN (indien aanwezig).",
-          "Deelnemen aan voorlichtingsactiviteiten van school, bibliotheek, GGZ enz."
+          "Schrijf u in voor een opvoedingsworkshop.",
+          "Neem deel aan ouderondersteuningssessies."
         ]
       },
       {
@@ -219,19 +204,14 @@
           "https://www.hoewerktdevoedselbank.nl/nl/"
         ],
         "voorlichtingOver": [
-          "Financieel ontzorgen.",
-          "Hoe en bij welke afdeling/contactpersoon wijzigingen m.b.t. uitkering moeten worden doorgegeven.",
-          "De voorwaarden van een uitkering zoals vakantie doorgeven aan de gemeente (28 vakantiedagen).",
-          "Als je kind 18 wordt.",
-          "Veranderingen in je leven kunnen invloed hebben op je inkomen (verhuizing, geboorte, werk, gezinshereniging)."
+          "Uitleg over financieel beheer, begrotingen en uitgavenbeheer.",
+          "Tips voor het verminderen van uitgaven en het voorkomen van schulden.",
+          "Informatie over welke veranderingen in uw leven invloed kunnen hebben op het inkomen."
         ],
         "acties": [
-          "Overzicht maken van maandelijkse inkomsten en uitgaven (Intranet Excel maandbegroting).",
-          "Inkomsten en uitgaven via internetbankieren app bekijken en bijhouden.",
-          "Oefenen met internetbankieren.",
-          "Deelnemen aan de groepscursus ‘Eurowijzer’ (indien aanwezig).",
-          "Deelnemen aan de cursus digitale vaardigheden (indien aanwezig).",
-          "Indien nodig voedselbank aanvragen."
+          "Maak een overzicht van maandelijkse inkomsten en uitgaven.",
+          "Gebruik een online budgetteringsapp.",
+          "Overweeg deelname aan een financiële workshop."
         ]
       },
       {
@@ -245,14 +225,11 @@
         ],
         "linksVoorlichting": [],
         "voorlichtingOver": [
-          "Prioriteitspost/email scheiden van onbelangrijke post/email (zoals reclame).",
-          "Wat je moet doen bij verlies of diefstal van belangrijke documenten."
+          "Uitleg over het scheiden van belangrijke post van reclame en het veilig bewaren van documenten."
         ],
         "acties": [
-          "Iedere dag brievenbus bekijken, post openen en in administratiemap opbergen.",
-          "Iedere dag mailbox bekijken.",
-          "Oefenen met het invullen van formulieren.",
-          "Oefenen met het versturen van een email."
+          "Bekijk dagelijks uw brievenbus en organiseer uw documenten.",
+          "Houd uw mailbox regelmatig bij en oefen het invullen van administratieve formulieren."
         ]
       },
       {
@@ -270,14 +247,12 @@
           "https://www.refugeehelp.nl/nl/status-holder/article/100244-wat-je-moet-weten-over-oplichting-via-internet-of-telefoon"
         ],
         "voorlichtingOver": [
-          "Gebruik van DigiD.",
-          "Vormen van cybercrime zoals phishing."
+          "Uitleg over het veilig werken met DigiD en over het voorkomen van cybercrime zoals phishing."
         ],
         "acties": [
-          "Inloggegevens voor internetbankieren en DigiD uit het hoofd leren en oefenen met inloggen.",
-          "In de internetbankieren-app bekijken waar bankafschriften kunnen worden gedownload.",
-          "Oefenen met het betalen van een rekening (acceptgiro, betaling via iDEAL, automatische incasso).",
-          "Inloggen op overheidsaccounts en deze bekijken."
+          "Oefen met inloggen op overheidsaccounts.",
+          "Controleer waar u bankafschriften kunt downloaden.",
+          "Simuleer betalingen via iDEAL of automatische incasso."
         ]
       },
       {
@@ -291,12 +266,10 @@
         ],
         "linksVoorlichting": [],
         "voorlichtingOver": [
-          "Hoe je een spaarrekening opent en hoe deze gebruikt kan worden.",
-          "Wanneer en hoe een betalingsregeling getroffen kan worden.",
-          "Geld lenen: ‘Let op, geld lenen kost geld.’"
+          "Adviezen over het openen van een spaarrekening en het beheersen van uitgaven, inclusief informatie over betalingsregelingen."
         ],
         "acties": [
-          "Spaarrekening openen en spaardoel instellen."
+          "Open een spaarrekening en stel spaardoelen in."
         ]
       },
       {
@@ -314,16 +287,13 @@
           "https://www.uitlegtoeslagen.nl/nl/"
         ],
         "voorlichtingOver": [
-          "Toeslagen (huurtoeslag, zorgtoeslag).",
-          "Verschil kinderbijslag (SVB) en kindgebonden budget (belastingdienst).",
-          "Waar, wanneer en hoe geef je een wijziging (bijv. inkomen door werk, huurverhoging) door bij MijnToeslagen.",
-          "Kwijtschelding gemeentelijke belastingen en waterschapsbelasting."
+          "Informatie over toeslagen (huurtoeslag, zorgtoeslag), het verschil tussen kinderbijslag en kindgebonden budget en hoe wijzigingen doorgegeven moeten worden.",
+          "Details over kwijtschelding van gemeentelijke belastingen en waterschapsbelasting."
         ],
         "acties": [
-          "Inloggen op MijnToeslagen en bekijken welke toeslagen er toegekend zijn.",
-          "App toeslagen downloaden.",
-          "Kwijtschelding gemeentelijke belastingen/waterschapsbelasting aanvragen.",
-          "Inloggen op gemeentelijke website om uitgebreide informatie te krijgen over gemeentelijke financiële ondersteuning (bijv. individuele inkomenstoeslag, bijzondere bijstand)."
+          "Log in op MijnToeslagen om uw status te controleren.",
+          "Download de toeslagen-app.",
+          "Vraag kwijtschelding aan voor gemeentelijke belastingen of waterschapsbelasting."
         ]
       },
       {
@@ -337,13 +307,11 @@
         ],
         "linksVoorlichting": [],
         "voorlichtingOver": [
-          "De bibliotheek en de mogelijkheid van een abonnement.",
-          "Verschillende instanties voor hulpvragen (sociaal raadslieden, juridisch loket, wijkteam, etc.)."
+          "Overzicht van lokale voorzieningen zoals bibliotheken en hulpinstanties (sociaal raadslieden, juridisch loket, wijkteam, enz.)."
         ],
         "acties": [
-          "Boeken, e‑books, magazines in eigen taal en luisterboeken lenen van de bibliotheek om Nederlands te oefenen.",
-          "Eventueel lid worden van een vereniging.",
-          "Een wijkcentrum bezoeken om te kijken welk aanbod zij hebben."
+          "Zoek naar informatie over lokale bibliotheken en wijkcentra.",
+          "Word lid van een lokale vereniging indien gewenst."
         ]
       },
       {
@@ -357,13 +325,11 @@
         ],
         "linksVoorlichting": [],
         "voorlichtingOver": [
-          "Wat is een sociaal netwerk en wanneer kun je dat inzetten."
+          "Informatie over het belang van een sterk sociaal netwerk en manieren om dit te uitbreiden."
         ],
         "acties": [
-          "Langsgaan bij en kennismaken met de buren, of de buren uitnodigen voor koffie/thee.",
-          "Eventueel gebruikmaken van de burenbrief VWN (Intranet).",
-          "Sociaal netwerk in kaart brengen en actie ondernemen om deze uit te breiden en te versterken.",
-          "Sociale netwerk uitbreiden door iemand te zoeken in de directe omgeving die aanvullende ondersteuning kan bieden."
+          "Neem contact op met buren en organiseer sociale bijeenkomsten.",
+          "Breng uw netwerk in kaart en zoek aanvullende ondersteuning."
         ]
       },
       {
@@ -377,13 +343,11 @@
         ],
         "linksVoorlichting": [],
         "voorlichtingOver": [
-          "Welke voorzieningen er in de buurt zijn (buurthuis, bibliotheek, sportcentrum, gezondheidscentrum, welzijnsorganisaties, geloofsgemeenschap).",
-          "Activiteiten in de vrije tijd.",
-          "Welke hobby's uitgeoefend kunnen worden."
+          "Overzicht van sport- en hobbyfaciliteiten in de buurt en mogelijke activiteiten die worden aangeboden door lokale verenigingen."
         ],
         "acties": [
-          "Zoeken naar passende verenigingen en organisaties die activiteiten aanbieden in de buurt.",
-          "Eventueel lid worden van een vereniging of club of aansluiten bij een geloofsgemeenschap."
+          "Zoek naar lokale sportclubs of hobbyverenigingen.",
+          "Meld u aan voor lokale activiteiten of cursussen."
         ]
       },
       {
@@ -404,17 +368,12 @@
           "https://reizen.steffie.nl/nl/"
         ],
         "voorlichtingOver": [
-          "Aanvraag reisdocument.",
-          "Het behalen van een rijbewijs en de kosten van autobezit.",
-          "De verkeersregels in Nederland (voetganger, fiets).",
-          "Het openbaar vervoer.",
-          "Hoe werkt de OV-chipkaart.",
-          "Een reisdeclaratie met OV-kaart.",
-          "De NS-app."
+          "Informatie over openbaar vervoer, verkeersregels en hoe een OV-chipkaart werkt, met daarnaast uitleg over rijbewijsaanvragen en reisdeclaraties.",
+          "Een overzicht van de NS-app en andere reisgerelateerde applicaties."
         ],
         "acties": [
-          "Deelnemen aan een fietscursus (indien beschikbaar in de gemeente).",
-          "NS-app downloaden."
+          "Volg een fietscursus indien beschikbaar.",
+          "Download en gebruik de NS-app voor reisinformatie."
         ]
       },
       {
@@ -436,16 +395,15 @@
         ],
         "voorlichtingOver": [
           "(Geestelijke) Gezondheidszorg in Nederland (huisarts, tandarts, kraamzorg, jeugdzorg, consultatiebureau, apotheek, GGZ, 112).",
-          "Welke vergoedingen binnen de polis vallen.",
-          "Wanneer en hoe overstappen naar een andere polis/pakket of zorgaanbieder.",
-          "Extra financiële steun van de gemeente voor uitgaven in het kader van het eigen risico.",
-          "Eigen risico.",
-          "Uitvaartverzekering."
+          "Welke vergoedingen binnen de zorgpolis vallen.",
+          "Wanneer en hoe overstappen naar een andere zorgaanbieder.",
+          "Extra financiële steun van de gemeente voor het eigen risico.",
+          "Informatie over uitvaartverzekering."
         ],
         "acties": [
-          "Inschrijven bij huisarts, apotheek, tandarts.",
-          "Inloggen op zorgverzekeringsaccount en de polis bekijken.",
-          "Eigen risico en eigen bijdrage monitoren."
+          "Schrijf u in bij een huisarts, tandarts of apotheek.",
+          "Log in op uw zorgverzekeringsaccount en controleer uw polis.",
+          "Monitor het eigen risico en de bijdrage."
         ]
       },
       {
@@ -461,17 +419,14 @@
           "https://www.refugeehelp.nl/nl/status-holder/article/100292-dit-kun-je-doen-als-je-je-mentaal-niet-goed-voelt-en-een-verblijfsvergunning-asiel-hebt"
         ],
         "voorlichtingOver": [
-          "De huisarts of huisartsenpost en wanneer u daar naartoe moet.",
-          "Indien van toepassing: medicatiegebruik doornemen aan de hand van de verpakking en bijsluiter.",
-          "Gezond leven (bewegen en voeding).",
-          "Gezondheidsklachten of belemmeringen en de mogelijkheden om hierbij hulp te zoeken."
+          "Adviezen over wanneer de huisarts of huisartsenpost bezocht moet worden, indicaties voor het gebruik van medicatie op basis van verpakking en bijsluiter, en tips voor gezond leven (beweging, voeding).",
+          "Overzicht van hulp bij spoedeisende situaties."
         ],
         "acties": [
-          "De route naar huisarts, tandarts, huisartsenpost en apotheek verkennen.",
-          "Kennismaken met huisarts, tandarts en apotheek.",
-          "Oefenen met het maken van een afspraak met huisarts of tandarts.",
-          "Oefenen met situaties waarin spoedeisende hulp nodig is.",
-          "Kijken naar mogelijkheden voor ontspanning, beweging, en betere nachtrust."
+          "Verken de route naar huisarts, tandarts, huisartsenpost en apotheek.",
+          "Maak een afspraak met een huisarts of tandarts.",
+          "Oefen met het maken van afspraken voor spoedeisende hulp.",
+          "Zoek naar ontspannings-, bewegings- en nachtrustopties."
         ]
       }
     ]
