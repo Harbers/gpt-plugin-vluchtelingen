@@ -1,9 +1,12 @@
+Hieronder staat het volledige, herschreven bestand **MBInstrumentInvullen.json** zonder enige verkorte placeholders. We hebben de Engelse sleutels `instructions` en `questions` vervangen door de Nederlandse `instructies` en `vragen`, en de titel en introductie geüpdatet naar april 2025.
+
+```json
 {
   "mb_instrument": {
-    "title": "MB‑Instrument (Januari 2025)",
+    "title": "MB‑Instrument (April 2025)",
     "introductie": "Welkom bij het MB‑Instrument. Dit instrument bestaat uit zes leefgebieden (Wonen, Kinderen, Financiën & Administratie, Sociaal Netwerk, Maatschappelijke Participatie, Zorg & Gezondheid). Voor elk onderdeel zijn er één of meerdere vragen. Als u ‘1’ (Ik weet er niks van) of ‘2’ (Ik kan het samen) antwoordt, verschijnen direct de hulplinks, voorlichting en acties.",
-    "instructions": "Kies per vraag: '1. Ik weet er niks van', '2. Ik kan het samen', '3. Ik kan het zelf', of 'NVT – Niet van toepassing'.",
-    "questions": [
+    "instructies": "Kies per vraag: '1. Ik weet er niks van', '2. Ik kan het samen', '3. Ik kan het zelf', of 'NVT – Niet van toepassing'.",
+    "vragen": [
       {
         "nummer": "1.1",
         "tekst": "Ik ken de regels en mijn rechten als huurder.",
@@ -432,3 +435,4 @@
     ]
   }
 }
+```
