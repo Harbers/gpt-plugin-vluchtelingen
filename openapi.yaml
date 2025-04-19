@@ -1,8 +1,8 @@
 openapi: 3.1.0
 info:
-  title: "Vluchtelingenzoeker API"
+  title: "Vluchtelingenwerk GPT API"
   version: "1.1.0"
-  description: "REST API voor juridische en maatschappelijke begeleiding."
+  description: "REST API voor juridische informatie en maatschappelijke begeleiding."
 
 servers:
   - url: https://gpt-plugin-vluchtelingen.onrender.com
@@ -10,30 +10,40 @@ servers:
 paths:
   /:
     get:
-      summary: "Healthcheck"
+      summary: "API status"
       responses:
         '200':
           description: "API is actief"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+
   /all_procedures:
     get:
-      summary: "Haal alle juridische procedures op"
+      summary: "Alle juridische procedures"
       responses:
         '200':
-          description: "JSON met alle procedures"
+          description: "Configuratie van alle procedures"
           content:
             application/json:
               schema:
                 type: object
+
   /mb_instrument:
     get:
-      summary: "Haal MB‑Instrument op"
+      summary: "MB‑Instrument ophalen"
       responses:
         '200':
-          description: "JSON met MB‑Instrument"
+          description: "Configuratie van MB‑Instrument"
           content:
             application/json:
               schema:
                 type: object
+
   /search:
     get:
       summary: "Zoek actuele informatie"
@@ -60,7 +70,7 @@ paths:
           required: true
       responses:
         '200':
-          description: "Gefilterde zoekresultaten"
+          description: "Geformatteerde en gefilterde zoekresultaten"
           content:
             application/json:
               schema:
@@ -69,9 +79,10 @@ paths:
                   type: object
         '404':
           description: "Geen resultaten gevonden"
+
   /generate_image:
     post:
-      summary: "Genereer illustratie"
+      summary: "Genereer een afbeelding"
       parameters:
         - in: query
           name: prompt
