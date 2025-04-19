@@ -7,14 +7,28 @@ from typing import List, Dict, Any
 
 # Betrouwbare domeinen
 BETROUWBARE_DOMAINS: List[str] = [
-    "rijksoverheid.nl", "ind.nl", "ministerievanbuitenlandsezaken.nl", "ministerievanjustitie.nl",
-    "ministerievanfinancien.nl", "ministerievanonderwijs.nl", "regering.nl", "nederlandwereldwijd.nl",
-    "europa.eu", "ec.europa.eu", "europarl.europa.eu", "eurojust.europa.eu", "eur-lex.europa.eu",
-    "hudoc.echr.coe.int", "un.org", "unhcr.org", "unicef.org", "icrc.org", "redcross.org",
-    "amnesty.nl", "amnesty.org", "vluchtelingenwerk.nl", "juridischloket.nl", "migratierecht.nl",
-    "integratiefonds.nl", "inburgeren.nl", "kiesraad.nl", "nrc.nl", "volkskrant.nl",
-    "parlement.com", "oecd.org", "narcis.nl", "wodc.nl", "pharos.nl", "ministerievangezondheid.nl",
-    "europeanpolicycentre.eu"
+   "rijksoverheid.nl", "ind.nl", "ministerievanbuitenlandsezaken.nl", "ministerievanjustitie.nl", 
+    "ministerievanfinancien.nl", "ministerievanonderwijs.nl", "regering.nl", "nederlandwereldwijd.nl", 
+    "europa.eu", "ec.europa.eu", "europarl.europa.eu", "eurojust.europa.eu", "eur-lex.europa.eu", 
+    "hudoc.echr.coe.int", "un.org", "unhcr.org", "unicef.org", "icrc.org", "redcross.org", 
+    "amnesty.nl", "amnesty.org", "vluchtelingenwerk.nl", "juridischloket.nl", "migratierecht.nl", 
+    "integratiefonds.nl", "inburgeren.nl", "kiesraad.nl", "nrc.nl", "volkskrant.nl", 
+    "parlement.com", "oecd.org", "narcis.nl", "wodc.nl", "unicef.nl", "inspectiegezondheidszorg.nl", 
+    "zorginstituutnederland.nl", "pharos.nl", "ministerievangezondheid.nl", "europalegal.eu", 
+    "ecrea.org", "officialeuropeannews.eu", "rechtsinformatie.nl", "brp.nl", "omroepbrabant.nl", 
+    "europeanpolicycentre.eu", "europaneconomic.org", "ministerievanarbeid.nl", "arbeidsinspectie.nl", 
+    "politieke-partijen.nl", "cpb.nl", "scp.nl", "inspectieonderwijs.nl", "regeerders.nl", 
+    "ministerievancultureel-erfgoed.nl", "overheidspublicaties.nl", "ambtenarenbond.nl", "bijdl.nl", 
+    "volksgezondheid.nl", "sociaalzaken.nl", "integratieadvies.nl", "migrantinstitute.nl", 
+    "immigratieadvies.nl", "internationalmigration.org", "fhi.no", "ukri.org", "europamigration.eu", 
+    "migratieforum.nl", "verhuisadvies.nl", "logistiek.nl", "socialezekerheid.eu", "multicultureelcentrum.nl", 
+    "cultureelplatform.nl", "jongerenwerk.nl", "arbeidsmarktinformatie.nl", "krantenvanhetnoorden.nl", 
+    "parlementairdocument.nl", "europapress.eu", "documentenbank.nl", "advocatenorde.nl", 
+    "rechtspraakvooriedereen.nl", "sociaalekennisbank.nl", "overheidstransparant.nl", "ministerievanmilieu.nl", 
+    "gemeentelijkezorg.nl", "gezondheidsmonitor.nl", "europainnovatie.eu", "dutchinnovation.nl", 
+    "integratieplatform.nl", "migratieanalyse.nl", "sociaalbeleid.nl", "europabureau.nl", 
+    "internationaalrecht.nl", "legalinfo.nl", "rechtdata.nl", "verblijfsvergunninginfo.nl", 
+    "migrantadvies.org", "integratiewetgeving.nl", "europeanpolicycentre.eu"
 ]
 
 # Relevante sleutelwoorden
