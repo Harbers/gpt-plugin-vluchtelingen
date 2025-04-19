@@ -1,3 +1,4 @@
+# openapi.yaml
 openapi: "3.1.0"
 
 info:
@@ -19,7 +20,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/StatusResponse"
+                type: object
+                properties:
+                  status:
+                    type: string
 
   /all_procedures:
     get:
@@ -27,62 +31,51 @@ paths:
       operationId: "getAllProcedures"
       responses:
         "200":
-          description: "JSON‑structuur van alle procedures"
+          description: "Volledige set procedures"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AllProceduresResponse"
-
-  /mb_instrument:
-    get:
-      summary: "MB‑Instrument ophalen"
-      operationId: "getMbInstrument"
-      responses:
-        "200":
-          description: "JSON‑structuur van het MB‑Instrument"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/MbInstrumentResponse"
+                type: object
+                additionalProperties: true
 
   /search:
     get:
       summary: "Zoek actuele informatie"
       operationId: "searchInformation"
       parameters:
-        - name: "onderwerp"
+        - name: onderwerp
           in: query
+          description: "Onderwerp om op te zoeken"
           required: true
-          description: "Onderwerp van de zoekopdracht"
           schema:
             type: string
-        - name: "gemeente"
+        - name: gemeente
           in: query
-          required: true
           description: "Gemeente van de cliënt"
+          required: true
           schema:
             type: string
-        - name: "thuisland"
+        - name: thuisland
           in: query
-          required: true
           description: "Thuisland van de cliënt"
+          required: true
           schema:
             type: string
-        - name: "moedertaal"
+        - name: moedertaal
           in: query
-          required: true
           description: "Moedertaal van de cliënt"
+          required: true
           schema:
             type: string
       responses:
         "200":
-          description: "Gefilterde zoekresultaten"
+          description: "Zoekresultaten"
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/SearchResult"
+                  type: object
         "404":
           description: "Geen resultaten gevonden"
 
@@ -91,54 +84,20 @@ paths:
       summary: "Genereer een afbeelding"
       operationId: "generateImage"
       parameters:
-        - name: "prompt"
+        - name: prompt
           in: query
-          required: true
           description: "Prompt voor beeldgeneratie"
+          required: true
           schema:
             type: string
       responses:
         "200":
-          description: "Response van de beeldgeneratie‑service"
+          description: "JSON van beeldgeneratie‑API"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GenerateImageResponse"
+                type: object
+                additionalProperties: true
 
 components:
-  schemas:
-    StatusResponse:
-      type: object
-      properties:
-        status:
-          type: string
-      required: [status]
-
-    AllProceduresResponse:
-      type: object
-      properties: {}
-      additionalProperties: true
-
-    MbInstrumentResponse:
-      type: object
-      properties: {}
-      additionalProperties: true
-
-    GenerateImageResponse:
-      type: object
-      properties: {}
-      additionalProperties: true
-
-    SearchResult:
-      type: object
-      properties:
-        titel:
-          type: string
-        link:
-          type: string
-          format: uri
-        samenvatting:
-          type: string
-        apa:
-          type: string
-      required: [titel, link]
+  schemas: {}
