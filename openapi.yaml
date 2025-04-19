@@ -1,112 +1,84 @@
 openapi: 3.1.0
 info:
   title: "Vluchtelingenzoeker API"
-  description: "API voor juridische informatie en begeleidingsdata."
   version: "1.1.0"
+  description: "REST API voor juridische en maatschappelijke begeleiding."
 
 servers:
   - url: https://gpt-plugin-vluchtelingen.onrender.com
 
 paths:
-  /startmenu:
+  /:
     get:
-      summary: "Haal startmenu op"
-      operationId: get_startmenu
+      summary: "API status"
       responses:
         '200':
-          description: "Startmenu data"
+          description: "API is actief"
+  /all_procedures:
+    get:
+      summary: "Haal alle juridische procedures op"
+      responses:
+        '200':
+          description: "JSON met alle procedures"
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/StartMenuResponse'
-        '404':
-          description: "Menu niet gevonden"
-
+              schema: {}
   /mb_instrument:
     get:
-      summary: "Haal MB‑Instrument data op"
-      operationId: get_mb_instrument
+      summary: "Haal MB‑Instrument op"
       responses:
         '200':
-          description: "MB‑Instrument data"
+          description: "JSON met MB‑Instrument"
+          content:
+            application/json:
+              schema: {}
+  /search:
+    get:
+      summary: "Zoek actuele informatie"
+      parameters:
+        - in: query
+          name: onderwerp
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: gemeente
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: thuisland
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: moedertaal
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: "Gefilterde zoekresultaten"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MBInstrumentResponse'
+                type: array
+                items:
+                  type: object
         '404':
-          description: "MB‑Instrument niet gevonden"
-
-components:
-  schemas:
-    StartMenuResponse:
-      type: object
-      properties:
-        startVraag:
-          type: string
-        context:
-          type: string
-        basisgegevens:
-          type: object
-          properties:
-            gemeente:
-              type: string
-            procedureKoppelenAanThuisland:
-              type: boolean
-            thuisland:
-              type: string
-            moedertaal:
-              type: string
-        menu:
-          type: object
-          properties:
-            instructie:
-              type: string
-            opties:
-              type: array
-              items:
-                type: object
-                properties:
-                  nummer:
-                    type: integer
-                  omschrijving:
-                    type: string
-
-    MBInstrumentResponse:
-      type: object
-      properties:
-        mb_instrument:
-          type: object
-          properties:
-            version:
-              type: string
-            title:
-              type: string
-            introductie:
-              type: string
-            instructies:
-              type: string
-            vragen:
-              type: array
-              items:
-                type: object
-                properties:
-                  nummer:
-                    type: string
-                  tekst:
-                    type: string
-                  antwoordOpties:
-                    type: array
-                    items:
-                      type: string
-                  linksVoorlichting:
-                    type: array
-                    items:
-                      type: string
-                  voorlichtingOver:
-                    type: array
-                    items:
-                      type: string
-                  acties:
-                    type: array
-                    items:
-                      type: string
+          description: "Geen resultaten gevonden"
+  /generate_image:
+    post:
+      summary: "Genereer illustratie"
+      parameters:
+        - in: query
+          name: prompt
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: "Gegenereerde afbeelding"
+          content:
+            application/json:
+              schema: {}
