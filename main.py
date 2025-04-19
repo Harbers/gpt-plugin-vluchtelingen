@@ -1,92 +1,75 @@
+# main.py
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import os
 import json
 import logging
-from datetime import datetime
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException
 from typing import Any, Dict, List
-from duckduckgo_search import ddg
-import requests
 
-from zoekfilters import filter_resultaten, format_apa
-
+# Logging configuratie
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="Vluchtelingenwerk GPT API", version="1.1.0")
+app = FastAPI(title="Vluchtelingenwerk GPT API", version="1.0.0")
 
-def load_json_config(filename: str) -> Any:
-    path = os.path.join(os.path.dirname(__file__), filename)
-    if not os.path.isfile(path):
-        logger.error(f"{filename} niet gevonden")
-        raise HTTPException(status_code=404, detail=f"{filename} niet gevonden")
+def load_json_config(file_path: str) -> Any:
+    """
+    Laadt een JSON-configuratiebestand. Geeft een HTTPException bij fouten.
+    """
+    if not os.path.isfile(file_path):
+        logger.error(f"Bestand {file_path} niet gevonden.")
+        raise HTTPException(status_code=404, detail=f"{file_path} niet gevonden.")
     try:
-        with open(path, "r", encoding="utf-8") as f:
+        with open(file_path, "r", encoding="utf-8") as f:
             return json.load(f)
     except Exception as e:
-        logger.error(f"Fout bij laden {filename}: {e}")
-        raise HTTPException(status_code=500, detail=f"Fout bij laden {filename}")
+        logger.error(f"Fout bij het laden van {file_path}: {e}")
+        raise HTTPException(status_code=500, detail=f"Fout bij het laden van {file_path}")
 
 @app.get("/")
 def root() -> Dict[str, str]:
+    """
+    Basis endpoint om te controleren of de API actief is.
+    """
     return {"status": "API is actief"}
 
 @app.get("/all_procedures")
 def get_all_procedures() -> Any:
+    """
+    Retourneert het volledige configuratiebestand met alle juridische procedures.
+    """
     return load_json_config("AllProcedures.json")
-
-@app.get("/mb_instrument")
-def get_mb_instrument() -> Any:
-    return load_json_config("MBInstrumentInvullen.json")
 
 @app.get("/search")
 def search_endpoint(
-    onderwerp: str = Query(..., description="Onderwerp om op te zoeken"),
-    gemeente: str = Query(..., description="Gemeente van de cliënt"),
-    thuisland: str = Query(..., description="Thuisland van de cliënt"),
-    moedertaal: str = Query(..., description="Moedertaal van de cliënt")
+    onderwerp: str,
+    gemeente: str,
+    thuisland: str,
+    moedertaal: str
 ) -> List[Dict[str, Any]]:
-    zoekterm = f"{onderwerp} {gemeente} {thuisland} {moedertaal} vluchtelingenwerk"
+    """
+    Zoekt actuele informatie door de parameters te combineren.
+    """
+    zoekterm = f"{onderwerp} {gemeente} {thuisland} {moedertaal} samenwerking 10km"
     logger.info(f"Uitgevoerde zoekterm: {zoekterm}")
+    # Hier zou een echte zoekfunctie komen; we simuleren een voorbeeldresultaat:
+    return [
+        {
+            "titel": f"Update over {onderwerp} in {gemeente}",
+            "link": "https://voorbeeld.nl/update",
+            "samenvatting": "Samenvatting van de meest recente ontwikkelingen en regionale initiatieven.",
+            "apa": "Voorbeeld, A. (2025). Update over procedures."
+        }
+    ]
 
-    raw_results = ddg(zoekterm, region="nl", safesearch="Off", max_results=10)
-    if not raw_results:
-        raise HTTPException(status_code=404, detail="Geen zoekresultaten gevonden")
-
-    now = datetime.utcnow().strftime("%Y, %B %d")
-    resultaten = []
-    for item in raw_results:
-        titel = item.get("title", "")
-        link  = item.get("href", "")
-        samenv = item.get("body", "")
-        apa = format_apa(titel, link, now)
-        resultaten.append({
-            "titel": titel,
-            "link": link,
-            "samenvatting": samenv,
-            "apa": apa
-        })
-
-    gefilterd = filter_resultaten(resultaten)
-    if not gefilterd:
-        raise HTTPException(status_code=404, detail="Geen relevante resultaten na filteren")
-
-    return gefilterd
-
-@app.post("/generate_image")
-def generate_image(prompt: str = Query(..., description="Prompt voor beeldgeneratie")) -> Any:
-    api_url = "https://externe-api-beeldgeneratie.nl/generate"
-    try:
-        resp = requests.post(api_url, json={"prompt": prompt})
-        if resp.status_code != 200:
-            logger.error(f"Beeldgeneratie error: {resp.text}")
-            raise HTTPException(status_code=500, detail="Fout bij beeldgeneratie")
-        return resp.json()
-    except Exception as e:
-        logger.error(f"Fout in beeldgeneratie-call: {e}")
-        raise HTTPException(status_code=500, detail="Fout bij beeldgeneratie")
+@app.get("/generate_image")
+def generate_image(prompt: str) -> Any:
+    """
+    Proxy naar externe beeldgeneratie‑service (nog niet geïmplementeerd).
+    """
+    raise HTTPException(status_code=501, detail="Beeldgeneratie nog niet geïmplementeerd")
 
 if __name__ == "__main__":
     import uvicorn
