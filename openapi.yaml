@@ -39,36 +39,36 @@ paths:
 
   /search:
     get:
-      summary: "Zoek actuele informatie"
+      summary: "Zoek actuele informatie met lokale en culturele context"
       operationId: "searchInformation"
       parameters:
-        - name: onderwerp
-          in: query
-          description: "Onderwerp om op te zoeken"
-          required: true
-          schema:
-            type: string
         - name: gemeente
           in: query
-          description: "Gemeente van de cliënt"
+          description: "Gemeente van de cliënt (voor lokale hulpaanbevelingen)"
           required: true
           schema:
             type: string
         - name: thuisland
           in: query
-          description: "Thuisland van de cliënt"
+          description: "Thuisland van de cliënt (voor context en culturele interpretatie)"
           required: true
           schema:
             type: string
         - name: moedertaal
           in: query
-          description: "Moedertaal van de cliënt"
+          description: "Moedertaal van de cliënt (voor taal- en cultuurgebonden adviezen)"
+          required: true
+          schema:
+            type: string
+        - name: onderwerp
+          in: query
+          description: "Onderwerp van de zoekopdracht"
           required: true
           schema:
             type: string
       responses:
         "200":
-          description: "Zoekresultaten"
+          description: "Gefilterde zoekresultaten"
           content:
             application/json:
               schema:
