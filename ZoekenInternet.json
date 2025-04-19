@@ -3,112 +3,94 @@
     {
       "sourceTitle": "Rijksoverheid – Asielbeleid",
       "url": "https://www.rijksoverheid.nl/onderwerpen/asielbeleid",
-      "description": "Informatie over het Nederlandse asielbeleid en relevante wet- en regelgeving."
+      "description": "Nederlandse asielwetgeving."
     },
     {
-      "sourceTitle": "Immigratie- en Naturalisatiedienst (IND)",
+      "sourceTitle": "IND – Asielprocedures",
       "url": "https://ind.nl/nl/asielprocedures-in-nederland",
-      "description": "Details over de asielprocedures in Nederland."
+      "description": "Uitleg asielprocedure IND."
     },
     {
-      "sourceTitle": "Rijksoverheid Nieuws (RSS Asielbeleid)",
+      "sourceTitle": "Rijksoverheid Nieuws RSS",
       "url": "https://www.rijksoverheid.nl/service/rss/asielbeleid",
-      "description": "Actuele nieuwsberichten over asielbeleid en migratie."
+      "description": "Actuele nieuwsberichten."
     }
   ],
   "Jurisprudentie en Rechtspraak": [
     "Recente uitspraken asielzaken Nederland",
-    "Jurisprudentie asielrecht Europese Unie",
-    "Hoge Raad asiel beslissingen"
+    "EHRM asielcases",
+    "HvJEU migratierecht"
   ],
   "Internationale Verdragen en Landeninformatie": [
-    "Internationale verdragen vluchtelingen 2025",
-    "Landinformatie asielbeleid herkomstlanden",
-    "VN en asielbeleid update"
+    "UNHCR land rapport 2025",
+    "Nieuw asielverdrag document"
   ],
   "Juridische Ondersteuning en Begeleiding": [
-    "Juridische begeleiding vluchtelingen update",
-    "Advies juridisch loket asiel",
-    "Hulp bij asielprocedures recente ontwikkelingen"
+    "Best practices juridische begeleiding vluchtelingen",
+    "Protocol juridische begeleiding asiel"
   ],
   "Tijdschriften en Publicaties": [
-    "Recente publicaties asielbeleid",
-    "Vluchtelingenrecht tijdschrift update",
-    "Migratierecht artikelen 2025"
+    "Journaal Vreemdelingenrecht artikelen",
+    "Migratierecht – recente publicaties"
   ],
   "Procedures in Asielzaken": [
     "Stappenplan asielprocedure Nederland",
-    "Procedure asiel aanvraag update",
-    "Nieuwe asielprocedure richtlijnen"
+    "Nieuwe wetgeving asiel 2025"
   ],
   "Specifieke Groepen en Culturele Achtergrond": [
-    "Ondersteuning specifieke groepen asielzoekers",
-    "Culturele achtergrond vluchtelingen informatie",
-    "Beleid kwetsbare groepen asiel"
+    "LHBTI asielupdate",
+    "AMV asielbescherming"
   ],
   "Geografische Informatie en Herkomstbepaling": [
-    "Geografische herkomst asielzoekers analyse",
-    "Landgebonden richtlijnen asiel 2025",
-    "Herkomstbepaling migratie statistieken"
+    "EASO landenrapport 2025",
+    "Herkomstbepaling migratie analyse"
   ],
   "Gezondheidszorg": [
-    "Gezondheidszorg voor vluchtelingen update",
-    "Zorginformatie asielzoekers Nederland",
-    "Actuele gezondheidszorgbeleid asiel"
+    "Pharos zorg voor vluchtelingen update",
+    "Zorginstituut Nederland asielregelingen"
   ],
   "Inburgering en Integratie": [
-    "Recente ontwikkelingen inburgering Nederland",
-    "Integratiebeleid vluchtelingen update",
-    "Inburgeringstrajecten asielzoekers 2025"
+    "Nieuwe inburgeringswet 2025",
+    "Integratiebeleid vluchtelingen update"
   ],
   "Anti-Racisme en Discriminatie": [
-    "Actuele anti-racisme beleid Nederland",
-    "Discriminatie asielzoekers nieuws",
-    "Meldpunt discriminatie update"
+    "Meldpunt discriminatie vluchtelingen",
+    "Amnesty racisme beleid"
   ],
   "Bibliotheekcatalogi": [
-    "Nieuwe publicaties asiel en migratie",
-    "Bibliotheekcollectie vluchtelingen boeken",
-    "Digitale archieven migratierecht"
+    "Nieuwe boeken over asiel en migratie",
+    "KB catalogus vluchtelingenliteratuur"
   ],
   "Kranten en Pers": [
-    "Nieuws asielzoekers Nederland",
-    "Migratie en asiel nieuwsupdate",
-    "Persartikelen asielbeleid recente ontwikkelingen"
+    "NRC migratiedossier",
+    "Volkskrant asielzoekers nieuws"
   ],
   "Politieke Partijen en Beleid": [
-    "Politieke standpunten asielbeleid 2025",
-    "Debat immigratiebeleid Nederland",
-    "Kamerstukken asielbeleid update"
+    "Kamerstukken asielbeleid",
+    "Partijstandpunten immigratie 2025"
   ],
   "Statistieken": [
-    "Statistieken asielaanvragen Nederland",
-    "CBS asielinstroom cijfers update",
-    "Europese asielstatistieken 2025"
+    "CBS asielinstroom cijfers Q1 2025",
+    "Eurostat asielstatistieken"
   ],
   "Terugkeer en Opvang van Uitgeprocedeerden": [
-    "Beleid terugkeer afgewezen asielzoekers",
-    "Opvangcentra uitgeprocedeerde vluchtelingen",
-    "Terugkeerprocedures asielbeleid update"
+    "DT&V terugkeerbeleid 2025",
+    "COA opvang uitgeprocedeerden"
   ],
   "Verdragen en Internationale Rechtspraak": [
-    "Internationale rechtspraak asielzaken",
-    "Europese migratierecht uitspraken",
-    "VN verdragen vluchtelingen update"
+    "VN verdragen vluchtelingen 2025",
+    "EUR-Lex migratierecht uitspraken"
   ],
   "Vrouwenorganisaties": [
-    "Ondersteuning vrouwelijke vluchtelingen Nederland",
-    "Recente initiatieven vrouwenrechten asiel",
-    "Vrouwenorganisaties asiel update"
+    "Women’s Refugee Commission projecten",
+    "Vrouwenrechten asielinitiatieven"
   ],
   "Vrijwilligerswerk": [
-    "Vrijwilligersprojecten vluchtelingen 2025",
-    "Actueel vrijwilligerswerk asiel",
-    "Ondersteuning vluchtelingen vrijwilligers update"
+    "NLvoorelkaar vluchtelingenprojecten",
+    "Vrijwilligerswerk.nl asielondersteuning"
   ],
   "Wetenschappelijke Instituten": [
-    "Onderzoek migratie en asielbeleid 2025",
-    "Wetenschappelijke publicaties asielrecht",
-    "Universitair onderzoek vluchtelingen update"
+    "WODC migratieonderzoek 2025",
+    "NARCIS publicaties migratierecht"
   ]
 }
