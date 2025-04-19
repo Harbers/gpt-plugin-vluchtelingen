@@ -1,98 +1,144 @@
-openapi: 3.1.0
+openapi: "3.1.0"
+
 info:
   title: "Vluchtelingenwerk GPT API"
   version: "1.1.0"
-  description: "REST API voor juridische informatie en maatschappelijke begeleiding."
+  description: "REST‑API voor juridische informatie en maatschappelijke begeleiding."
 
 servers:
-  - url: https://gpt-plugin-vluchtelingen.onrender.com
+  - url: "https://gpt-plugin-vluchtelingen.onrender.com"
 
 paths:
   /:
     get:
-      summary: "API status"
+      summary: "API‑status"
+      operationId: "getRoot"
       responses:
-        '200':
+        "200":
           description: "API is actief"
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
+                $ref: "#/components/schemas/StatusResponse"
 
   /all_procedures:
     get:
       summary: "Alle juridische procedures"
+      operationId: "getAllProcedures"
       responses:
-        '200':
-          description: "Configuratie van alle procedures"
+        "200":
+          description: "JSON‑structuur van alle procedures"
           content:
             application/json:
               schema:
-                type: object
+                $ref: "#/components/schemas/AllProceduresResponse"
 
   /mb_instrument:
     get:
       summary: "MB‑Instrument ophalen"
+      operationId: "getMbInstrument"
       responses:
-        '200':
-          description: "Configuratie van MB‑Instrument"
+        "200":
+          description: "JSON‑structuur van het MB‑Instrument"
           content:
             application/json:
               schema:
-                type: object
+                $ref: "#/components/schemas/MbInstrumentResponse"
 
   /search:
     get:
       summary: "Zoek actuele informatie"
+      operationId: "searchInformation"
       parameters:
-        - in: query
-          name: onderwerp
+        - name: "onderwerp"
+          in: query
+          required: true
+          description: "Onderwerp van de zoekopdracht"
           schema:
             type: string
+        - name: "gemeente"
+          in: query
           required: true
-        - in: query
-          name: gemeente
+          description: "Gemeente van de cliënt"
           schema:
             type: string
+        - name: "thuisland"
+          in: query
           required: true
-        - in: query
-          name: thuisland
+          description: "Thuisland van de cliënt"
           schema:
             type: string
+        - name: "moedertaal"
+          in: query
           required: true
-        - in: query
-          name: moedertaal
+          description: "Moedertaal van de cliënt"
           schema:
             type: string
-          required: true
       responses:
-        '200':
-          description: "Geformatteerde en gefilterde zoekresultaten"
+        "200":
+          description: "Gefilterde zoekresultaten"
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  type: object
-        '404':
+                  $ref: "#/components/schemas/SearchResult"
+        "404":
           description: "Geen resultaten gevonden"
 
   /generate_image:
     post:
       summary: "Genereer een afbeelding"
+      operationId: "generateImage"
       parameters:
-        - in: query
-          name: prompt
+        - name: "prompt"
+          in: query
+          required: true
+          description: "Prompt voor beeldgeneratie"
           schema:
             type: string
-          required: true
       responses:
-        '200':
-          description: "Gegenereerde afbeelding"
+        "200":
+          description: "Response van de beeldgeneratie‑service"
           content:
             application/json:
               schema:
-                type: object
+                $ref: "#/components/schemas/GenerateImageResponse"
+
+components:
+  schemas:
+    StatusResponse:
+      type: object
+      properties:
+        status:
+          type: string
+      required: [status]
+
+    AllProceduresResponse:
+      type: object
+      properties: {}
+      additionalProperties: true
+
+    MbInstrumentResponse:
+      type: object
+      properties: {}
+      additionalProperties: true
+
+    GenerateImageResponse:
+      type: object
+      properties: {}
+      additionalProperties: true
+
+    SearchResult:
+      type: object
+      properties:
+        titel:
+          type: string
+        link:
+          type: string
+          format: uri
+        samenvatting:
+          type: string
+        apa:
+          type: string
+      required: [titel, link]
