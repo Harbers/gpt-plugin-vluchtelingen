@@ -10,7 +10,7 @@ servers:
 paths:
   /:
     get:
-      summary: "API status"
+      summary: "Healthcheck"
       responses:
         '200':
           description: "API is actief"
@@ -22,7 +22,8 @@ paths:
           description: "JSON met alle procedures"
           content:
             application/json:
-              schema: {}
+              schema:
+                type: object
   /mb_instrument:
     get:
       summary: "Haal MB‑Instrument op"
@@ -31,7 +32,8 @@ paths:
           description: "JSON met MB‑Instrument"
           content:
             application/json:
-              schema: {}
+              schema:
+                type: object
   /search:
     get:
       summary: "Zoek actuele informatie"
@@ -81,4 +83,5 @@ paths:
           description: "Gegenereerde afbeelding"
           content:
             application/json:
-              schema: {}
+              schema:
+                type: object
