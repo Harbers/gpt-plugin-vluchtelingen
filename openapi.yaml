@@ -1,111 +1,58 @@
-openapi: "3.1.0"
-
+openapi: 3.1.0
 info:
-  title: "Vluchtelingenwerk GPT API"
+  title: "Vluchtelingenzoeker API"
+  description: "API voor juridische informatie en begeleidingsdata."
   version: "1.1.0"
-  description: "REST‑API voor juridische informatie en maatschappelijke begeleiding."
 
 servers:
-  - url: "https://gpt-plugin-vluchtelingen.onrender.com"
+  - url: https://gpt-plugin-vluchtelingen.onrender.com
 
 paths:
-  /:
+  /startmenu:
     get:
-      summary: "API‑status"
-      operationId: "getRoot"
+      summary: "Haal startmenu op"
+      operationId: get_startmenu
       responses:
-        "200":
-          description: "API is actief"
+        '200':
+          description: "Startmenu data"
           content:
             application/json:
               schema:
-                type: object
-                properties: {}
-                additionalProperties: true
-
-  /all_procedures:
-    get:
-      summary: "Alle juridische procedures"
-      operationId: "getAllProcedures"
-      responses:
-        "200":
-          description: "Volledige set procedures"
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
-                additionalProperties: true
-
-  /search:
-    get:
-      summary: "Zoek actuele informatie met lokale en culturele context"
-      operationId: "searchInformation"
-      parameters:
-        - name: gemeente
-          in: query
-          description: "Gemeente van de cliënt (voor lokale hulpaanbevelingen)"
-          required: true
-          schema:
-            type: string
-        - name: thuisland
-          in: query
-          description: "Thuisland van de cliënt (voor context en culturele interpretatie)"
-          required: true
-          schema:
-            type: string
-        - name: moedertaal
-          in: query
-          description: "Moedertaal van de cliënt (voor taal- en cultuurgebonden adviezen)"
-          required: true
-          schema:
-            type: string
-        - name: onderwerp
-          in: query
-          description: "Onderwerp van de zoekopdracht"
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: "Gefilterde zoekresultaten"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties: {}
-                  additionalProperties: true
-        "404":
-          description: "Geen resultaten gevonden"
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
-                additionalProperties: true
-
-  /generate_image:
-    post:
-      summary: "Genereer een afbeelding"
-      operationId: "generateImage"
-      parameters:
-        - name: prompt
-          in: query
-          description: "Prompt voor beeldgeneratie"
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: "JSON van beeldgeneratie‑API"
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
-                additionalProperties: true
+                $ref: '#/components/schemas/StartMenuResponse'
+        '404':
+          description: "Menu niet gevonden"
 
 components:
-  schemas: {}
+  schemas:
+    StartMenuResponse:
+      type: object
+      properties:
+        startVraag:
+          type: string
+        context:
+          type: string
+        basisgegevens:
+          type: object
+          properties:
+            gemeente:
+              type: string
+            procedureKoppelenAanThuisland:
+              type: boolean
+            thuisland:
+              type: string
+            moedertaal:
+              type: string
+        menu:
+          type: object
+          properties:
+            instructie:
+              type: string
+            opties:
+              type: array
+              items:
+                type: object
+                properties:
+                  nummer:
+                    type: integer
+                  omschrijving:
+                    type: string
