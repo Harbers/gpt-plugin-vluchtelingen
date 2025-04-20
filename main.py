@@ -1,4 +1,6 @@
 # main.py
+# Versie: 1.1.0 – bijgewerkt april 2025
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
@@ -12,7 +14,7 @@ from typing import Any, Dict, List
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="Vluchtelingenwerk GPT API", version="1.0.0")
+app = FastAPI(title="Vluchtelingenwerk GPT API", version="1.1.0")
 
 def load_json_config(file_path: str) -> Any:
     """
