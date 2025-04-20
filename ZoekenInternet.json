@@ -1,3 +1,4 @@
+// ZoekenInternet.json
 {
   "Asielbeleid en Wetgeving": [
     {
@@ -47,7 +48,10 @@
   ],
   "Gezondheidszorg": [
     "Pharos zorg voor vluchtelingen update",
-    "Zorginstituut Nederland asielregelingen"
+    "Zorginstituut Nederland asielregelingen",
+    "site:pharos.nl oefenbank",
+    "site:pharos.nl/thema/gezondheid-en-migranten",
+    "site:pharos.nl/infosheets/mentale-gezondheid-stress-kwetsbare-groepen"
   ],
   "Inburgering en Integratie": [
     "Nieuwe inburgeringswet 2025",
