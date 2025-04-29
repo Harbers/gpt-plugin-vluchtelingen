@@ -1,101 +1,88 @@
 openapi: 3.1.0
 info:
   title: "Vluchtelingenwerk API"
-  description: "REST‑API t.b.v. juristen en medewerkers, gesynchroniseerd met front‑end UI‑flow."
-  version: "1.2.1"
-
+  description: "REST‑API voor juristen en medewerkers, gesynchroniseerd met de UI‑flow."
+  version: "1.2.2"
 servers:
   - url: https://gpt-plugin-vluchtelingen.onrender.com
-
 paths:
   /:
     get:
-      summary: "Health‑check"
+      summary: Health‑check
       operationId: root
       responses:
         "200":
-          description: "OK"
+          description: OK
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  status:
-                    type: string
-                  version:
-                    type: string
-
+                  status: { type: string }
+                  version: { type: string }
   /all_procedures:
     get:
-      summary: "Alle juridische procedures"
+      summary: Alle juridische procedures
       operationId: get_all_procedures
       responses:
         "200":
-          description: "JSON-object met alle procedures"
+          description: JSON‑object met alle procedures
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/AllProcedures"
-
   /startmenu:
     get:
-      summary: "Hoofdmenu ophalen"
+      summary: Hoofdmenu ophalen
       operationId: get_startmenu
       responses:
         "200":
-          description: "Hoofdmenu‑object"
+          description: Hoofdmenu‑object
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/UIStep"
-
   /uiflow:
     get:
-      summary: "Volledige UI‑flow"
+      summary: Volledige UI‑flow
       operationId: get_uiflow
       responses:
         "200":
-          description: "UIFlow JSON"
+          description: UIFlow JSON
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/UIFlow"
-
   /search:
     get:
-      summary: "Zoek in bronnen"
+      summary: Zoek in bronnen
       operationId: search_endpoint
       parameters:
         - in: query
           name: onderwerp
           required: true
-          schema:
-            type: string
+          schema: { type: string }
         - in: query
           name: gemeente
-          schema:
-            type: string
+          schema: { type: string }
         - in: query
           name: thuisland
-          schema:
-            type: string
+          schema: { type: string }
         - in: query
           name: moedertaal
-          schema:
-            type: string
+          schema: { type: string }
       responses:
         "200":
-          description: "Lijst met gevonden bronnen"
+          description: Resultaatlijst
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: "#/components/schemas/SearchResult"
-
   /set_reminder:
     post:
-      summary: "Reminder aanmaken (afspraakdatum + initialen)"
+      summary: Reminder aanmaken (ISO of losse datum/tijd)
       operationId: set_reminder
       requestBody:
         required: true
@@ -103,94 +90,61 @@ paths:
           application/json:
             schema:
               type: object
-              required:
-                - afspraak_datetime_iso
-                - medewerker_initialen
               properties:
-                afspraak_datetime_iso:
-                  type: string
-                  format: date-time
-                medewerker_initialen:
-                  type: string
-                  maxLength: 6
-                onderwerp:
-                  type: string
-                  default: "BNTB-check"
+                afspraak_datetime_iso: { type: string, format: date-time }
+                afspraak_datum:       { type: string, format: date }
+                afspraak_tijd:        { type: string, pattern: "^[0-2][0-9]:[0-5][0-9]$" }
+                medewerker_initialen: { type: string, maxLength: 6 }
+                onderwerp:            { type: string, default: "BNTB-check" }
+              oneOf:
+                - required: [afspraak_datetime_iso, medewerker_initialen]
+                - required: [afspraak_datum, afspraak_tijd, medewerker_initialen]
       responses:
         "200":
-          description: "Reminder aangemaakt"
+          description: Reminder aangemaakt
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  reminder_id:
-                    type: string
-                  execute_at:
-                    type: string
-
+                  reminder_id: { type: string }
+                  execute_at:  { type: string }
   /generate_image:
     get:
-      summary: "Beeldgeneratie (placeholder)"
+      summary: Beeldgeneratie (placeholder)
       operationId: generate_image
       parameters:
         - in: query
           name: prompt
           required: true
-          schema:
-            type: string
+          schema: { type: string }
       responses:
         "501":
-          description: "Niet geïmplementeerd"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ErrorResponse"
-
+          description: Niet geïmplementeerd
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        detail:
-          type: string
-
     AllProcedures:
       type: object
-      description: "Structuur gelijk aan AllProcedures.json"
-      properties: {}
+      description: Structuur gelijk aan AllProcedures.json
       additionalProperties: true
-
     UIStep:
       type: object
       properties:
-        stepId:
-          type: string
-        description:
-          type: string
-        message:
-          type: string
-        options:
-          type: object
-
+        stepId:       { type: string }
+        description:  { type: string }
+        message:      { type: string }
+        options:      { type: object }
     UIFlow:
       type: object
       properties:
-        version:
-          type: string
+        version: { type: string }
         flow:
           type: array
-          items:
-            $ref: "#/components/schemas/UIStep"
-
+          items: { $ref: "#/components/schemas/UIStep" }
     SearchResult:
       type: object
       properties:
-        titel:
-          type: string
-        link:
-          type: string
-        samenvatting:
-          type: string
-        categorie:
-          type: string
+        titel:        { type: string }
+        link:         { type: string }
+        samenvatting: { type: string }
+        categorie:    { type: string }
