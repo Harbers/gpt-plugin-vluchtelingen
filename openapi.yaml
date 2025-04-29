@@ -31,7 +31,7 @@ paths:
       operationId: get_all_procedures
       responses:
         "200":
-          description: "JSON‑array van procedures"
+          description: "JSON‑object met alle procedures"
           content:
             application/json:
               schema:
@@ -125,6 +125,7 @@ components:
     AllProcedures:
       type: object
       description: "Structuur gelijk aan AllProcedures.json"
+      additionalProperties: true
 
     UIStep:
       type: object
