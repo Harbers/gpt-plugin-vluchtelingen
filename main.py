@@ -1,5 +1,5 @@
 # main.py
-# Versie: 1.2.0 – bijgewerkt 30 april 2025
+# Versie: 1.2.1 – bijgewerkt 30 april 2025
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
@@ -7,17 +7,17 @@
 
 Wijzigingen v1.2.1
 ------------------
-* Directory‑agnostische JSON‑loader zodat bestanden uit de frontend‑map direct gebruikt kunnen worden
-* Nieuwe endpoints: /startmenu, /uiflow **en /set_reminder**
-* /all_procedures gebruikt nieuwe loader
-* /search zoekt nu in lokale JSON‑bronnen i.p.v. dummy‑data
-* **/set_reminder** koppelt reminders aan afspraak‑datum + initialen medewerker, geen V‑nummer nodig
-* OpenAPI‑spec geüpdatet naar v1.2.1 (zie openapi.yaml)
+* Nieuwe endpoint **/set_reminder** koppelt reminders aan *afspraakdatum* + *initialen VWN‑medewerker* (geen persoonsgegevens).
+* Link‑validatie toegevoegd in `/search`.
+* OpenAPI‑spec geüpdatet naar v1.2.1.
+* Verder identiek aan v1.2.0 (directory‑agnostische JSON‑loader, /startmenu, /uiflow, enz.).
+
 """
 
 import json
 import logging
 import os
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -62,6 +62,13 @@ def load_json_config(file_name: str) -> Any:
     except Exception as exc:
         logger.exception("Fout bij laden van %s: %s", file_name, exc)
         raise HTTPException(status_code=500, detail=f"Fout bij laden van {file_name}")
+
+def _validate_link(link: str) -> str:
+    """Zorg dat link met http(s) begint. Gooi 500 bij onvolledige link."""
+    if not link.startswith(("http://", "https://")):
+        logger.error("Onvolledige of relatieve link gevonden: %s", link)
+        raise HTTPException(status_code=500, detail="Onvolledige link in bronlijst")
+    return link
 
 
 # ------------ API‑routes ----------------------------------------------------
@@ -112,55 +119,65 @@ def search_endpoint(
             titel_match = onderwerp.lower() in item.get("sourceTitle", "").lower()
             desc_match = onderwerp.lower() in item.get("description", "").lower()
             if titel_match or desc_match:
+                # rudimentaire filter
                 haystack = (item.get("description", "") + " " + item.get("sourceTitle", "")).lower()
                 if all(f in haystack or f == "" for f in filters):
+                    try:
+                        url = _validate_link(item["url"])
+                    except HTTPException:
+                        # sla ongeldige link over maar log
+                        continue
                     results.append(
                         {
                             "titel": item["sourceTitle"],
-                            "link": item["url"],
+                            "link": url,
                             "samenvatting": item.get("description", ""),
                             "categorie": categorie,
                         }
                     )
+    if not results:
+        logger.info("Geen resultaten voor onderwerp '%s'", onderwerp)
     return results
 
 
-# ---------------- Reminder --------------------------------------------------
-from pydantic import BaseModel, validator
-from datetime import datetime, timedelta
-
-class ReminderRequest(BaseModel):
-    appointment_datetime: datetime
-    initials: str
-    days_until_alert: int = 28
-    description: str
-
-    @validator("initials")
-    def validate_initials(cls, v):
-        v = v.strip().upper()
-        if not (1 <= len(v) <= 6):
-            raise ValueError("initials must be 1‑6 characters")
-        return v
-
 @app.post("/set_reminder")
-def set_reminder(req: ReminderRequest):
-    """Zet een reminder gekoppeld aan afspraak‑datum en initialen."""
-    trigger_at = req.appointment_datetime + timedelta(days=req.days_until_alert)
-    title = f"BNTB-check {req.appointment_datetime.date()} {req.initials}"
-    # Hier zou een echte automation‑service worden aangeroepen; placeholder‑response:
-    logger.info("Reminder gepland: %s op %s", title, trigger_at.isoformat())
-    return {"status": "scheduled", "title": title, "trigger_at": trigger_at}
+def set_reminder(
+    afspraak_datetime_iso: str,
+    medewerker_initialen: str,
+    onderwerp: str = "BNTB-check"
+) -> Dict[str, Any]:
+    """Plan een reminder gekoppeld aan afspraakdatum + initialen.
+
+    Parameters
+    ----------
+    afspraak_datetime_iso : str
+        Afspraakdatum en -tijd in ISO 8601 (bv. 2025-05-15T14:30).
+    medewerker_initialen : str
+        Initialen van de VWN-medewerker (max. 6 tekens).
+    onderwerp : str
+        Omschrijving reminder. Standaard 'BNTB-check'.
+
+    Retourneert reminder‑id en geplande uitvoerdatum (afspraak + 28 dagen).
+    """
+    try:
+        afspraak_dt = datetime.fromisoformat(afspraak_datetime_iso)
+    except ValueError:
+        raise HTTPException(400, detail="ongeldige ISO-datumtijd")
+
+    if not medewerker_initialen or len(medewerker_initialen) > 6:
+        raise HTTPException(400, detail="initialen ongeldig")
+
+    run_dt = afspraak_dt + timedelta(days=28)
+    reminder_id = f"{onderwerp}-{afspraak_dt.date()}-{medewerker_initialen}"
+
+    # In een echte productie-omgeving zou hier een taak in een queue of DB worden gezet.
+    # Voor nu loggen we alleen:
+    logger.info("Reminder aangemaakt: %s → %s", reminder_id, run_dt.isoformat())
+
+    return {"reminder_id": reminder_id, "execute_at": run_dt.isoformat()}
 
 
 @app.get("/generate_image")
 def generate_image(prompt: str) -> Dict[str, str]:
     """(Nog) niet geïmplementeerd – placeholder."""
-    raise HTTPException(status_code=501, detail="Beeldgeneratie nog niet geïmplementeerd")
-
-
-# ------------ Local dev -----------------------------------------------------
-
-if __name__ == "__main__":  # pragma: no cover
-    import uvicorn
-
-    uvicorn.run("main:app", host="0.0.0.0", port=int(os.getenv("PORT", 8000)), reload=True)
+    raise HTTPException(status
