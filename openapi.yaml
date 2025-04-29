@@ -31,7 +31,7 @@ paths:
       operationId: get_all_procedures
       responses:
         "200":
-          description: "JSON‑object met alle procedures"
+          description: "JSON-object met alle procedures"
           content:
             application/json:
               schema:
@@ -73,17 +73,14 @@ paths:
             type: string
         - in: query
           name: gemeente
-          required: false
           schema:
             type: string
         - in: query
           name: thuisland
-          required: false
           schema:
             type: string
         - in: query
           name: moedertaal
-          required: false
           schema:
             type: string
       responses:
@@ -95,6 +92,42 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/SearchResult"
+
+  /set_reminder:
+    post:
+      summary: "Reminder aanmaken (afspraakdatum + initialen)"
+      operationId: set_reminder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - afspraak_datetime_iso
+                - medewerker_initialen
+              properties:
+                afspraak_datetime_iso:
+                  type: string
+                  format: date-time
+                medewerker_initialen:
+                  type: string
+                  maxLength: 6
+                onderwerp:
+                  type: string
+                  default: "BNTB-check"
+      responses:
+        "200":
+          description: "Reminder aangemaakt"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reminder_id:
+                    type: string
+                  execute_at:
+                    type: string
 
   /generate_image:
     get:
@@ -114,32 +147,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
-  /set_reminder:
-    post:
-      summary: "Reminder instellen op afspraak‑datum + initialen"
-      operationId: set_reminder
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/ReminderRequest"
-      responses:
-        "200":
-          description: "Reminder gepland"
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                  title:
-                    type: string
-                  trigger_at:
-                    type: string
-                    format: date-time
-
 components:
   schemas:
     ErrorResponse:
@@ -147,11 +154,13 @@ components:
       properties:
         detail:
           type: string
+
     AllProcedures:
       type: object
       description: "Structuur gelijk aan AllProcedures.json"
       properties: {}
       additionalProperties: true
+
     UIStep:
       type: object
       properties:
@@ -163,6 +172,7 @@ components:
           type: string
         options:
           type: object
+
     UIFlow:
       type: object
       properties:
@@ -172,33 +182,8 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/UIStep"
+
     SearchResult:
-      type: object
-      properties:
-        titel:
-          type: string
-        link:
-          type: string
-        samenvatting:
-          type: string
-        categorie:
-          type: string
-    ReminderRequest:
-      type: object
-      required: [appointment_datetime, initials, description]
-      properties:
-        appointment_datetime:
-          type: string
-          format: date-time
-        initials:
-          type: string
-          description: "Initialen van de medewerker (max 6 tekens)"
-        days_until_alert:
-          type: integer
-          description: "Dagen tot reminder (default 28)"
-        description:
-          type: string
-          description: "Korte omschrijving van de reminder"
       type: object
       properties:
         titel:
