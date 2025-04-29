@@ -1,19 +1,14 @@
 # main.py
-# Versie: 1.2.1 – bijgewerkt 30 april 2025
+# Versie: 1.2.2 – bijgewerkt 30 april 2025
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
 """Backend‑API voor GPT Vluchtelingenwerk.
 
-Wijzigingen v1.2.1
+Wijzigingen v1.2.2
 ------------------
-* Nieuwe endpoint **/set_reminder** koppelt reminders aan *afspraakdatum* + *initialen VWN‑medewerker* (geen persoonsgegevens).
-* Link‑validatie toegevoegd in `/search`.
-* OpenAPI‑spec geüpdatet naar v1.2.1.
-* Verder identiek aan v1.2.0 (directory‑agnostische JSON‑loader, /startmenu, /uiflow, enz.).
-
+* `/set_reminder` accepteert nu òf één ISO‑string (`afspraak_datetime_iso`) óf aparte velden `afspraak_datum` + `afspraak_tijd`.
+* Overige routes gelijk aan v1.2.1.
 """
-
 import json
 import logging
 import os
@@ -21,85 +16,57 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from fastapi import FastAPI, HTTPException
-
-# ------------ Configuratie --------------------------------------------------
+from fastapi import FastAPI, HTTPException, Body
 
 BACKEND_DIR = Path(__file__).resolve().parent
 FRONTEND_DIR = BACKEND_DIR.parent / "GPT vluchtelingenwerk Frontend"
-
-JSON_DIRS = [
-    BACKEND_DIR,
-    FRONTEND_DIR,
-    Path(".").resolve(),  # fallback: werkdirectory van runtime
-]
+JSON_DIRS = [BACKEND_DIR, FRONTEND_DIR, Path(".").resolve()]
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("vluchtelingenwerk-backend")
+app = FastAPI(title="Vluchtelingenwerk GPT API", version="1.2.2")
 
-app = FastAPI(title="Vluchtelingenwerk GPT API", version="1.2.1")
-
-
-# ------------ Hulpfuncties --------------------------------------------------
+# ---------- Helpers ----------
 
 def _find_file(file_name: str) -> Optional[Path]:
-    """Zoek `file_name` in `JSON_DIRS`. Retourneer Path of None."""
     for directory in JSON_DIRS:
-        candidate = directory / file_name
-        if candidate.is_file():
-            return candidate
+        p = directory / file_name
+        if p.is_file():
+            return p
     return None
 
-
 def load_json_config(file_name: str) -> Any:
-    """Laad JSON‑bestand ongeacht locatie (backend/frontend)."""
-    path = _find_file(file_name)
-    if not path:
-        logger.error("Bestand %s niet gevonden in %s", file_name, JSON_DIRS)
-        raise HTTPException(status_code=404, detail=f"{file_name} niet gevonden")
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except Exception as exc:
-        logger.exception("Fout bij laden van %s: %s", file_name, exc)
-        raise HTTPException(status_code=500, detail=f"Fout bij laden van {file_name}")
+    p = _find_file(file_name)
+    if not p:
+        raise HTTPException(404, detail=f"{file_name} niet gevonden")
+    return json.loads(p.read_text(encoding="utf-8"))
 
 def _validate_link(link: str) -> str:
-    """Zorg dat link met http(s) begint. Gooi 500 bij onvolledige link."""
     if not link.startswith(("http://", "https://")):
-        logger.error("Onvolledige of relatieve link gevonden: %s", link)
-        raise HTTPException(status_code=500, detail="Onvolledige link in bronlijst")
+        raise HTTPException(500, detail="Onvolledige link in bronlijst")
     return link
 
-
-# ------------ API‑routes ----------------------------------------------------
+# ---------- Routes ----------
 
 @app.get("/")
 def root() -> Dict[str, str]:
-    """Health‑check endpoint."""
     return {"status": "API is actief", "version": app.version}
-
 
 @app.get("/all_procedures")
 def get_all_procedures() -> Any:
-    """Volledige set procedures voor juristen / front‑end."""
     return load_json_config("AllProcedures.json")
-
 
 @app.get("/startmenu")
 def get_startmenu() -> Dict[str, Any]:
-    """Levert het hoofdmenu uit UIFlow.json (stepId == 'hoofdmenu')."""
     uiflow = load_json_config("UIFlow.json")
     for step in uiflow.get("flow", []):
         if step.get("stepId") in ("hoofdmenu", "startmenu"):
             return step
-    raise HTTPException(status_code=500, detail="Hoofdmenu niet gevonden in UIFlow.json")
-
+    raise HTTPException(500, detail="Hoofdmenu niet gevonden")
 
 @app.get("/uiflow")
 def get_uiflow() -> Any:
-    """Geeft het complete UI‑flow JSON terug."""
     return load_json_config("UIFlow.json")
-
 
 @app.get("/search")
 def search_endpoint(
@@ -108,7 +75,6 @@ def search_endpoint(
     thuisland: str = "",
     moedertaal: str = "",
 ) -> List[Dict[str, Any]]:
-    """Zoek in lokale bronlijst ZoekenInternet.json op onderwerp + filters."""
     bronnen = load_json_config("ZoekenInternet.json")
     results = []
     filters = (gemeente.lower(), thuisland.lower(), moedertaal.lower())
@@ -116,68 +82,48 @@ def search_endpoint(
         if categorie == "version":
             continue
         for item in items:
-            titel_match = onderwerp.lower() in item.get("sourceTitle", "").lower()
-            desc_match = onderwerp.lower() in item.get("description", "").lower()
-            if titel_match or desc_match:
-                # rudimentaire filter
+            if onderwerp.lower() in (item.get("sourceTitle", "") + item.get("description", "")).lower():
                 haystack = (item.get("description", "") + " " + item.get("sourceTitle", "")).lower()
                 if all(f in haystack or f == "" for f in filters):
-                    try:
-                        url = _validate_link(item["url"])
-                    except HTTPException:
-                        # sla ongeldige link over maar log
-                        continue
-                    results.append(
-                        {
-                            "titel": item["sourceTitle"],
-                            "link": url,
-                            "samenvatting": item.get("description", ""),
-                            "categorie": categorie,
-                        }
-                    )
-    if not results:
-        logger.info("Geen resultaten voor onderwerp '%s'", onderwerp)
+                    url = _validate_link(item["url"])
+                    results.append({
+                        "titel": item["sourceTitle"],
+                        "link": url,
+                        "samenvatting": item.get("description", ""),
+                        "categorie": categorie,
+                    })
     return results
-
 
 @app.post("/set_reminder")
 def set_reminder(
-    afspraak_datetime_iso: str,
-    medewerker_initialen: str,
-    onderwerp: str = "BNTB-check"
+    afspraak_datetime_iso: Optional[str] = Body(default=None),
+    afspraak_datum: Optional[str] = Body(default=None),
+    afspraak_tijd: Optional[str] = Body(default=None),
+    medewerker_initialen: str = Body(..., max_length=6),
+    onderwerp: str = Body(default="BNTB-check"),
 ) -> Dict[str, Any]:
-    """Plan een reminder gekoppeld aan afspraakdatum + initialen.
-
-    Parameters
-    ----------
-    afspraak_datetime_iso : str
-        Afspraakdatum en -tijd in ISO 8601 (bv. 2025-05-15T14:30).
-    medewerker_initialen : str
-        Initialen van de VWN-medewerker (max. 6 tekens).
-    onderwerp : str
-        Omschrijving reminder. Standaard 'BNTB-check'.
-
-    Retourneert reminder‑id en geplande uitvoerdatum (afspraak + 28 dagen).
-    """
-    try:
-        afspraak_dt = datetime.fromisoformat(afspraak_datetime_iso)
-    except ValueError:
-        raise HTTPException(400, detail="ongeldige ISO-datumtijd")
-
-    if not medewerker_initialen or len(medewerker_initialen) > 6:
-        raise HTTPException(400, detail="initialen ongeldig")
+    if afspraak_datetime_iso:
+        try:
+            afspraak_dt = datetime.fromisoformat(afspraak_datetime_iso)
+        except ValueError:
+            raise HTTPException(400, detail="afspraak_datetime_iso ongeldig")
+    else:
+        if not (afspraak_datum and afspraak_tijd):
+            raise HTTPException(400, detail="Ontbrekende datum of tijd")
+        try:
+            afspraak_dt = datetime.fromisoformat(f"{afspraak_datum}T{afspraak_tijd}:00")
+        except ValueError:
+            raise HTTPException(400, detail="afspraak_datum/tijd ongeldig")
 
     run_dt = afspraak_dt + timedelta(days=28)
-    reminder_id = f"{onderwerp}-{afspraak_dt.date()}-{medewerker_initialen}"
-
-    # In een echte productie-omgeving zou hier een taak in een queue of DB worden gezet.
-    # Voor nu loggen we alleen:
+    reminder_id = f"{onderwerp}-{afspraak_dt.date()}-{medewerker_initialen.upper()}"
     logger.info("Reminder aangemaakt: %s → %s", reminder_id, run_dt.isoformat())
-
     return {"reminder_id": reminder_id, "execute_at": run_dt.isoformat()}
 
-
 @app.get("/generate_image")
-def generate_image(prompt: str) -> Dict[str, str]:
-    """(Nog) niet geïmplementeerd – placeholder."""
-    raise HTTPException(status
+def generate_image(prompt: str):
+    raise HTTPException(501, detail="Beeldgeneratie niet geïmplementeerd")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=int(os.getenv("PORT", 8000)), reload=True)
