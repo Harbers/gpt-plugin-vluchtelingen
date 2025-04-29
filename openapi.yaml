@@ -31,13 +31,13 @@ paths:
       operationId: get_all_procedures
       responses:
         "200":
-          description: "JSON‑object met alle procedures"
+          description: "JSON-object met alle procedures"
           content:
             application/json:
               schema:
-    type: object
-    properties: {}
-    additionalProperties: true
+                type: object
+                properties: {}
+                additionalProperties: true
 
   /startmenu:
     get:
