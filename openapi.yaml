@@ -1,58 +1,161 @@
 openapi: 3.1.0
 info:
-  title: "Vluchtelingenzoeker API"
-  description: "API voor juridische informatie en begeleidingsdata."
-  version: "1.1.0"
+  title: "Vluchtelingenwerk API"
+  description: "REST‑API t.b.v. juristen en medewerkers, gesynchroniseerd met front‑end UI‑flow."
+  version: "1.2.0"
 
 servers:
   - url: https://gpt-plugin-vluchtelingen.onrender.com
 
 paths:
-  /startmenu:
+  /:
     get:
-      summary: "Haal startmenu op"
-      operationId: get_startmenu
+      summary: "Health‑check"
+      operationId: root
       responses:
-        '200':
-          description: "Startmenu data"
+        "200":
+          description: "OK"
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StartMenuResponse'
-        '404':
-          description: "Menu niet gevonden"
+                type: object
+                properties:
+                  status:
+                    type: string
+                  version:
+                    type: string
+
+  /all_procedures:
+    get:
+      summary: "Alle juridische procedures"
+      operationId: get_all_procedures
+      responses:
+        "200":
+          description: "JSON‑array van procedures"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllProcedures"
+
+  /startmenu:
+    get:
+      summary: "Hoofdmenu ophalen"
+      operationId: get_startmenu
+      responses:
+        "200":
+          description: "Hoofdmenu‑object"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UIStep"
+
+  /uiflow:
+    get:
+      summary: "Volledige UI‑flow"
+      operationId: get_uiflow
+      responses:
+        "200":
+          description: "UIFlow JSON"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UIFlow"
+
+  /search:
+    get:
+      summary: "Zoek in bronnen"
+      operationId: search_endpoint
+      parameters:
+        - in: query
+          name: onderwerp
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: gemeente
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: thuisland
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: moedertaal
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "Lijst met gevonden bronnen"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SearchResult"
+
+  /generate_image:
+    get:
+      summary: "Beeldgeneratie (placeholder)"
+      operationId: generate_image
+      parameters:
+        - in: query
+          name: prompt
+          required: true
+          schema:
+            type: string
+      responses:
+        "501":
+          description: "Niet geïmplementeerd"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
 
 components:
   schemas:
-    StartMenuResponse:
+    ErrorResponse:
       type: object
       properties:
-        startVraag:
+        detail:
           type: string
-        context:
+
+    AllProcedures:
+      type: object
+      description: "Structuur gelijk aan AllProcedures.json"
+
+    UIStep:
+      type: object
+      properties:
+        stepId:
           type: string
-        basisgegevens:
+        description:
+          type: string
+        message:
+          type: string
+        options:
           type: object
-          properties:
-            gemeente:
-              type: string
-            procedureKoppelenAanThuisland:
-              type: boolean
-            thuisland:
-              type: string
-            moedertaal:
-              type: string
-        menu:
-          type: object
-          properties:
-            instructie:
-              type: string
-            opties:
-              type: array
-              items:
-                type: object
-                properties:
-                  nummer:
-                    type: integer
-                  omschrijving:
-                    type: string
+
+    UIFlow:
+      type: object
+      properties:
+        version:
+          type: string
+        flow:
+          type: array
+          items:
+            $ref: "#/components/schemas/UIStep"
+
+    SearchResult:
+      type: object
+      properties:
+        titel:
+          type: string
+        link:
+          type: string
+        samenvatting:
+          type: string
+        categorie:
+          type: string
