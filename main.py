@@ -5,13 +5,14 @@
 
 """Backend‑API voor GPT Vluchtelingenwerk.
 
-Wijzigingen v1.2.0
+Wijzigingen v1.2.1
 ------------------
 * Directory‑agnostische JSON‑loader zodat bestanden uit de frontend‑map direct gebruikt kunnen worden
-* Nieuwe endpoints: /startmenu en /uiflow
+* Nieuwe endpoints: /startmenu, /uiflow **en /set_reminder**
 * /all_procedures gebruikt nieuwe loader
 * /search zoekt nu in lokale JSON‑bronnen i.p.v. dummy‑data
-* OpenAPI‑spec geüpdatet naar v1.2.0 (zie openapi.yaml)
+* **/set_reminder** koppelt reminders aan afspraak‑datum + initialen medewerker, geen V‑nummer nodig
+* OpenAPI‑spec geüpdatet naar v1.2.1 (zie openapi.yaml)
 """
 
 import json
@@ -36,7 +37,7 @@ JSON_DIRS = [
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("vluchtelingenwerk-backend")
 
-app = FastAPI(title="Vluchtelingenwerk GPT API", version="1.2.0")
+app = FastAPI(title="Vluchtelingenwerk GPT API", version="1.2.1")
 
 
 # ------------ Hulpfuncties --------------------------------------------------
@@ -111,7 +112,6 @@ def search_endpoint(
             titel_match = onderwerp.lower() in item.get("sourceTitle", "").lower()
             desc_match = onderwerp.lower() in item.get("description", "").lower()
             if titel_match or desc_match:
-                # rudimentaire filter
                 haystack = (item.get("description", "") + " " + item.get("sourceTitle", "")).lower()
                 if all(f in haystack or f == "" for f in filters):
                     results.append(
@@ -122,9 +122,34 @@ def search_endpoint(
                             "categorie": categorie,
                         }
                     )
-    if not results:
-        logger.info("Geen resultaten voor onderwerp '%s'", onderwerp)
     return results
+
+
+# ---------------- Reminder --------------------------------------------------
+from pydantic import BaseModel, validator
+from datetime import datetime, timedelta
+
+class ReminderRequest(BaseModel):
+    appointment_datetime: datetime
+    initials: str
+    days_until_alert: int = 28
+    description: str
+
+    @validator("initials")
+    def validate_initials(cls, v):
+        v = v.strip().upper()
+        if not (1 <= len(v) <= 6):
+            raise ValueError("initials must be 1‑6 characters")
+        return v
+
+@app.post("/set_reminder")
+def set_reminder(req: ReminderRequest):
+    """Zet een reminder gekoppeld aan afspraak‑datum en initialen."""
+    trigger_at = req.appointment_datetime + timedelta(days=req.days_until_alert)
+    title = f"BNTB-check {req.appointment_datetime.date()} {req.initials}"
+    # Hier zou een echte automation‑service worden aangeroepen; placeholder‑response:
+    logger.info("Reminder gepland: %s op %s", title, trigger_at.isoformat())
+    return {"status": "scheduled", "title": title, "trigger_at": trigger_at}
 
 
 @app.get("/generate_image")
