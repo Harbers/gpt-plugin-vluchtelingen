@@ -125,6 +125,7 @@ components:
     AllProcedures:
       type: object
       description: "Structuur gelijk aan AllProcedures.json"
+      properties: {}
       additionalProperties: true
 
     UIStep:
