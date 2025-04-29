@@ -1,78 +1,141 @@
 # main.py
-# Versie: 1.1.0 – bijgewerkt april 2025
-
+# Versie: 1.2.0 – bijgewerkt 30 april 2025
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import os
+"""Backend‑API voor GPT Vluchtelingenwerk.
+
+Wijzigingen v1.2.0
+------------------
+* Directory‑agnostische JSON‑loader zodat bestanden uit de frontend‑map direct gebruikt kunnen worden
+* Nieuwe endpoints: /startmenu en /uiflow
+* /all_procedures gebruikt nieuwe loader
+* /search zoekt nu in lokale JSON‑bronnen i.p.v. dummy‑data
+* OpenAPI‑spec geüpdatet naar v1.2.0 (zie openapi.yaml)
+"""
+
 import json
 import logging
+import os
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
 from fastapi import FastAPI, HTTPException
-from typing import Any, Dict, List
 
-# Logging configuratie
+# ------------ Configuratie --------------------------------------------------
+
+BACKEND_DIR = Path(__file__).resolve().parent
+FRONTEND_DIR = BACKEND_DIR.parent / "GPT vluchtelingenwerk Frontend"
+
+JSON_DIRS = [
+    BACKEND_DIR,
+    FRONTEND_DIR,
+    Path(".").resolve(),  # fallback: werkdirectory van runtime
+]
+
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("vluchtelingenwerk-backend")
 
-app = FastAPI(title="Vluchtelingenwerk GPT API", version="1.1.0")
+app = FastAPI(title="Vluchtelingenwerk GPT API", version="1.2.0")
 
-def load_json_config(file_path: str) -> Any:
-    """
-    Laadt een JSON-configuratiebestand. Geeft een HTTPException bij fouten.
-    """
-    if not os.path.isfile(file_path):
-        logger.error(f"Bestand {file_path} niet gevonden.")
-        raise HTTPException(status_code=404, detail=f"{file_path} niet gevonden.")
+
+# ------------ Hulpfuncties --------------------------------------------------
+
+def _find_file(file_name: str) -> Optional[Path]:
+    """Zoek `file_name` in `JSON_DIRS`. Retourneer Path of None."""
+    for directory in JSON_DIRS:
+        candidate = directory / file_name
+        if candidate.is_file():
+            return candidate
+    return None
+
+
+def load_json_config(file_name: str) -> Any:
+    """Laad JSON‑bestand ongeacht locatie (backend/frontend)."""
+    path = _find_file(file_name)
+    if not path:
+        logger.error("Bestand %s niet gevonden in %s", file_name, JSON_DIRS)
+        raise HTTPException(status_code=404, detail=f"{file_name} niet gevonden")
     try:
-        with open(file_path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception as e:
-        logger.error(f"Fout bij het laden van {file_path}: {e}")
-        raise HTTPException(status_code=500, detail=f"Fout bij het laden van {file_path}")
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        logger.exception("Fout bij laden van %s: %s", file_name, exc)
+        raise HTTPException(status_code=500, detail=f"Fout bij laden van {file_name}")
+
+
+# ------------ API‑routes ----------------------------------------------------
 
 @app.get("/")
 def root() -> Dict[str, str]:
-    """
-    Basis endpoint om te controleren of de API actief is.
-    """
-    return {"status": "API is actief"}
+    """Health‑check endpoint."""
+    return {"status": "API is actief", "version": app.version}
+
 
 @app.get("/all_procedures")
 def get_all_procedures() -> Any:
-    """
-    Retourneert het volledige configuratiebestand met alle juridische procedures.
-    """
+    """Volledige set procedures voor juristen / front‑end."""
     return load_json_config("AllProcedures.json")
+
+
+@app.get("/startmenu")
+def get_startmenu() -> Dict[str, Any]:
+    """Levert het hoofdmenu uit UIFlow.json (stepId == 'hoofdmenu')."""
+    uiflow = load_json_config("UIFlow.json")
+    for step in uiflow.get("flow", []):
+        if step.get("stepId") in ("hoofdmenu", "startmenu"):
+            return step
+    raise HTTPException(status_code=500, detail="Hoofdmenu niet gevonden in UIFlow.json")
+
+
+@app.get("/uiflow")
+def get_uiflow() -> Any:
+    """Geeft het complete UI‑flow JSON terug."""
+    return load_json_config("UIFlow.json")
+
 
 @app.get("/search")
 def search_endpoint(
     onderwerp: str,
-    gemeente: str,
-    thuisland: str,
-    moedertaal: str
+    gemeente: str = "",
+    thuisland: str = "",
+    moedertaal: str = "",
 ) -> List[Dict[str, Any]]:
-    """
-    Zoekt actuele informatie door de parameters te combineren.
-    """
-    zoekterm = f"{onderwerp} {gemeente} {thuisland} {moedertaal} samenwerking 10km"
-    logger.info(f"Uitgevoerde zoekterm: {zoekterm}")
-    # Hier zou een echte zoekfunctie komen; we simuleren een voorbeeldresultaat:
-    return [
-        {
-            "titel": f"Update over {onderwerp} in {gemeente}",
-            "link": "https://voorbeeld.nl/update",
-            "samenvatting": "Samenvatting van de meest recente ontwikkelingen en regionale initiatieven.",
-            "apa": "Voorbeeld, A. (2025). Update over procedures."
-        }
-    ]
+    """Zoek in lokale bronlijst ZoekenInternet.json op onderwerp + filters."""
+    bronnen = load_json_config("ZoekenInternet.json")
+    results = []
+    filters = (gemeente.lower(), thuisland.lower(), moedertaal.lower())
+    for categorie, items in bronnen.items():
+        if categorie == "version":
+            continue
+        for item in items:
+            titel_match = onderwerp.lower() in item.get("sourceTitle", "").lower()
+            desc_match = onderwerp.lower() in item.get("description", "").lower()
+            if titel_match or desc_match:
+                # rudimentaire filter
+                haystack = (item.get("description", "") + " " + item.get("sourceTitle", "")).lower()
+                if all(f in haystack or f == "" for f in filters):
+                    results.append(
+                        {
+                            "titel": item["sourceTitle"],
+                            "link": item["url"],
+                            "samenvatting": item.get("description", ""),
+                            "categorie": categorie,
+                        }
+                    )
+    if not results:
+        logger.info("Geen resultaten voor onderwerp '%s'", onderwerp)
+    return results
+
 
 @app.get("/generate_image")
-def generate_image(prompt: str) -> Any:
-    """
-    Proxy naar externe beeldgeneratie‑service (nog niet geïmplementeerd).
-    """
+def generate_image(prompt: str) -> Dict[str, str]:
+    """(Nog) niet geïmplementeerd – placeholder."""
     raise HTTPException(status_code=501, detail="Beeldgeneratie nog niet geïmplementeerd")
 
-if __name__ == "__main__":
+
+# ------------ Local dev -----------------------------------------------------
+
+if __name__ == "__main__":  # pragma: no cover
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
+    uvicorn.run("main:app", host="0.0.0.0", port=int(os.getenv("PORT", 8000)), reload=True)
