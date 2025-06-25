@@ -1,6 +1,6 @@
 name: Auto-deploy naar Hetzner
 
-# Trigger op elke push naar de main-branch
+# Triggers bij elke push naar main
 on:
   push:
     branches:
@@ -8,36 +8,25 @@ on:
 
 jobs:
   deploy:
-    name: Deploy naar server
+    name: Deploy naar Hetzner
     runs-on: ubuntu-latest
+
     steps:
-      # 1) Haal de code binnen
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2) Start de SSH-agent met je private key
-      - name: Setup SSH-agent
-        uses: webfactory/ssh-agent@v0.8
+      - name: SSH-agent opzetten
+        uses: webfactory/ssh-agent@v0.5.4
         with:
+          # Haalt je privé-sleutel op uit de GitHub Secret
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      # 3) Voeg de server toe aan known_hosts om host-key verificatie te omzeilen
-      - name: Voeg server toe aan known_hosts
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
-
-      # 4) Sync de hele map naar je server met rsync
-      - name: Rsync naar server
+      - name: Synchroniseer bestanden via rsync
         run: |
           rsync -avz --delete \
-            --exclude '.git*' \
-            --exclude '.github' \
             ./ \
-            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.SERVER_PATH }}/
+            user@your.host:/opt/vluchtelingen-gpt/
 
-      # 5) (optioneel) herstart de systemd-service
-      - name: Herstart service op server
+      - name: Herstart systemd-service
         run: |
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} \\
-            "sudo systemctl daemon-reload && sudo systemctl restart bijbels-gpt.service vluchtelingen-gpt.service"
+          ssh user@your.host "sudo systemctl restart vluchtelingen-gpt.service"
