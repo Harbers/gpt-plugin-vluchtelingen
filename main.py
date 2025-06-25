@@ -1,13 +1,9 @@
+# main.py
+# Versie: 1.2.3 – bijgewerkt 24 juni 2025
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Backend‑API voor GPT Vluchtelingenwerk.
-Versie: 1.2.3 – bijgewerkt 25 juni 2025
-
-Wijzigingen v1.2.3:
--------------------
-* Correcte plaatsing van `app = FastAPI(...)` voor uvicorn entrypoint
-* Kleine optimalisaties en commentaar verduidelijking
-"""
+"""Backend-API voor GPT Vluchtelingenwerk."""
 
 import json
 import logging
@@ -18,18 +14,19 @@ from typing import Any, Dict, List, Optional
 
 from fastapi import FastAPI, HTTPException, Body
 
-# ----------------- Applicatie-instantie -----------------
+# --------- Logging ---------
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("vluchtelingenwerk-backend")
+
+# --------- App ---------
 app = FastAPI(title="Vluchtelingenwerk GPT API", version="1.2.3")
 
-# ----------------- Config -----------------
+# --------- Padinstellingen ---------
 BACKEND_DIR = Path(__file__).resolve().parent
 FRONTEND_DIR = BACKEND_DIR.parent / "GPT vluchtelingenwerk Frontend"
 JSON_DIRS = [BACKEND_DIR, FRONTEND_DIR, Path(".").resolve()]
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("vluchtelingenwerk-backend")
-
-# ----------------- Helpers -----------------
+# --------- Hulpfuncties ---------
 def _find_file(file_name: str) -> Optional[Path]:
     for directory in JSON_DIRS:
         p = directory / file_name
@@ -48,7 +45,7 @@ def _validate_link(link: str) -> str:
         raise HTTPException(500, detail="Onvolledige link in bronlijst")
     return link
 
-# ----------------- Routes -----------------
+# --------- API-routes ---------
 @app.get("/")
 def root() -> Dict[str, str]:
     return {"status": "API is actief", "version": app.version}
@@ -85,11 +82,10 @@ def search_endpoint(
         for item in items:
             haystack = (item.get("description", "") + " " + item.get("sourceTitle", "")).lower()
             if onderwerp.lower() in haystack:
-                if all(f in haystack or f == "" for f in filters):
-                    url = _validate_link(item["url"])
+                if all(f in haystack or not f for f in filters):
                     results.append({
-                        "titel": item["sourceTitle"],
-                        "link": url,
+                        "titel": item.get("sourceTitle", ""),
+                        "link": _validate_link(item.get("url", "")),
                         "samenvatting": item.get("description", ""),
                         "categorie": categorie,
                     })
@@ -125,7 +121,7 @@ def set_reminder(
 def generate_image(prompt: str):
     raise HTTPException(501, detail="Beeldgeneratie niet geïmplementeerd")
 
-# ----------------- Uvicorn Entry Point -----------------
+# --------- Lokale uitvoering ---------
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=int(os.getenv("PORT", 8000)), reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=int(os.getenv("PORT", 8001)), reload=True)
